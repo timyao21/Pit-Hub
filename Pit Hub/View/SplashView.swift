@@ -1,5 +1,5 @@
 //
-//  SplashScreen.swift
+//  SplashView.swift
 //  Pit Hub
 //
 //  Created by Junyu Yao on 12/2/24.
@@ -13,7 +13,7 @@ struct SplashView: View {
     var body: some View {
         
         if self.isActive{
-            ContentView()
+            HomePageView()
         }else{
             ZStack{
                 Rectangle()
