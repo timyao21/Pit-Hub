@@ -12,7 +12,7 @@ struct HomePageView: View {
         NavigationView {
             VStack {
                 HStack {
-                    Text("Hello, F1 World!")
+                    Text("Hello, F1 World! this is \(S.title)")
                 }
             }
             .toolbar {
