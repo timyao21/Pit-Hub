@@ -16,10 +16,13 @@ struct HomePageView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50)
+                        .padding(.leading, 20)
                     Text(S.title)
                         .foregroundColor(Color(S.pitHubIconColor))
                         .font(.system(size: 30))
                         .bold()
+                    Spacer()
+                    
                 }
                 Spacer()
                 Text("Hello, F1 World! this is \(S.title)")
