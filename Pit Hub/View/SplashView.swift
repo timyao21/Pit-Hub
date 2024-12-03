@@ -17,7 +17,7 @@ struct SplashView: View {
         }else{
             ZStack{
                 Rectangle()
-                    .fill(Color(hex: 0x1C1C1C))
+                    .fill(Color(S.primaryBackground))
                     .ignoresSafeArea()
                 HStack{
                     Image("PitIcon")
@@ -27,7 +27,7 @@ struct SplashView: View {
                     Text("Pit Hub")
                         .font(.system(size: 50))
                         .font(.title)
-                        .foregroundColor(Color(hex: 0xef5c23))
+                        .foregroundColor(Color(S.pitHubIconColor))
                         .bold()
                 }
             }
@@ -45,18 +45,5 @@ struct SplashView: View {
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
         SplashView()
-    }
-}
-
-
-extension Color {
-    init(hex: UInt, alpha: Double = 1.0) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xFF) / 255.0,
-            green: Double((hex >> 8) & 0xFF) / 255.0,
-            blue: Double(hex & 0xFF) / 255.0,
-            opacity: alpha
-        )
     }
 }

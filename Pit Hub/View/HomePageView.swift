@@ -9,19 +9,21 @@ import SwiftUI
 
 struct HomePageView: View {
     var body: some View {
-        NavigationView {
-            VStack {
-                HStack {
-                    Text("Hello, F1 World! this is \(S.title)")
+        ZStack{
+            VStack{
+                HStack(){
+                    Image(S.pitIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 50)
+                    Text(S.title)
+                        .foregroundColor(Color(S.pitHubIconColor))
+                        .font(.system(size: 30))
+                        .bold()
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                Image("PitHubIcon")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 100, height: 40) // Adjust the size as needed
-                }
+                Spacer()
+                Text("Hello, F1 World! this is \(S.title)")
+                Spacer()
             }
         }
     }
