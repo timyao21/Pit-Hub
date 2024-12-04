@@ -62,4 +62,5 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 # Firebase configuration file
+*.plist
 Pit Hub/GoogleService-Info.plist
