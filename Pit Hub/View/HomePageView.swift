@@ -22,7 +22,21 @@ struct HomePageView: View {
                         .font(.system(size: 30))
                         .bold()
                     Spacer()
-                    
+                    Button(action: {
+                        // Add your action here
+                        print("Profile Button tapped")
+                    }) {
+                        Image(systemName: "person")
+                    }
+                    .padding(.trailing, 20)
+                    .font(.system(size: 25))
+                    .foregroundColor(Color(S.pitHubIconColor))
+                }
+                
+                VStack{
+                    Text("阿布扎比")
+                    Text("Race Time")
+                    Text("Hello, F1 World! this is \(S.title)")
                 }
                 Spacer()
                 Text("Hello, F1 World! this is \(S.title)")
