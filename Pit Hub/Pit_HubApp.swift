@@ -38,7 +38,7 @@ struct Pit_HubApp: App {
 
     var body: some Scene {
         WindowGroup {
-            BottomNavBar()
+            SplashView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
