@@ -10,6 +10,8 @@ import SwiftUI
 struct SplashView: View {
     
     @State var isActive: Bool = false
+    @State private var currentTime: String = ""
+    
     var body: some View {
         
         if self.isActive{
@@ -25,13 +27,13 @@ struct SplashView: View {
                         .scaledToFit()
                         .frame(width: 100, height: 100)
                     Text("Pit Hub")
-                        .font(.system(size: 50))
-                        .font(.title)
+                        .font(.custom("Orbitron", size: 40))
                         .foregroundColor(Color(S.pitHubIconColor))
                         .bold()
                 }
             }
             .onAppear(){
+                print(DateUtils.getCurrentDate())
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     withAnimation {
                         self.isActive = true
@@ -40,6 +42,14 @@ struct SplashView: View {
             }
         }
     }
+    
+//    init() {
+//        for familyName in UIFont.familyNames{
+//            print(familyName)
+//        }
+//    }
+    
+    
 }
 
 struct SplashView_Previews: PreviewProvider {

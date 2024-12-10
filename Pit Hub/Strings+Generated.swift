@@ -10,6 +10,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum S {
+  /// Orbitron
+  internal static let orbitron = S.tr("Localizable", "Orbitron", fallback: "Orbitron")
   /// PitHubIcon
   internal static let pitHubIcon = S.tr("Localizable", "pitHubIcon", fallback: "PitHubIcon")
   /// PitHubIconColor
@@ -18,6 +20,8 @@ internal enum S {
   internal static let pitIcon = S.tr("Localizable", "pitIcon", fallback: "PitIcon")
   /// PrimaryBackground
   internal static let primaryBackground = S.tr("Localizable", "primaryBackground", fallback: "PrimaryBackground")
+  /// Smiley Sans
+  internal static let smileySans = S.tr("Localizable", "SmileySans", fallback: "Smiley Sans")
   /// Localizable.strings
   ///   Pit Hub
   /// 

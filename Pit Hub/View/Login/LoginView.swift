@@ -55,7 +55,7 @@ struct LoginView: View {
                 }) {
                     HStack {
                         Text("登录")
-                            .font(.headline)
+                            .font(.custom(S.smileySans, size: 20))
                         Image(systemName: "arrow.right.circle.fill")
                             .resizable()
                             .frame(width: 20, height: 20)

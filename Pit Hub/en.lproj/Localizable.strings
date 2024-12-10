@@ -16,3 +16,7 @@
 // Colors
 "pitHubIconColor" = "PitHubIconColor";
 "primaryBackground" = "PrimaryBackground";
+
+// Fonts
+"SmileySans" = "Smiley Sans";
+"Orbitron" = "Orbitron";
