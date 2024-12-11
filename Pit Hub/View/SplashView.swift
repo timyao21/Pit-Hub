@@ -27,7 +27,7 @@ struct SplashView: View {
                         .scaledToFit()
                         .frame(width: 100, height: 100)
                     Text("Pit Hub")
-                        .font(.custom("Orbitron", size: 40))
+                        .font(.custom(S.orbitron, size: 40))
                         .foregroundColor(Color(S.pitHubIconColor))
                         .bold()
                 }
