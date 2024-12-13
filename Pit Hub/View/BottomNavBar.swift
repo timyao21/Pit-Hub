@@ -12,7 +12,7 @@ struct BottomNavBar: View {
     
     var body: some View {
         TabView (selection: $selectedTab) {
-            ScheduleView()
+            ScheduleViewTest()
                 .tabItem {
                     Label("Schedule", systemImage: "calendar")
                 }

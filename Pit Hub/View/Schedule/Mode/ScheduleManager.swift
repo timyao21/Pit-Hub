@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScheduleMode: Codable {
+struct ScheduleManager: Codable {
     let year: Int
     
     init(year: Int) {
@@ -43,5 +43,36 @@ struct ScheduleMode: Codable {
         }.resume()
     }
     
+    // MARK: - Helper function to convert String to Date
+    private func convertToDate(dateString: String) -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        return dateFormatter.date(from: dateString)
+    }
+    
+    // MARK: - Return upcoming meetings
+    func getUpcomingMeetings(completion: @escaping ([Meeting]?) -> Void) {
+        getFullSchedule { meetings in
+            let upcomingMeetings = meetings?.filter {
+                if let date = self.convertToDate(dateString: $0.dateStart) {
+                    return date > Date()
+                }
+                return false
+            }
+            completion(upcomingMeetings)
+        }
+    }
+    
+    // MARK: - Return past meetings
+    func getPastMeetings(completion: @escaping ([Meeting]?) -> Void) {
+        getFullSchedule { meetings in
+            let pastMeetings = meetings?.filter {
+                if let date = self.convertToDate(dateString: $0.dateStart) {
+                    return date <= Date()
+                }
+                return false
+            }
+            completion(pastMeetings)
+        }
+    }
     
 }
