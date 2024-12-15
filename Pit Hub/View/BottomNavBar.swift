@@ -12,24 +12,24 @@ struct BottomNavBar: View {
     
     var body: some View {
         TabView (selection: $selectedTab) {
-            ScheduleViewTest()
+            ScheduleView()
                 .tabItem {
-                    Label("Schedule", systemImage: "calendar")
+                    Label("赛历", systemImage: "calendar")
                 }
                 .tag(0)
             HomePageView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("主页", systemImage: "house")
                 }
                 .tag(1)
             ContentView()
                 .tabItem {
-                    Label("Home", systemImage: "trophy")
+                    Label("积分", systemImage: "trophy")
                 }
                 .tag(2)
             ContentView()
                 .tabItem {
-                    Label("Home", systemImage: "newspaper")
+                    Label("新闻", systemImage: "newspaper")
                 }
                 .tag(3)
         }

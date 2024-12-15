@@ -17,19 +17,18 @@ struct ScheduleList: View {
     var body: some View {
         NavigationSplitView{
             VStack{
-                Text("接下来...")
-                    .font(.custom(S.smileySans, size: 20))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 16)
-                
                 if !upcomingMeetings.isEmpty {
+                    Text("接下来...")
+                        .font(.custom(S.smileySans, size: 20))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 16)
                     List(upcomingMeetings) { meeting in
-                        ScheduleRow(meeting: meeting)
+                        NavigationLink {
+                            ScheduleDetail(meeting: meeting)
+                        } label: {
+                            ScheduleRow(meeting: meeting)
+                        }
                     }
-                } else {
-                    Text("No upcoming meetings")
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding()
                 }
                 
                 Text("已结束...")

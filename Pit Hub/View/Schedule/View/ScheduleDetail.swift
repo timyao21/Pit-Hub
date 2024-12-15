@@ -13,7 +13,12 @@ struct ScheduleDetail: View {
         ZStack{
             VStack{
                 Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
+                Text(meeting.circuitShortName)
             }
+            .withCustomNavigation()
+        }
+        .onAppear{
+            print("ScheduleDetail appeared")
         }
     }
 }

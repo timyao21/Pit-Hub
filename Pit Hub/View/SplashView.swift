@@ -42,14 +42,6 @@ struct SplashView: View {
             }
         }
     }
-    
-//    init() {
-//        for familyName in UIFont.familyNames{
-//            print(familyName)
-//        }
-//    }
-    
-    
 }
 
 struct SplashView_Previews: PreviewProvider {

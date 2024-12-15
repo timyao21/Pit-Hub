@@ -27,14 +27,15 @@ struct LoginView: View {
                         .scaledToFit()
                         .frame(width: 100, height: 100)
                     Text("Pit Hub")
-                        .font(.system(size: 50))
+                        .font(.custom(S.orbitron, size: 40))
                         .font(.title)
                         .foregroundColor(Color(S.pitHubIconColor))
                         .bold()
                 }
                 Text("Login")
-                    .font(.largeTitle)
+                    .font(.custom(S.orbitron, size: 20))
                     .padding(.bottom, 40)
+                    .bold()
                 
                 TextField("Username/Email", text: $email)
                     .padding()
