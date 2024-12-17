@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScheduleDetail: View {
     
+//    @StateObject private var viewModel: ViewModel
     var sessionManager: SessionManager
     var meeting: Meeting
     
