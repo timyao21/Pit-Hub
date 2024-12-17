@@ -8,23 +8,78 @@
 import SwiftUI
 
 struct ScheduleDetail: View {
+    
+    var sessionManager: SessionManager
     var meeting: Meeting
+    
     var body: some View {
-        ZStack{
-            VStack{
+        VStack(alignment: .leading) {
+            Group {
+                Text(meeting.meetingName)
+                    .font(.custom(S.smileySans, size: 20)) // Set the desired font size
                 Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
-                Text(meeting.circuitShortName)
+                    .font(.custom(S.smileySans, size: 35))
+                    .padding(.top, 2)
+                    .padding(.bottom, 2)
+                let dateRange = getDataRange(date: meeting.dateStart)
+                if let startDateString = dateRange.startDate,
+                   let endDateString = dateRange.endDate {
+                    Text("\(startDateString) - \(endDateString)")
+                        .font(.custom(S.smileySans, size: 25))
+                } else {
+                    Text("Invalid Date")
+                }
             }
-            .withCustomNavigation()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
         }
-        .onAppear{
-            print("ScheduleDetail appeared")
+        .padding()
+        .withCustomNavigation()
+        .onAppear {
+            print(getDataRange(date: meeting.dateStart))
+            getCurGrandPrixDetail()
         }
     }
+    
+    // MARK: - get the data range
+    func getDataRange(date: String) -> (startDate: String?, endDate: String?) {
+        let calendar = Calendar.current
+
+        // Convert the input ISO date string to a local Date
+        guard let currentDate = TimeModel(isoDateString: date).toLocalDate() else {
+            print("Invalid ISO date string: \(date)")
+            return (nil, nil)
+        }
+
+        // Define the start date (current date)
+        let startDate = currentDate
+
+        // Define the end date (e.g., 7 days from the start date)
+        guard let endDate = calendar.date(byAdding: .day, value: 3, to: currentDate) else {
+            print("Failed to calculate end date")
+            return (nil, nil)
+        }
+
+        // Format the dates for display
+        let localDateFormatter = DateFormatter()
+        localDateFormatter.dateStyle = .short
+        localDateFormatter.timeStyle = .none
+
+        return (localDateFormatter.string(from: startDate), localDateFormatter.string(from: endDate))
+    }
+    
+    // MARK: - getCurGrandPrix Detail
+    func getCurGrandPrixDetail() {
+        print(meeting.circuitShortName)
+        sessionManager.getAllSessions { sessions in
+            print(sessions)
+        }
+    }
+
 }
 
 #Preview {
-    ScheduleDetail(meeting:Meeting(
+    ScheduleDetail(sessionManager: SessionManager(circuitShortName: "Sakhir", year: 2024), meeting:Meeting(
         circuitKey: 63,
         circuitShortName: "Sakhir",
         countryCode: "SGP",

@@ -92,7 +92,7 @@ struct HomePageView: View {
 
     func updateLocalData(dataString : String) -> String {
         let timeModel = TimeModel(isoDateString: dataString)
-        if let localDate = timeModel.toLocalDateTime() {
+        if let localDate = timeModel.toLocalDateTimeString() {
             return localDate
         } else {
             return "Date conversion failed for: \(dataString)"

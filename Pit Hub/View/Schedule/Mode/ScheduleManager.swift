@@ -22,7 +22,7 @@ struct ScheduleManager: Codable {
             completion(nil)
             return
         }
-        print(url)
+
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")

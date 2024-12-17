@@ -34,8 +34,42 @@ struct CountryNameTranslator {
         "Las Vegas": "美国·拉斯维加斯",
         "Lusail": "卡塔尔·卢塞尔",
         "Yas Marina Circuit": "阿布扎比·亚斯码头",
-        
         // Add more countries as needed
+    ]
+    
+    private static let sessionsNames: [String: String] = [
+        "Practice 1": "练习赛1",
+        "Practice 2": "练习赛2",
+        "Practice 3": "练习赛3",
+        "Qualifying": "排位赛",
+        "Sprint Shootout": "冲刺排位赛",
+        "Sprint": "冲刺赛",
+        "Race": "正赛",
+    ]
+    
+    // Dictionary mapping country codes to flag emojis
+    private static let countryFlags: [String: String] = [
+        "BRN": "🇧🇭",
+        "KSA": "🇸🇦",
+        "AUS": "🇦🇺",
+        "JPN": "🇯🇵",
+        "CHN": "🇨🇳",
+        "USA": "🇺🇸",
+        "ITA": "🇮🇹",
+        "MON": "🇲🇨",
+        "CAN": "🇨🇦",
+        "ESP": "🇪🇸",
+        "AUT": "🇦🇹",
+        "GBR": "🇬🇧",
+        "HUN": "🇭🇺",
+        "BEL": "🇧🇪",
+        "NED": "🇳🇱",
+        "AZE": "🇦🇿",
+        "SGP": "🇸🇬",
+        "MEX": "🇲🇽",
+        "BRA": "🇧🇷",
+        "QAT": "🇶🇦",
+        "UAE": "🇦🇪"
     ]
 
     /// Method to get the Chinese name for a given English country name
@@ -44,4 +78,13 @@ struct CountryNameTranslator {
     static func translate(englishName: String) -> String {
         return countryNames[englishName] ?? englishName
     }
+    
+    static func translateSessions(englishAreaName: String) -> String {
+        return sessionsNames[englishAreaName] ?? englishAreaName
+    }
+    
+    static func translateFlags(countryCode: String) -> String {
+        return countryFlags[countryCode] ?? countryCode
+    }
+    
 }

@@ -14,7 +14,7 @@ struct TimeModel{
         self.isoDateString = isoDateString
     }
     
-    func toLocalDateTime() -> String? {
+    func toLocalDateTimeString() -> String? {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime]
         
@@ -31,7 +31,7 @@ struct TimeModel{
         return localDateFormatter.string(from: date)
     }
     
-    func toLocalDate() -> String? {
+    func toLocalDateString() -> String? {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime]
         
@@ -47,4 +47,22 @@ struct TimeModel{
         
         return localDateFormatter.string(from: date)
     }
+    
+    func toLocalDate() -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions = [.withInternetDateTime]
+        
+        // Parse the ISO 8601 date string
+        guard let date = dateFormatter.date(from: isoDateString) else {
+            print("Failed to parse date: \(isoDateString)")
+            return nil
+        }
+        
+        // Convert to local time zone
+        let timeZoneOffset = TimeInterval(TimeZone.current.secondsFromGMT(for: date))
+        let localDate = date.addingTimeInterval(timeZoneOffset)
+        
+        return localDate
+    }
+    
 }
