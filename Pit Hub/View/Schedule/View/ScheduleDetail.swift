@@ -9,74 +9,40 @@ import SwiftUI
 
 struct ScheduleDetail: View {
     
-//    @StateObject private var viewModel: ViewModel
-    var sessionManager: SessionManager
-    var meeting: Meeting
+    @StateObject private var viewModel: ViewModel
+    private let sessionManager: SessionManager
+
+    // MARK: - Initializer
+    init(sessionManager: SessionManager, meeting: Meeting) {
+        self.sessionManager = sessionManager
+        _viewModel = StateObject(wrappedValue: ViewModel(sessionManager: sessionManager, meeting: meeting))
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             Group {
-                Text(meeting.meetingName)
-                    .font(.custom(S.smileySans, size: 20)) // Set the desired font size
-                Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
+                Text(viewModel.meeting.meetingName)
+                    .font(.custom(S.smileySans, size: 20))
+                Text(CountryNameTranslator.translate(englishName: viewModel.meeting.circuitShortName))
                     .font(.custom(S.smileySans, size: 35))
                     .padding(.top, 2)
                     .padding(.bottom, 2)
-                let dateRange = getDataRange(date: meeting.dateStart)
-                if let startDateString = dateRange.startDate,
-                   let endDateString = dateRange.endDate {
-                    Text("\(startDateString) - \(endDateString)")
-                        .font(.custom(S.smileySans, size: 25))
-                } else {
-                    Text("Invalid Date")
-                }
+                Text("\(viewModel.startDate) - \(viewModel.endDate)")
+                    .font(.custom(S.smileySans, size: 25))
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
+            List(viewModel.sessions) { session in
+                ScheduleSessionRowView(session: session)
+            }
+            .listStyle(.plain)
         }
         .padding()
         .withCustomNavigation()
         .onAppear {
-            print(getDataRange(date: meeting.dateStart))
-            getCurGrandPrixDetail()
+            viewModel.getCurGrandPrixDetail()
         }
     }
-    
-    // MARK: - get the data range
-    func getDataRange(date: String) -> (startDate: String?, endDate: String?) {
-        let calendar = Calendar.current
-
-        // Convert the input ISO date string to a local Date
-        guard let currentDate = TimeModel(isoDateString: date).toLocalDate() else {
-            print("Invalid ISO date string: \(date)")
-            return (nil, nil)
-        }
-
-        // Define the start date (current date)
-        let startDate = currentDate
-
-        // Define the end date (e.g., 7 days from the start date)
-        guard let endDate = calendar.date(byAdding: .day, value: 3, to: currentDate) else {
-            print("Failed to calculate end date")
-            return (nil, nil)
-        }
-
-        // Format the dates for display
-        let localDateFormatter = DateFormatter()
-        localDateFormatter.dateStyle = .short
-        localDateFormatter.timeStyle = .none
-
-        return (localDateFormatter.string(from: startDate), localDateFormatter.string(from: endDate))
-    }
-    
-    // MARK: - getCurGrandPrix Detail
-    func getCurGrandPrixDetail() {
-        print(meeting.circuitShortName)
-        sessionManager.getAllSessions { sessions in
-            print(sessions)
-        }
-    }
-
 }
 
 #Preview {

@@ -87,5 +87,5 @@ struct SectionHeader: View {
 }
 
 #Preview {
-    ScheduleList(scheduleManager: ScheduleManager(year: 2023))
+    ScheduleList(scheduleManager: ScheduleManager(year: 2024))
 }

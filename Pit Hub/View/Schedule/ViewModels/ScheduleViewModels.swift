@@ -13,6 +13,7 @@ extension ScheduleList {
     class ViewModel: ObservableObject{  // Renamed to PascalCase
         // MARK: - Properties
         private let scheduleManager: ScheduleManager
+        var selectedYear: Int = 2024
         
         var pastMeetings = [Meeting]()
         var upcomingMeetings = [Meeting]([
@@ -37,6 +38,7 @@ extension ScheduleList {
             self.scheduleManager = scheduleManager
         }
         
+        // MARK: - Get all the meetings of the year
         func fetchMeetings() {
     //        scheduleManager.getUpcomingMeetings { meetings in
     //            DispatchQueue.main.async {

@@ -38,11 +38,11 @@ struct CountryNameTranslator {
     ]
     
     private static let sessionsNames: [String: String] = [
-        "Practice 1": "练习赛1",
-        "Practice 2": "练习赛2",
-        "Practice 3": "练习赛3",
+        "Practice 1": "练习赛 1",
+        "Practice 2": "练习赛 2",
+        "Practice 3": "练习赛 3",
         "Qualifying": "排位赛",
-        "Sprint Shootout": "冲刺排位赛",
+        "Sprint Qualifying": "冲刺排位赛",
         "Sprint": "冲刺赛",
         "Race": "正赛",
     ]
