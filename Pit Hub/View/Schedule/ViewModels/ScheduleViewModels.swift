@@ -12,8 +12,7 @@ extension ScheduleList {
     @Observable
     class ViewModel: ObservableObject{  // Renamed to PascalCase
         // MARK: - Properties
-        private let scheduleManager: ScheduleManager
-        var selectedYear: Int = 2024
+        private var scheduleManager: ScheduleManager
         
         var pastMeetings = [Meeting]()
         var upcomingMeetings = [Meeting]([
