@@ -44,6 +44,7 @@ struct ScheduleView: View {
             ScheduleList(scheduleManager: ScheduleManager(year: selectedYear))
                 .id(selectedYear) // Ensures re-rendering
         }
+        .background(Color(S.primaryBackground))
     }
 }
 

@@ -11,10 +11,7 @@ struct HomePageView: View {
     @State private var currentTime: Date = Date()
     @State private var qualiLocalDateString = ""
     @State private var raceLocalDateString = ""
-    
-    @State private var curGpQ = GrandPrix()
-    @State private var curGpR = GrandPrix()
-    
+        
     var body: some View {
         NavigationView {
             ZStack {
@@ -40,65 +37,13 @@ struct HomePageView: View {
                         .foregroundColor(Color(S.pitHubIconColor))
                     }
                     .padding()
-                    VStack (alignment: .leading) {
-                        HStack{
-                            VStack (alignment: .leading) {
-                                Text("\(curGpQ.country_code)")
-                                    .font(.system(size: 20))
-                                Text("\(curGpQ.circuit_short_name)")
-                                    .font(.system(size: 28))
-                            }
-                            Spacer()
-                            Image(S.pitIcon)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 80)
-                        }
-                        Text("排位: \(qualiLocalDateString)")
-                            .font(.system(size: 15))
-                        Text("正赛: \(raceLocalDateString)")
-                            .font(.system(size: 15))
-                    }
-                    .padding()
                     Spacer()
                     Text("Hello, F1 World! this is \(S.title)")
                     Spacer()
                 }
             }
         }
-        .onAppear {
-            currentTime = DateUtils.getCurrentDate()
-            print(DateUtils.formatDate(currentTime))
-        }
     }
-    
-    // MARK:  Get the next race time
-    
-    func getNextRaceTime(){
-        getGrandPrix(year: 2024, country_code: "BEL") { grandPrix in
-            if let grandPrix = grandPrix {
-                DispatchQueue.main.async {
-                    self.curGpQ = grandPrix[0]
-                    self.curGpR = grandPrix[1]
-                    qualiLocalDateString = updateLocalData(dataString: curGpQ.date_start)
-                    raceLocalDateString = updateLocalData(dataString: curGpR.date_start)
-                    print("updated")
-                }
-            } else {
-                print("Failed to fetch GrandPrix!")
-            }
-        }
-    }
-
-    func updateLocalData(dataString : String) -> String {
-        let timeModel = TimeModel(isoDateString: dataString)
-        if let localDate = timeModel.toLocalDateTimeString() {
-            return localDate
-        } else {
-            return "Date conversion failed for: \(dataString)"
-        }
-    }
-    
 }
 
     

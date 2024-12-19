@@ -43,8 +43,8 @@ extension ScheduleDetail{
         }
         
         func getDateRange(_ startSessions:Session, _ endSessions:Session){
-            startDate = DateUtils.formatDateString(startSessions.dateStart) ?? ""
-            endDate = DateUtils.formatDateString(endSessions.dateStart) ?? ""
+            startDate = DateUtils.formatLocalDateString(startSessions.dateStart) ?? ""
+            endDate = DateUtils.formatLocalDateString(endSessions.dateStart) ?? ""
         }
         
     }
