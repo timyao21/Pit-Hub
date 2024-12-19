@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BottomNavBar: View {
     @State private var selectedTab = 1
+    @State private var showNavBar = true // State to toggle visibility
     
     var body: some View {
         TabView (selection: $selectedTab) {

@@ -8,42 +8,7 @@
 import Foundation
 
 struct DateUtils {
-    static func getCurrentDate() -> Date {
-        return Date()
-    }
-    
-    static func formatDate(_ date: Date, dateStyle: DateFormatter.Style = .medium, timeStyle: DateFormatter.Style = .none) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = dateStyle
-        formatter.timeStyle = timeStyle
-        return formatter.string(from: date)
-    }
-    
-    static func formatDateString(_ dateString: String) -> String? {
-        let formatter = ISO8601DateFormatter()
-        if let date = formatter.date(from: dateString) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .none
-            dateFormatter.timeZone = .current
-            return dateFormatter.string(from: date)
-        }
-        return nil
-    }
-    
-    static func formatDateTimeString(_ dateString: String) -> String? {
-        let formatter = ISO8601DateFormatter()
-        if let date = formatter.date(from: dateString) {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .short
-            dateFormatter.timeZone = .current
-            return dateFormatter.string(from: date)
-        }
-        return nil
-    }
-    
-    // MARK: - format the ISO8601 Data Format to local time
+    // MARK: - format the ISO8601 Data Format to local time with custom style
     static func formatLocalFullDateString(_ dateString: String, dateStyle: DateFormatter.Style = .short, timeStyle: DateFormatter.Style = .none) -> String? {
         let formatter = ISO8601DateFormatter()
         if let date = formatter.date(from: dateString) {
@@ -56,7 +21,7 @@ struct DateUtils {
         }
         return nil
     }
-    
+    // MARK: - format the ISO8601 Data Format to local time only month and day (Chinese)
     static func formatLocalDateString(_ dateString: String) -> String? {
         let formatter = ISO8601DateFormatter()
         if let date = formatter.date(from: dateString) {
@@ -69,6 +34,7 @@ struct DateUtils {
         return nil
     }
     
+    // MARK: - get weekday from the ISO8601 date string (Chinese)
     static func getWeekday(from dateString: String) -> String? {
         // Step 1: Convert the ISO8601 date string to a Date object
         let isoFormatter = ISO8601DateFormatter()
