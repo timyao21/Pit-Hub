@@ -32,9 +32,6 @@ struct HomeView: View {
             }
             .padding()
             Spacer()
-            Button("Load Meetings") {
-                viewModel.loadMeetings()
-            }
             Text("Past Meetings: \(viewModel.pastMeetings.last?.meetingName ?? "No Meeting")")
             Text("Upcoming Meetings: \(viewModel.upcomingMeetings.first?.meetingName ?? "No Meeting")")
             Spacer()

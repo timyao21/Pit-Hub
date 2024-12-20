@@ -12,23 +12,22 @@ extension HomeView {
         @Published var meetings: [Meeting] = []
         @Published var upcomingMeetings: [Meeting] = []
         @Published var pastMeetings: [Meeting] = []
+        @Published var curYear: Int = Calendar.current.component(.year, from: Date())
         
         private let meetingsManager = MeetingsManager()
         
         // MARK: - load test
         func loadMeetings() {
-            DispatchQueue.main.async {
-                self.fetchMeetings()
-                self.getUpcomingMeeting()
-                self.getPastMeetings()
-            }
+            self.fetchMeetings()
         }
         
         // MARK: - Fetch meetings
         func fetchMeetings() {
-            meetingsManager.getFullSchedule(2024) { meetings in
+            meetingsManager.getFullSchedule(curYear) { meetings in
                 DispatchQueue.main.async {
                     self.meetings = meetings ?? []
+                    self.getUpcomingMeeting()
+                    self.getPastMeetings()
                 }
             }
         }

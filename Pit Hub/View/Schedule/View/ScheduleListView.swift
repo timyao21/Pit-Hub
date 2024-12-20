@@ -7,16 +7,9 @@
 
 import SwiftUI
 
-struct ScheduleList: View {
+struct ScheduleListView: View {
     
-    @StateObject private var viewModel: ViewModel
-    private let scheduleManager: ScheduleManager
-    
-    // MARK: - Initializer
-    init(scheduleManager: ScheduleManager) {
-        self.scheduleManager = scheduleManager
-        _viewModel = StateObject(wrappedValue: ViewModel(scheduleManager: scheduleManager))
-    }
+    @StateObject var viewModel = ViewModel()
     
     // MARK: - UI
     var body: some View {
@@ -32,7 +25,7 @@ struct ScheduleList: View {
                                 SectionHeader(title: "接下来...")
                                 ForEach(viewModel.upcomingMeetings) { meeting in
                                     NavigationLink {
-                                        ScheduleDetail(sessionManager: SessionManager(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
+                                        ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
                                     } label: {
                                         ScheduleRow(meeting: meeting)
                                     }
@@ -47,7 +40,7 @@ struct ScheduleList: View {
                                 SectionHeader(title: "已结束...")
                                 ForEach(viewModel.pastMeetings) { meeting in
                                     NavigationLink {
-                                        ScheduleDetail(sessionManager: SessionManager(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
+                                        ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
                                     } label: {
                                         ScheduleRow(meeting: meeting)
                                             .padding(.vertical, 2)
@@ -87,5 +80,5 @@ struct SectionHeader: View {
 }
 
 #Preview {
-    ScheduleList(scheduleManager: ScheduleManager(year: 2024))
+    ScheduleListView()
 }

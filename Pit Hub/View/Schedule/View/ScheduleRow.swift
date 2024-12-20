@@ -16,7 +16,7 @@ struct ScheduleRow: View {
                 Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
                     .font(.custom(S.smileySans, size: 25))
                     .padding([.top, .bottom],1)
-                if let localTime = TimeModel(isoDateString: meeting.dateStart).toLocalDateString() {
+                if let localTime = DateUtils.formatLocalFullDateString(meeting.dateStart) {
                     Text("时间：\(localTime)")
                 } else {
                     Text("Invalid Date")

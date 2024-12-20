@@ -2,22 +2,23 @@
 //  SessionManager.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 12/15/24.
+//  Created by Junyu Yao on 12/19/24.
 //
 
 import Foundation
 
+
 struct SessionManager {
-    let circuitShortName: String
-    let year: Int
     
-    init(circuitShortName: String, year: Int) {
-        self.circuitShortName = circuitShortName
-        self.year = year
+    // MARK: - Convert date string to Date
+    func convertToDate(dateString: String) -> Date? {
+        let dateFormatter = ISO8601DateFormatter()
+        return dateFormatter.date(from: dateString)
     }
     
-    func getAllSessions(completion: @escaping ([Session]?) -> Void) {
-        guard let url = URL(string: "https://api.openf1.org/v1/sessions?year=\(year)&circuit_short_name=\(circuitShortName)") else {
+    // MARK: - get all sessions
+    func getAllSessions(_ meetingKey: Int, for_ year: Int, completion: @escaping ([Session]?) -> Void) {
+        guard let url = URL(string: "https://api.openf1.org/v1/sessions?year=\(year)&meeting_key=\(meetingKey)") else {
             print("Invalid URL")
             completion(nil)
             return
@@ -42,5 +43,7 @@ struct SessionManager {
             }
         }.resume()
     }
+
     
 }
+

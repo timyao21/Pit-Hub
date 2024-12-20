@@ -13,12 +13,12 @@ struct BottomNavBar: View {
     
     var body: some View {
         TabView (selection: $selectedTab) {
-            ScheduleView()
+            ScheduleListView()
                 .tabItem {
                     Label("赛历", systemImage: "calendar")
                 }
                 .tag(0)
-            HomePageView()
+            HomeView()
                 .tabItem {
                     Label("主页", systemImage: "house")
                 }
