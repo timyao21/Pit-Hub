@@ -14,14 +14,33 @@ struct HomeRaceRow: View {
     @StateObject var viewModel = ViewModel()
     
     var body: some View {
-        HStack{
-            Text("\(CountryNameTranslator.translate(englishName: meeting.circuitShortName))")
-            Spacer()
-        }
-        .font(.custom(S.smileySans, size: 20))
-        .onAppear {
-            viewModel.fetchSessions(meeting.meetingKey, for: meeting.dateStart)
-        }
+        VStack(spacing: 0){
+            HStack{
+                VStack(alignment: .leading){
+                    Text("\(meeting.circuitShortName)")
+                    Text("\(CountryNameTranslator.translate(englishName: meeting.circuitShortName))")
+                        .font(.custom(S.smileySans, size: 40))
+                }
+                Spacer()
+                Image(meeting.circuitShortName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100)
+            }
+            .font(.custom(S.smileySans, size: 20))
+
+            Section(header: Text("排位 & 正赛")
+                        .font(.custom(S.smileySans, size: 20))
+                        .frame(maxWidth: .infinity, alignment: .leading)) {
+                            List(viewModel.filteredSessions) { session in
+                                ScheduleSessionRowView(session: session)
+                            }
+                            .listStyle(.plain)
+                        }
+            }
+            .onAppear {
+                viewModel.fetchSessions(meeting.meetingKey, for: meeting.dateStart)
+            }
     }
 }
 

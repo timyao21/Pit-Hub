@@ -11,6 +11,7 @@ extension HomeRaceRow{
     
     class ViewModel: ObservableObject{
         @Published var sessions: [Session] = []
+        @Published var filteredSessions: [Session] = []
         
         private let sessionManager = SessionManager()
         
@@ -21,8 +22,13 @@ extension HomeRaceRow{
                 DispatchQueue.main.async {
                     self.sessions = sessions ?? []
                     print(self.sessions)
+                    self.filterRaceAndQualifyingSessions()
                 }
             }
+        }
+        
+        func filterRaceAndQualifyingSessions(){
+            self.filteredSessions = sessions.filter { $0.sessionType == "Race" || $0.sessionType == "Qualifying" }
         }
         
     }

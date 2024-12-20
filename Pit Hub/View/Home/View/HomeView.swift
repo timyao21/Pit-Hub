@@ -30,11 +30,24 @@ struct HomeView: View {
                 .font(.system(size: 15))
                 .foregroundColor(Color(S.pitHubIconColor))
             }
-            .padding()
-            Spacer()
-            Text("Past Meetings: \(viewModel.pastMeetings.last?.meetingName ?? "No Meeting")")
-            Text("Upcoming Meetings: \(viewModel.upcomingMeetings.first?.meetingName ?? "No Meeting")")
-            Spacer()
+            .padding(.vertical, 0)
+            .padding(.horizontal, 10)
+
+            if let upcomingMeeting = viewModel.upcomingMeetings.first {
+                HomeRaceRow(meeting: upcomingMeeting)
+                    .padding(.top, 0)
+                    .padding(.horizontal)
+            } else {
+                Text("No Past Meetings")
+            }
+            if viewModel.pastMeetings.indices.contains(1) {
+                let pastMeeting = viewModel.pastMeetings[4]
+                HomeRaceRow(meeting: pastMeeting)
+                    .padding(.top, 0)
+                    .padding(.horizontal)
+            } else {
+                Text("No Past Meetings")
+            }
         }
         .background(Color(S.primaryBackground))
         .onAppear {
