@@ -26,7 +26,8 @@ struct DateUtils {
         let formatter = ISO8601DateFormatter()
         if let date = formatter.date(from: dateString) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "M月d日 HH:mm"// Format for month and day
+//            dateFormatter.dateFormat = "M月d日 HH:mm"// Format for month and day
+            dateFormatter.dateFormat = "M月d日"// Format for month and day
             dateFormatter.timeZone = .current
             dateFormatter.locale = Locale(identifier: "zh_CN") // Change this for different locales if needed
             return dateFormatter.string(from: date)

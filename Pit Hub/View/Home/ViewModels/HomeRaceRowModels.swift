@@ -12,6 +12,7 @@ extension HomeRaceRow{
     class ViewModel: ObservableObject{
         @Published var sessions: [Session] = []
         @Published var filteredSessions: [Session] = []
+        @Published var isPracticeVisible: Bool = false
         
         private let sessionManager = SessionManager()
         
@@ -21,7 +22,6 @@ extension HomeRaceRow{
             sessionManager.getAllSessions(meetingKey, for_: year) { sessions in
                 DispatchQueue.main.async {
                     self.sessions = sessions ?? []
-                    print(self.sessions)
                     self.filterRaceAndQualifyingSessions()
                 }
             }

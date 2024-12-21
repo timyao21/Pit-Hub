@@ -20,34 +20,26 @@ struct HomeView: View {
                     .frame(width: 40)
                 Text(S.title)
                     .foregroundColor(Color(S.pitHubIconColor))
-                    .font(.system(size: 30))
+                    .font(.custom(S.orbitron, size: 30))
                     .bold()
                 Spacer()
-                NavigationLink(destination: LoginView()) {
-                    Text("登录")
-                        .font(.custom(S.smileySans, size: 17))
-                }
-                .font(.system(size: 15))
-                .foregroundColor(Color(S.pitHubIconColor))
             }
-            .padding(.vertical, 0)
-            .padding(.horizontal, 10)
+            .padding()
 
             if let upcomingMeeting = viewModel.upcomingMeetings.first {
                 HomeRaceRow(meeting: upcomingMeeting)
-                    .padding(.top, 0)
-                    .padding(.horizontal)
+                    .padding()
             } else {
-                Text("No Past Meetings")
+                Text("暂无日程")
             }
-            if viewModel.pastMeetings.indices.contains(1) {
-                let pastMeeting = viewModel.pastMeetings[4]
-                HomeRaceRow(meeting: pastMeeting)
-                    .padding(.top, 0)
-                    .padding(.horizontal)
-            } else {
-                Text("No Past Meetings")
-            }
+//            if viewModel.pastMeetings.indices.contains(1) {
+//                let pastMeeting = viewModel.pastMeetings[4]
+//                HomeRaceRow(meeting: pastMeeting)
+//                    .padding(.top, 0)
+//                    .padding(.horizontal)
+//            } else {
+//                Text("No Past Meetings")
+//            }
         }
         .background(Color(S.primaryBackground))
         .onAppear {

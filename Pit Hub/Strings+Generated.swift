@@ -26,7 +26,7 @@ internal enum S {
   ///   Pit Hub
   /// 
   ///   Created by Junyu Yao on 12/2/24.
-  internal static let title = S.tr("Localizable", "title", fallback: "Pit Hub")
+  internal static let title = S.tr("Localizable", "title", fallback: "Pit")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
