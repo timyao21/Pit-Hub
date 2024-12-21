@@ -37,6 +37,7 @@ struct HomeRaceRow: View {
                     Group{
                         Text("排位 & 正赛")
                             .font(.custom(S.smileySans, size: 20))
+                            .foregroundColor(Color(S.pitHubIconColor))
                         Text("所有时间均为设备本地时区")
                             .font(.custom(S.smileySans, size: 12))
                             .padding(.vertical, 3)
@@ -48,7 +49,7 @@ struct HomeRaceRow: View {
                     Text("显示练习赛")
                         .font(.custom(S.smileySans, size: 15))
                 }
-                .tint(Color(S.pitHubIconColor))
+                .tint(Color("grayButton"))
                 .toggleStyle(.button)
                 .padding()
             }
