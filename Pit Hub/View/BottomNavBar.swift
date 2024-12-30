@@ -18,11 +18,13 @@ struct BottomNavBar: View {
                     Label("赛历", systemImage: "calendar")
                 }
                 .tag(0)
-            HomeView()
-                .tabItem {
-                    Label("主页", systemImage: "house")
-                }
-                .tag(1)
+            NavigationStack {
+                HomeView()
+            }
+            .tabItem {
+                Label("主页", systemImage: "house")
+            }
+            .tag(1)
             ContentView()
                 .tabItem {
                     Label("积分", systemImage: "trophy")
@@ -34,6 +36,7 @@ struct BottomNavBar: View {
                 }
                 .tag(3)
         }
+//        .tabViewStyle(.tabBarOnly)
     }
 }
 

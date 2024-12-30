@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject var viewModel = ViewModel()
+    @State private var showSetting = false
     
     var body: some View {
         VStack {
@@ -23,6 +24,12 @@ struct HomeView: View {
                     .font(.custom(S.orbitron, size: 30))
                     .bold()
                 Spacer()
+                Button{
+                    print("person")
+                    showSetting.toggle()
+                } label: {
+                    Image(systemName: "person.fill")
+                }
             }
             .padding()
 
@@ -40,10 +47,21 @@ struct HomeView: View {
 //            } else {
 //                Text("No Past Meetings")
 //            }
+//            if let upcomingMeeting = viewModel.upcomingMeetings.first {
+//                HomeWeatherRow(meeting: upcomingMeeting)
+//                    .padding()
+//            } else {
+//                Text("暂无日程")
+//            }
         }
         .background(Color(S.primaryBackground))
         .onAppear {
             viewModel.loadMeetings()
+        }
+        .sheet(isPresented: $showSetting) {
+            ProfileView()
+                .presentationBackground(.ultraThinMaterial)
+                .presentationCornerRadius(50)
         }
     }
 }

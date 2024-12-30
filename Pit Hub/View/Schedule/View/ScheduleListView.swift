@@ -28,11 +28,12 @@ struct ScheduleListView: View {
                                         ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
                                     } label: {
                                         ScheduleRow(meeting: meeting)
+                                            .padding(.vertical, 5)
                                     }
                                     .padding(.horizontal, 16)
                                     .background(Color(S.primaryBackground))
                                     .cornerRadius(8)
-                                    .padding(.vertical, 4)
+                                    .padding(.vertical, 6)
                                     .tint(.primary) // Prevent the blue tint
                                 }
                             }
@@ -43,7 +44,7 @@ struct ScheduleListView: View {
                                         ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
                                     } label: {
                                         ScheduleRow(meeting: meeting)
-                                            .padding(.vertical, 2)
+                                            .padding(.vertical, 5)
                                     }
                                     .padding(.horizontal, 16)
                                     .background(Color(S.primaryBackground))
@@ -74,8 +75,9 @@ struct SectionHeader: View {
         Text(title)
             .font(.custom(S.smileySans, size: 30))
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 16)
-            .padding(.vertical, 8)
+            .foregroundColor(Color(S.pitHubIconColor)) // Change the title color here
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
     }
 }
 

@@ -8,6 +8,19 @@
 import Foundation
 
 struct DateUtils {
+    
+    // MARK: - Convert date string to Date
+//    static func toDate(dateString: String) -> String? {
+//        let formatter = ISO8601DateFormatter()
+//        if let date = formatter.date(from: dateString) {
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateStyle = .medium
+//            dateFormatter.timeStyle = .short
+//            return dateFormatter.string(from: date)
+//        }
+//        return nil
+//    }
+    
     // MARK: - format the ISO8601 Data Format to local time with custom style
     static func formatLocalFullDateString(_ dateString: String, dateStyle: DateFormatter.Style = .short, timeStyle: DateFormatter.Style = .none) -> String? {
         let formatter = ISO8601DateFormatter()
