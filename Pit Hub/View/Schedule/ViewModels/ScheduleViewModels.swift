@@ -10,7 +10,7 @@ import MapKit
 
 extension ScheduleListView {
     class ViewModel: ObservableObject{
-        // MARK: - Properties
+        // MARK: - Propertiesf
         private let meetingsManager = MeetingsManager()
         
         @Published var meetings: [Meeting] = []
