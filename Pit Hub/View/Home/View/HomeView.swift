@@ -38,30 +38,17 @@ struct HomeView: View {
                     .padding()
             } else {
                 Text("暂无日程")
+                Spacer()
             }
-//            if viewModel.pastMeetings.indices.contains(1) {
-//                let pastMeeting = viewModel.pastMeetings[4]
-//                HomeRaceRow(meeting: pastMeeting)
-//                    .padding(.top, 0)
-//                    .padding(.horizontal)
-//            } else {
-//                Text("No Past Meetings")
-//            }
-//            if let upcomingMeeting = viewModel.upcomingMeetings.first {
-//                HomeWeatherRow(meeting: upcomingMeeting)
-//                    .padding()
-//            } else {
-//                Text("暂无日程")
-//            }
+        }
+        .sheet(isPresented: $showSetting) {
+            ProfileView()
+                .presentationBackground(.clear)
+                .presentationCornerRadius(50)
         }
         .background(Color(S.primaryBackground))
         .onAppear {
             viewModel.loadMeetings()
-        }
-        .sheet(isPresented: $showSetting) {
-            ProfileView()
-                .presentationBackground(.ultraThinMaterial)
-                .presentationCornerRadius(50)
         }
     }
 }

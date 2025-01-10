@@ -41,7 +41,8 @@ struct HomeWeatherRow: View {
             }
         }
         .font(.custom(S.smileySans, size: 20))
-
+        .frame(maxWidth: .infinity)
+        .frame(height: 210)
     }
 }
 

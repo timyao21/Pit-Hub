@@ -36,7 +36,6 @@ struct BottomNavBar: View {
                 }
                 .tag(3)
         }
-//        .tabViewStyle(.tabBarOnly)
     }
 }
 
