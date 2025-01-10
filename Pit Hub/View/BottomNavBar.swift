@@ -11,6 +11,9 @@ struct BottomNavBar: View {
     @State private var selectedTab = 1
     @State private var showNavBar = true // State to toggle visibility
     
+    @Environment(\.colorScheme) private var scheme
+    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    
     var body: some View {
         TabView (selection: $selectedTab) {
             ScheduleListView()

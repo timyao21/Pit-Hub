@@ -35,6 +35,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct Pit_HubApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {

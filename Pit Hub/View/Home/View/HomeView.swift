@@ -25,10 +25,10 @@ struct HomeView: View {
                     .bold()
                 Spacer()
                 Button{
-                    print("person")
                     showSetting.toggle()
                 } label: {
                     Image(systemName: "person.fill")
+                        .foregroundStyle(Color(S.pitHubIconColor))
                 }
             }
             .padding()
@@ -43,7 +43,7 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showSetting) {
             ProfileView()
-                .presentationBackground(.clear)
+                .presentationBackground(Color(S.primaryBackground))
                 .presentationCornerRadius(50)
         }
         .background(Color(S.primaryBackground))

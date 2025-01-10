@@ -9,35 +9,50 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @State var isActive: Bool = false
-    @State private var currentTime: String = ""
+    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    @Environment(\.colorScheme) private var scheme
+    
+    @State private var isActive: Bool = false
     
     var body: some View {
-        
-        if self.isActive{
-            BottomNavBar()
-        }else{
-            ZStack{
-                Rectangle()
-                    .fill(Color(S.primaryBackground))
-                    .ignoresSafeArea()
-                HStack{
-                    Image("PitIcon")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-                    Text("Pit Hub")
-                        .font(.custom(S.orbitron, size: 40))
-                        .foregroundColor(Color(S.pitHubIconColor))
-                        .bold()
-                }
+        Group {
+            if isActive {
+                BottomNavBar()
+            } else {
+                SplashScreenContent()
             }
-            .onAppear(){
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-                    withAnimation {
-                        self.isActive = true
-                    }
-                }
+        }
+        .preferredColorScheme(userTheme.colorScheme(for: scheme))
+        .onAppear {
+            startSplashTimer()
+        }
+    }
+    
+    // Extracted Splash Screen Content
+    @ViewBuilder
+    private func SplashScreenContent() -> some View {
+        ZStack {
+            Rectangle()
+                .fill(Color(S.primaryBackground))
+                .ignoresSafeArea()
+            HStack {
+                Image("PitIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 100, height: 100)
+                Text("Pit Hub")
+                    .font(.custom(S.orbitron, size: 40))
+                    .foregroundColor(Color(S.pitHubIconColor))
+                    .bold()
+            }
+        }
+    }
+    
+    // Timer to transition from SplashView to BottomNavBar
+    private func startSplashTimer() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            withAnimation {
+                self.isActive = true
             }
         }
     }

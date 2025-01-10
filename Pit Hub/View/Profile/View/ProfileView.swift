@@ -20,6 +20,7 @@ struct ProfileView: View {
             VStack{
                 Text("Pit House - P房")
                     .font(.custom(S.smileySans, size: 20))
+                    .padding(.top, 20)
                 Form{
                     Section(header: Text("车手")){
                         NavigationLink(destination: Text("Destination")) {
@@ -62,7 +63,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    SplashView()
 }
 
 enum Theme: String, CaseIterable {
