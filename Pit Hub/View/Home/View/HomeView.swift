@@ -13,7 +13,7 @@ struct HomeView: View {
     @State private var showSetting = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0){
             HStack {
                 Image(S.pitIcon)
                     .resizable()
@@ -27,12 +27,12 @@ struct HomeView: View {
                 Button{
                     showSetting.toggle()
                 } label: {
-                    Image(systemName: "person.fill")
+                    Image(systemName: "flag.2.crossed.fill")
                         .foregroundStyle(Color(S.pitHubIconColor))
                 }
             }
             .padding()
-
+            // MARK: - UP Coming Race
             if let upcomingMeeting = viewModel.upcomingMeetings.first {
                 HomeRaceRow(meeting: upcomingMeeting)
                     .padding()
@@ -40,6 +40,17 @@ struct HomeView: View {
                 Text("暂无日程")
                 Spacer()
             }
+            
+            // MARK: - Weather
+            if let upcomingMeeting = viewModel.upcomingMeetings.first {
+                HomeWeatherRow(meeting: upcomingMeeting)
+                    .padding(.horizontal, 0)
+            } else {
+                Text("暂无天气数据")
+                Spacer()
+            }
+            
+            
         }
         .sheet(isPresented: $showSetting) {
             ProfileView()

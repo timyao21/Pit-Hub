@@ -15,6 +15,29 @@ struct ScheduleListView: View {
     var body: some View {
         NavigationSplitView{
             VStack{
+                HStack(spacing: 0){
+                    Text(String(viewModel.curYear))
+                    Menu {
+                        let now = Calendar.current.component(.year, from: Date())
+                        ForEach(2023...now, id: \.self) { year in
+                            Button(action: {
+                                viewModel.changeYear(year: year)
+                            }) {
+                                Text(String(year)) // Year options
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text("年F1赛程表")
+                            Image(systemName: "chevron.down") // Dropdown arrow
+                        }
+                    }
+                }
+                .font(.custom(S.smileySans, size: 30))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(Color(S.pitHubIconColor)) // Change the title color here
+                .padding(.horizontal, 16)
+                
                 if viewModel.upcomingMeetings.isEmpty && viewModel.pastMeetings.isEmpty {
                     Text("暂无日程")
                     Spacer()
@@ -31,7 +54,6 @@ struct ScheduleListView: View {
                                             .padding(.vertical, 5)
                                     }
                                     .padding(.horizontal, 16)
-                                    .background(Color(S.primaryBackground))
                                     .cornerRadius(8)
                                     .padding(.vertical, 6)
                                     .tint(.primary) // Prevent the blue tint
@@ -47,7 +69,6 @@ struct ScheduleListView: View {
                                             .padding(.vertical, 5)
                                     }
                                     .padding(.horizontal, 16)
-                                    .background(Color(S.primaryBackground))
                                     .tint(.primary) // Prevent the blue tint
                                     .cornerRadius(18)
                                     .padding(.vertical, 6)
@@ -55,9 +76,9 @@ struct ScheduleListView: View {
                             }
                         }
                     }
-                    .background(Color(S.primaryBackground))
                 }
             }
+            .background(Color(S.primaryBackground))
         } detail: {
             Text("Select a Schedule")
         }
@@ -67,17 +88,17 @@ struct ScheduleListView: View {
     }
 }
 
-    // MARK: - Section Header Text Style
+// MARK: - Section Header Text Style
 struct SectionHeader: View {
     let title: String
     
     var body: some View {
         Text(title)
-            .font(.custom(S.smileySans, size: 30))
+            .font(.custom(S.smileySans, size: 25))
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color(S.pitHubIconColor)) // Change the title color here
             .padding(.horizontal, 16)
-            .padding(.vertical, 20)
+            .padding(.vertical, 15)
     }
 }
 

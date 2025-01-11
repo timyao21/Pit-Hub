@@ -12,7 +12,7 @@ struct ProfileView: View {
     @Environment(\.colorScheme) private var scheme
     @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     
-//    for Silding effect
+    //    for Silding effect
     @Namespace private var animation
     
     var body: some View {
@@ -22,11 +22,18 @@ struct ProfileView: View {
                     .font(.custom(S.smileySans, size: 20))
                     .padding(.top, 20)
                 Form{
-                    Section(header: Text("车手")){
+                    Section(header: Text("车队")){
                         NavigationLink(destination: Text("Destination")) {
-                            Text("账号")
+                            Text("我")
                         }
-                    }.font(.custom(S.smileySans, size: 20))
+                        NavigationLink(destination: Text("Destination")) {
+                            Text("车手")
+                        }
+                        NavigationLink(destination: Text("Destination")) {
+                            Text("车队")
+                        }
+                    }
+                    .font(.custom(S.smileySans, size: 20))
                     
                     Section(header: Text("涂装")){
                         HStack(spacing: 0){
@@ -63,7 +70,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    SplashView()
+    ProfileView()
 }
 
 enum Theme: String, CaseIterable {

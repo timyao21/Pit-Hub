@@ -12,37 +12,40 @@ struct HomeWeatherRow: View {
     
     var meeting: Meeting
     
-    @StateObject var viewModel = ViewModel()
+//    @StateObject var viewModel = ViewModel()
     
     var body: some View {
-        HStack{
+        VStack{
             Text("比赛天气")
                 .font(.custom(S.smileySans, size: 25))
-            VStack{
-                Text("周五")
-                Image(systemName: "sun.max")
-                    .font(.system(size: 50))
-                    .padding(2)
-                Text("\(20)°C")
+                .padding(.bottom, 0)
+            HStack{
+                VStack{
+                    Text("周五")
+                    Image(systemName: "sun.max")
+                        .font(.system(size: 50))
+                        .padding(2)
+                    Text("\(20)°C")
+                }
+                VStack{
+                    Text("周六")
+                    Image(systemName: "cloud.heavyrain")
+                        .font(.system(size: 50))
+                        .padding(2)
+                    Text("\(20)°C")
+                }
+                VStack{
+                    Text("周日")
+                    Image(systemName: "cloud.bolt.rain")
+                        .font(.system(size: 50))
+                        .padding(2)
+                    Text("\(20)°C")
+                }
             }
-            VStack{
-                Text("周六")
-                Image(systemName: "cloud.heavyrain")
-                    .font(.system(size: 50))
-                    .padding(2)
-                Text("\(20)°C")
-            }
-            VStack{
-                Text("周日")
-                Image(systemName: "cloud.bolt.rain")
-                    .font(.system(size: 50))
-                    .padding(2)
-                Text("\(20)°C")
-            }
+            .font(.custom(S.smileySans, size: 20))
+            .frame(maxWidth: .infinity)
+            .frame(height: 210)
         }
-        .font(.custom(S.smileySans, size: 20))
-        .frame(maxWidth: .infinity)
-        .frame(height: 210)
     }
 }
 

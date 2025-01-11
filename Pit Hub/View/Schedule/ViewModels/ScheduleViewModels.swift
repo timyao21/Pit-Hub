@@ -28,6 +28,11 @@ extension ScheduleListView {
                 }
             }
         }
+        // MARK: - Change the Calendar Year
+        func changeYear(year: Int) {
+            curYear = year
+            fetchMeetings()
+        }
         
         // MARK: - get the Upcoming Meetings
         func getUpcomingMeeting() {

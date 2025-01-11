@@ -12,7 +12,8 @@ extension HomeView {
         @Published var meetings: [Meeting] = []
         @Published var upcomingMeetings: [Meeting] = []
         @Published var pastMeetings: [Meeting] = []
-        @Published var curYear: Int = Calendar.current.component(.year, from: Date())
+//        @Published var curYear: Int = Calendar.current.component(.year, from: Date())
+        @Published var curYear: Int = 2024
         
         private let meetingsManager = MeetingsManager()
         
