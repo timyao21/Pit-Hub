@@ -44,7 +44,10 @@ struct HomeView: View {
             // MARK: - Weather
             if let upcomingMeeting = viewModel.upcomingMeetings.first {
                 HomeWeatherRow(meeting: upcomingMeeting)
-                    .padding(.horizontal, 0)
+                    .padding()
+                    .padding(.bottom, 20)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                Spacer()
             } else {
                 Text("暂无天气数据")
                 Spacer()

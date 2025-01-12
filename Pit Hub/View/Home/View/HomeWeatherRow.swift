@@ -17,34 +17,37 @@ struct HomeWeatherRow: View {
     var body: some View {
         VStack{
             Text("比赛天气")
-                .font(.custom(S.smileySans, size: 25))
-                .padding(.bottom, 0)
+                .font(.custom(S.smileySans, size: 20))
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(Color(S.pitHubIconColor))
             HStack{
                 VStack{
                     Text("周五")
                     Image(systemName: "sun.max")
-                        .font(.system(size: 50))
+                        .font(.system(size: 45))
                         .padding(2)
                     Text("\(20)°C")
                 }
+                Spacer()
                 VStack{
                     Text("周六")
                     Image(systemName: "cloud.heavyrain")
-                        .font(.system(size: 50))
+                        .font(.system(size: 45))
                         .padding(2)
                     Text("\(20)°C")
                 }
+                Spacer()
                 VStack{
                     Text("周日")
                     Image(systemName: "cloud.bolt.rain")
-                        .font(.system(size: 50))
+                        .font(.system(size: 45))
                         .padding(2)
                     Text("\(20)°C")
                 }
             }
-            .font(.custom(S.smileySans, size: 20))
+            .font(.custom(S.smileySans, size: 17))
             .frame(maxWidth: .infinity)
-            .frame(height: 210)
+            .frame(height: 130)
         }
     }
 }
