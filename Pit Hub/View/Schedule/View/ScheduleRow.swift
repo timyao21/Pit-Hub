@@ -16,7 +16,7 @@ struct ScheduleRow: View {
                 Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
                     .font(.custom(S.smileySans, size: 25))
                     .padding([.top, .bottom],1)
-                if let localTime = TimeModel(isoDateString: meeting.dateStart).toLocalDateString() {
+                if let localTime = DateUtils.formatLocalFullDateString(meeting.dateStart) {
                     Text("时间：\(localTime)")
                 } else {
                     Text("Invalid Date")
@@ -24,7 +24,7 @@ struct ScheduleRow: View {
             }
             .font(.custom(S.smileySans, size: 18))
             Spacer()
-            Image("test")
+            Image(meeting.circuitShortName)
                 .resizable()
                 .renderingMode(.template) // Makes the image render as a template
                 .scaledToFit()
@@ -34,7 +34,6 @@ struct ScheduleRow: View {
                 .imageScale(.medium)
         }
         .cornerRadius(10) // Rounds the corners of the background
-//        .background(Color(S.primaryBackground))
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }

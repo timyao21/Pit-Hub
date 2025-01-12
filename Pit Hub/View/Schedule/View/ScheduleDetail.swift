@@ -10,10 +10,10 @@ import SwiftUI
 struct ScheduleDetail: View {
     
     @StateObject private var viewModel: ViewModel
-    private let sessionManager: SessionManager
+    private let sessionManager: SessionManagerOld
 
     // MARK: - Initializer
-    init(sessionManager: SessionManager, meeting: Meeting) {
+    init(sessionManager: SessionManagerOld, meeting: Meeting) {
         self.sessionManager = sessionManager
         _viewModel = StateObject(wrappedValue: ViewModel(sessionManager: sessionManager, meeting: meeting))
     }
@@ -46,7 +46,7 @@ struct ScheduleDetail: View {
 }
 
 #Preview {
-    ScheduleDetail(sessionManager: SessionManager(circuitShortName: "Sakhir", year: 2024), meeting:Meeting(
+    ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: "Sakhir", year: 2024), meeting:Meeting(
         circuitKey: 63,
         circuitShortName: "Sakhir",
         countryCode: "SGP",

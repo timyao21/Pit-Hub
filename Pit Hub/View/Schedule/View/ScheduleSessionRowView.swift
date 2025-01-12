@@ -14,8 +14,9 @@ struct ScheduleSessionRowView: View {
         HStack {
             Text(CountryNameTranslator.translateSessions(englishAreaName: session.sessionName))
             Spacer()
+            Text("\(DateUtils.formatLocalDateString(session.dateStart) ?? "")")
             Text("\(DateUtils.getWeekday(from: session.dateStart) ?? "")")
-            Text("\(DateUtils.formatLocalDateString(session.dateStart) ?? "") - \(DateUtils.formatLocalFullDateString(session.dateEnd, dateStyle: .none, timeStyle: .short) ?? "")")
+            Text("\(DateUtils.formatLocalFullDateString(session.dateStart, dateStyle: .none, timeStyle: .short) ?? "")  - \(DateUtils.formatLocalFullDateString(session.dateEnd, dateStyle: .none, timeStyle: .short) ?? "")")
         }
         .font(.custom(S.smileySans, size: 20))
     }

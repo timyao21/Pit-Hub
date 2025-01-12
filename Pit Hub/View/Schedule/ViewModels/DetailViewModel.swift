@@ -10,7 +10,7 @@ import Foundation
 extension ScheduleDetail{
     @Observable
     class ViewModel: ObservableObject{
-        private let sessionManager: SessionManager
+        private let sessionManager: SessionManagerOld
         var meeting: Meeting
         var sessions = [Session]()
         var startDate = ""
@@ -18,7 +18,7 @@ extension ScheduleDetail{
         
         
         // MARK: - Initializer
-        init(sessionManager: SessionManager, meeting: Meeting) {
+        init(sessionManager: SessionManagerOld, meeting: Meeting) {
             self.sessionManager = sessionManager
             self.meeting = meeting
         }

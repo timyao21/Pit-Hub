@@ -8,47 +8,43 @@
 import Foundation
 import MapKit
 
-extension ScheduleList {
-    @Observable
-    class ViewModel: ObservableObject{  // Renamed to PascalCase
-        // MARK: - Properties
-        private var scheduleManager: ScheduleManager
+extension ScheduleListView {
+    class ViewModel: ObservableObject{
+        // MARK: - Propertiesf
+        private let meetingsManager = MeetingsManager()
         
-        var pastMeetings = [Meeting]()
-        var upcomingMeetings = [Meeting]([
-            Meeting(
-                circuitKey: 63,
-                circuitShortName: "Sakhir",
-                countryCode: "SGP",
-                countryKey: 157,
-                countryName: "Bahrain",
-                dateStart: "2023-09-19T09:30:00+00:00",
-                gmtOffset: "08:00:00",
-                location: "Marina Bay",
-                meetingKey: 1219,
-                meetingName: "Bahrain Grand Prix",
-                meetingOfficialName: "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2023",
-                year: 2023
-            )
-        ])
+        @Published var meetings: [Meeting] = []
+        @Published var upcomingMeetings: [Meeting] = []
+        @Published var pastMeetings: [Meeting] = []
+        @Published var curYear: Int = Calendar.current.component(.year, from: Date())
         
-        // MARK: - Initializer
-        init(scheduleManager: ScheduleManager) {
-            self.scheduleManager = scheduleManager
+        // MARK: - Fetch meetings
+        func fetchMeetings() {
+            meetingsManager.getFullSchedule(curYear) { meetings in
+                DispatchQueue.main.async {
+                    self.meetings = meetings ?? []
+                    self.getUpcomingMeeting()
+                    self.getPastMeetings()
+                }
+            }
+        }
+        // MARK: - Change the Calendar Year
+        func changeYear(year: Int) {
+            curYear = year
+            fetchMeetings()
         }
         
-        // MARK: - Get all the meetings of the year
-        func fetchMeetings() {
-    //        scheduleManager.getUpcomingMeetings { meetings in
-    //            DispatchQueue.main.async {
-    //                self.upcomingMeetings = meetings ?? []
-    //            }
-    //        }
-            
-            scheduleManager.getPastMeetings { meetings in
-                DispatchQueue.main.async {
-                    self.pastMeetings = meetings ?? []
-                }
+        // MARK: - get the Upcoming Meetings
+        func getUpcomingMeeting() {
+            DispatchQueue.main.async {
+                self.upcomingMeetings = self.meetingsManager.getUpcomingMeetings(from: self.meetings)
+            }
+        }
+        
+        // MARK: - get the Past Meetings
+        func getPastMeetings() {
+            DispatchQueue.main.async {
+                self.pastMeetings = self.meetingsManager.getPastMeetings(from: self.meetings)
             }
         }
         
