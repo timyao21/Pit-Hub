@@ -30,7 +30,7 @@ extension ScheduleListView {
         }
         // MARK: - Change the Calendar Year
         func changeYear(year: Int) {
-            curYear = year
+            self.curYear = year
             fetchMeetings()
         }
         

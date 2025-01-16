@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScheduleListView: View {
     
+    @State private var selectedTab = 2
     @StateObject var viewModel = ViewModel()
     
     // MARK: - UI
@@ -38,45 +39,63 @@ struct ScheduleListView: View {
                 .foregroundColor(Color(S.pitHubIconColor)) // Change the title color here
                 .padding(.horizontal, 16)
                 
-                if viewModel.upcomingMeetings.isEmpty && viewModel.pastMeetings.isEmpty {
-                    Text("暂无日程")
-                    Spacer()
-                } else {
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            if !viewModel.upcomingMeetings.isEmpty {
-                                SectionHeader(title: "接下来...")
-                                ForEach(viewModel.upcomingMeetings) { meeting in
-                                    NavigationLink {
-                                        ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
-                                    } label: {
-                                        ScheduleRow(meeting: meeting)
-                                            .padding(.vertical, 5)
-                                    }
-                                    .padding(.horizontal, 16)
-                                    .cornerRadius(8)
-                                    .padding(.vertical, 6)
-                                    .tint(.primary) // Prevent the blue tint
-                                }
-                            }
-                            if !viewModel.pastMeetings.isEmpty {
+                
+                
+                TabView(selection: $selectedTab){
+                    
+                        if !viewModel.pastMeetings.isEmpty {
+                            VStack{
+                                
                                 SectionHeader(title: "已结束...")
-                                ForEach(viewModel.pastMeetings) { meeting in
-                                    NavigationLink {
-                                        ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: meeting.circuitShortName, year: meeting.year), meeting: meeting)
-                                    } label: {
-                                        ScheduleRow(meeting: meeting)
-                                            .padding(.vertical, 5)
+                                ScrollView {
+                                    ForEach(viewModel.pastMeetings.reversed()) { meeting in
+                                        NavigationLink {
+                                            ScheduleDetailView(meeting: meeting)
+                                        } label: {
+                                            ScheduleRow(meeting: meeting)
+                                                .padding(.vertical, 5)
+                                        }
+                                        .padding(.horizontal, 16)
+                                        .cornerRadius(8)
+                                        .padding(.vertical, 6)
+                                        .tint(.primary) // Prevent the blue tint
                                     }
-                                    .padding(.horizontal, 16)
-                                    .tint(.primary) // Prevent the blue tint
-                                    .cornerRadius(18)
-                                    .padding(.vertical, 6)
                                 }
-                            }
+                            }.tag(1)
                         }
+                        
+                        if !viewModel.upcomingMeetings.isEmpty {
+                            VStack{
+                                ProgressBar(curYear: viewModel.curYear, total: viewModel.meetings.count, curRace: viewModel.pastMeetings.count)
+                                SectionHeader(title: "接下来...")
+                                ScrollView {
+                                    ForEach(viewModel.upcomingMeetings) { meeting in
+                                        NavigationLink {
+                                            ScheduleDetailView(meeting: meeting)
+                                        } label: {
+                                            ScheduleRow(meeting: meeting)
+                                                .padding(.vertical, 5)
+                                        }
+                                        .padding(.horizontal, 16)
+                                        .cornerRadius(8)
+                                        .padding(.vertical, 6)
+                                        .tint(.primary) // Prevent the blue tint
+                                    }
+                                }
+                            }.tag(2)
+                        }
+                    // Fallback UI for Empty Lists
+                    if viewModel.upcomingMeetings.isEmpty && viewModel.pastMeetings.isEmpty {
+                        HStack {
+                            Text("Sry, 暂无\(String(viewModel.curYear))数据")
+                            Image(systemName: "exclamationmark.icloud")
+                        }
+                        .font(.custom(S.smileySans, size: 30))
+                        .tag(3) // Add a unique tag for the fallback
                     }
                 }
+                .tabViewStyle(.page)
+                
             }
             .background(Color(S.primaryBackground))
         } detail: {
@@ -98,7 +117,49 @@ struct SectionHeader: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color(S.pitHubIconColor)) // Change the title color here
             .padding(.horizontal, 16)
-            .padding(.vertical, 15)
+            .padding(.vertical, 4)
+    }
+}
+
+// MARK: - Progressbar
+struct ProgressBar: View {
+    var curYear: Int
+    var total: Int
+    var curRace: Int
+    var progress: CGFloat {
+        guard total > 0 else { return 0 } // Avoid division by zero
+        return CGFloat(curRace) / CGFloat(total)
+    }
+    var width: CGFloat = 300
+    var height: CGFloat = 12
+    var CRadius: CGFloat = 10
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 7){
+            HStack{
+                Text("已完成 \(String(curRace)) / \(String(total))").bold().font(.callout)
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color(S.pitHubIconColor),Color.yellow]), startPoint: .leading, endPoint: .trailing))
+                Spacer()
+                Group{
+                    Image(systemName: "flag.pattern.checkered")
+                    Text("2025赛季")
+                }
+                .font(.caption)
+                .foregroundStyle(.gray.opacity(0.9))
+            }
+            .frame(width: width)
+            
+            ZStack(alignment: .leading){
+                RoundedRectangle(cornerRadius: CRadius)
+                    .frame(width: width, height: height)
+                    .foregroundStyle(.gray.opacity(0.3))
+                    .shadow(radius: 10)
+                RoundedRectangle(cornerRadius: CRadius)
+                    .frame(width: progress * width, height: height)
+                    .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color(S.pitHubIconColor),Color.yellow]), startPoint: .leading, endPoint: .trailing))
+            }
+        }
+        .padding(.vertical, 4)
     }
 }
 

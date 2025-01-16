@@ -35,6 +35,7 @@ struct MeetingsManager: Codable {
             }
             do {
                 let meetings = try JSONDecoder().decode([Meeting].self, from: data)
+                print(meetings.count)
                 completion(meetings)
             } catch {
                 print("Error decoding JSON: \(error)")
@@ -47,7 +48,7 @@ struct MeetingsManager: Codable {
     func getUpcomingMeetings(from meetings: [Meeting]) -> [Meeting] {
         
         // Test
-        guard let testDate = convertToDate(dateString: "2024-08-19T09:30:00+00:00") else {
+        guard let testDate = convertToDate(dateString: "2024-11-19T09:30:00+00:00") else {
             print("Invalid test date format")
             return []
         }
@@ -64,7 +65,7 @@ struct MeetingsManager: Codable {
     func getPastMeetings(from meetings: [Meeting]) -> [Meeting] {
         
         // Test
-        guard let testDate = convertToDate(dateString: "2024-08-19T09:30:00+00:00") else {
+        guard let testDate = convertToDate(dateString: "2024-11-19T09:30:00+00:00") else {
             print("Invalid test date format")
             return []
         }

@@ -1,29 +1,25 @@
 //
-//  ScheduleDetail.swift
+//  ScheduleDetailView.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 12/12/24.
+//  Created by Junyu Yao on 1/12/25.
 //
 
 import SwiftUI
 
-struct ScheduleDetail: View {
+struct ScheduleDetailView: View {
     
-    @StateObject private var viewModel: ViewModel
-    private let sessionManager: SessionManagerOld
-
-    // MARK: - Initializer
-    init(sessionManager: SessionManagerOld, meeting: Meeting) {
-        self.sessionManager = sessionManager
-        _viewModel = StateObject(wrappedValue: ViewModel(sessionManager: sessionManager, meeting: meeting))
-    }
+    var meeting: Meeting
+    
+    @StateObject var viewModel = ViewModel()
+    @State var displaySessions:  [Session] = []
     
     var body: some View {
         VStack(alignment: .leading) {
             Group {
-                Text(viewModel.meeting.meetingName)
+                Text(meeting.meetingName)
                     .font(.custom(S.smileySans, size: 20))
-                Text(CountryNameTranslator.translate(englishName: viewModel.meeting.circuitShortName))
+                Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
                     .font(.custom(S.smileySans, size: 35))
                     .padding(.top, 2)
                     .padding(.bottom, 2)
@@ -36,19 +32,26 @@ struct ScheduleDetail: View {
                 ScheduleSessionRowView(session: session)
             }
             .listStyle(.plain)
+            Image(meeting.circuitShortName)
+                .resizable()
+                .renderingMode(.template) // Makes the image render as a template
+                .scaledToFit()
+                .frame(maxWidth: .infinity, alignment: .top)
+                .foregroundColor(Color("circuitColor")) // Applies the color to the image
+            Spacer()
         }
-        .padding()
         .withCustomNavigation()
+        .padding()
         .onAppear {
-            viewModel.getCurGrandPrixDetail()
+            viewModel.fetchSessions(meeting.meetingKey, for: meeting.dateStart)
         }
     }
 }
 
 #Preview {
-    ScheduleDetail(sessionManager: SessionManagerOld(circuitShortName: "Sakhir", year: 2024), meeting:Meeting(
+    ScheduleDetailView(meeting:Meeting(
         circuitKey: 63,
-        circuitShortName: "Sakhir",
+        circuitShortName: "Las Vegas",
         countryCode: "SGP",
         countryKey: 157,
         countryName: "Bahrain",

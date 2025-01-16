@@ -32,28 +32,29 @@ struct HomeView: View {
                 }
             }
             .padding()
-            // MARK: - UP Coming Race
-            if let upcomingMeeting = viewModel.upcomingMeetings.first {
-                HomeRaceRow(meeting: upcomingMeeting)
-                    .padding()
-            } else {
-                Text("暂无日程")
-                Spacer()
+
+            ScrollView{
+                VStack(spacing: 20){
+                    // MARK: - UP Coming Race
+                    if let upcomingMeeting = viewModel.upcomingMeetings.first {
+                        HomeRaceRow(meeting: upcomingMeeting)
+                            .padding()
+                    } else {
+                        Text("暂无日程")
+                            .padding()
+                    }
+                    // MARK: - Weather
+                    if let upcomingMeeting = viewModel.upcomingMeetings.first {
+                        HomeWeatherRow(meeting: upcomingMeeting)
+                            .padding()
+                            .padding(.bottom, 20)
+                    } else {
+                        Text("暂无天气数据")
+                            .padding()
+                    }
+                }
+                .padding(.bottom, 20)
             }
-            
-            // MARK: - Weather
-            if let upcomingMeeting = viewModel.upcomingMeetings.first {
-                HomeWeatherRow(meeting: upcomingMeeting)
-                    .padding()
-                    .padding(.bottom, 20)
-                    .frame(maxHeight: .infinity, alignment: .top)
-                Spacer()
-            } else {
-                Text("暂无天气数据")
-                Spacer()
-            }
-            
-            
         }
         .sheet(isPresented: $showSetting) {
             ProfileView()
