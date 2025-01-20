@@ -1,6 +1,402 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Albon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿尔本"
+          }
+        }
+      }
+    },
+    "Alexander" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "亚历山大"
+          }
+        }
+      }
+    },
+    "Alonso" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿隆索"
+          }
+        }
+      }
+    },
+    "AlphaTauri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红牛"
+          }
+        }
+      }
+    },
+    "Alpine" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿尔派"
+          }
+        }
+      }
+    },
+    "Aston Martin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿斯顿马丁"
+          }
+        }
+      }
+    },
+    "Bearman" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "贝尔曼"
+          }
+        }
+      }
+    },
+    "Bottas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "博塔斯"
+          }
+        }
+      }
+    },
+    "Carlos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡洛斯"
+          }
+        }
+      }
+    },
+    "Charles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "夏尔"
+          }
+        }
+      }
+    },
+    "Colapinto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "科拉平托"
+          }
+        }
+      }
+    },
+    "Constructors Standings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车队积分榜"
+          }
+        }
+      }
+    },
+    "Daniel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丹尼尔"
+          }
+        }
+      }
+    },
+    "Doohan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "杜汉"
+          }
+        }
+      }
+    },
+    "Driver Standings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手积分榜"
+          }
+        }
+      }
+    },
+    "Esteban" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "埃斯特班"
+          }
+        }
+      }
+    },
+    "Fernando" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "费尔南多"
+          }
+        }
+      }
+    },
+    "Ferrari" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "法拉利"
+          }
+        }
+      }
+    },
+    "Franco" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "弗兰科"
+          }
+        }
+      }
+    },
+    "Gasly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "盖斯利"
+          }
+        }
+      }
+    },
+    "George" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "乔治"
+          }
+        }
+      }
+    },
+    "Guanyu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冠宇"
+          }
+        }
+      }
+    },
+    "Haas F1 Team" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "哈斯"
+          }
+        }
+      }
+    },
+    "Hamilton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "汉密尔顿"
+          }
+        }
+      }
+    },
+    "Hulkenberg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "霍肯博格"
+          }
+        }
+      }
+    },
+    "Jack" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "杰克"
+          }
+        }
+      }
+    },
+    "Kevin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "凯文"
+          }
+        }
+      }
+    },
+    "Kick Sauber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "索博"
+          }
+        }
+      }
+    },
+    "Lance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "兰斯"
+          }
+        }
+      }
+    },
+    "Lando" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "兰多"
+          }
+        }
+      }
+    },
+    "Lawson" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "劳森"
+          }
+        }
+      }
+    },
+    "Leclerc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "勒克莱尔"
+          }
+        }
+      }
+    },
+    "Lewis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刘易斯"
+          }
+        }
+      }
+    },
+    "Liam" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利亚姆"
+          }
+        }
+      }
+    },
+    "Logan" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "洛根"
+          }
+        }
+      }
+    },
+    "Magnussen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "马格努森"
+          }
+        }
+      }
+    },
     "Max" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -18,6 +414,215 @@
         }
       }
     },
+    "McLaren" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迈凯伦"
+          }
+        }
+      }
+    },
+    "Mercedes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "梅赛德斯"
+          }
+        }
+      }
+    },
+    "Nico" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "尼科"
+          }
+        }
+      }
+    },
+    "Norris" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "诺里斯"
+          }
+        }
+      }
+    },
+    "Ocon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "奥康"
+          }
+        }
+      }
+    },
+    "Oliver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "奥利弗"
+          }
+        }
+      }
+    },
+    "Oscar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "奥斯卡"
+          }
+        }
+      }
+    },
+    "Perez" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "佩雷兹"
+          }
+        }
+      }
+    },
+    "Piastri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "皮亚斯特里"
+          }
+        }
+      }
+    },
+    "Pierre" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "皮埃尔"
+          }
+        }
+      }
+    },
+    "Red Bull Racing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红牛"
+          }
+        }
+      }
+    },
+    "Ricciardo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "里卡多"
+          }
+        }
+      }
+    },
+    "Russell" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拉塞尔"
+          }
+        }
+      }
+    },
+    "Sainz" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛恩斯"
+          }
+        }
+      }
+    },
+    "Sargeant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "萨金特"
+          }
+        }
+      }
+    },
+    "Sergio" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "塞尔吉奥"
+          }
+        }
+      }
+    },
+    "Stroll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "斯托尔"
+          }
+        }
+      }
+    },
+    "Tsunoda" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "裕毅"
+          }
+        }
+      }
+    },
+    "Valtteri" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "瓦尔特利"
+          }
+        }
+      }
+    },
     "Verstappen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -31,6 +636,39 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "维斯塔潘"
+          }
+        }
+      }
+    },
+    "Williams" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "威廉姆斯"
+          }
+        }
+      }
+    },
+    "Yuki" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "角田"
+          }
+        }
+      }
+    },
+    "Zhou" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "周"
           }
         }
       }

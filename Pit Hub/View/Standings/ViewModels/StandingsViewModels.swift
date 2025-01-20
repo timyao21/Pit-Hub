@@ -12,7 +12,33 @@ extension StandingsView {
     class ViewModel: ObservableObject {
         private let db = Firestore.firestore()
         
-        @Published var drivers: [Driver] = []
+//        @Published var drivers: [Driver] = []
+        @Published var drivers: [Driver] = [Driver(
+            id: UUID(),
+            broadcastName: "M VERSTAPPEN",
+            countryCode: "NED",
+            driverNumber: 1,
+            firstName: "Max",
+            fullName: "Max Verstappen",
+            lastName: "Verstappen",
+            nameAcronym: "VER",
+            points: 395,
+            teamColour: "3671C6",
+            teamName: "Red Bull Racing"
+        ),
+                                            Driver(
+            id: UUID(),
+            broadcastName: "M VERSTAPPEN",
+            countryCode: "NED",
+            driverNumber: 1,
+            firstName: "Max",
+            fullName: "Max Verstappen",
+            lastName: "Verstappen",
+            nameAcronym: "VER",
+            points: 395,
+            teamColour: "3671C6",
+            teamName: "Red Bull Racing"
+        )]
         
         func fetchDrivers() {
             print("Fetching drivers from Firestore...")
@@ -46,7 +72,7 @@ extension StandingsView {
                         print("Error decoding data for driverID: \(driverID): \(error.localizedDescription)")
                     }
                 }
-                
+                fetchedDrivers.sort { $0.points > $1.points }
                 DispatchQueue.main.async {
                     self?.drivers = fetchedDrivers
                     print("Successfully fetched \(fetchedDrivers.count) drivers.")
