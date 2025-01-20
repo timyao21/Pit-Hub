@@ -18,7 +18,7 @@ struct HomeRaceRow: View {
         VStack(spacing: 0){
             HStack{
                 VStack(alignment: .leading){
-                    Text("\(meeting.circuitShortName)")
+                    Text("\(CountryNameTranslator.translateFlags(countryCode: meeting.countryCode)) \(meeting.circuitShortName)")
                     Text("\(CountryNameTranslator.translate(englishName: meeting.circuitShortName))")
                         .font(.custom(S.smileySans, size: 40))
                 }
@@ -53,22 +53,20 @@ struct HomeRaceRow: View {
                 .toggleStyle(.button)
                 .padding()
             }
-            if viewModel.isPracticeVisible {
-                List(viewModel.sessions) { session in
-                    ScheduleSessionRowView(session: session)
-                        .listRowBackground(Color(S.primaryBackground))
+            
+            ScrollView {
+                VStack {
+                    ForEach(viewModel.isPracticeVisible ? viewModel.sessions : viewModel.filteredSessions) { session in
+                        ScheduleSessionRowView(session: session)
+                            .padding(.vertical, 5)
+                            .background(Color(S.primaryBackground))
+                    }
                 }
-                .listStyle(.plain)
-                .listRowSpacing(5)
+                .padding()
             }
-            else {
-                List(viewModel.filteredSessions) { session in
-                    ScheduleSessionRowView(session: session)
-                        .listRowBackground(Color(S.primaryBackground))
-                }
-                .listStyle(.plain)
-                .listRowSpacing(20)
-            }
+            .frame(maxHeight: viewModel.isPracticeVisible ? 270 : 210)
+            .animation(.spring(response: 0.75, dampingFraction: 1, blendDuration: 1), value: viewModel.isPracticeVisible)
+            
             
         }
         .background(Color(S.primaryBackground))

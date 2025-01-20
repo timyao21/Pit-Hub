@@ -11,22 +11,22 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum S {
   /// Orbitron
-  internal static let orbitron = S.tr("Localizable", "Orbitron", fallback: "Orbitron")
+  internal static let orbitron = S.tr("swiftgenLocalizable", "Orbitron", fallback: "Orbitron")
   /// PitHubIcon
-  internal static let pitHubIcon = S.tr("Localizable", "pitHubIcon", fallback: "PitHubIcon")
+  internal static let pitHubIcon = S.tr("swiftgenLocalizable", "pitHubIcon", fallback: "PitHubIcon")
   /// PitHubIconColor
-  internal static let pitHubIconColor = S.tr("Localizable", "pitHubIconColor", fallback: "PitHubIconColor")
+  internal static let pitHubIconColor = S.tr("swiftgenLocalizable", "pitHubIconColor", fallback: "PitHubIconColor")
   /// PitIcon
-  internal static let pitIcon = S.tr("Localizable", "pitIcon", fallback: "PitIcon")
+  internal static let pitIcon = S.tr("swiftgenLocalizable", "pitIcon", fallback: "PitIcon")
   /// PrimaryBackground
-  internal static let primaryBackground = S.tr("Localizable", "primaryBackground", fallback: "PrimaryBackground")
+  internal static let primaryBackground = S.tr("swiftgenLocalizable", "primaryBackground", fallback: "PrimaryBackground")
   /// Smiley Sans
-  internal static let smileySans = S.tr("Localizable", "SmileySans", fallback: "Smiley Sans")
+  internal static let smileySans = S.tr("swiftgenLocalizable", "SmileySans", fallback: "Smiley Sans")
   /// Localizable.strings
   ///   Pit Hub
   /// 
   ///   Created by Junyu Yao on 12/2/24.
-  internal static let title = S.tr("Localizable", "title", fallback: "Pit")
+  internal static let title = S.tr("swiftgenLocalizable", "title", fallback: "Pit")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
