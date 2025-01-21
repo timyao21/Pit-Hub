@@ -43,7 +43,7 @@ struct StandingsView: View {
                 }
             }
             .onAppear {
-//                viewModel.fetchDrivers()
+                viewModel.fetchDrivers()
             }
         }
     }
