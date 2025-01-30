@@ -15,12 +15,27 @@ struct StandingsView: View {
         NavigationView {
             TabView(selection: $selectedTab) {
                 // Page 1: Driver Standings
+//                ScrollView {
+//                    ForEach(viewModel.drivers) { driver in
+//                        NavigationLink(destination: DriverDetailView(driver: driver)) {
+//                            StandingsRowView(driver: driver)
+//                        }
+//                        .buttonStyle(PlainButtonStyle()) // Prevents highlighting effect on NavigationLink
+//                    }
+//                }
                 ScrollView {
-                    ForEach(viewModel.drivers) { driver in
-                        NavigationLink(destination: DriverDetailView(driver: driver)) {
-                            StandingsRowView(driver: driver)
+                    VStack(spacing: 0) {
+                        ForEach(viewModel.drivers.indices, id: \.self) { index in
+                            let driver = viewModel.drivers[index]
+                            NavigationLink(destination: DriverDetailView(driver: driver)) {
+                                StandingsRowView(driver: driver)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            if index < viewModel.drivers.count - 1 { // Avoids divider after the last row
+                                Divider()
+                            }
                         }
-                        .buttonStyle(PlainButtonStyle()) // Prevents highlighting effect on NavigationLink
                     }
                 }
                 .tag(0)
