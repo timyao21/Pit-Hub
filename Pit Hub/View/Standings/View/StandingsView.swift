@@ -50,7 +50,7 @@ struct StandingsView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchDrivers(viewModel.selectedYear)
+//                viewModel.fetchDrivers(viewModel.selectedYear)
             }
         }
     }

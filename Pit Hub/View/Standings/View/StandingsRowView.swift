@@ -97,12 +97,10 @@ extension StandingsRowView{
         case 1:
             return .yellow // 🥇 Gold for 1st place
         case 2:
-            return Color.blue.opacity(0.8) // 🔵 A distinct blue shade for 2nd place
+            return Color.blue.opacity(0.8) //  A distinct blue shade for 2nd place
         case 3:
             return Color.orange // 🟠 Bronze for 3rd place
-        case 4...10:
-            return Color.green.opacity(0.7) // 🟢 Greenish shade for top 10 finishers
-        case 11...:
+        case 4...:
             return Color.gray.opacity(0.8) // ⚪ Light gray for positions 11 and beyond
         default:
             return .gray // Default fallback color

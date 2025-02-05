@@ -82,7 +82,6 @@ extension StandingsView {
                 DispatchQueue.main.async {
                     self?.drivers = fetchedDrivers
                     print("Successfully fetched \(fetchedDrivers.count) drivers.")
-                    print(fetchedDrivers)
                 }
             }
         }

@@ -142,7 +142,7 @@ struct ProgressBar: View {
                 Spacer()
                 Group{
                     Image(systemName: "flag.pattern.checkered")
-                    Text("2025赛季")
+                    Text("\(String(curYear))赛季")
                 }
                 .font(.caption)
                 .foregroundStyle(.gray.opacity(0.9))
