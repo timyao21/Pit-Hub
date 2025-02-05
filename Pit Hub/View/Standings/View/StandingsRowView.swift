@@ -9,28 +9,42 @@ import SwiftUI
 
 struct StandingsRowView: View {
     let driver: Driver
+    let position: Int
+    
     var body: some View {
         HStack {
+            // Position Number (Standing)
+            Text("\(position)")
+                .font(.custom(S.smileySans, size: 25))
+                .fontWeight(.bold)
+                .foregroundColor(positionColor(for: position)) // Dynamic color based on position
+                .frame(width: 35, alignment: .center) // Centered for consistency
+
+            
+            // Driver Number with Circle Background
             Text("\(driver.driverNumber)")
-                .frame(width: 30)
-                .font(.custom(S.smileySans, size: 30))
+                .font(.custom(S.smileySans, size: 28)) // Slightly smaller for better balance
                 .foregroundStyle(gradientBackground(from: driver.teamColour))
+                .frame(width: 40, height: 40, alignment: .center) // Balanced width & height
+                .background(
+                    Circle()
+                        .fill(color(from: driver.teamColour).opacity(0.3)) // Slightly darker for contrast
+                        .frame(width: 40, height: 40)
+                )
 
             VStack(alignment: .leading) {
                 Text(NSLocalizedString(driver.lastName, comment: "Driver last name"))
                     .font(.custom(S.smileySans, size: 25))
                 Text(NSLocalizedString(driver.teamName, comment: "Driver team name"))
                     .font(.custom(S.smileySans, size: 18))
+                    .foregroundStyle(gradientBackground(from: driver.teamColour))
             }
-            .foregroundStyle(gradientBackground(from: driver.teamColour))
             Spacer()
             Text("\(driver.points) 积分")
                 .font(.custom(S.smileySans, size: 23))
             Image(systemName: "chevron.right")
         }
         .padding(5)
-//        .cornerRadius(10)
-//        .shadow(radius: 5)
     }
 }
 
@@ -47,7 +61,7 @@ struct StandingsRowView: View {
         points: 395,
         teamColour: "3671C6",
         teamName: "Red Bull Racing"
-    ))
+    ),position: 1)
 }
 
 extension StandingsRowView{
@@ -77,4 +91,23 @@ extension StandingsRowView{
          }
          return Color(.sRGB, red: r, green: g, blue: b, opacity: 1.0)
      }
+    
+    func positionColor(for position: Int) -> Color {
+        switch position {
+        case 1:
+            return .yellow // 🥇 Gold for 1st place
+        case 2:
+            return Color.blue.opacity(0.8) // 🔵 A distinct blue shade for 2nd place
+        case 3:
+            return Color.orange // 🟠 Bronze for 3rd place
+        case 4...10:
+            return Color.green.opacity(0.7) // 🟢 Greenish shade for top 10 finishers
+        case 11...:
+            return Color.gray.opacity(0.8) // ⚪ Light gray for positions 11 and beyond
+        default:
+            return .gray // Default fallback color
+        }
+    }
+
+
 }

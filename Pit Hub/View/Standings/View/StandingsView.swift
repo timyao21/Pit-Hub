@@ -14,21 +14,13 @@ struct StandingsView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                // Page 1: Driver Standings
-//                ScrollView {
-//                    ForEach(viewModel.drivers) { driver in
-//                        NavigationLink(destination: DriverDetailView(driver: driver)) {
-//                            StandingsRowView(driver: driver)
-//                        }
-//                        .buttonStyle(PlainButtonStyle()) // Prevents highlighting effect on NavigationLink
-//                    }
-//                }
+                // MARK: - Page 1 Drivers
                 ScrollView {
                     VStack(spacing: 0) {
                         ForEach(viewModel.drivers.indices, id: \.self) { index in
                             let driver = viewModel.drivers[index]
                             NavigationLink(destination: DriverDetailView(driver: driver)) {
-                                StandingsRowView(driver: driver)
+                                StandingsRowView(driver: driver, position: index + 1)
                             }
                             .buttonStyle(PlainButtonStyle())
                             
@@ -58,7 +50,7 @@ struct StandingsView: View {
                 }
             }
             .onAppear {
-                viewModel.fetchDrivers()
+                viewModel.fetchDrivers(viewModel.selectedYear)
             }
         }
     }
