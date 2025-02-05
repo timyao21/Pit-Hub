@@ -15,25 +15,29 @@ struct StandingsView: View {
         NavigationView {
             TabView(selection: $selectedTab) {
                 // MARK: - Page 1 Drivers
-                ScrollView {
-                    VStack(spacing: 0) {
-                        ForEach(viewModel.drivers.indices, id: \.self) { index in
-                            let driver = viewModel.drivers[index]
-                            NavigationLink(destination: DriverDetailView(driver: driver)) {
-                                StandingsRowView(driver: driver, position: index + 1)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            if index < viewModel.drivers.count - 1 { // Avoids divider after the last row
-                                Divider()
+                VStack {
+                    standingTitle(selectedTab: 0)
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            ForEach(viewModel.drivers.indices, id: \.self) { index in
+                                let driver = viewModel.drivers[index]
+                                NavigationLink(destination: DriverDetailView(driver: driver)) {
+                                    StandingsRowView(driver: driver, position: index + 1)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                                
+                                if index < viewModel.drivers.count - 1 { // Avoids divider after the last row
+                                    Divider()
+                                }
                             }
                         }
                     }
+                    .tag(0)
                 }
-                .tag(0)
 
                 // Page 2: Team Standings (Placeholder)
                 VStack {
+                    standingTitle(selectedTab: 1)
                     Text("Team Standings")
                         .font(.title)
                         .fontWeight(.bold)
@@ -42,15 +46,8 @@ struct StandingsView: View {
                 .tag(1)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic)) // Enables swipeable pages
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Text(selectedTab == 0 ? "Driver Standings" : "Constructors Standings")
-                        .font(.custom(S.smileySans, size: 30)) // Replace with your custom font
-                        .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color(S.pitHubIconColor),Color.yellow]), startPoint: .leading, endPoint: .trailing))
-                }
-            }
             .onAppear {
-//                viewModel.fetchDrivers(viewModel.selectedYear)
+                viewModel.fetchDrivers(viewModel.selectedYear)
             }
         }
     }
@@ -58,4 +55,18 @@ struct StandingsView: View {
 
 #Preview {
     StandingsView()
+}
+
+// MARK: - standingTitle
+struct standingTitle: View {
+    var selectedTab: Int
+    
+    var body: some View {
+        HStack {
+            Text(selectedTab == 0 ? "Driver Standings" : "Constructors Standings")
+                .font(.custom(S.smileySans, size: 30)) // Replace with your custom font
+                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color(S.pitHubIconColor),Color.yellow]), startPoint: .leading, endPoint: .trailing))
+            Spacer()
+        }
+    }
 }

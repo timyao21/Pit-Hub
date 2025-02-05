@@ -37,45 +37,28 @@ struct ScheduleDetailView: View {
             }
             .listStyle(.plain)
             
-            TabSelecter(selectedTab: $selectedTab, animation: animation)
+            HStack {
+                Spacer()
+                TabSelecter(selectedTab: $selectedTab, animation: animation)
+                Spacer()
+            }
+            .padding(.vertical, 10)
             
             TabView(selection: $selectedTab) {
-                // 正赛成绩标签页
                 VStack(spacing: 20) {
-                    Text("正赛成绩")
-                        .font(.custom(S.smileySans, size: 17))
-                    
-                    VStack(alignment: .leading) {
-                        Text("• 第一名：张三 - 1:30.456")
-                        Text("• 第二名：李四 - 1:31.789")
-                        Text("• 第三名：王五 - 1:32.012")
-                    }
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(10)
+                    TabSubview(results: viewModel.raceResults) // Call the subview
                 }
                 .tabItem {
-                    Image(systemName: "flag.checkered")
                     Text("正赛")
                 }
                 .tag(1)
                 
                 // 排位赛成绩标签页
                 VStack(spacing: 20) {
-                    Text("排位赛成绩")
+                    Text("⏳ 技师们正全力维修...")
                         .font(.custom(S.smileySans, size: 17))
-                    
-                    VStack(alignment: .leading) {
-                        Text("• 第一名：赵六 - 1:28.456")
-                        Text("• 第二名：孙七 - 1:29.789")
-                        Text("• 第三名：周八 - 1:30.012")
-                    }
-                    .padding()
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(10)
                 }
                 .tabItem {
-                    Image(systemName: "timer")
                     Text("排位赛")
                 }
                 .tag(2)
@@ -86,6 +69,9 @@ struct ScheduleDetailView: View {
         .padding()
         .onAppear {
             viewModel.fetchSessions(meeting.meetingKey, for: meeting.dateStart)
+            Task {
+                await viewModel.fetchResults(for: meeting.circuitShortName, year: meeting.year)
+            }
         }
     }
 }
@@ -107,6 +93,8 @@ struct ScheduleDetailView: View {
     ))
 }
 
+
+
 // MARK: - Custom Tab Selector
 struct TabSelecter: View {
     @Binding var selectedTab: Int
@@ -116,7 +104,6 @@ struct TabSelecter: View {
         HStack(spacing: 10) {
             tabButton(title: "正赛成绩", tab: 1)
             tabButton(title: "排位赛成绩", tab: 2)
-            tabButton(title: "赛道介绍", tab: 3)
         }
         .padding(8)
         .background(Color.gray.opacity(0.2)) // Light background for contrast
@@ -137,3 +124,37 @@ struct TabSelecter: View {
         .buttonStyle(PlainButtonStyle()) // Removes default button tap effect
     }
 }
+
+struct TabSubview: View {
+    let results: [RaceResult] // ✅ Uses the `RaceResult` model
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 10) {
+                ForEach(results) { result in
+                    HStack {
+                        Text(result.dns ? "DNS" : result.dnf ? "DNF" : "\(result.position)")
+                            .font(.headline)
+                            .frame(width: 40)
+
+
+                        Text(NSLocalizedString(result.lastName, comment: "Driver last name"))
+                            .font(.custom(S.smileySans, size: 20))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
+                        Spacer()
+
+                        Text("\(result.points)分")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
+                }
+            }
+            .padding()
+        }
+    }
+}
+

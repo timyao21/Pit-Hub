@@ -46,6 +46,7 @@ extension StandingsView {
             self.selectedYear = year
         }
         
+        // MARK: - Fetch the drivsers
         func fetchDrivers(_ year: Int) {
             print("Fetching drivers from Firestore...")
             
@@ -82,9 +83,11 @@ extension StandingsView {
                 DispatchQueue.main.async {
                     self?.drivers = fetchedDrivers
                     print("Successfully fetched \(fetchedDrivers.count) drivers.")
+//                    print(fetchedDrivers)
                 }
             }
         }
+        
         
     }
 }
