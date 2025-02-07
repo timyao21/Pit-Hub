@@ -16,6 +16,7 @@ extension ScheduleDetailView {
         
         @Published var documentID: String = ""  // Store only the document ID
         @Published var raceResults: [RaceResult] = [] // Store results subcollection
+        @Published var sprintRaceResults: [RaceResult] = [] // Store results subcollection
         
         private let sessionManager = SessionManager()
         @Published var sessions: [Session] = []
@@ -37,19 +38,16 @@ extension ScheduleDetailView {
         }
         
         @MainActor
-        func fetchResults(for circuitShortName: String, year: Int) async {
-            let docID = "\(year)-\(circuitShortName)"
-            print("Fetching results for GP document: \(docID)")
+        func fetchRaceResults(for meetingKey: Int) async {
 
             do {
-                let resultsSnapshot = try await db.collection("GP").document(docID).collection("results").getDocuments()
+                let resultsSnapshot = try await db.collection("GrandPrix").document("\(meetingKey)").collection("Race_Results").getDocuments()
 
                 var fetchedResults: [RaceResult] = resultsSnapshot.documents.compactMap { document in
                     let rawData = document.data()
 
                     do {
                         let result = try document.data(as: RaceResult.self)
-                        print(" \(result)")
                         return result
                     } catch {
                         print("Raw Firestore Data: \(rawData)")
@@ -71,12 +69,51 @@ extension ScheduleDetailView {
                 DispatchQueue.main.async {
                     self.raceResults = fetchedResults
                 }
-
+                
                 print("Total Results Fetched: \(fetchedResults.count)")
 
             } catch {
                 print("❌ Error fetching results: \(error.localizedDescription)")
             }
+        }
+        
+        @MainActor
+        func fetchSprintRaceResults(for meetingKey: Int) async {
+            do {
+                let sprintRaceResultsSnapshot = try await db.collection("GrandPrix").document("\(meetingKey)").collection("Sprint_Results").getDocuments()
+                
+                var fetchedSprintResults: [RaceResult] = sprintRaceResultsSnapshot.documents.compactMap { document in
+                    let rawData = document.data()
+
+                    do {
+                        let result = try document.data(as: RaceResult.self)
+                        return result
+                    } catch {
+                        print("Raw Firestore Data: \(rawData)")
+                        print("❌ Decoding failed for document \(document.documentID): \(error)")
+                        return nil
+                    }
+                }
+                
+                fetchedSprintResults.sort {
+                    if $0.position < 0 && $1.position >= 0 { return false } // Push negative positions to the end
+                    if $0.position >= 0 && $1.position < 0 { return true }  // Keep valid positions at the top
+                    
+                    if $0.position == $1.position {
+                        return $0.lapsCompleted > $1.lapsCompleted // More laps first
+                    }
+                    return $0.position < $1.position // Lower position first
+                }
+                
+                DispatchQueue.main.async {
+                    self.sprintRaceResults = fetchedSprintResults
+                }
+                print("Total Sprint Results Fetched: \(fetchedSprintResults.count)")
+                
+            }catch {
+                print("❌ Error fetching results: \(error.localizedDescription)")
+            }
+            
         }
 
         

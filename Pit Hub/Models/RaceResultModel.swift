@@ -8,6 +8,7 @@ struct RaceResult: Codable, Identifiable {
     let points: Int
     let dnf: Bool
     let dns: Bool
+    let dq: Bool
     let fastestLap: Bool
     let gap: Double
     let position: Int
@@ -22,6 +23,7 @@ struct RaceResult: Codable, Identifiable {
         case points
         case dnf
         case dns
+        case dq
         case fastestLap = "fastest_lap"
         case gap
         case position
@@ -44,6 +46,7 @@ struct RaceResult: Codable, Identifiable {
         dnf = (try? container.decode(Bool.self, forKey: .dnf)) ?? (try? container.decode(Int.self, forKey: .dnf) == 1) ?? false
         dns = (try? container.decode(Bool.self, forKey: .dns)) ?? (try? container.decode(Int.self, forKey: .dns) == 1) ?? false
         fastestLap = (try? container.decode(Bool.self, forKey: .fastestLap)) ?? (try? container.decode(Int.self, forKey: .fastestLap) == 1) ?? false
+        dq = (try? container.decode(Bool.self, forKey: .dq)) ?? (try? container.decode(Int.self, forKey: .dq) == 1) ?? false
 
 
         // ✅ Handle `int` stored as `Double`

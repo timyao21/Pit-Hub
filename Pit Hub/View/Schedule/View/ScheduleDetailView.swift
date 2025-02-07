@@ -70,7 +70,7 @@ struct ScheduleDetailView: View {
         .onAppear {
             viewModel.fetchSessions(meeting.meetingKey, for: meeting.dateStart)
             Task {
-                await viewModel.fetchResults(for: meeting.circuitShortName, year: meeting.year)
+                await viewModel.fetchRaceResults(for: meeting.meetingKey)
             }
         }
     }
@@ -78,17 +78,17 @@ struct ScheduleDetailView: View {
 
 #Preview {
     ScheduleDetailView(meeting:Meeting(
-        circuitKey: 63,
-        circuitShortName: "Jeddah",
-        countryCode: "SGP",
-        countryKey: 157,
+        circuitKey: 36,
+        circuitShortName: "Sakhir",
+        countryCode: "BRN",
+        countryKey: 36,
         countryName: "Bahrain",
-        dateStart: "2023-09-19T09:30:00+00:00",
-        gmtOffset: "08:00:00",
-        location: "Marina Bay",
-        meetingKey: 1219,
+        dateStart: "2024-02-29T11:30:00+00:00",
+        gmtOffset: "03:00:00",
+        location: "Sakhir",
+        meetingKey: 1229,
         meetingName: "Bahrain Grand Prix",
-        meetingOfficialName: "FORMULA 1 SINGAPORE AIRLINES SINGAPORE GRAND PRIX 2023",
+        meetingOfficialName: "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2024",
         year: 2024
     ))
 }
@@ -130,10 +130,10 @@ struct TabSubview: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 10) {
+            VStack(spacing: 5) {
                 ForEach(results) { result in
                     HStack {
-                        Text(result.dns ? "DNS" : result.dnf ? "DNF" : "\(result.position)")
+                        Text(result.dns ? "DNS" : result.dnf ? "DNF" : result.dq ? "DQ" : "\(result.position)")
                             .font(.headline)
                             .frame(width: 40)
 
@@ -148,7 +148,7 @@ struct TabSubview: View {
                             .font(.subheadline)
                             .foregroundColor(.gray)
                     }
-                    .padding()
+                    .padding(10)
                     .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
                 }
