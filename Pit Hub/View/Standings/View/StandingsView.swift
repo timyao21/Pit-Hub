@@ -19,14 +19,14 @@ struct StandingsView: View {
                     standingTitle(selectedTab: 0)
                     ScrollView {
                         VStack(spacing: 0) {
-                            ForEach(viewModel.drivers.indices, id: \.self) { index in
-                                let driver = viewModel.drivers[index]
+                            ForEach(viewModel.F1Drivers.indices, id: \.self) { index in
+                                let driver = viewModel.F1Drivers[index]
                                 NavigationLink(destination: DriverDetailView(driver: driver)) {
                                     StandingsRowView(driver: driver, position: index + 1)
                                 }
                                 .buttonStyle(PlainButtonStyle())
                                 
-                                if index < viewModel.drivers.count - 1 { // Avoids divider after the last row
+                                if index < viewModel.F1Drivers.count - 1 { // Avoids divider after the last row
                                     Divider()
                                 }
                             }

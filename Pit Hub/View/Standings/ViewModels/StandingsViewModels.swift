@@ -13,33 +13,7 @@ extension StandingsView {
         private let db = Firestore.firestore()
         
         @Published var selectedYear = 2024
-//        @Published var drivers: [Driver] = []
-        @Published var drivers: [Driver] = [Driver(
-            id: UUID(),
-            broadcastName: "M VERSTAPPEN",
-            countryCode: "NED",
-            driverNumber: 1,
-            firstName: "Max",
-            fullName: "Max Verstappen",
-            lastName: "Verstappen",
-            nameAcronym: "VER",
-            points: 395,
-            teamColour: "3671C6",
-            teamName: "Red Bull Racing"
-        ),
-                                            Driver(
-            id: UUID(),
-            broadcastName: "M VERSTAPPEN",
-            countryCode: "NED",
-            driverNumber: 1,
-            firstName: "Max",
-            fullName: "Max Verstappen",
-            lastName: "Verstappen",
-            nameAcronym: "VER",
-            points: 395,
-            teamColour: "3671C6",
-            teamName: "Red Bull Racing"
-        )]
+        @Published var F1Drivers: [F1Driver] = []
         
         // MARK: - Change the Calendar Year
         func changeYear(year: Int) {
@@ -50,7 +24,7 @@ extension StandingsView {
         func fetchDrivers(_ year: Int) {
             print("Fetching drivers from Firestore...")
             
-            let driverCollectionRef = db.collection("F1Drivers").document("\(year)").collection("Drivers")
+            let driverCollectionRef = db.collection("f1SeasonDrivers")
             
             driverCollectionRef.getDocuments { [weak self] snapshot, error in
                 if let error = error {
@@ -63,14 +37,14 @@ extension StandingsView {
                     return
                 }
                 
-                var fetchedDrivers: [Driver] = []
+                var fetchedDrivers: [F1Driver] = []
                 
                 for document in documents {
                     let driverID = document.documentID // e.g., "VAR", "VER", etc.
                     
                     do {
                         let jsonData = try JSONSerialization.data(withJSONObject: document.data(), options: [])
-                        if let driver = try? JSONDecoder().decode(Driver.self, from: jsonData) {
+                        if let driver = try? JSONDecoder().decode(F1Driver.self, from: jsonData) {
                             fetchedDrivers.append(driver)
                         } else {
                             print("Decoding failed for driverID: \(driverID)")
@@ -79,9 +53,9 @@ extension StandingsView {
                         print("Error decoding data for driverID: \(driverID): \(error.localizedDescription)")
                     }
                 }
-                fetchedDrivers.sort { $0.points > $1.points }
+                fetchedDrivers.sort { $0.raceStats.points > $1.raceStats.points }
                 DispatchQueue.main.async {
-                    self?.drivers = fetchedDrivers
+                    self?.F1Drivers = fetchedDrivers
                     print("Successfully fetched \(fetchedDrivers.count) drivers.")
 //                    print(fetchedDrivers)
                 }

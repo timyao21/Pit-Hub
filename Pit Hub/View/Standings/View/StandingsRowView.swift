@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StandingsRowView: View {
-    let driver: Driver
+    let driver: F1Driver
     let position: Int
     
     var body: some View {
@@ -40,7 +40,7 @@ struct StandingsRowView: View {
                     .foregroundStyle(gradientBackground(from: driver.teamColour))
             }
             Spacer()
-            Text("\(driver.points) 积分")
+            Text("\(driver.raceStats.points) 积分")
                 .font(.custom(S.smileySans, size: 23))
             Image(systemName: "chevron.right")
         }
@@ -49,18 +49,30 @@ struct StandingsRowView: View {
 }
 
 #Preview {
-    StandingsRowView(driver: Driver(
-        id: UUID(),
-        broadcastName: "M VERSTAPPEN",
-        countryCode: "NED",
-        driverNumber: 1,
-        firstName: "Max",
+    StandingsRowView(driver: F1Driver(
+        id: "2024_VER",
+        season: 2024,
+        nameAcronym: "VER",
         fullName: "Max Verstappen",
         lastName: "Verstappen",
-        nameAcronym: "VER",
-        points: 395,
-        teamColour: "3671C6",
-        teamName: "Red Bull Racing"
+        firstName: "Max",
+        broadcastName: "Max Verstappen",
+        teamName: "Red Bull Racing",
+        driverNumber: 1,
+        teamColour: "#3671C6",
+        countryCode: "NLD",
+        raceStats: RaceStats(
+            points: 425,
+            wins: 15,
+            podiums: 18,
+            poles: 10,
+            fastestLaps: 8,
+            dnf:0,
+            dns:0,
+            dq:0
+        ),
+        championshipPosition: 1,
+        tieBreaker: 0
     ),position: 1)
 }
 
