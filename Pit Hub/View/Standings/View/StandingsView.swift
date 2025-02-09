@@ -38,13 +38,21 @@ struct StandingsView: View {
                 // Page 2: Team Standings (Placeholder)
                 VStack {
                     standingTitle(selectedTab: 1)
-                    Text("Team Standings")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding()
+                    VStack(spacing: 0) {
+                        ForEach(viewModel.F1Teams.indices, id: \.self) { index in
+                            let team = viewModel.F1Teams[index]
+                            StandingsTeamRowView(team: team, position: index + 1)
+                            
+                            if index < viewModel.F1Drivers.count - 1 { // Avoids divider after the last row
+                                Divider()
+                            }
+                        }
+                        Spacer()
+                    }
                 }
                 .tag(1)
             }
+            .padding(8)
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic)) // Enables swipeable pages
             .onAppear {
                 viewModel.loadDrivers(for: viewModel.selectedYear)

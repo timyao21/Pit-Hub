@@ -617,6 +617,17 @@
     "Pit Hub" : {
 
     },
+    "RB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红牛"
+          }
+        }
+      }
+    },
     "Red Bull Racing" : {
       "extractionState" : "manual",
       "localizations" : {
