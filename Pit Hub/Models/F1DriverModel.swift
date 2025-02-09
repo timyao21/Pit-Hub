@@ -1,5 +1,5 @@
 //
-//  MeetingModel.swift
+//  F1DriverModel.swift
 //  Pit Hub
 //
 //  Created by Junyu Yao on 12/11/24.

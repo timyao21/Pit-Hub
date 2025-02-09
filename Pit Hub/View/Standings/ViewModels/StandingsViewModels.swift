@@ -14,6 +14,7 @@ extension StandingsView {
         
         @Published var selectedYear = 2024
         @Published var F1Drivers: [F1Driver] = []
+        @Published var F1Teams: [F1Team] = []
         
         // MARK: - Change the Calendar Year
         func changeYear(year: Int) {
@@ -25,7 +26,9 @@ extension StandingsView {
             Task {
                 do {
                     let fetchedDrivers = try await manager.fetchDrivers(for: year)
+                    let fetchedTeams = try await manager.fetchTeam(for: year)
                     self.F1Drivers = fetchedDrivers // Updates UI automatically
+                    self.F1Teams = fetchedTeams
                 } catch {
                     print("Error fetching drivers: \(error.localizedDescription)")
                 }

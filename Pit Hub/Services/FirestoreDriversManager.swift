@@ -31,6 +31,43 @@ struct FirestoreDriversManager {
         print("Successfully fetched \(fetchedDrivers.count) drivers.")
         return fetchedDrivers
     }
+    
+    func fetchTeam(for year: Int) async throws -> [F1Team] {
+        print("Fetching Firestore Drivers for year \(year)...")
+        
+        let snapshot = try await db.collection("f1Teams")
+            .whereField("year", isEqualTo: year) // Filter by year
+            .getDocuments()
+
+        var fetchedTeams: [F1Team] = snapshot.documents.compactMap { document in
+            try? document.data(as: F1Team.self) // Decode Firestore document directly
+        }
+
+        // Sort drivers by race points in descending order
+        fetchedTeams.sort { $0.points > $1.points }
+        
+        print("Successfully fetched \(fetchedTeams.count) Teams.")
+        return fetchedTeams
+        
+    }
+    
+    func fetchGrandPrix(for year: Int) async throws -> [GrandPrix] {
+        print("Fetching Firestore Grand Prix for year \(year)...")
+        
+        let snapshot = try await db.collection("GrandPrix")
+            .whereField("year", isEqualTo: year)
+            .getDocuments()
+        
+        var fetchedGrandPrix: [GrandPrix] = snapshot.documents.compactMap { document in
+            try? document.data(as: GrandPrix.self) // Decode Firestore document directly
+        }
+        
+        fetchedGrandPrix.sort { $0.meetingKey > $1.meetingKey }
+        
+        print("Successfully fetched \(fetchedGrandPrix.count) Teams.")
+        return fetchedGrandPrix
+        
+    }
 
 }
     
