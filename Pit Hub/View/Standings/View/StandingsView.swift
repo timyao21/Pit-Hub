@@ -47,7 +47,7 @@ struct StandingsView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic)) // Enables swipeable pages
             .onAppear {
-                viewModel.fetchDrivers(viewModel.selectedYear)
+                viewModel.loadDrivers(for: viewModel.selectedYear)
             }
         }
     }

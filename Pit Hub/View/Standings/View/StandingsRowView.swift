@@ -15,7 +15,7 @@ struct StandingsRowView: View {
         HStack {
             // Position Number (Standing)
             Text("\(position)")
-                .font(.custom(S.smileySans, size: 25))
+                .font(.custom(S.smileySans, size: 28))
                 .fontWeight(.bold)
                 .foregroundColor(positionColor(for: position)) // Dynamic color based on position
                 .frame(width: 35, alignment: .center) // Centered for consistency
@@ -23,13 +23,13 @@ struct StandingsRowView: View {
             
             // Driver Number with Circle Background
             Text("\(driver.driverNumber)")
-                .font(.custom(S.smileySans, size: 28)) // Slightly smaller for better balance
+                .font(.custom(S.smileySans, size: 20)) // Slightly smaller for better balance
                 .foregroundStyle(gradientBackground(from: driver.teamColour))
-                .frame(width: 40, height: 40, alignment: .center) // Balanced width & height
+                .frame(width: 30, height: 30, alignment: .center) // Balanced width & height
                 .background(
                     Circle()
-                        .fill(color(from: driver.teamColour).opacity(0.3)) // Slightly darker for contrast
-                        .frame(width: 40, height: 40)
+                        .fill(color(from: driver.teamColour).opacity(0.15)) // Slightly darker for contrast
+                        .frame(width: 30, height: 30)
                 )
 
             VStack(alignment: .leading) {
