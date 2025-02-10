@@ -9,13 +9,13 @@
 import Foundation
 
 struct GrandPrix: Identifiable, Codable {
-    let id: Int
+    var id = UUID()
     let circuitKey: Int
     let circuitShortName: String
     let countryCode: String
     let countryKey: Int
     let countryName: String
-    let dateStart: String
+    var dateStart: String
     let gmtOffset: String
     let location: String
     let meetingCode: String
@@ -26,7 +26,6 @@ struct GrandPrix: Identifiable, Codable {
     let year: Int
 
     enum CodingKeys: String, CodingKey {
-        case id = "doc_id"
         case circuitKey = "circuit_key"
         case circuitShortName = "circuit_short_name"
         case countryCode = "country_code"

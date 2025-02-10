@@ -17,10 +17,10 @@ struct ScheduleListView: View {
         NavigationSplitView{
             VStack{
                 HStack(spacing: 0){
-                    Text(String(viewModel.curYear))
+                    Text(String(viewModel.year))
                     Menu {
                         let now = Calendar.current.component(.year, from: Date())
-                        ForEach(2023...now, id: \.self) { year in
+                        ForEach(2024...now, id: \.self) { year in
                             Button(action: {
                                 viewModel.changeYear(year: year)
                             }) {
@@ -40,54 +40,53 @@ struct ScheduleListView: View {
                 .padding(.horizontal, 16)
                 
                 
+                ProgressBar(curYear: viewModel.year, total: viewModel.F1GP.count, curRace: viewModel.pastF1GP.count)
                 
                 TabView(selection: $selectedTab){
                     
-                        if !viewModel.pastMeetings.isEmpty {
-                            VStack{
-                                
-                                SectionHeader(title: "已结束...")
-                                ScrollView {
-                                    ForEach(viewModel.pastMeetings.reversed()) { meeting in
-                                        NavigationLink {
-                                            ScheduleDetailView(meeting: meeting)
-                                        } label: {
-                                            ScheduleRow(meeting: meeting)
-                                                .padding(.vertical, 5)
-                                        }
-                                        .padding(.horizontal, 16)
-                                        .cornerRadius(8)
-                                        .padding(.vertical, 6)
-                                        .tint(.primary) // Prevent the blue tint
+                    if !viewModel.pastF1GP.isEmpty {
+                        VStack{
+                            SectionHeader(title: "已结束...")
+                            ScrollView {
+                                ForEach(viewModel.pastF1GP) { meeting in
+                                    NavigationLink {
+                                        ScheduleDetailView(grandPrix: meeting)
+                                    } label: {
+                                        ScheduleRow(gp: meeting)
+                                            .padding(.vertical, 5)
                                     }
+                                    .padding(.horizontal, 16)
+                                    .cornerRadius(8)
+                                    .padding(.vertical, 6)
+                                    .tint(.primary) // Prevent the blue tint
                                 }
-                            }.tag(1)
-                        }
-                        
-                        if !viewModel.upcomingMeetings.isEmpty {
-                            VStack{
-                                ProgressBar(curYear: viewModel.curYear, total: viewModel.meetings.count, curRace: viewModel.pastMeetings.count)
-                                SectionHeader(title: "接下来...")
-                                ScrollView {
-                                    ForEach(viewModel.upcomingMeetings) { meeting in
-                                        NavigationLink {
-                                            ScheduleDetailView(meeting: meeting)
-                                        } label: {
-                                            ScheduleRow(meeting: meeting)
-                                                .padding(.vertical, 5)
-                                        }
-                                        .padding(.horizontal, 16)
-                                        .cornerRadius(8)
-                                        .padding(.vertical, 6)
-                                        .tint(.primary) // Prevent the blue tint
+                            }
+                        }.tag(1)
+                    }
+                    
+                    if !viewModel.upcomingF1GP.isEmpty {
+                        VStack{
+                            SectionHeader(title: "接下来...")
+                            ScrollView {
+                                ForEach(viewModel.upcomingF1GP.reversed()) { meeting in
+                                    NavigationLink {
+                                        ScheduleDetailView(grandPrix: meeting)
+                                    } label: {
+                                        ScheduleRow(gp: meeting)
+                                            .padding(.vertical, 5)
                                     }
+                                    .padding(.horizontal, 16)
+                                    .cornerRadius(8)
+                                    .padding(.vertical, 6)
+                                    .tint(.primary) // Prevent the blue tint
                                 }
-                            }.tag(2)
-                        }
+                            }
+                        }.tag(2)
+                    }
                     // Fallback UI for Empty Lists
-                    if viewModel.upcomingMeetings.isEmpty && viewModel.pastMeetings.isEmpty {
+                    if viewModel.upcomingF1GP.isEmpty && viewModel.pastF1GP.isEmpty {
                         HStack {
-                            Text("Sry, 暂无\(String(viewModel.curYear))数据")
+                            Text("Sry, 暂无\(String(viewModel.year))数据")
                             Image(systemName: "exclamationmark.icloud")
                         }
                         .font(.custom(S.smileySans, size: 30))
@@ -102,7 +101,7 @@ struct ScheduleListView: View {
             Text("Select a Schedule")
         }
         .onAppear {
-            viewModel.fetchMeetings()
+            viewModel.loadAllGP()
         }
     }
 }

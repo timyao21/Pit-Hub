@@ -37,6 +37,17 @@
     "%@赛季" : {
 
     },
+    "%d Season - Driver Stats" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d 赛季 - 车手数据"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -187,6 +198,17 @@
         }
       }
     },
+    "Current Standing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前排名"
+          }
+        }
+      }
+    },
     "Daniel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -200,6 +222,17 @@
     },
     "Destination" : {
 
+    },
+    "Did Not Finish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未完赛"
+          }
+        }
+      }
     },
     "DNF" : {
 
@@ -239,6 +272,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "埃斯特班"
+          }
+        }
+      }
+    },
+    "Fastest Laps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最快圈"
           }
         }
       }
@@ -617,6 +661,39 @@
     "Pit Hub" : {
 
     },
+    "Podiums" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "领奖台"
+          }
+        }
+      }
+    },
+    "Points" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "积分"
+          }
+        }
+      }
+    },
+    "Poles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "杆位"
+          }
+        }
+      }
+    },
     "RB" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -700,6 +777,17 @@
         }
       }
     },
+    "SPRINT" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲刺赛"
+          }
+        }
+      }
+    },
     "Sry, 暂无%@数据" : {
 
     },
@@ -716,6 +804,17 @@
     },
     "Team Standings" : {
 
+    },
+    "Time" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间"
+          }
+        }
+      }
     },
     "Tsunoda" : {
       "extractionState" : "manual",
@@ -766,6 +865,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "威廉姆斯"
+          }
+        }
+      }
+    },
+    "Wins" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "胜利"
           }
         }
       }

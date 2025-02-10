@@ -47,7 +47,8 @@ struct StandingsTeamRowView: View {
         teamColour: "1E5BC6",
         year: 2024,
         points: 450,
-        drivers: ["Max Verstappen", "Sergio Perez"]), position: 1)
+        drivers: ["Max Verstappen", "Sergio Perez"],
+        tieBreaker:0), position: 1)
 }
 
 extension StandingsTeamRowView{

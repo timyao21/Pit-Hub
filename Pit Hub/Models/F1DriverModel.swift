@@ -21,7 +21,7 @@ struct F1Driver: Codable, Identifiable {
     let countryCode: String
     let raceStats: RaceStats
     let championshipPosition: Int
-    let tieBreaker: Int
+    let tieBreaker: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"

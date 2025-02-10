@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScheduleDetailView: View {
     
-    var meeting: Meeting
+    var grandPrix: GrandPrix
     
     @StateObject var viewModel = ViewModel()
     @State var displaySessions:  [Session] = []
@@ -19,9 +19,13 @@ struct ScheduleDetailView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Group {
-                Text(meeting.meetingName)
-                    .font(.custom(S.smileySans, size: 20))
-                Text(CountryNameTranslator.translate(englishName: meeting.circuitShortName))
+                HStack {
+                    Text(grandPrix.meetingName)
+                        .font(.custom(S.smileySans, size: 20))
+                    SprintBadge()
+                        .opacity(grandPrix.sprint ? 1 : 0) // Hides the view when `gp.sprint` is false
+                }
+                Text(CountryNameTranslator.translate(englishName: grandPrix.circuitShortName))
                     .font(.custom(S.smileySans, size: 35))
                     .padding(.top, 2)
                     .padding(.bottom, 2)
@@ -68,31 +72,17 @@ struct ScheduleDetailView: View {
         .withCustomNavigation()
         .padding()
         .onAppear {
-            viewModel.fetchSessions(meeting.meetingKey, for: meeting.dateStart)
+            viewModel.fetchSessions(grandPrix.meetingKey, for: grandPrix.dateStart)
             Task {
-                await viewModel.fetchRaceResults(for: meeting.meetingKey)
+                await viewModel.fetchRaceResults(for: grandPrix.meetingKey)
             }
         }
     }
 }
 
 #Preview {
-    ScheduleDetailView(meeting:Meeting(
-        circuitKey: 36,
-        circuitShortName: "Sakhir",
-        countryCode: "BRN",
-        countryKey: 36,
-        countryName: "Bahrain",
-        dateStart: "2024-02-29T11:30:00+00:00",
-        gmtOffset: "03:00:00",
-        location: "Sakhir",
-        meetingKey: 1229,
-        meetingName: "Bahrain Grand Prix",
-        meetingOfficialName: "FORMULA 1 GULF AIR BAHRAIN GRAND PRIX 2024",
-        year: 2024
-    ))
+    ScheduleListView()
 }
-
 
 
 // MARK: - Custom Tab Selector
@@ -126,7 +116,7 @@ struct TabSelecter: View {
 }
 
 struct TabSubview: View {
-    let results: [RaceResult] // ✅ Uses the `RaceResult` model
+    let results: [RaceResult] // Uses the `RaceResult` model
 
     var body: some View {
         ScrollView {

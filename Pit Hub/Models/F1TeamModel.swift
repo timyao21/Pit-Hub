@@ -19,6 +19,7 @@ struct F1Team: Identifiable, Codable {
     let year: Int
     let points: Int
     let drivers: [String]
+    let tieBreaker: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "team_id"
@@ -32,6 +33,7 @@ struct F1Team: Identifiable, Codable {
         case year
         case points
         case drivers
+        case tieBreaker = "tie_breaker"
     }
 }
 

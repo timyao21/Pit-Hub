@@ -26,14 +26,21 @@ struct FirestoreDriversManager {
         }
 
         // Sort drivers by race points in descending order
-        fetchedDrivers.sort { $0.raceStats.points > $1.raceStats.points }
+//        fetchedDrivers.sort { $0.raceStats.points > $1.raceStats.points }
+        fetchedDrivers.sort {
+            if $0.raceStats.points == $1.raceStats.points {
+                return ($0.tieBreaker ?? 0) > ($1.tieBreaker ?? 0) // Compare tieBreaker if points are tied
+            }
+            return $0.raceStats.points > $1.raceStats.points
+
+        }
         
         print("Successfully fetched \(fetchedDrivers.count) drivers.")
         return fetchedDrivers
     }
     
     func fetchTeam(for year: Int) async throws -> [F1Team] {
-        print("Fetching Firestore Drivers for year \(year)...")
+        print("Fetching Firestore Teams for year \(year)...")
         
         let snapshot = try await db.collection("f1Teams")
             .whereField("year", isEqualTo: year) // Filter by year
@@ -43,8 +50,12 @@ struct FirestoreDriversManager {
             try? document.data(as: F1Team.self) // Decode Firestore document directly
         }
 
-        // Sort drivers by race points in descending order
-        fetchedTeams.sort { $0.points > $1.points }
+        fetchedTeams.sort {
+            if $0.points == $1.points {
+                return ($0.tieBreaker ?? 0) > ($1.tieBreaker ?? 0) // Compare tieBreaker if points are tied
+            }
+            return $0.points > $1.points
+        }
         
         print("Successfully fetched \(fetchedTeams.count) Teams.")
         return fetchedTeams
@@ -55,17 +66,15 @@ struct FirestoreDriversManager {
         print("Fetching Firestore Grand Prix for year \(year)...")
         
         let snapshot = try await db.collection("GrandPrix")
-            .whereField("year", isEqualTo: year)
+            .whereField("year", isEqualTo: year) // Filter by year
             .getDocuments()
         
-        var fetchedGrandPrix: [GrandPrix] = snapshot.documents.compactMap { document in
-            try? document.data(as: GrandPrix.self) // Decode Firestore document directly
+        let fetchedGrandPrix: [GrandPrix] = snapshot.documents.compactMap { document in
+            try? document.data(as: GrandPrix.self)
         }
         
-        fetchedGrandPrix.sort { $0.meetingKey > $1.meetingKey }
-        
-        print("Successfully fetched \(fetchedGrandPrix.count) Teams.")
-        return fetchedGrandPrix
+        print("Successfully fetched \(fetchedGrandPrix.count) Grand Prix.")
+        return fetchedGrandPrix.sorted { $0.meetingKey > $1.meetingKey }
         
     }
 

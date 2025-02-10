@@ -21,7 +21,7 @@ struct StandingsView: View {
                         VStack(spacing: 0) {
                             ForEach(viewModel.F1Drivers.indices, id: \.self) { index in
                                 let driver = viewModel.F1Drivers[index]
-                                NavigationLink(destination: DriverDetailView(driver: driver)) {
+                                NavigationLink(destination: DriverDetailView(driver: driver, position: index + 1)) {
                                     StandingsRowView(driver: driver, position: index + 1)
                                 }
                                 .buttonStyle(PlainButtonStyle())
@@ -34,7 +34,6 @@ struct StandingsView: View {
                     }
                     .tag(0)
                 }
-
                 // Page 2: Team Standings (Placeholder)
                 VStack {
                     standingTitle(selectedTab: 1)
