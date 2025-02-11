@@ -9,17 +9,32 @@ import Foundation
 
 struct DateUtils {
     
-    // MARK: - Convert date string to Date
-//    static func toDate(dateString: String) -> String? {
-//        let formatter = ISO8601DateFormatter()
-//        if let date = formatter.date(from: dateString) {
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateStyle = .medium
-//            dateFormatter.timeStyle = .short
-//            return dateFormatter.string(from: date)
-//        }
-//        return nil
-//    }
+    // MARK: - Convert String (ISO 8601) to Local Date
+    static func convertStringToLocalDate(_ dateString: String) -> Date? {
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime, .withTimeZone] // Ensure timezone is recognized
+
+        guard let utcDate = isoFormatter.date(from: dateString) else {
+            print("❌ Error: Invalid date format for \(dateString)")
+            return nil
+        }
+
+        // Convert UTC to local timezone
+        let localTimeZone = TimeZone.current
+        let localDate = utcDate.addingTimeInterval(TimeInterval(localTimeZone.secondsFromGMT(for: utcDate)))
+
+        return localDate
+    }
+
+
+    
+    // MARK: - Convert Date to ISO 8601 String (UTC)
+    static func formatDateToString(_ date: Date) -> String {
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withInternetDateTime, .withTimeZone] // Ensure timezone is included
+        isoFormatter.timeZone = TimeZone(secondsFromGMT: 0) // Convert to UTC before formatting
+        return isoFormatter.string(from: date)
+    }
     
     // MARK: - format the ISO8601 Data Format to local time with custom style
     static func formatLocalFullDateString(_ dateString: String, dateStyle: DateFormatter.Style = .short, timeStyle: DateFormatter.Style = .none) -> String? {

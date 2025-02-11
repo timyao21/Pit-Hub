@@ -1,82 +1,57 @@
 //
-//  StandingsRowView.swift
+//  StandingsTeamRowView.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 1/19/25.
+//  Created by Junyu Yao on 2/9/25.
 //
 
 import SwiftUI
 
-struct StandingsRowView: View {
-    let driver: F1Driver
+struct StandingsTeamRowView: View {
+    let team: F1Team
     let position: Int
     
     var body: some View {
-        HStack {
+        HStack{
             // Position Number (Standing)
             Text("\(position)")
                 .font(.custom(S.smileySans, size: 28))
                 .fontWeight(.bold)
                 .foregroundColor(positionColor(for: position)) // Dynamic color based on position
                 .frame(width: 35, alignment: .center) // Centered for consistency
-
             
-            // Driver Number with Circle Background
-            Text("\(driver.driverNumber)")
-                .font(.custom(S.smileySans, size: 20)) // Slightly smaller for better balance
-                .foregroundStyle(gradientBackground(from: driver.teamColour))
-                .frame(width: 30, height: 30, alignment: .center) // Balanced width & height
-                .background(
-                    Circle()
-                        .fill(color(from: driver.teamColour).opacity(0.15)) // Slightly darker for contrast
-                        .frame(width: 30, height: 30)
-                )
-
             VStack(alignment: .leading) {
-                Text(NSLocalizedString(driver.lastName, comment: "Driver last name"))
+                Text(NSLocalizedString(team.shortName, comment: "Team Short Name"))
                     .font(.custom(S.smileySans, size: 25))
-                Text(NSLocalizedString(driver.teamName, comment: "Driver team name"))
+                Text(NSLocalizedString(team.carModel, comment: "Team Car Model Name"))
                     .font(.custom(S.smileySans, size: 18))
-                    .foregroundStyle(gradientBackground(from: driver.teamColour))
+                    .foregroundStyle(gradientBackground(from: team.teamColour))
             }
             Spacer()
-            Text("\(driver.raceStats.points) 分")
+            Text("\(team.points) 分")
                 .font(.custom(S.smileySans, size: 23))
-            Image(systemName: "chevron.right")
         }
         .padding(5)
     }
 }
 
 #Preview {
-    StandingsRowView(driver: F1Driver(
-        id: "2024_VER",
-        season: 2024,
-        nameAcronym: "VER",
-        fullName: "Max Verstappen",
-        lastName: "Verstappen",
-        firstName: "Max",
-        broadcastName: "Max Verstappen",
-        teamName: "Red Bull Racing",
-        driverNumber: 1,
-        teamColour: "#3671C6",
-        countryCode: "NLD",
-        raceStats: RaceStats(
-            points: 425,
-            wins: 15,
-            podiums: 18,
-            poles: 10,
-            fastestLaps: 8,
-            dnf:0,
-            dns:0,
-            dq:0
-        ),
-        championshipPosition: 1,
-        tieBreaker: 0
-    ),position: 1)
+    StandingsTeamRowView(team: F1Team(
+        id: "redbull",
+        teamName: "Oracle Red Bull Racing",
+        shortName: "Red Bull",
+        base: "Milton Keynes, UK",
+        teamPrincipal: "Christian Horner",
+        carModel: "RB20",
+        engineSupplier: "Honda RBPT",
+        teamColour: "1E5BC6",
+        year: 2024,
+        points: 450,
+        drivers: ["Max Verstappen", "Sergio Perez"],
+        tieBreaker:0), position: 1)
 }
 
-extension StandingsRowView{
+extension StandingsTeamRowView{
     func gradientBackground(from hex: String) -> LinearGradient {
         let color = color(from: hex)
         return LinearGradient(
@@ -118,6 +93,4 @@ extension StandingsRowView{
             return .gray // Default fallback color
         }
     }
-
-
 }

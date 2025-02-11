@@ -1,6 +1,71 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%@" : {
+
+    },
+    "%@  - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@  - %2$@"
+          }
+        }
+      }
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@赛季" : {
+
+    },
+    "%d Season - Driver Stats" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d 赛季 - 车手数据"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld 积分" : {
+
+    },
+    "%lld°C" : {
+
+    },
+    "%lld分" : {
+
+    },
+    "⏳ 技师们正全力维修..." : {
+
+    },
+    "Add Item" : {
+
+    },
     "Albon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -133,6 +198,17 @@
         }
       }
     },
+    "Current Standing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前排名"
+          }
+        }
+      }
+    },
     "Daniel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -144,6 +220,26 @@
         }
       }
     },
+    "Destination" : {
+
+    },
+    "Did Not Finish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未完赛"
+          }
+        }
+      }
+    },
+    "DNF" : {
+
+    },
+    "DNS" : {
+
+    },
     "Doohan" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -154,6 +250,9 @@
           }
         }
       }
+    },
+    "DQ" : {
+
     },
     "Driver Standings" : {
       "extractionState" : "manual",
@@ -173,6 +272,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "埃斯特班"
+          }
+        }
+      }
+    },
+    "Fastest Laps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最快圈"
           }
         }
       }
@@ -216,7 +326,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "盖斯利"
+            "value" : "加斯利"
           }
         }
       }
@@ -275,6 +385,15 @@
           }
         }
       }
+    },
+    "Incorrect username or password" : {
+
+    },
+    "Invalid Date" : {
+
+    },
+    "Item at %@" : {
+
     },
     "Jack" : {
       "extractionState" : "manual",
@@ -386,6 +505,12 @@
         }
       }
     },
+    "Login" : {
+
+    },
+    "Login Failed" : {
+
+    },
     "Magnussen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -469,6 +594,9 @@
         }
       }
     },
+    "OK" : {
+
+    },
     "Oliver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -490,6 +618,9 @@
           }
         }
       }
+    },
+    "Password" : {
+
     },
     "Perez" : {
       "extractionState" : "manual",
@@ -520,6 +651,56 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "皮埃尔"
+          }
+        }
+      }
+    },
+    "Pit House - P房" : {
+
+    },
+    "Pit Hub" : {
+
+    },
+    "Podiums" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "领奖台"
+          }
+        }
+      }
+    },
+    "Points" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "积分"
+          }
+        }
+      }
+    },
+    "Poles" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "杆位"
+          }
+        }
+      }
+    },
+    "RB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红牛"
           }
         }
       }
@@ -579,6 +760,12 @@
         }
       }
     },
+    "Select a Schedule" : {
+
+    },
+    "Select an item" : {
+
+    },
     "Sergio" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -590,6 +777,20 @@
         }
       }
     },
+    "SPRINT" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲刺赛"
+          }
+        }
+      }
+    },
+    "Sry, 暂无%@数据" : {
+
+    },
     "Stroll" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -597,6 +798,20 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "斯托尔"
+          }
+        }
+      }
+    },
+    "Team Standings" : {
+
+    },
+    "Time" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间"
           }
         }
       }
@@ -611,6 +826,9 @@
           }
         }
       }
+    },
+    "Username/Email" : {
+
     },
     "Valtteri" : {
       "extractionState" : "manual",
@@ -651,6 +869,17 @@
         }
       }
     },
+    "Wins" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "胜利"
+          }
+        }
+      }
+    },
     "Yuki" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -672,6 +901,82 @@
           }
         }
       }
+    },
+    "主页" : {
+
+    },
+    "周五" : {
+
+    },
+    "周六" : {
+
+    },
+    "周日" : {
+
+    },
+    "已完成 %@ / %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "已完成 %1$@ / %2$@"
+          }
+        }
+      }
+    },
+    "年F1赛程表" : {
+
+    },
+    "我" : {
+
+    },
+    "所有时间均为设备本地时区" : {
+
+    },
+    "排位 & 正赛" : {
+
+    },
+    "排位赛" : {
+
+    },
+    "新闻" : {
+
+    },
+    "时间：%@" : {
+
+    },
+    "显示练习赛" : {
+
+    },
+    "暂无天气数据" : {
+
+    },
+    "暂无日程" : {
+
+    },
+    "正赛" : {
+
+    },
+    "比赛天气" : {
+
+    },
+    "涂装" : {
+
+    },
+    "登录" : {
+
+    },
+    "积分" : {
+
+    },
+    "赛历" : {
+
+    },
+    "车手" : {
+
+    },
+    "车队" : {
+
     }
   },
   "version" : "1.0"
