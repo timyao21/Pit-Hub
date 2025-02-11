@@ -13,63 +13,78 @@ struct DriverDetailView: View {
     let rows = Array(repeating: GridItem(.fixed(88)), count: 1)
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Driver Name & Number
-            HStack(spacing: 10) {
-                Text("\(driver.driverNumber)")
-                    .font(.custom(S.smileySans, size: 30))
-                    .foregroundColor(Color(hex: driver.teamColour))
-                Text("\(driver.nameAcronym)")
-                    .font(.custom(S.smileySans, size: 30))
-                    .foregroundColor(Color(hex: driver.teamColour))
-                
-                Text("\(NSLocalizedString(driver.firstName, comment: "Driver first name")) \(NSLocalizedString(driver.lastName, comment: "Driver last name"))")
-                    .font(.custom(S.smileySans, size: 28))
-                
-                Spacer()
-            }
+        ZStack(alignment: .topTrailing){
+//            VStack {
+//                HStack {
+//                    Spacer()
+//                    Image("redBull_helmet")
+//                        .resizable()
+//                        .opacity(0.7)
+//                        .frame(width: 120, height: 120)
+//                        .padding(.top, 90)
+//                        .padding(.trailing, 40)
+//                        .rotationEffect(.degrees(-30))
+//                }
+//                Spacer()
+//            }
             
-            // Team Name
-            HStack {
-                Text("\(NSLocalizedString(driver.teamName, comment: "Driver Team Name"))")
-                    .font(.headline)
-                Text(driver.teamName)
-                    .font(.headline)
-            }
-            .foregroundColor(Color(hex: driver.teamColour).opacity(0.7))
-            
-            // Driver Stats
-            VStack(alignment: .leading, spacing: 10) {
-                Text(String(format: NSLocalizedString("%d Season - Driver Stats", comment: "Driver stats for a specific season"), driver.season))
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+            VStack(alignment: .leading, spacing: 16) {
                 
-                // Points Stat
-                StatPointsView(
-                    title: "Points",
-                    value: "\(driver.raceStats.points)",
-                    color: Color(S.pitHubIconColor),
-                    icon: "chart.bar.xaxis",
-                    positions: position
-                )
-                .frame(height: 120)
+                // Driver Name & Number
+                HStack(spacing: 10) {
+                    Text("\(driver.nameAcronym)")
+                        .font(.custom(S.smileySans, size: 30))
+                        .foregroundColor(Color(hex: driver.teamColour))
+                    
+                    Text("\(NSLocalizedString(driver.firstName, comment: "Driver first name")) \(NSLocalizedString(driver.lastName, comment: "Driver last name"))")
+                        .font(.custom(S.smileySans, size: 28))
+                    
+                    Spacer()
+                }
                 
-                // Horizontal Scrollable Stats
-                ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: rows, spacing: 10) {
-                        StatView(title: "Wins", value: "\(driver.raceStats.wins)", color: .indigo, icon: "trophy.fill")
-                        StatView(title: "Podiums", value: "\(driver.raceStats.podiums)", color: .brown, icon: "flag.checkered")
-                        StatView(title: "Poles", value: "\(driver.raceStats.poles)", color: .blue, icon: "flag.checkered") // 🏁 Checkered flag for pole positions
+                // Driver Stats
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(String(format: NSLocalizedString("%d Season - Driver Stats", comment: "Driver stats for a specific season"), driver.season))
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                    // Points Stat
+                    ZStack (alignment: .topTrailing){
+                        HStack {
+                            Spacer()
+                            Image("redBull_helmet")
+                                .resizable()
+                                .opacity(0.7)
+                                .frame(width: 120, height: 120)
+                                .rotationEffect(.degrees(-30))
+                                .padding(.trailing, 20)
+                        }
+                        
+                        StatPointsView(
+                            title: "Points",
+                            value: "\(driver.raceStats.points)",
+                            color: Color(S.pitHubIconColor),
+                            icon: "chart.bar.xaxis",
+                            positions: position
+                        )
+                        .frame(height: 120)
+                        
+                    }
+                    
+                    // Horizontal Scrollable Stats
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHGrid(rows: rows, spacing: 10) {
+                            StatView(title: "Wins", value: "\(driver.raceStats.wins)", color: .indigo, icon: "trophy.fill")
+                            StatView(title: "Podiums", value: "\(driver.raceStats.podiums)", color: .brown, icon: "flag.checkered")
+                            StatView(title: "Poles", value: "\(driver.raceStats.poles)", color: .blue, icon: "flag.checkered") // 🏁 Checkered flag for pole positions
                             StatView(title: "Fastest Laps", value: "\(driver.raceStats.fastestLaps)", color: .red, icon: "speedometer") // ⏱ Speedometer for fastest laps
                             StatView(title: "Did Not Finish", value: "\(driver.raceStats.dnf)", color: .gray, icon: "xmark.octagon.fill") // ❌ Octagon stop for DNF
+                        }
+                        .padding(.vertical, 5)
                     }
-                    .padding(.vertical, 5)
                 }
+                DriverPerformanceGraphView(driverID: driver.id)
+                Spacer()
             }
-            
-            DriverPerformanceGraphView(driverID: driver.id)
-            Spacer()
-            
         }
         .padding()
     }
