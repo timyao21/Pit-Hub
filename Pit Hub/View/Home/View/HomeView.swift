@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 12/19/24.
+//  Created by Junyu Yao on 2/11/25.
 //
 
 import SwiftUI
@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
     
     @StateObject var viewModel = ViewModel()
-    @State private var showSetting = false
     
     var body: some View {
         VStack(spacing: 0){
@@ -24,46 +23,17 @@ struct HomeView: View {
                     .font(.custom(S.orbitron, size: 30))
                     .bold()
                 Spacer()
-                Button{
-                    showSetting.toggle()
-                } label: {
-                    Image(systemName: "flag.2.crossed.fill")
-                        .foregroundStyle(Color(S.pitHubIconColor))
-                }
             }
-            .padding()
-
-            ScrollView{
-                VStack(spacing: 20){
-                    // MARK: - UP Coming Race
-                    if let upcomingMeeting = viewModel.upcomingMeetings.first {
-                        HomeRaceRow(meeting: upcomingMeeting)
-                            .padding()
-                    } else {
-                        Text("暂无日程")
-                            .padding()
-                    }
-                    // MARK: - Weather
-                    if let upcomingMeeting = viewModel.upcomingMeetings.first {
-                        HomeWeatherRow(meeting: upcomingMeeting)
-                            .padding()
-                            .padding(.bottom, 20)
-                    } else {
-                        Text("暂无天气数据")
-                            .padding()
-                    }
-                }
-                .padding(.bottom, 20)
+            .padding(.bottom, 10)
+            if (viewModel.upcomingGP != nil){
+                HomeRaceRow(upcomingGP: viewModel.upcomingGP)
             }
+            HomeWeatherRow()
+            Spacer()
         }
-        .sheet(isPresented: $showSetting) {
-            ProfileView()
-                .presentationBackground(Color(S.primaryBackground))
-                .presentationCornerRadius(50)
-        }
-        .background(Color(S.primaryBackground))
-        .onAppear {
-            viewModel.loadMeetings()
+        .padding()
+        .onAppear() {
+            viewModel.loadAllGP()
         }
     }
 }

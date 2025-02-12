@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension HomeRaceRow{
+extension HomeRaceRowOld{
     
     class ViewModel: ObservableObject{
         @Published var sessions: [Session] = []

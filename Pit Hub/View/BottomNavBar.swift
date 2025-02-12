@@ -33,11 +33,6 @@ struct BottomNavBar: View {
                     Label("积分", systemImage: "trophy")
                 }
                 .tag(2)
-//            ContentView()
-//                .tabItem {
-//                    Label("新闻", systemImage: "newspaper")
-//                }
-//                .tag(3)
         }
     }
 }

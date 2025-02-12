@@ -2,50 +2,55 @@
 //  HomeViewModels.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 12/19/24.
+//  Created by Junyu Yao on 2/11/25.
 //
 
 import Foundation
 
 extension HomeView {
-    class ViewModel: ObservableObject { // Conform to ObservableObject
-        @Published var meetings: [Meeting] = []
-        @Published var upcomingMeetings: [Meeting] = []
-        @Published var pastMeetings: [Meeting] = []
-//        @Published var curYear: Int = Calendar.current.component(.year, from: Date())
-        @Published var curYear: Int = 2024
+    class ViewModel: ObservableObject {
+        private let gpManager = GPManager()
+        @Published var gps: [GP] = []
+        @Published var allUpcomingGP: [GP] = []
+        @Published var upcomingGP: GP?
+        @Published var pastGP: [GP] = []
         
-        private let meetingsManager = MeetingsManager()
-        
-        // MARK: - load test
-        func loadMeetings() {
-            self.fetchMeetings()
-        }
-        
-        // MARK: - Fetch meetings
-        func fetchMeetings() {
-            meetingsManager.getFullSchedule(curYear) { meetings in
-                DispatchQueue.main.async {
-                    self.meetings = meetings ?? []
-                    self.getUpcomingMeeting()
-                    self.getPastMeetings()
+        func loadAllGP() {
+//            let today = Date()
+            let dateFormatter = ISO8601DateFormatter()
+            dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+            let today = dateFormatter.date(from: "2024-07-01") ?? Date()
+            
+            Task {
+                do {
+                    let allGPs = try await gpManager.fetchRaceSchedule(for: "2024")
+                    
+                    // Ensure correct date conversion
+                    gps = allGPs
+                    
+                    allUpcomingGP = allGPs.filter { gp in
+                        if let gpDate = dateFormatter.date(from: gp.date) {
+                            return gpDate >= today
+                        }
+                        return false
+                    }
+                    
+                    pastGP = allGPs.filter { gp in
+                        if let gpDate = dateFormatter.date(from: gp.date) {
+                            return gpDate < today
+                        }
+                        return false
+                    }
+
+                    // Print debug info
+                    upcomingGP = allUpcomingGP.first
+                    print("Upcoming GPs: \(allUpcomingGP.count)")
+                    print("Past GPs: \(pastGP.count)")
+                    
+                } catch {
+                    print("Failed to fetch races: \(error.localizedDescription)")
                 }
             }
         }
-        
-        // MARK: - get the Upcoming Meetings
-        func getUpcomingMeeting() {
-            DispatchQueue.main.async {
-                self.upcomingMeetings = self.meetingsManager.getUpcomingMeetings(from: self.meetings)
-            }
-        }
-        
-        // MARK: - get the Past Meetings
-        func getPastMeetings() {
-            DispatchQueue.main.async {
-                self.pastMeetings = self.meetingsManager.getPastMeetings(from: self.meetings)
-            }
-        }
-        
     }
 }
