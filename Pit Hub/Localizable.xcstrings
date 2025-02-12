@@ -235,10 +235,24 @@
       }
     },
     "DNF" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未完赛"
+          }
+        }
+      }
     },
     "DNS" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未能发车"
+          }
+        }
+      }
     },
     "Doohan" : {
       "extractionState" : "manual",
@@ -252,7 +266,14 @@
       }
     },
     "DQ" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取消资格"
+          }
+        }
+      }
     },
     "Driver Standings" : {
       "extractionState" : "manual",
@@ -305,6 +326,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "法拉利"
+          }
+        }
+      }
+    },
+    "FP1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习赛1"
+          }
+        }
+      }
+    },
+    "FP2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习赛2"
+          }
+        }
+      }
+    },
+    "FP3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习赛3"
           }
         }
       }
@@ -423,7 +477,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "索博"
+            "value" : "Kick 索博"
           }
         }
       }
@@ -533,7 +587,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "马克斯"
           }
         }
@@ -595,7 +649,7 @@
       }
     },
     "OK" : {
-
+      "shouldTranslate" : false
     },
     "Oliver" : {
       "extractionState" : "manual",
@@ -690,6 +744,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "杆位"
+          }
+        }
+      }
+    },
+    "Qualifying" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排位赛"
+          }
+        }
+      }
+    },
+    "Race" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比赛"
           }
         }
       }

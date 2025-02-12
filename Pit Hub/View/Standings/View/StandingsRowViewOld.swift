@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StandingsRowView: View {
+struct StandingsRowViewOld: View {
     let driver: F1Driver
     let position: Int
     
@@ -49,7 +49,7 @@ struct StandingsRowView: View {
 }
 
 #Preview {
-    StandingsRowView(driver: F1Driver(
+    StandingsRowViewOld(driver: F1Driver(
         id: "2024_VER",
         season: 2024,
         nameAcronym: "VER",
@@ -76,7 +76,7 @@ struct StandingsRowView: View {
     ),position: 1)
 }
 
-extension StandingsRowView{
+extension StandingsRowViewOld{
     func gradientBackground(from hex: String) -> LinearGradient {
         let color = color(from: hex)
         return LinearGradient(

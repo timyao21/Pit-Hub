@@ -2,7 +2,7 @@
 //  StandingsView.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 1/15/25.
+//  Created by Junyu Yao on 2/12/25.
 //
 
 import SwiftUI
@@ -12,68 +12,51 @@ struct StandingsView: View {
     @StateObject var viewModel = ViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationView{
             TabView(selection: $selectedTab) {
-                // MARK: - Page 1 Drivers
                 VStack {
-                    standingTitle(selectedTab: 0)
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            ForEach(viewModel.F1Drivers.indices, id: \.self) { index in
-                                let driver = viewModel.F1Drivers[index]
-                                NavigationLink(destination: DriverDetailView(driver: driver, position: index + 1)) {
-                                    StandingsRowView(driver: driver, position: index + 1)
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                                
-                                if index < viewModel.F1Drivers.count - 1 { // Avoids divider after the last row
-                                    Divider()
-                                }
-                            }
-                        }
-                    }
-                    .tag(0)
-                }
-                // Page 2: Team Standings (Placeholder)
-                VStack {
-                    standingTitle(selectedTab: 1)
-                    VStack(spacing: 0) {
-                        ForEach(viewModel.F1Teams.indices, id: \.self) { index in
-                            let team = viewModel.F1Teams[index]
-                            StandingsTeamRowView(team: team, position: index + 1)
+                    Text("\(viewModel.year) Driver Standings")
+                        .foregroundColor(Color(S.pitHubIconColor))
+                        .font(.custom(S.smileySans, size: 23))
+                        .bold()
+                    ScrollView{
+                        ForEach(viewModel.driverStanding.indices, id: \.self){
+                            index in
+                            let driverInfo = viewModel.driverStanding[index]
+                            let currentPoints = Int(driverInfo.points) ?? 0
+                            let previousPoints = index > 0 ? Int(viewModel.driverStanding[index - 1].points) ?? 0 : currentPoints
+                            let pointsDifference = previousPoints - currentPoints
+//                            let constructorId = driverInfo.constructors.first ?? nil
+
                             
-                            if index < viewModel.F1Drivers.count - 1 { // Avoids divider after the last row
+                            DriversStandingsRowView(position: "\(driverInfo.position!)", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.first ?? nil)
+                            
+                            if index < viewModel.driverStanding.count - 1 { // Avoids divider after the last row
                                 Divider()
                             }
                         }
-                        Spacer()
+                    }
+                }
+                .tag(0)
+                ScrollView{
+                    VStack{
+                        Text("\(viewModel.year) Constructor Standings")
+                            .foregroundColor(Color(S.pitHubIconColor))
+                            .font(.custom(S.smileySans, size: 23))
+                            .bold()
                     }
                 }
                 .tag(1)
+                
             }
-            .padding(8)
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic)) // Enables swipeable pages
-            .onAppear {
-                viewModel.loadDrivers(for: viewModel.selectedYear)
-            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+        }
+        .onAppear(){
+            viewModel.fetchDriverStanding()
         }
     }
 }
 
 #Preview {
     StandingsView()
-}
-
-// MARK: - standingTitle
-struct standingTitle: View {
-    var selectedTab: Int
-    
-    var body: some View {
-        HStack {
-            Text(selectedTab == 0 ? "Driver Standings" : "Constructors Standings")
-                .font(.custom(S.smileySans, size: 30)) // Replace with your custom font
-                .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color(S.pitHubIconColor),Color.yellow]), startPoint: .leading, endPoint: .trailing))
-            Spacer()
-        }
-    }
 }

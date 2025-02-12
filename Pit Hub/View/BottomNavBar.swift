@@ -28,7 +28,7 @@ struct BottomNavBar: View {
                 Label("主页", systemImage: "house")
             }
             .tag(1)
-            StandingsView()
+            StandingsViewOld()
                 .tabItem {
                     Label("积分", systemImage: "trophy")
                 }

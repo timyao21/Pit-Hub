@@ -10,30 +10,20 @@ import Foundation
 extension StandingsView {
     class ViewModel: ObservableObject {
         
-        private let manager = FirestoreDriversManager()
+        private let driverStandingsManager = DriverStandingsManager()
         
-        @Published var selectedYear = 2024
-        @Published var F1Drivers: [F1Driver] = []
-        @Published var F1Teams: [F1Team] = []
+        @Published var driverStanding: [DriverStanding] = []
+        @Published var year: String = "2024"
         
-        // MARK: - Change the Calendar Year
-        func changeYear(year: Int) {
-            self.selectedYear = year
-        }
-        
-        // MARK: - Load Driver
-        func loadDrivers(for year: Int) {
+        func fetchDriverStanding() {
             Task {
                 do {
-                    let fetchedDrivers = try await manager.fetchDrivers(for: year)
-                    let fetchedTeams = try await manager.fetchTeam(for: year)
-                    self.F1Drivers = fetchedDrivers // Updates UI automatically
-                    self.F1Teams = fetchedTeams
+                    driverStanding = try await driverStandingsManager.fetchDriverStandings(for: "2024")
                 } catch {
-                    print("Error fetching drivers: \(error.localizedDescription)")
+                    print("Failed to fetch driver standings: \(error.localizedDescription)")
                 }
             }
         }
-        
+                
     }
 }

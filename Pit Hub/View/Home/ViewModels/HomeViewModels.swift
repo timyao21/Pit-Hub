@@ -16,14 +16,16 @@ extension HomeView {
         @Published var pastGP: [GP] = []
         
         func loadAllGP() {
-//            let today = Date()
             let dateFormatter = ISO8601DateFormatter()
             dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
-            let today = dateFormatter.date(from: "2024-07-01") ?? Date()
+//            let today = dateFormatter.date(from: "2024-07-01") ?? Date()
+            let today = Date()
+            let calendar = Calendar.current
+            let currentYear = calendar.component(.year, from: today)
             
             Task {
                 do {
-                    let allGPs = try await gpManager.fetchRaceSchedule(for: "2024")
+                    let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
                     
                     // Ensure correct date conversion
                     gps = allGPs
@@ -52,5 +54,6 @@ extension HomeView {
                 }
             }
         }
+        
     }
 }

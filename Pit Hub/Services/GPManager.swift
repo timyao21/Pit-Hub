@@ -25,7 +25,7 @@ struct GPManager {
         do {
             let scheduleResponse = try decoder.decode(F1ScheduleResponse.self, from: data)
             let races = scheduleResponse.mrData.raceTable.races
-            print("Successfully fetched \(races.count) races for \(year).")
+            print("Successfully fetched \(races.count) races for \(year). ------------- ")
             return races
         } catch {
             print("Error decoding race schedule for \(year): \(error.localizedDescription)")
