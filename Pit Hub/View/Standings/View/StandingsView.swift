@@ -26,7 +26,6 @@ struct StandingsView: View {
                             let currentPoints = Int(driverInfo.points) ?? 0
                             let previousPoints = index > 0 ? Int(viewModel.driverStanding[index - 1].points) ?? 0 : currentPoints
                             let pointsDifference = previousPoints - currentPoints
-//                            let constructorId = driverInfo.constructors.first ?? nil
 
                             
                             DriversStandingsRowView(position: "\(driverInfo.position!)", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.first ?? nil)

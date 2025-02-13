@@ -20,7 +20,7 @@ struct DriversStandingsRowView: View {
             Text(position)
                 .font(.title)
                 .frame(width: 40, alignment: .leading)
-                .foregroundColor(position == "1" ? .orange : position == "2" ? .gray : position == "3" ? .brown : .primary)
+                .foregroundColor(position == "1" ? .orange : position == "2" ? .gray : position == "3" ? .brown : .primary.opacity(0.8))
             
             VStack(alignment: .leading){
                 Text("\(driverFirstName) \(driverLastName)")
@@ -52,7 +52,8 @@ struct DriversStandingsRowView: View {
                     .frame(width: 50, alignment: .trailing)
             }
         }
-        .padding()
+        .padding(.horizontal)
+        .padding(.vertical, 5)
     }
 }
 
@@ -62,8 +63,10 @@ struct DriverConstructorTag: View {
     var body: some View {
         Text(constructor.name)
             .font(.caption)
+            .foregroundStyle(.white)
+            .bold()
             .padding(4)
-            .background(Color.gray.opacity(0.2))
+            .background(Color("\(constructor.constructorId)").opacity(0.9))
             .cornerRadius(5)
     }
 }
