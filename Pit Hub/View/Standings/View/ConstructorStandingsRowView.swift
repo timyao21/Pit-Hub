@@ -1,19 +1,17 @@
 //
-//  StandingsRowView.swift
+//  ConstructorStandingsRowView.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 1/19/25.
+//  Created by Junyu Yao on 2/13/25.
 //
 
 import SwiftUI
 
-struct DriversStandingsRowView: View {
+struct ConstructorStandingsRowView: View {
     let position: String
-    let driverFirstName: String
-    let driverLastName: String
+    let constructor : ConstructorTeam?
     let pointsDiff: String
     let points: String
-    let constructor : Constructor?
     
     var body: some View {
         HStack {
@@ -23,11 +21,11 @@ struct DriversStandingsRowView: View {
                 .foregroundColor(position == "1" ? .orange : position == "2" ? .gray : position == "3" ? .brown : .primary.opacity(0.8))
             
             VStack(alignment: .leading){
-                Text("\(driverFirstName) \(driverLastName)")
+                Text("\(constructor?.name ?? "N/A")")
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let constructor = constructor {
-                    DriverConstructorTag(constructor: constructor)
+                    ConstructorNationalityTag(constructor: constructor)
                 }
             }
             
@@ -57,30 +55,25 @@ struct DriversStandingsRowView: View {
     }
 }
 
-struct DriverConstructorTag: View {
-    let constructor: Constructor
+struct ConstructorNationalityTag: View {
+    let constructor: ConstructorTeam
     
     var body: some View {
-        Text(constructor.name)
-            .font(.caption)
-            .foregroundStyle(.white)
-            .bold()
-            .padding(4)
-            .background(
-                getConstructorColor(constructorId: constructor.constructorId)
-                    .opacity(0.9)
-            )
-            .cornerRadius(5)
-    }
-    
-    // Helper function to get color or default to black
-    private func getConstructorColor(constructorId: String) -> Color {
-        if let uiColor = UIColor(named: constructorId) {
-            return Color(uiColor)
-        } else {
-            return Color.black
+        HStack(spacing: 2) {
+            // Display flag emoji
+            Text(CountryFlags.flag(for: constructor.nationality))
+                .font(.system(size: 16))
+            
+            // Display nationality text
+            Text(constructor.nationality)
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .bold()
         }
+        .padding(4)
+        .background(Color(.systemGray6))
+        .cornerRadius(5)
     }
-    
 }
+
 

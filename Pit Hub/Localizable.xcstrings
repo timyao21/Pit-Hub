@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-" : {
+
+    },
     "%@" : {
 
     },
@@ -34,6 +37,22 @@
         }
       }
     },
+    "%@ Constructor Standings" : {
+
+    },
+    "%@ Driver Standings" : {
+
+    },
+    "%@：%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@：%2$@"
+          }
+        }
+      }
+    },
     "%@赛季" : {
 
     },
@@ -51,9 +70,6 @@
     "%lld" : {
 
     },
-    "%lld 积分" : {
-
-    },
     "%lld°C" : {
 
     },
@@ -61,9 +77,6 @@
 
     },
     "⏳ 技师们正全力维修..." : {
-
-    },
-    "Add Item" : {
 
     },
     "Albon" : {
@@ -444,9 +457,6 @@
 
     },
     "Invalid Date" : {
-
-    },
-    "Item at %@" : {
 
     },
     "Jack" : {
@@ -839,9 +849,6 @@
     "Select a Schedule" : {
 
     },
-    "Select an item" : {
-
-    },
     "Sergio" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -877,9 +884,6 @@
           }
         }
       }
-    },
-    "Team Standings" : {
-
     },
     "Time" : {
       "extractionState" : "manual",
@@ -933,6 +937,9 @@
           }
         }
       }
+    },
+    "Weather" : {
+
     },
     "Williams" : {
       "extractionState" : "manual",
@@ -1006,34 +1013,10 @@
     "我" : {
 
     },
-    "所有时间均为设备本地时区" : {
-
-    },
-    "排位 & 正赛" : {
-
-    },
     "排位赛" : {
 
     },
-    "新闻" : {
-
-    },
-    "时间：%@" : {
-
-    },
-    "显示练习赛" : {
-
-    },
-    "暂无天气数据" : {
-
-    },
-    "暂无日程" : {
-
-    },
     "正赛" : {
-
-    },
-    "比赛天气" : {
 
     },
     "涂装" : {

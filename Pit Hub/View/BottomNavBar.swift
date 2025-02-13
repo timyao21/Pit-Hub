@@ -16,11 +16,13 @@ struct BottomNavBar: View {
     
     var body: some View {
         TabView (selection: $selectedTab) {
+            
             ScheduleListView()
                 .tabItem {
                     Label("赛历", systemImage: "calendar")
                 }
                 .tag(0)
+            
             NavigationStack {
                 HomeView()
             }
@@ -28,6 +30,7 @@ struct BottomNavBar: View {
                 Label("主页", systemImage: "house")
             }
             .tag(1)
+            
             StandingsView()
                 .tabItem {
                     Label("积分", systemImage: "trophy")
