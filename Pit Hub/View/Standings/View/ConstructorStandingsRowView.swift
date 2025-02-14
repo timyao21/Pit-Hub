@@ -50,7 +50,6 @@ struct ConstructorStandingsRowView: View {
                     .frame(width: 50, alignment: .trailing)
             }
         }
-        .padding(.horizontal)
         .padding(.vertical, 5)
     }
 }

@@ -11,7 +11,6 @@ struct DriverStandingsManager {
     
     func fetchDriverStandings(for year: String) async throws -> [DriverStanding] {
         let baseURL = "https://api.jolpi.ca/ergast/f1/\(year)/driverStandings/?format=json"
-//        print("Fetching driver standings for \(year)...")
         
         guard let url = URL(string: baseURL) else {
             throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)

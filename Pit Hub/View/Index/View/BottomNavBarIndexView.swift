@@ -31,8 +31,8 @@ struct BottomNavBarIndexView: View {
             .tabItem {
                 Label("主页", systemImage: "house")
             }
-            
             .tag(1)
+            
             NavigationStack{
                 StandingsView(viewModel: viewModel)
             }
