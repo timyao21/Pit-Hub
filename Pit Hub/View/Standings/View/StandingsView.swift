@@ -9,12 +9,12 @@ import SwiftUI
 
 struct StandingsView: View {
     @State private var selectedTab = 0
-    @StateObject var viewModel = ViewModel()
+    @ObservedObject var viewModel: IndexViewModel
     
     var body: some View {
         TabView(selection: $selectedTab) {
             VStack {
-                Text("\(viewModel.year) Driver Standings")
+                Text("\(viewModel.standingViewYear) Driver Standings")
                     .foregroundColor(Color(S.pitHubIconColor))
                     .font(.custom(S.smileySans, size: 23))
                     .bold()
@@ -35,11 +35,14 @@ struct StandingsView: View {
                         }
                     }
                 }
+                .refreshable {
+                    await viewModel.refreshData()
+                }
             }
             .tag(0)
             
             VStack{
-                Text("\(viewModel.year) Constructor Standings")
+                Text("\(viewModel.standingViewYear) Constructor Standings")
                     .foregroundColor(Color(S.pitHubIconColor))
                     .font(.custom(S.smileySans, size: 23))
                     .bold()
@@ -59,20 +62,12 @@ struct StandingsView: View {
                         }
                     }
                 }
-                
+                .refreshable {
+                    await viewModel.refreshData()
+                }
             }
             .tag(1)
-            
         }
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-        .onAppear(){
-            //            viewModel.fetchDriverStanding()
-            //            viewModel.fetchConstructorStanding()
-            viewModel.loadData()
-        }
     }
-}
-
-#Preview {
-    StandingsView()
 }

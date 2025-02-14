@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct BottomNavBar: View {
+struct BottomNavBarIndexView: View {
     @State private var selectedTab = 1
     @State private var showNavBar = true // State to toggle visibility
     
-    @Environment(\.colorScheme) private var scheme
-    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    //    @Environment(\.colorScheme) private var scheme
+    //    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
+    
+    @StateObject private var viewModel = IndexViewModel()
     
     var body: some View {
         TabView (selection: $selectedTab) {
@@ -29,17 +31,22 @@ struct BottomNavBar: View {
             .tabItem {
                 Label("主页", systemImage: "house")
             }
-            .tag(1)
             
-            StandingsView()
-                .tabItem {
-                    Label("积分", systemImage: "trophy")
-                }
-                .tag(2)
+            .tag(1)
+            NavigationStack{
+                StandingsView(viewModel: viewModel)
+            }
+            .tabItem {
+                Label("积分", systemImage: "trophy")
+            }
+            .tag(2)
+        }
+        .onAppear(){
+            viewModel.loadStandingsData()
         }
     }
 }
 
 #Preview {
-    BottomNavBar()
+    BottomNavBarIndexView()
 }
