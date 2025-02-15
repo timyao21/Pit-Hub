@@ -19,7 +19,11 @@ struct HomeRaceRow: View {
                         Text("\(upcomingGP!.circuit.circuitName)")
                         Text("\(upcomingGP!.raceName)")
                             .font(.custom(S.smileySans, size: 40))
-                        Text("\(upcomingGP!.date)")
+//                        Text("\(upcomingGP!.date)")
+//                        Text("\(upcomingGP!.time)")
+                        if let localDate = DateUtilities.convertUTCToLocal(date: upcomingGP!.date, time: upcomingGP!.time!, format: "yyyy-MM-dd") {
+                            Text("\(localDate)")
+                        }
                     }
                     .font(.custom(S.smileySans, size: 20))
                     Spacer()
@@ -32,22 +36,28 @@ struct HomeRaceRow: View {
                     
                 }
             }
-            List {
+            VStack(spacing: 10) {
                 if (upcomingGP!.firstPractice != nil){
-                    RaceList(title: "FP1", date: "\(upcomingGP!.firstPractice!.date)", time: "\(upcomingGP!.firstPractice!.time!)")
+                    RaceList(title: NSLocalizedString("FP1", comment: "First Practice"), date: "\(upcomingGP!.firstPractice!.date)", time: "\(upcomingGP!.firstPractice!.time!)")
                 }
                 if (upcomingGP!.secondPractice != nil){
-                    RaceList(title: "FP2", date: "\(upcomingGP!.secondPractice!.date)", time: "\(upcomingGP!.secondPractice!.time!)")
+                    RaceList(title: NSLocalizedString("FP2", comment: "Second Practice"), date: "\(upcomingGP!.secondPractice!.date)", time: "\(upcomingGP!.secondPractice!.time!)")
+                }
+                if (upcomingGP!.sprintQualifying != nil){
+                    RaceList(title: NSLocalizedString("Sprint Quali", comment: "Sprint Quali"), date: "\(upcomingGP!.sprintQualifying!.date)", time: "\(upcomingGP!.sprintQualifying!.time!)")
                 }
                 if (upcomingGP!.thirdPractice != nil){
-                    RaceList(title: "FP3", date: "\(upcomingGP!.thirdPractice!.date)", time: "\(upcomingGP!.thirdPractice!.time!)")
+                    RaceList(title: NSLocalizedString("FP3", comment: "Third Practice"), date: "\(upcomingGP!.thirdPractice!.date)", time: "\(upcomingGP!.thirdPractice!.time!)")
+                }
+                if (upcomingGP!.sprint != nil){
+                    RaceList(title: NSLocalizedString("Sprint", comment: "Sprint"), date: "\(upcomingGP!.sprint!.date)", time: "\(upcomingGP!.sprint!.time!)")
                 }
                 if (upcomingGP!.qualifying != nil){
-                    RaceList(title: "Qualifying", date: "\(upcomingGP!.qualifying!.date)", time: "\(upcomingGP!.qualifying!.time!)")
+                    RaceList(title: NSLocalizedString("Qualifying", comment: "Qualifying"), date: "\(upcomingGP!.qualifying!.date)", time: "\(upcomingGP!.qualifying!.time!)")
                 }
-                RaceList(title: "Race", date: "\(upcomingGP!.date)", time: "\(upcomingGP!.time!)")
+                RaceList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(upcomingGP!.date)", time: "\(upcomingGP!.time!)")
             }
-            .listStyle(.plain)
+            HomeWeatherRow()
         }
     }
 }
@@ -60,10 +70,35 @@ struct RaceList: View {
     var body: some View {
         HStack{
             Text("\(title)")
+                .font(.footnote)
+                .frame(width: 80, alignment: .leading)
+            
             Spacer()
-            Text("\(date)")
+            
+            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "yyyy-MM-dd") {
+                Text("\(localDate)")
+                    .font(.footnote)
+                    .frame(width: 120, alignment: .center)
+            }else {
+                Text("UTC: \(date)")
+                    .font(.footnote)
+                    .frame(width: 120, alignment: .center)
+            }
+            
             Spacer()
-            Text("\(time)")
+            
+            if let localTime = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "HH:mm") {
+                Text("\(localTime)")
+                    .font(.footnote)
+                    .frame(width: 100, alignment: .center)
+            }else {
+                Text("UTC: \(time)")
+                    .font(.footnote)
+                    .frame(width: 100, alignment: .center)
+            }
         }
+        .padding(3)
+        Divider()
+            .padding(.horizontal)
     }
 }

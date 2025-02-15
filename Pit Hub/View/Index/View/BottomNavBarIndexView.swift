@@ -11,9 +11,6 @@ struct BottomNavBarIndexView: View {
     @State private var selectedTab = 1
     @State private var showNavBar = true // State to toggle visibility
     
-    //    @Environment(\.colorScheme) private var scheme
-    //    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
-    
     @StateObject private var viewModel = IndexViewModel()
     
     var body: some View {
@@ -26,7 +23,7 @@ struct BottomNavBarIndexView: View {
                 .tag(0)
             
             NavigationStack {
-                HomeView()
+                HomeView(viewModel: viewModel)
             }
             .tabItem {
                 Label("主页", systemImage: "house")
@@ -42,6 +39,7 @@ struct BottomNavBarIndexView: View {
             .tag(2)
         }
         .onAppear(){
+            viewModel.LoadAllGPData()
             viewModel.loadStandingsData()
         }
     }
