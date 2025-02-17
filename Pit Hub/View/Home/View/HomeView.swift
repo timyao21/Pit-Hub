@@ -12,6 +12,8 @@ struct HomeView: View {
     @ObservedObject var viewModel = IndexViewModel()
     
     var body: some View {
+        
+        ScrollView{
             VStack(spacing: 0){
                 HStack {
                     Image(S.pitIcon)
@@ -32,10 +34,19 @@ struct HomeView: View {
                 .padding(.bottom, 10)
                 if (viewModel.upcomingGP != nil){
                     HomeRaceRow(upcomingGP: viewModel.upcomingGP)
+                        .padding(.bottom, 10)
                 }
+                HomeWeatherRow()
                 Spacer()
+                if let lat = viewModel.upcomingGP?.circuit.location.lat,
+                   let long = viewModel.upcomingGP?.circuit.location.long,
+                   lat != "0", long != "0" {
+                    HomeMapView(lat: lat, long: long)
+                }
+            }
+            .padding()
         }
-        .padding()
+        .navigationBarHidden(true)
     }
 }
 

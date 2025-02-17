@@ -53,6 +53,7 @@ struct DriversStandingsRowView: View {
             }
         }
         .padding(.vertical, 5)
+        .padding(.horizontal)
     }
 }
 

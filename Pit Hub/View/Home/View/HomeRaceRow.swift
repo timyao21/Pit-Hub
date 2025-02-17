@@ -16,11 +16,13 @@ struct HomeRaceRow: View {
             if (upcomingGP != nil){
                 HStack {
                     VStack (alignment: .leading){
-                        Text("\(upcomingGP!.circuit.circuitName)")
-                        Text("\(upcomingGP!.raceName)")
+//                        Text("\(upcomingGP!.circuit.circuitName)")
+                        Text(NSLocalizedString("\(upcomingGP!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
+                        Text(NSLocalizedString("\(upcomingGP!.raceName)", comment: "Race name for upcoming Grand Prix"))
                             .font(.custom(S.smileySans, size: 40))
-//                        Text("\(upcomingGP!.date)")
-//                        Text("\(upcomingGP!.time)")
+                            .padding(.vertical, 2)
+//                        Text("\(upcomingGP!.raceName)")
+//                            .font(.custom(S.smileySans, size: 40))
                         if let localDate = DateUtilities.convertUTCToLocal(date: upcomingGP!.date, time: upcomingGP!.time!, format: "yyyy-MM-dd") {
                             Text("\(localDate)")
                         }
@@ -31,7 +33,7 @@ struct HomeRaceRow: View {
                         .resizable()
                         .renderingMode(.template) // Makes the image render as a template
                         .scaledToFit()
-                        .frame(width: 150)
+                        .frame(width: 125)
                         .foregroundColor(Color("circuitColor")) // Applies the color to the image
                     
                 }
@@ -57,7 +59,6 @@ struct HomeRaceRow: View {
                 }
                 RaceList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(upcomingGP!.date)", time: "\(upcomingGP!.time!)")
             }
-            HomeWeatherRow()
         }
     }
 }

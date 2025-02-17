@@ -29,6 +29,8 @@ struct StandingsView: View {
                     viewModel.updateStandingViewYear(for: newYear)
                 }
             }
+            .padding(.horizontal)
+            
             TabView(selection: $selectedTab) {
                 VStack {
                     ScrollView{
@@ -71,6 +73,7 @@ struct StandingsView: View {
                                 let pointsDifference = previousPoints - currentPoints
                                 
                                 ConstructorStandingsRowView(position: "\(constructorInfo.position!)", constructor: constructorInfo.constructor, pointsDiff: "\(pointsDifference)", points: "\(constructorInfo.points)")
+                                    .padding(.horizontal)
                                 
                                 if index < viewModel.constructorStanding.count - 1 {
                                     Divider()
@@ -87,6 +90,5 @@ struct StandingsView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         }
-        .padding(.horizontal)
     }
 }

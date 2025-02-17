@@ -79,6 +79,28 @@
     "⏳ 技师们正全力维修..." : {
 
     },
+    "Abu Dhabi Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿布扎比大奖赛"
+          }
+        }
+      }
+    },
+    "Albert Park Grand Prix Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿尔伯特公园赛道"
+          }
+        }
+      }
+    },
     "Albon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -145,6 +167,116 @@
         }
       }
     },
+    "Australian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "澳大利亚大奖赛"
+          }
+        }
+      }
+    },
+    "Austrian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "奥地利大奖赛"
+          }
+        }
+      }
+    },
+    "Autodromo Enzo e Dino Ferrari" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "恩佐与迪诺·法拉利赛道"
+          }
+        }
+      }
+    },
+    "Autódromo Hermanos Rodríguez" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "罗德里格斯兄弟赛道"
+          }
+        }
+      }
+    },
+    "Autódromo José Carlos Pace" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英特拉格斯赛道"
+          }
+        }
+      }
+    },
+    "Autodromo Nazionale di Monza" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙扎赛道"
+          }
+        }
+      }
+    },
+    "Azerbaijan Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿塞拜疆大奖赛"
+          }
+        }
+      }
+    },
+    "Bahrain Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴林大奖赛"
+          }
+        }
+      }
+    },
+    "Bahrain International Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴林国际赛道"
+          }
+        }
+      }
+    },
+    "Baku City Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴库市赛道"
+          }
+        }
+      }
+    },
     "Bearman" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -156,6 +288,17 @@
         }
       }
     },
+    "Belgian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比利时大奖赛"
+          }
+        }
+      }
+    },
     "Bottas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -163,6 +306,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "博塔斯"
+          }
+        }
+      }
+    },
+    "British Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英国大奖赛"
+          }
+        }
+      }
+    },
+    "Canadian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加拿大大奖赛"
           }
         }
       }
@@ -189,6 +354,83 @@
         }
       }
     },
+    "Chinese Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国大奖赛"
+          }
+        }
+      }
+    },
+    "Circuit de Barcelona-Catalunya" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加泰罗尼亚赛道"
+          }
+        }
+      }
+    },
+    "Circuit de Monaco" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙特卡洛赛道"
+          }
+        }
+      }
+    },
+    "Circuit de Spa-Francorchamps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "斯帕赛道"
+          }
+        }
+      }
+    },
+    "Circuit Gilles Villeneuve" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维伦纽夫赛道"
+          }
+        }
+      }
+    },
+    "Circuit of the Americas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "美洲赛道"
+          }
+        }
+      }
+    },
+    "Circuit Park Zandvoort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞德福特赛道"
+          }
+        }
+      }
+    },
     "Colapinto" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -196,6 +438,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "科拉平托"
+          }
+        }
+      }
+    },
+    "Constructor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车队"
           }
         }
       }
@@ -234,7 +487,14 @@
       }
     },
     "Destination" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目的地"
+          }
+        }
+      }
     },
     "Did Not Finish" : {
       "extractionState" : "manual",
@@ -288,6 +548,17 @@
         }
       }
     },
+    "Driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手"
+          }
+        }
+      }
+    },
     "Driver Standings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -295,6 +566,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "车手积分榜"
+          }
+        }
+      }
+    },
+    "Dutch Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "荷兰大奖赛"
+          }
+        }
+      }
+    },
+    "Emilia Romagna Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "艾米利亚-罗马涅大奖赛"
           }
         }
       }
@@ -453,11 +746,44 @@
         }
       }
     },
+    "Hungarian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "匈牙利大奖赛"
+          }
+        }
+      }
+    },
+    "Hungaroring" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "亨格罗宁赛道"
+          }
+        }
+      }
+    },
     "Incorrect username or password" : {
 
     },
     "Invalid Date" : {
 
+    },
+    "Italian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "意大利大奖赛"
+          }
+        }
+      }
     },
     "Jack" : {
       "extractionState" : "manual",
@@ -466,6 +792,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "杰克"
+          }
+        }
+      }
+    },
+    "Japanese Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本大奖赛"
+          }
+        }
+      }
+    },
+    "Jeddah Corniche Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吉达滨海赛道"
           }
         }
       }
@@ -510,6 +858,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "兰多"
+          }
+        }
+      }
+    },
+    "Las Vegas Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拉斯维加斯大奖赛"
+          }
+        }
+      }
+    },
+    "Las Vegas Strip Street Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拉斯维加斯赛道"
           }
         }
       }
@@ -575,6 +945,17 @@
     "Login Failed" : {
 
     },
+    "Losail International Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卢赛尔国际赛道"
+          }
+        }
+      }
+    },
     "Magnussen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -582,6 +963,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "马格努森"
+          }
+        }
+      }
+    },
+    "Marina Bay Street Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "滨海湾市街赛道"
           }
         }
       }
@@ -621,6 +1013,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "梅赛德斯"
+          }
+        }
+      }
+    },
+    "Mexico City Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "墨西哥大奖赛"
+          }
+        }
+      }
+    },
+    "Miami Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迈阿密大奖赛"
+          }
+        }
+      }
+    },
+    "Miami International Autodrome" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迈阿密国际赛道"
+          }
+        }
+      }
+    },
+    "Monaco Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摩纳哥大奖赛"
           }
         }
       }
@@ -758,6 +1194,17 @@
         }
       }
     },
+    "Qatar Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡塔尔大奖赛"
+          }
+        }
+      }
+    },
     "Qualifying" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -802,6 +1249,17 @@
         }
       }
     },
+    "Red Bull Ring" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红牛环赛道"
+          }
+        }
+      }
+    },
     "Ricciardo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -835,6 +1293,17 @@
         }
       }
     },
+    "São Paulo Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴西大奖赛"
+          }
+        }
+      }
+    },
     "Sargeant" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -842,6 +1311,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "萨金特"
+          }
+        }
+      }
+    },
+    "Saudi Arabian Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "沙特阿拉伯大奖赛"
           }
         }
       }
@@ -856,6 +1336,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "塞尔吉奥"
+          }
+        }
+      }
+    },
+    "Shanghai International Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上海国际赛车场"
+          }
+        }
+      }
+    },
+    "Silverstone Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "银石赛道"
+          }
+        }
+      }
+    },
+    "Singapore Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新加坡大奖赛"
+          }
+        }
+      }
+    },
+    "Spanish Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "西班牙大奖赛"
           }
         }
       }
@@ -885,6 +1409,17 @@
         }
       }
     },
+    "Suzuka Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "铃鹿赛车场"
+          }
+        }
+      }
+    },
     "Time" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -903,6 +1438,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "裕毅"
+          }
+        }
+      }
+    },
+    "United States Grand Prix" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "美国大奖赛"
           }
         }
       }
@@ -939,7 +1485,14 @@
       }
     },
     "Weather" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气"
+          }
+        }
+      }
     },
     "Williams" : {
       "extractionState" : "manual",
@@ -959,6 +1512,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "胜利"
+          }
+        }
+      }
+    },
+    "Yas Marina Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "亚斯码头赛道"
           }
         }
       }

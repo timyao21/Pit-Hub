@@ -51,6 +51,7 @@ struct ConstructorStandingsRowView: View {
             }
         }
         .padding(.vertical, 5)
+        .padding(.horizontal)
     }
 }
 
