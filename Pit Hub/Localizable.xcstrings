@@ -37,12 +37,6 @@
         }
       }
     },
-    "%@ Constructor Standings" : {
-
-    },
-    "%@ Driver Standings" : {
-
-    },
     "%@：%@" : {
       "localizations" : {
         "en" : {
@@ -77,6 +71,9 @@
 
     },
     "⏳ 技师们正全力维修..." : {
+
+    },
+    "🚨 Box! Box! Box! 🚨" : {
 
     },
     "Abu Dhabi Grand Prix" : {
@@ -364,6 +361,9 @@
           }
         }
       }
+    },
+    "Circuit" : {
+
     },
     "Circuit de Barcelona-Catalunya" : {
       "extractionState" : "manual",
@@ -735,6 +735,9 @@
         }
       }
     },
+    "Hold tight, the crew is on it! 🛠️⏳" : {
+
+    },
     "Hulkenberg" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -927,6 +930,9 @@
           }
         }
       }
+    },
+    "Location" : {
+
     },
     "Logan" : {
       "extractionState" : "manual",
@@ -1384,6 +1390,9 @@
         }
       }
     },
+    "Sprint" : {
+      "comment" : "Sprint"
+    },
     "SPRINT" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1394,6 +1403,9 @@
           }
         }
       }
+    },
+    "Sprint Quali" : {
+      "comment" : "Sprint Quali"
     },
     "Sry, 暂无%@数据" : {
 
@@ -1456,6 +1468,9 @@
     "Username/Email" : {
 
     },
+    "UTC: %@" : {
+
+    },
     "Valtteri" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1483,6 +1498,9 @@
           }
         }
       }
+    },
+    "We've hit a mechanical issue—time for a pit stop! 🏎️🔧" : {
+
     },
     "Weather" : {
       "localizations" : {
