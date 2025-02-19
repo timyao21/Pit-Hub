@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Root Response Model
 struct DriverStandingsRoot: Codable {
-    let mrData: DriverStandingsResponse
+    let mrData: MRData
     
     enum CodingKeys: String, CodingKey {
         case mrData = "MRData"
@@ -43,17 +43,6 @@ struct StandingsTable: Codable {
     }
 }
 
-// MARK: - Standings List
-struct StandingsList: Codable {
-    let season: String
-    let round: String
-    let driverStandings: [DriverStanding]
-    
-    enum CodingKeys: String, CodingKey {
-        case season, round
-        case driverStandings = "DriverStandings"
-    }
-}
 
 // MARK: - Driver Standing
 struct DriverStanding: Codable {

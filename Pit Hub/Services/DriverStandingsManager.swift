@@ -23,7 +23,7 @@ struct DriverStandingsManager {
         
         do {
             let driverStandingsRoot = try decoder.decode(DriverStandingsRoot.self, from: data)
-            let driverStandings = driverStandingsRoot.mrData.standingsTable.standingsLists.first?.driverStandings ?? []
+            let driverStandings = driverStandingsRoot.mrData.standingsTable?.standingsLists.first?.driverStandings ?? []
             
             print("Successfully fetched \(driverStandings.count) drivers standings for \(year). ------------- ")
             return driverStandings

@@ -74,13 +74,13 @@ struct RaceTable: Codable {
     }
 }
 
-struct MRData: Codable {
-    let raceTable: RaceTable
-    
-    enum CodingKeys: String, CodingKey {
-        case raceTable = "RaceTable"
-    }
-}
+//struct MRData: Codable {
+//    let raceTable: RaceTable
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case raceTable = "RaceTable"
+//    }
+//}
 
 struct F1ScheduleResponse: Codable {
     let mrData: MRData
