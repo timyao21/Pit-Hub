@@ -38,11 +38,11 @@ struct HomeView: View {
                 }
                 HomeWeatherRow()
                 Spacer()
-                if let lat = viewModel.upcomingGP?.circuit.location.lat,
-                   let long = viewModel.upcomingGP?.circuit.location.long,
-                   lat != "0", long != "0" {
-                    HomeMapView(lat: lat, long: long)
-                }
+//                if let lat = viewModel.upcomingGP?.circuit.location.lat,
+//                   let long = viewModel.upcomingGP?.circuit.location.long,
+//                   lat != "0", long != "0" {
+//                    HomeMapView(lat: lat, long: long)
+//                }
             }
             .padding()
         }
