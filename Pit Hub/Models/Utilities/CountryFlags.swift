@@ -41,6 +41,7 @@ struct CountryFlags {
         "Italian": "🇮🇹",
         "British": "🇬🇧",
         "American": "🇺🇸",
+        "USA": "🇺🇸",
     ]
     
     /// Retrieves the flag emoji for a given full country name, or returns a default flag if not found.

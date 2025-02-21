@@ -26,6 +26,17 @@ struct MRData: Codable {
         case standingsTable = "StandingsTable"
     }
 }
+// MARK: - Standings Table
+struct StandingsTable: Codable {
+    let season: String
+    let round: String
+    let standingsLists: [StandingsList]
+    
+    enum CodingKeys: String, CodingKey {
+        case season, round
+        case standingsLists = "StandingsLists"
+    }
+}
 
 // MARK: - Standings List
 struct StandingsList: Codable {

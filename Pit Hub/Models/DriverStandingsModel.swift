@@ -16,33 +16,6 @@ struct DriverStandingsRoot: Codable {
     }
 }
 
-// MARK: - Main Response Model
-struct DriverStandingsResponse: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let standingsTable: StandingsTable
-    
-    enum CodingKeys: String, CodingKey {
-        case series, url, limit, offset, total
-        case standingsTable = "StandingsTable"
-    }
-}
-
-// MARK: - Standings Table
-struct StandingsTable: Codable {
-    let season: String
-    let round: String
-    let standingsLists: [StandingsList]
-    
-    enum CodingKeys: String, CodingKey {
-        case season, round
-        case standingsLists = "StandingsLists"
-    }
-}
-
 
 // MARK: - Driver Standing
 struct DriverStanding: Codable {

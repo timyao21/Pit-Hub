@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Root Response Model
 struct ConstructorStandingsRoot: Codable {
-    let mrData: ConstructorStandingsResponse
+    let mrData: MRData
 
     enum CodingKeys: String, CodingKey {
         case mrData = "MRData"
@@ -18,31 +18,31 @@ struct ConstructorStandingsRoot: Codable {
 }
 
 // MARK: - Main Response Model
-struct ConstructorStandingsResponse: Codable {
-    let series: String
-    let url: String
-    let limit: String
-    let offset: String
-    let total: String
-    let standingsTable: ConstructorStandingsTable
-
-    enum CodingKeys: String, CodingKey {
-        case series, url, limit, offset, total
-        case standingsTable = "StandingsTable"
-    }
-}
+//struct ConstructorStandingsResponse: Codable {
+//    let series: String
+//    let url: String
+//    let limit: String
+//    let offset: String
+//    let total: String
+//    let standingsTable: ConstructorStandingsTable
+//
+//    enum CodingKeys: String, CodingKey {
+//        case series, url, limit, offset, total
+//        case standingsTable = "StandingsTable"
+//    }
+//}
 
 // MARK: - Constructor Standings Table
-struct ConstructorStandingsTable: Codable {
-    let season: String
-    let round: String
-    let standingsLists: [ConstructorStandingsList]
-
-    enum CodingKeys: String, CodingKey {
-        case season, round
-        case standingsLists = "StandingsLists"
-    }
-}
+//struct ConstructorStandingsTable: Codable {
+//    let season: String
+//    let round: String
+//    let standingsLists: [ConstructorStandingsList]
+//
+//    enum CodingKeys: String, CodingKey {
+//        case season, round
+//        case standingsLists = "StandingsLists"
+//    }
+//}
 
 // MARK: - Constructor Standings List
 struct ConstructorStandingsList: Codable {

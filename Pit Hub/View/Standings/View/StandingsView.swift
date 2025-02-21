@@ -12,7 +12,7 @@ struct StandingsView: View {
     @Namespace private var animation
     @ObservedObject var viewModel: IndexViewModel
     
-    let tabTitles = ["Driver", "Constructor"]
+    private let tabTitles = ["Driver", "Constructor"]
     
     var body: some View {
         VStack{
@@ -55,7 +55,7 @@ struct StandingsView: View {
                         }
                     }
                     .refreshable {
-                        await viewModel.refreshData()
+                        await viewModel.refreshStandingData()
                     }
                 }
                 .tag(0)
@@ -83,7 +83,7 @@ struct StandingsView: View {
                         }
                     }
                     .refreshable {
-                        await viewModel.refreshData()
+                        await viewModel.refreshStandingData()
                     }
                 }
                 .tag(1)

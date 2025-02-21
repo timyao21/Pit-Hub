@@ -29,7 +29,7 @@ struct HomeRaceRow: View {
                     }
                     .font(.custom(S.smileySans, size: 20))
                     Spacer()
-                    Image(upcomingGP!.circuit.location.locality)
+                    Image(upcomingGP!.circuit.circuitId)
                         .resizable()
                         .renderingMode(.template) // Makes the image render as a template
                         .scaledToFit()

@@ -7,6 +7,24 @@
 
 import Foundation
 
+struct F1ScheduleResponse: Codable {
+    let mrData: MRData
+    
+    enum CodingKeys: String, CodingKey {
+        case mrData = "MRData"
+    }
+}
+
+struct RaceTable: Codable {
+    let season: String
+    let races: [GP]
+    
+    enum CodingKeys: String, CodingKey {
+        case season
+        case races = "Races"
+    }
+}
+
 struct Circuit: Codable, Identifiable {
     var id: String { circuitId }
     let circuitId: String
@@ -33,6 +51,8 @@ struct Location: Codable {
 
 struct GP: Codable, Identifiable {
     var id = UUID()
+    let season: String
+    let round: String
     let raceName: String
     let circuit: Circuit
     let date: String
@@ -45,6 +65,8 @@ struct GP: Codable, Identifiable {
     let sprint: RaceSession?
 
     enum CodingKeys: String, CodingKey {
+        case season
+        case round
         case raceName
         case circuit = "Circuit"
         case date
@@ -64,28 +86,3 @@ struct RaceSession: Codable {
     let time: String?
 }
 
-struct RaceTable: Codable {
-    let season: String
-    let races: [GP]
-    
-    enum CodingKeys: String, CodingKey {
-        case season
-        case races = "Races"
-    }
-}
-
-//struct MRData: Codable {
-//    let raceTable: RaceTable
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case raceTable = "RaceTable"
-//    }
-//}
-
-struct F1ScheduleResponse: Codable {
-    let mrData: MRData
-    
-    enum CodingKeys: String, CodingKey {
-        case mrData = "MRData"
-    }
-}

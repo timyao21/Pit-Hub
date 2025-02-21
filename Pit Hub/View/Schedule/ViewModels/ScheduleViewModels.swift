@@ -26,7 +26,6 @@ extension ScheduleListView {
         
         // MARK: - Load the GP from firebase
         func loadAllGP() {
-//            let today = Calendar.current.startOfDay(for: Date())
             let today = Calendar.current.startOfDay(for: {
                 var components = DateComponents()
                 components.year = 2024

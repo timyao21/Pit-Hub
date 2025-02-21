@@ -9,7 +9,7 @@ import Foundation
 
 struct ConstructorStandingsManager {
     
-    func fetchConstructorStandings(for year: String) async throws -> [ConstructorStandingsList] {
+    func fetchConstructorStandings(for year: String) async throws -> [ConstructorStanding] {
         let baseURL = "https://api.jolpi.ca/ergast/f1/\(year)/constructorstandings/"
         
         guard let url = URL(string: baseURL) else {
@@ -23,7 +23,7 @@ struct ConstructorStandingsManager {
         
         do{
             let constructorStandingsRoot = try decoder.decode(ConstructorStandingsRoot.self, from: data)
-            let constructorStandingsList = constructorStandingsRoot.mrData.standingsTable.standingsLists
+            let constructorStandingsList = constructorStandingsRoot.mrData.standingsTable?.standingsLists.first?.constructorStandings ?? []
             
             return constructorStandingsList
             
