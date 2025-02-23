@@ -12,7 +12,7 @@ struct RaceCalendarDetailView: View {
     @ObservedObject var viewModel: RaceCalendarDetailViewModel
     let race: Races?
     
-    
+    @State private var showFullResults: Bool = false
     private let resultsTabTitles = ["Race", "Qualifying"]
     private let resultsTabTitlesSprint = ["Sprint", "Sprint Quali"]
     
@@ -26,36 +26,63 @@ struct RaceCalendarDetailView: View {
     }
     
     var body: some View {
-        VStack{
-            RaceSection(for: race)
-            HStack(spacing: 0){
-                PitSubtitle(for: "Race Results")
-                Text("Full Results")
-                    .font(.custom(S.smileySans, size: 16))
-                    .foregroundColor(Color(S.pitHubIconColor))
-                    .padding(.leading, 10)
+        ScrollView{
+            VStack{
+                
+                RaceSection(for: race)
+                
+                if !viewModel.raceResults.isEmpty && !viewModel.qualifyingResults.isEmpty {
+                    HStack(spacing: 0){
+                        PitSubtitle(for: "Race Results")
+                        Button(action: {
+                            showFullResults.toggle()
+                        }) {
+                            Text("Full")
+                                .font(.custom(S.smileySans, size: 16))
+                                .foregroundColor(Color(S.pitHubIconColor))
+                                .padding(.leading, 10)
+                            Image(systemName: "arrow.up.forward")
+                                .imageScale(.small)
+                                .foregroundColor(Color(S.pitHubIconColor))
+                        }
+                    }
+                    .padding(.vertical)
+                    
+                    SubTabSelector(selectedTab: $raceTab, tabTitles: resultsTabTitles)
+                    
+                    TabView(selection: $raceTab){
+                        ResultList(length: 10,results: viewModel.raceResults)
+                            .tag(0)
+                        ResultList(length: 10,results: viewModel.qualifyingResults)
+                            .tag(1)
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .frame(height: 188)
+                    
+                    
+                }
+                
+                if ((race?.sprint) != nil){
+                    SubTabSelector(selectedTab: $sprintTab, tabTitles: resultsTabTitlesSprint)
+                }
+                
+                PitSubtitle(for: "Location")
+                if let lat = race?.circuit.location.lat,
+                   let long = race?.circuit.location.long,
+                   lat != "0", long != "0" {
+                    CircuitMapView(lat: lat, long: long)
+                }
+                
             }
-            .padding(.vertical)
-            
-            SubTabSelector(selectedTab: $raceTab, tabTitles: resultsTabTitles)
-            TabView(selection: $raceTab){
-                ResultList(length: 10,results: viewModel.raceResults)
-                    .tag(0)
-                Text("q1")
-                    .tag(1)
-            }
-            .tabViewStyle(PageTabViewStyle())
-            
-            if ((race?.sprint) != nil){
-                SubTabSelector(selectedTab: $sprintTab, tabTitles: resultsTabTitlesSprint)
-            }
-            PitSubtitle(for: "Location")
-            
+            .padding()
         }
         .onAppear {
             Task {
                 await viewModel.fetchRaceResults(for: viewModel.year, raceRound: viewModel.raceRound)
             }
+        }
+        .sheet(isPresented: $showFullResults) {
+            FullRaceResultListView(raceName: race?.raceName ?? "",season: race?.season ?? "", round: race?.round ?? "", time: race?.time ?? "", raceResult: viewModel.raceResults)
         }
     }
 }

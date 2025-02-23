@@ -4,28 +4,11 @@
     "-" : {
 
     },
-    "%@" : {
+    "--" : {
 
     },
-    "%@  - %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@  - %2$@"
-          }
-        }
-      }
-    },
-    "%@ - %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ - %2$@"
-          }
-        }
-      }
+    "%@" : {
+
     },
     "%@ %@" : {
       "localizations" : {
@@ -36,19 +19,6 @@
           }
         }
       }
-    },
-    "%@：%@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@：%2$@"
-          }
-        }
-      }
-    },
-    "%@赛季" : {
-
     },
     "%d Season - Driver Stats" : {
       "extractionState" : "manual",
@@ -61,19 +31,23 @@
         }
       }
     },
-    "%lld" : {
-
+    "%lld/%lld GP Completed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld GP Completed"
+          }
+        }
+      }
     },
     "%lld°C" : {
 
     },
-    "%lld分" : {
+    "+ %@ pts" : {
 
     },
-    "⏳ 技师们正全力维修..." : {
-
-    },
-    "🚨 Box! Box! Box! 🚨" : {
+    "🏎️ Overtake Denied! 🏁" : {
 
     },
     "Abu Dhabi Grand Prix" : {
@@ -518,6 +492,7 @@
       }
     },
     "DNS" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -539,6 +514,7 @@
       }
     },
     "DQ" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -591,6 +567,9 @@
           }
         }
       }
+    },
+    "empty" : {
+
     },
     "Esteban" : {
       "extractionState" : "manual",
@@ -680,6 +659,9 @@
         }
       }
     },
+    "Full" : {
+
+    },
     "Gasly" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -735,9 +717,6 @@
         }
       }
     },
-    "Hold tight, the crew is on it! 🛠️⏳" : {
-
-    },
     "Hulkenberg" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -772,9 +751,6 @@
       }
     },
     "Incorrect username or password" : {
-
-    },
-    "Invalid Date" : {
 
     },
     "Italian Grand Prix" : {
@@ -931,9 +907,6 @@
         }
       }
     },
-    "Location" : {
-
-    },
     "Logan" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1077,6 +1050,9 @@
           }
         }
       }
+    },
+    "No Results" : {
+
     },
     "Norris" : {
       "extractionState" : "manual",
@@ -1266,6 +1242,9 @@
         }
       }
     },
+    "Refresh or check back later! 🔄" : {
+
+    },
     "Ricciardo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1332,7 +1311,7 @@
         }
       }
     },
-    "Select a Schedule" : {
+    "Season Progress" : {
 
     },
     "Sergio" : {
@@ -1423,7 +1402,7 @@
         }
       }
     },
-    "Sry, 暂无%@数据" : {
+    "Start: %@" : {
 
     },
     "Stroll" : {
@@ -1515,10 +1494,8 @@
         }
       }
     },
-    "We've hit a mechanical issue—time for a pit stop! 🏎️🔧" : {
-
-    },
     "Weather" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1595,26 +1572,7 @@
     "周日" : {
 
     },
-    "已完成 %@ / %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "已完成 %1$@ / %2$@"
-          }
-        }
-      }
-    },
-    "年F1赛程表" : {
-
-    },
     "我" : {
-
-    },
-    "排位赛" : {
-
-    },
-    "正赛" : {
 
     },
     "涂装" : {

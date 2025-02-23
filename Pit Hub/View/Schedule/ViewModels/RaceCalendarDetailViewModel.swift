@@ -15,6 +15,7 @@ extension RaceCalendarDetailView{
         @Published var raceRound: String
         
         @Published var raceResults: [Results] = []
+        @Published var qualifyingResults: [QualifyingResults] = []
         
         init(year: String, raceRound: String) {
             self.year = year
@@ -25,9 +26,11 @@ extension RaceCalendarDetailView{
             // Implement your API call here
             print("Fetching\(year) Round\(raceRound)...")
             do{
-                let allResults = try await gpManager.fetchRaceResults(for: year, round: raceRound)
+                let allRaceResults = try await gpManager.fetchRaceResults(for: year, round: raceRound)
+                let allQualifyingResults = try await gpManager.fetchQualifyingResults(for: year, round: raceRound)
                 DispatchQueue.main.async {
-                    self.raceResults = allResults
+                    self.raceResults = allRaceResults
+                    self.qualifyingResults = allQualifyingResults
                 }
                 
             }catch {

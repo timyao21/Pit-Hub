@@ -68,6 +68,7 @@ struct RaceCalendarView: View {
 private func raceCalendarScrollView(raceCalendar: [Races] = []) -> some View {
     ScrollView {
         if raceCalendar.isEmpty {
+            
             DataErrorView()
         } else {
             LazyVStack { // Use LazyVStack to optimize rendering

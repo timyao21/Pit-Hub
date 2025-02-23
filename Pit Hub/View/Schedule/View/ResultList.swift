@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ResultList: View {
+struct ResultList<T: RaceResults>: View {
     let length: Int
-    let results: [Results]?
+    let results: [T]?
     
-    init(length: Int, results: [Results]?) {
+    init(length: Int, results: [T]?) {
         self.length = length
         if let results = results {
             // Use the minimum of the provided length and the count of results.
@@ -27,31 +27,32 @@ struct ResultList: View {
         if let results = results {
             let halfIndex = results.count / 2
             
-            HStack(alignment: .top, spacing: 20) { // Create two columns with spacing
-                VStack(alignment: .leading) {
-                    ForEach(results.prefix(halfIndex).indices, id: \.self) { index in
-                        ResultListRow(result: results[index])
+            VStack{
+                HStack(alignment: .top, spacing: 10) { // Create two columns with spacing
+                    VStack(alignment: .leading) {
+                        ForEach(results.prefix(halfIndex).indices, id: \.self) { index in
+                            ResultListRow(result: results[index])
+                        }
                     }
-                }
-                
-                Divider()
-                    .padding(.vertical)
-                
-                VStack(alignment: .leading) {
-                    ForEach(results.suffix(from: halfIndex).indices, id: \.self) { index in
-                        ResultListRow(result: results[index])
+                    
+                    Divider()
+                    
+                    VStack(alignment: .leading) {
+                        ForEach(results.suffix(from: halfIndex).indices, id: \.self) { index in
+                            ResultListRow(result: results[index])
+                        }
                     }
                 }
             }
-            .padding(.vertical)
+            .padding(.top)
         } else {
             Text("No Results")
         }
     }
 }
 
-struct ResultListRow: View {
-    let result: Results
+struct ResultListRow<T: RaceResults>: View {
+    let result: T
     var body: some View {
         HStack{
             Text(result.position)

@@ -57,30 +57,5 @@ struct DriversStandingsRowView: View {
     }
 }
 
-struct DriverConstructorTag: View {
-    let constructor: Constructor
-    
-    var body: some View {
-        Text(constructor.name)
-            .font(.caption)
-            .foregroundStyle(.white)
-            .bold()
-            .padding(4)
-            .background(
-                getConstructorColor(constructorId: constructor.constructorId ?? "")
-                    .opacity(0.9)
-            )
-            .cornerRadius(5)
-    }
-    
-    // Helper function to get color or default to black
-    private func getConstructorColor(constructorId: String) -> Color {
-        if let uiColor = UIColor(named: constructorId) {
-            return Color(uiColor)
-        } else {
-            return Color.black
-        }
-    }
-    
-}
+
 

@@ -56,4 +56,26 @@ struct GPManager {
         }
     }
     
+    func fetchQualifyingResults(for year: String, round: String) async throws -> [QualifyingResults] {
+        let baseURL = "https://api.jolpi.ca/ergast/f1/\(year)/\(round)/qualifying/?format=json"
+        print("Fetching Qualifying Results for \(year) Round \(round)...")
+        guard let url = URL(string: baseURL) else {
+            throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do{
+            let qualifyingResponse = try decoder.decode(F1ScheduleResponse.self, from: data)
+            let qualifyingResults = qualifyingResponse.mrData.raceTable?.races.first?.qualifyingResults ?? []
+            return qualifyingResults
+        }catch{
+            print("Error decoding Qualifying results for \(year) Round \(round): \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
 }

@@ -42,6 +42,7 @@ struct Races: Codable, Identifiable {
     let sprintQualifying: RaceSession?
     let sprint: RaceSession?
     let results: [Results]?
+    let qualifyingResults : [QualifyingResults]?
 
     enum CodingKeys: String, CodingKey {
         case season
@@ -57,6 +58,7 @@ struct Races: Codable, Identifiable {
         case sprintQualifying = "SprintQualifying"
         case sprint = "Sprint"
         case results = "Results"
+        case qualifyingResults = "QualifyingResults"
     }
 }
 
@@ -115,7 +117,8 @@ extension Races {
         qualifying: nil,
         sprintQualifying: nil,
         sprint: nil,
-        results: nil
+        results: nil,
+        qualifyingResults: nil
     )
 }
 

@@ -7,10 +7,17 @@
 
 import Foundation
 
+// MARK: - Shared Protocol for Race & Qualifying Results
+
+protocol RaceResults {
+    var position: String { get }
+    var driver: Driver { get }
+    var constructor: Constructor? { get }
+}
 
 // MARK: - Race Result
 
-struct Results: Codable {
+struct Results: Codable, RaceResults{
     let number: String
     let position: String
     let positionText: String
@@ -58,7 +65,7 @@ struct AverageSpeed: Codable {
 
 // MARK: - Qulifying Result
 
-struct QualifyingResults: Codable{
+struct QualifyingResults: Codable, RaceResults{
     let number: String
     let position: String
     let driver: Driver
@@ -66,4 +73,13 @@ struct QualifyingResults: Codable{
     let q1: String?
     let q2: String?
     let q3: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case number, position
+        case driver = "Driver"
+        case constructor = "Constructor"
+        case q1 = "Q1"
+        case q2 = "Q2"
+        case q3 = "Q3"
+    }
 }
