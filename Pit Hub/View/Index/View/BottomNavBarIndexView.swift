@@ -16,11 +16,6 @@ struct BottomNavBarIndexView: View {
     var body: some View {
         TabView (selection: $selectedTab) {
             
-//            ScheduleListView()
-//                .tabItem {
-//                    Label("赛历", systemImage: "calendar")
-//                }
-//                .tag(0)
             NavigationStack {
                 RaceCalendarView(viewModel: viewModel)
             }
@@ -45,10 +40,9 @@ struct BottomNavBarIndexView: View {
             }
             .tag(2)
         }
-        .onAppear(){
-            viewModel.initAllGP()
-            viewModel.loadStandingsData()
-        }
+//        .onAppear(){
+//            viewModel.loadStandingsData()
+//        }
     }
 }
 

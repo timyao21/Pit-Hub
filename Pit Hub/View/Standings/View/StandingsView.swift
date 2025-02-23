@@ -35,7 +35,7 @@ struct StandingsView: View {
                 VStack {
                     ScrollView{
                         if (viewModel.driverStanding.isEmpty) {
-                            ErrorView()
+                            DataErrorView()
                         } else {
                             ForEach(viewModel.driverStanding.indices, id: \.self){
                                 index in
@@ -63,7 +63,7 @@ struct StandingsView: View {
                 VStack{
                     ScrollView{
                         if (viewModel.constructorStanding.isEmpty){
-                            ErrorView()
+                            DataErrorView()
                         } else{
                             ForEach(viewModel.constructorStanding.indices, id: \.self){
                                 index in

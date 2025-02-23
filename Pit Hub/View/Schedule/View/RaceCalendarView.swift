@@ -10,7 +10,7 @@ import SwiftUI
 struct RaceCalendarView: View {
     @ObservedObject var viewModel = IndexViewModel()
     
-    @State private var selectedTab = 0
+    @State private var selectedTab = 1
     @Namespace private var animation
     private let tabTitles = ["Past", "Upcoming"]
     
@@ -33,43 +33,65 @@ struct RaceCalendarView: View {
             
             HStack {
                 Spacer()
-                SeasonProgressView(totalGP: viewModel.raceCalendar.count, pastGP: viewModel.raceCalendarPast.count)
+                SeasonProgressView(viewModel: viewModel)
             }
             .padding(.horizontal)
             
             // MARK: - TabView
             TabView(selection: $selectedTab) {
                 VStack{
-                    ScrollView{
-                        if (viewModel.raceCalendarUpcoming.isEmpty) {
-                            ErrorView()
-                        } else{
-                            ForEach(viewModel.raceCalendarUpcoming.indices, id: \.self){
-                                index in
-                                let raceInfo = viewModel.raceCalendarUpcoming[index]
-                                
-                                RaceCalendarRowView(round: raceInfo.round, raceName: raceInfo.raceName, circuitId: raceInfo.circuit.circuitId, locality: raceInfo.circuit.location.locality, country: raceInfo.circuit.location.country, date: raceInfo.date, time: raceInfo.time ?? "", sprint: raceInfo.sprint != nil)
-                                
-                                if index < viewModel.raceCalendarUpcoming.count - 1 { // Avoids divider after the last row
-                                    Divider()
-                                        .padding(.horizontal)
-                                }
-                                
-                            }
-                        }
-                    }
+                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarPast)
                 }
                 .tag(0)
+                
+                VStack{
+                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarUpcoming)
+                }
+                .tag(1)
             }
-            
-
-            
-            
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         }
+        .refreshable {
+            await viewModel.refreshRaceCalendarData()
+        }
+        
+        
         //End of vstack
     }
 }
 
 #Preview {
     BottomNavBarIndexView()
+}
+
+@ViewBuilder
+private func raceCalendarScrollView(raceCalendar: [Races] = []) -> some View {
+    ScrollView {
+        if raceCalendar.isEmpty {
+            DataErrorView()
+        } else {
+            LazyVStack { // Use LazyVStack to optimize rendering
+                ForEach(Array(raceCalendar.enumerated()), id: \.element.id) { index, raceInfo in
+                    NavigationLink(destination: RaceCalendarDetailView(for: raceInfo)) {
+                        RaceCalendarRowView(
+                            round: raceInfo.round,
+                            raceName: raceInfo.raceName,
+                            circuitId: raceInfo.circuit.circuitId,
+                            locality: raceInfo.circuit.location.locality,
+                            country: raceInfo.circuit.location.country,
+                            date: raceInfo.date,
+                            time: raceInfo.time ?? "",
+                            sprint: raceInfo.sprint != nil
+                        )
+                    }
+                    
+                    // ✅ Place a divider unless it's the last item
+                    if index < raceCalendar.count - 1 {
+                        Divider()
+                            .padding(.horizontal)
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1228,7 +1228,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "比赛"
+            "value" : "正赛"
           }
         }
       }
@@ -1391,7 +1391,15 @@
       }
     },
     "Sprint" : {
-      "comment" : "Sprint"
+      "comment" : "Sprint",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲刺赛"
+          }
+        }
+      }
     },
     "SPRINT" : {
       "extractionState" : "manual",
@@ -1405,7 +1413,15 @@
       }
     },
     "Sprint Quali" : {
-      "comment" : "Sprint Quali"
+      "comment" : "Sprint Quali",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲刺排位赛"
+          }
+        }
+      }
     },
     "Sry, 暂无%@数据" : {
 

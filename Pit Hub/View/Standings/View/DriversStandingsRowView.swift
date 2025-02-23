@@ -67,7 +67,7 @@ struct DriverConstructorTag: View {
             .bold()
             .padding(4)
             .background(
-                getConstructorColor(constructorId: constructor.constructorId)
+                getConstructorColor(constructorId: constructor.constructorId ?? "")
                     .opacity(0.9)
             )
             .cornerRadius(5)

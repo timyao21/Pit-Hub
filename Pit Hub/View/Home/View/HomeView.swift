@@ -33,7 +33,7 @@ struct HomeView: View {
                 }
                 .padding(.bottom, 10)
                 if (viewModel.upcomingGP != nil){
-                    HomeRaceRow(upcomingGP: viewModel.upcomingGP)
+                    RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
                 }
                 HomeWeatherRow()

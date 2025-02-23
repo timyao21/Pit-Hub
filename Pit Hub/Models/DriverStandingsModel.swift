@@ -38,11 +38,11 @@ struct Driver: Codable {
     let driverId: String
     let permanentNumber: String?
     let code: String?
-    let url: String
+    let url: String?
     let givenName: String
     let familyName: String
-    let dateOfBirth: String
-    let nationality: String
+    let dateOfBirth: String?
+    let nationality: String?
     
     enum CodingKeys: String, CodingKey {
         case driverId, permanentNumber, code, url, givenName, familyName, dateOfBirth, nationality
@@ -51,8 +51,8 @@ struct Driver: Codable {
 
 // MARK: - Constructor
 struct Constructor: Codable {
-    let constructorId: String
-    let url: String
+    let constructorId: String?
+    let url: String?
     let name: String
-    let nationality: String
+    let nationality: String?
 }

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct SeasonProgressView: View {
-    let totalGP: Int
-    let pastGP: Int
+    @ObservedObject var viewModel: IndexViewModel
+    
+    private var totalGP: Int { viewModel.raceCalendar.count }
+    private var pastGP: Int { viewModel.raceCalendarPast.count }
+    
     @State private var animatedProgress: CGFloat = 0
     
     private var progress: CGFloat {
@@ -18,37 +21,38 @@ struct SeasonProgressView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                Circle()
-                    .trim(from: 0, to: 1)
-                    .stroke(Color.gray.opacity(0.3), lineWidth: 20)
-                    .frame(width: 125, height: 125)
+            VStack(alignment: .leading) {
+                Text("Season Progress")
+                    .font(.headline)
+                    .padding(.bottom, 5)
                 
-                Circle()
-                    .trim(from: 0, to: animatedProgress)
-                    .stroke(Color.red, style: StrokeStyle(lineWidth: 20, lineCap: .round))
-                    .rotationEffect(.degrees(-90))
-                    .frame(width: 125, height: 125)
-                    .animation(.easeOut(duration: 1.0), value: animatedProgress)
-                
-                VStack {
-                    Text("\(pastGP)/\(totalGP)")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    Text("GP Completed")
-                        .font(.caption)
-                        .foregroundColor(.gray)
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: geometry.size.width, height: 15)
+                            .cornerRadius(5)
+                        
+                        Rectangle()
+                            .fill(Color.red)
+                            .frame(width: geometry.size.width * animatedProgress, height: 15)
+                            .cornerRadius(5)
+                            .animation(.easeOut(duration: 1.0), value: animatedProgress)
+                    }
                 }
+                .frame(height: 15)
+                
+                Text("\(pastGP)/\(totalGP) GP Completed")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.top, 5)
             }
-            .padding()
         }
-        .frame(width: 150, height: 150)
         .onAppear {
             animatedProgress = progress
         }
+        .onChange(of: pastGP) {
+            animatedProgress = progress
+        }
     }
-}
-
-#Preview {
-    SeasonProgressView(totalGP: 24, pastGP: 5)
 }

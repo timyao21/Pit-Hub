@@ -21,13 +21,13 @@ struct RaceCalendarRowView: View {
         HStack() {
             Text(round)
                 .font(.title)
-                .frame(width: 33, alignment: .leading)
+                .frame(width: 40, alignment: .leading)
                 .foregroundColor(.primary)
 
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 2){
                     Text(CountryFlags.flag(for: country))
-                    Text(locality)
+                    Text(NSLocalizedString(locality, comment: "Locality"))
                         .font(.headline)
                         .foregroundColor(.primary)
                     if sprint {
@@ -35,13 +35,17 @@ struct RaceCalendarRowView: View {
                     }
                 }
                 
-                Text(raceName)
+                Text(NSLocalizedString(raceName, comment: "Race name"))
                     .font(.title2)
                     .foregroundColor(.primary)
-
-                Text("\(date)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                if let localDate = DateUtilities.convertUTCToLocal(date: date, time: time, format: "yyyy-MM-dd") {
+                    Text("\(localDate)")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+//                Text("\(date)")
+//                    .font(.subheadline)
+//                    .foregroundColor(.secondary)
             }
             Spacer()
             
@@ -50,6 +54,9 @@ struct RaceCalendarRowView: View {
                 .scaledToFit()
                 .frame(width: 100)
                 .foregroundColor(Color("circuitColor")) // Applies the color to the image
+            Image(systemName: "chevron.right")
+                .imageScale(.small)
+                .foregroundColor(.primary)
         }
         .padding(.vertical, 5)
         .padding(.horizontal)

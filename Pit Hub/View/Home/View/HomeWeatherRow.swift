@@ -12,10 +12,7 @@ struct HomeWeatherRow: View {
     
     var body: some View {
         VStack{
-            Text("Weather")
-                .font(.custom(S.smileySans, size: 20))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundColor(Color(S.pitHubIconColor))
+            PitSubtitle(for: "Weather")
             HStack{
                 VStack{
                     Text("周五")

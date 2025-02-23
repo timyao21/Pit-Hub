@@ -7,29 +7,35 @@
 
 import SwiftUI
 
-struct HomeRaceRow: View {
+struct RaceSection: View {
     
-    let upcomingGP: GP?
+    let race: Races?
+    
+    init(for race: Races?) {
+        self.race = race
+    }
     
     var body: some View {
         VStack{
-            if (upcomingGP != nil){
+            if (race != nil){
                 HStack {
                     VStack (alignment: .leading){
-//                        Text("\(upcomingGP!.circuit.circuitName)")
-                        Text(NSLocalizedString("\(upcomingGP!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
-                        Text(NSLocalizedString("\(upcomingGP!.raceName)", comment: "Race name for upcoming Grand Prix"))
+                        HStack{
+                            Text(NSLocalizedString("\(race!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
+                            if ((race?.sprint) != nil){
+                                SprintBadge()
+                            }
+                        }
+                        Text(NSLocalizedString("\(race!.raceName)", comment: "Race name for upcoming Grand Prix"))
                             .font(.custom(S.smileySans, size: 40))
                             .padding(.vertical, 2)
-//                        Text("\(upcomingGP!.raceName)")
-//                            .font(.custom(S.smileySans, size: 40))
-                        if let localDate = DateUtilities.convertUTCToLocal(date: upcomingGP!.date, time: upcomingGP!.time!, format: "yyyy-MM-dd") {
+                        if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: "yyyy-MM-dd") {
                             Text("\(localDate)")
                         }
                     }
                     .font(.custom(S.smileySans, size: 20))
                     Spacer()
-                    Image(upcomingGP!.circuit.circuitId)
+                    Image(race!.circuit.circuitId)
                         .resizable()
                         .renderingMode(.template) // Makes the image render as a template
                         .scaledToFit()
@@ -39,25 +45,25 @@ struct HomeRaceRow: View {
                 }
             }
             VStack(spacing: 10) {
-                if (upcomingGP!.firstPractice != nil){
-                    RaceList(title: NSLocalizedString("FP1", comment: "First Practice"), date: "\(upcomingGP!.firstPractice!.date)", time: "\(upcomingGP!.firstPractice!.time!)")
+                if (race!.firstPractice != nil){
+                    RaceList(title: NSLocalizedString("FP1", comment: "First Practice"), date: "\(race!.firstPractice!.date)", time: "\(race!.firstPractice!.time!)")
                 }
-                if (upcomingGP!.secondPractice != nil){
-                    RaceList(title: NSLocalizedString("FP2", comment: "Second Practice"), date: "\(upcomingGP!.secondPractice!.date)", time: "\(upcomingGP!.secondPractice!.time!)")
+                if (race!.secondPractice != nil){
+                    RaceList(title: NSLocalizedString("FP2", comment: "Second Practice"), date: "\(race!.secondPractice!.date)", time: "\(race!.secondPractice!.time!)")
                 }
-                if (upcomingGP!.sprintQualifying != nil){
-                    RaceList(title: NSLocalizedString("Sprint Quali", comment: "Sprint Quali"), date: "\(upcomingGP!.sprintQualifying!.date)", time: "\(upcomingGP!.sprintQualifying!.time!)")
+                if (race!.sprintQualifying != nil){
+                    RaceList(title: NSLocalizedString("Sprint Quali", comment: "Sprint Quali"), date: "\(race!.sprintQualifying!.date)", time: "\(race!.sprintQualifying!.time!)")
                 }
-                if (upcomingGP!.thirdPractice != nil){
-                    RaceList(title: NSLocalizedString("FP3", comment: "Third Practice"), date: "\(upcomingGP!.thirdPractice!.date)", time: "\(upcomingGP!.thirdPractice!.time!)")
+                if (race!.thirdPractice != nil){
+                    RaceList(title: NSLocalizedString("FP3", comment: "Third Practice"), date: "\(race!.thirdPractice!.date)", time: "\(race!.thirdPractice!.time!)")
                 }
-                if (upcomingGP!.sprint != nil){
-                    RaceList(title: NSLocalizedString("Sprint", comment: "Sprint"), date: "\(upcomingGP!.sprint!.date)", time: "\(upcomingGP!.sprint!.time!)")
+                if (race!.sprint != nil){
+                    RaceList(title: NSLocalizedString("Sprint", comment: "Sprint"), date: "\(race!.sprint!.date)", time: "\(race!.sprint!.time!)")
                 }
-                if (upcomingGP!.qualifying != nil){
-                    RaceList(title: NSLocalizedString("Qualifying", comment: "Qualifying"), date: "\(upcomingGP!.qualifying!.date)", time: "\(upcomingGP!.qualifying!.time!)")
+                if (race!.qualifying != nil){
+                    RaceList(title: NSLocalizedString("Qualifying", comment: "Qualifying"), date: "\(race!.qualifying!.date)", time: "\(race!.qualifying!.time!)")
                 }
-                RaceList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(upcomingGP!.date)", time: "\(upcomingGP!.time!)")
+                RaceList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(race!.date)", time: "\(race!.time!)")
             }
         }
     }
