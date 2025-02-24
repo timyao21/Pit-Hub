@@ -13,9 +13,8 @@ struct PitSubtitle: View {
         self.title = title
     }
     var body: some View {
-        Text("\(title)")
+        Text(NSLocalizedString("\(title)", comment: "For PitSubtitle"))
             .font(.custom(S.smileySans, size: 20))
-            .frame(maxWidth: .infinity, alignment: .leading)
             .foregroundColor(Color(S.pitHubIconColor))
     }
 }

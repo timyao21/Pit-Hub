@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     @Environment(\.colorScheme) private var scheme
     
     @State private var isActive: Bool = false
@@ -22,7 +21,6 @@ struct SplashView: View {
                 SplashScreenContent()
             }
         }
-        .preferredColorScheme(userTheme.colorScheme(for: scheme))
         .onAppear {
             startSplashTimer()
         }

@@ -20,13 +20,13 @@
         }
       }
     },
-    "%d Season - Driver Stats" : {
+    "%@ %@ result" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%d 赛季 - 车手数据"
+            "value" : "%@ %@ 成绩"
           }
         }
       }
@@ -461,6 +461,7 @@
       }
     },
     "Destination" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -482,22 +483,12 @@
       }
     },
     "DNF" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "未完赛"
-          }
-        }
-      }
-    },
-    "DNS" : {
       "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "未能发车"
+            "value" : "未完赛"
           }
         }
       }
@@ -509,17 +500,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "杜汉"
-          }
-        }
-      }
-    },
-    "DQ" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "取消资格"
           }
         }
       }
@@ -660,7 +640,15 @@
       }
     },
     "Full" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "完整"
+          }
+        }
+      }
     },
     "Gasly" : {
       "extractionState" : "manual",
@@ -750,9 +738,6 @@
         }
       }
     },
-    "Incorrect username or password" : {
-
-    },
     "Italian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -807,6 +792,9 @@
           }
         }
       }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "Kick Sauber" : {
       "extractionState" : "manual",
@@ -917,12 +905,6 @@
           }
         }
       }
-    },
-    "Login" : {
-
-    },
-    "Login Failed" : {
-
     },
     "Losail International Circuit" : {
       "extractionState" : "manual",
@@ -1076,9 +1058,6 @@
         }
       }
     },
-    "OK" : {
-      "shouldTranslate" : false
-    },
     "Oliver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1100,9 +1079,6 @@
           }
         }
       }
-    },
-    "Password" : {
-
     },
     "Perez" : {
       "extractionState" : "manual",
@@ -1136,9 +1112,6 @@
           }
         }
       }
-    },
-    "Pit House - P房" : {
-
     },
     "Pit Hub" : {
 
@@ -1209,6 +1182,17 @@
         }
       }
     },
+    "Race Results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比赛成绩"
+          }
+        }
+      }
+    },
     "RB" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1216,6 +1200,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "小红牛"
+          }
+        }
+      }
+    },
+    "Red Bull" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红牛"
           }
         }
       }
@@ -1243,7 +1238,14 @@
       }
     },
     "Refresh or check back later! 🔄" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "刷新或烧熟后再试"
+          }
+        }
+      }
     },
     "Ricciardo" : {
       "extractionState" : "manual",
@@ -1252,6 +1254,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "里卡多"
+          }
+        }
+      }
+    },
+    "Round: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回合: %@"
           }
         }
       }
@@ -1313,6 +1326,17 @@
     },
     "Season Progress" : {
 
+    },
+    "Season: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛季: %@"
+          }
+        }
+      }
     },
     "Sergio" : {
       "extractionState" : "manual",
@@ -1403,7 +1427,14 @@
       }
     },
     "Start: %@" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排位: %@"
+          }
+        }
+      }
     },
     "Stroll" : {
       "extractionState" : "manual",
@@ -1460,9 +1491,6 @@
         }
       }
     },
-    "Username/Email" : {
-
-    },
     "UTC: %@" : {
 
     },
@@ -1490,17 +1518,6 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "维斯塔潘"
-          }
-        }
-      }
-    },
-    "Weather" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "天气"
           }
         }
       }
@@ -1572,25 +1589,10 @@
     "周日" : {
 
     },
-    "我" : {
-
-    },
-    "涂装" : {
-
-    },
-    "登录" : {
-
-    },
     "积分" : {
 
     },
     "赛历" : {
-
-    },
-    "车手" : {
-
-    },
-    "车队" : {
 
     }
   },

@@ -20,7 +20,7 @@ struct BottomNavBarIndexView: View {
                 RaceCalendarView(viewModel: viewModel)
             }
             .tabItem {
-                Label("赛历", systemImage: "calendar")
+                Label("Calendar", systemImage: "calendar")
             }
             .tag(0)
             
@@ -28,7 +28,7 @@ struct BottomNavBarIndexView: View {
                 HomeView(viewModel: viewModel)
             }
             .tabItem {
-                Label("主页", systemImage: "house")
+                Label("Home", systemImage: "house")
             }
             .tag(1)
             
@@ -36,13 +36,10 @@ struct BottomNavBarIndexView: View {
                 StandingsView(viewModel: viewModel)
             }
             .tabItem {
-                Label("积分", systemImage: "trophy")
+                Label("Standings", systemImage: "trophy")
             }
             .tag(2)
         }
-//        .onAppear(){
-//            viewModel.loadStandingsData()
-//        }
     }
 }
 

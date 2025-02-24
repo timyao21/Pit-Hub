@@ -13,6 +13,7 @@ struct HomeWeatherRow: View {
     var body: some View {
         VStack{
             PitSubtitle(for: "Weather")
+                .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
                 VStack{
                     Text("周五")

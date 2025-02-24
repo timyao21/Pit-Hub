@@ -34,16 +34,20 @@ struct RaceCalendarDetailView: View {
                 if !viewModel.raceResults.isEmpty && !viewModel.qualifyingResults.isEmpty {
                     HStack(spacing: 0){
                         PitSubtitle(for: "Race Results")
+                        Spacer()
                         Button(action: {
                             showFullResults.toggle()
+                            print($raceTab)
                         }) {
-                            Text("Full")
-                                .font(.custom(S.smileySans, size: 16))
-                                .foregroundColor(Color(S.pitHubIconColor))
-                                .padding(.leading, 10)
-                            Image(systemName: "arrow.up.forward")
-                                .imageScale(.small)
-                                .foregroundColor(Color(S.pitHubIconColor))
+                            HStack(spacing: 0){
+                                PitSubtitle(for: "Full")
+                                Image(systemName: "arrow.up.forward")
+                                    .imageScale(.small)
+                                    .foregroundColor(Color(S.pitHubIconColor))
+                            }
+                            .padding(3)
+                            .background(Color.gray.opacity(0.2))
+                            .cornerRadius(5)
                         }
                     }
                     .padding(.vertical)
@@ -67,6 +71,7 @@ struct RaceCalendarDetailView: View {
                 }
                 
                 PitSubtitle(for: "Location")
+                    .frame(maxWidth: .infinity,alignment: .leading)
                 if let lat = race?.circuit.location.lat,
                    let long = race?.circuit.location.long,
                    lat != "0", long != "0" {
@@ -82,7 +87,11 @@ struct RaceCalendarDetailView: View {
             }
         }
         .sheet(isPresented: $showFullResults) {
-            FullRaceResultListView(raceName: race?.raceName ?? "",season: race?.season ?? "", round: race?.round ?? "", time: race?.time ?? "", raceResult: viewModel.raceResults)
+            if (raceTab == 0){
+                FullResultsListView(raceName: race?.raceName ?? "",season: race?.season ?? "", round: race?.round ?? "", date:race?.date ?? "", time: race?.time ?? "", raceResult: viewModel.raceResults)
+            }else{
+                FullResultsListView(raceName: race?.raceName ?? "",season: race?.season ?? "", round: race?.round ?? "", date:race?.date ?? "", time: race?.time ?? "", qualifyingResult: viewModel.qualifyingResults)
+            }
         }
     }
 }
