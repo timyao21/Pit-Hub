@@ -2,69 +2,51 @@
 //  HomeView.swift
 //  Pit Hub
 //
-//  Created by Junyu Yao on 12/19/24.
+//  Created by Junyu Yao on 2/11/25.
 //
 
 import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var viewModel = ViewModel()
-    @State private var showSetting = false
+    @ObservedObject var viewModel = IndexViewModel()
     
     var body: some View {
-        VStack(spacing: 0){
-            HStack {
-                Image(S.pitIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40)
-                Text(S.title)
-                    .foregroundColor(Color(S.pitHubIconColor))
-                    .font(.custom(S.orbitron, size: 30))
-                    .bold()
+        
+        ScrollView{
+            VStack(spacing: 0){
+                HStack {
+                    Image(S.pitIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40)
+                    Text(S.title)
+                        .foregroundColor(Color(S.pitHubIconColor))
+                        .font(.custom(S.orbitron, size: 30))
+                        .bold()
+                    Spacer()
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color(S.pitHubIconColor))
+                }
+                .padding(.bottom, 10)
+                if (viewModel.upcomingGP != nil){
+                    RaceSection(for: viewModel.upcomingGP)
+                        .padding(.bottom, 10)
+                }
+                HomeWeatherRow()
                 Spacer()
-                Button{
-                    showSetting.toggle()
-                } label: {
-                    Image(systemName: "flag.2.crossed.fill")
-                        .foregroundStyle(Color(S.pitHubIconColor))
+                if let lat = viewModel.upcomingGP?.circuit.location.lat,
+                   let long = viewModel.upcomingGP?.circuit.location.long,
+                   lat != "0", long != "0" {
+                    CircuitMapView(lat: lat, long: long)
                 }
             }
             .padding()
-
-            ScrollView{
-                VStack(spacing: 20){
-                    // MARK: - UP Coming Race
-                    if let upcomingMeeting = viewModel.upcomingMeetings.first {
-                        HomeRaceRow(meeting: upcomingMeeting)
-                            .padding()
-                    } else {
-                        Text("暂无日程")
-                            .padding()
-                    }
-                    // MARK: - Weather
-                    if let upcomingMeeting = viewModel.upcomingMeetings.first {
-                        HomeWeatherRow(meeting: upcomingMeeting)
-                            .padding()
-                            .padding(.bottom, 20)
-                    } else {
-                        Text("暂无天气数据")
-                            .padding()
-                    }
-                }
-                .padding(.bottom, 20)
-            }
         }
-        .sheet(isPresented: $showSetting) {
-            ProfileView()
-                .presentationBackground(Color(S.primaryBackground))
-                .presentationCornerRadius(50)
-        }
-        .background(Color(S.primaryBackground))
-        .onAppear {
-            viewModel.loadMeetings()
-        }
+        .navigationBarHidden(true)
     }
 }
 

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @AppStorage("userTheme") private var userTheme: Theme = .systemDefault
     @Environment(\.colorScheme) private var scheme
     
     @State private var isActive: Bool = false
@@ -17,12 +16,11 @@ struct SplashView: View {
     var body: some View {
         Group {
             if isActive {
-                BottomNavBar()
+                BottomNavBarIndexView()
             } else {
                 SplashScreenContent()
             }
         }
-        .preferredColorScheme(userTheme.colorScheme(for: scheme))
         .onAppear {
             startSplashTimer()
         }
