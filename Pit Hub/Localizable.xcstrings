@@ -292,6 +292,9 @@
         }
       }
     },
+    "Calendar" : {
+
+    },
     "Canadian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -704,6 +707,9 @@
           }
         }
       }
+    },
+    "Home" : {
+
     },
     "Hulkenberg" : {
       "extractionState" : "manual",
@@ -1426,6 +1432,9 @@
         }
       }
     },
+    "Standings" : {
+
+    },
     "Start: %@" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1577,9 +1586,6 @@
         }
       }
     },
-    "主页" : {
-
-    },
     "周五" : {
 
     },
@@ -1587,12 +1593,6 @@
 
     },
     "周日" : {
-
-    },
-    "积分" : {
-
-    },
-    "赛历" : {
 
     }
   },
