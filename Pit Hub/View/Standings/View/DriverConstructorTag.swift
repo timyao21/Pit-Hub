@@ -11,14 +11,13 @@ struct DriverConstructorTag: View {
     
     var body: some View {
         Text(NSLocalizedString(constructor.name, comment: "Constructor Name"))
-//        Text(constructor.name)
             .font(.caption)
             .foregroundStyle(.white)
             .bold()
             .padding(4)
             .background(
                 GetConstructorColor(constructorId: constructor.constructorId ?? "")
-                    .opacity(0.9)
+                    .opacity(0.8)
             )
             .cornerRadius(5)
     }

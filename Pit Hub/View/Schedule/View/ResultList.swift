@@ -54,20 +54,20 @@ struct ResultList<T: RaceResults>: View {
 struct ResultListRow<T: RaceResults>: View {
     let result: T
     var body: some View {
-        HStack{
+        HStack(alignment: .firstTextBaseline) {
             Text(result.position)
+                .font(.title3)
+                .fontWeight(.semibold)
+                .foregroundColor(PositionColor(position: result.position).color)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Text(result.driver.code ?? result.driver.familyName)
                 .font(.headline)
-                .foregroundColor(.primary)
-                .frame(width: 20, alignment: .leading)
-            Text(result.driver.code ?? "N/A")
-                .font(.system(size: 16, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-                .frame(minWidth: 20, maxWidth: .infinity, alignment: .leading)
-            if let constructor = result.constructor {
-                DriverConstructorTag(constructor: constructor)
-                    .frame(minWidth: 100, maxWidth: .infinity, alignment: .trailing)
-            }
+                .fontWeight(.semibold)
+                .foregroundColor(GetConstructorColor(constructorId: result.constructor?.constructorId ?? ""))
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .padding(.horizontal, 25)
         .frame(height: 30)
     }
 }

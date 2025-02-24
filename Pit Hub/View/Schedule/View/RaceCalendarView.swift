@@ -12,7 +12,7 @@ struct RaceCalendarView: View {
     
     @State private var selectedTab = 1
     @Namespace private var animation
-    private let tabTitles = ["Past", "Upcoming"]
+    private let tabTitles = ["Upcoming", "Past"]
     
     var body: some View {
         VStack{
@@ -40,12 +40,12 @@ struct RaceCalendarView: View {
             // MARK: - TabView
             TabView(selection: $selectedTab) {
                 VStack{
-                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarPast)
+                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarUpcoming)
                 }
                 .tag(0)
                 
                 VStack{
-                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarUpcoming)
+                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarPast.reversed())
                 }
                 .tag(1)
             }

@@ -14,15 +14,17 @@ struct ConstructorStandingsRowView: View {
     let points: String
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Text(position)
                 .font(.title)
-                .frame(width: 40, alignment: .leading)
-                .foregroundColor(position == "1" ? .orange : position == "2" ? .gray : position == "3" ? .brown : .primary.opacity(0.8))
+                .bold()
+                .frame(width: 35, alignment: .leading)
+                .foregroundColor(PositionColor(position: position).color)
             
-            VStack(alignment: .leading){
+            VStack(alignment: .leading, spacing: 3) {
                 Text("\(constructor?.name ?? "N/A")")
-                    .font(.headline)
+                    .font(.title3)
+                    .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let constructor = constructor {
                     ConstructorNationalityTag(constructor: constructor)
@@ -47,10 +49,17 @@ struct ConstructorStandingsRowView: View {
                 
                 Text(points)
                     .font(.body)
+                    .fontWeight(.semibold)
                     .frame(width: 50, alignment: .trailing)
+                
             }
+            
+            Image(systemName: "chevron.right")
+                .imageScale(.small)
+                .foregroundColor(.primary)
+            
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, 3)
         .padding(.horizontal)
     }
 }

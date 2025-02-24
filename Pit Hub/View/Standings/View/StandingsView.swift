@@ -73,7 +73,6 @@ struct StandingsView: View {
                                 let pointsDifference = previousPoints - currentPoints
                                 
                                 ConstructorStandingsRowView(position: "\(constructorInfo.position!)", constructor: constructorInfo.constructor, pointsDiff: "\(pointsDifference)", points: "\(constructorInfo.points)")
-                                    .padding(.horizontal)
                                 
                                 if index < viewModel.constructorStanding.count - 1 {
                                     Divider()

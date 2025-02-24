@@ -15,23 +15,38 @@ struct DriversStandingsRowView: View {
     let points: String
     let constructor : Constructor?
     
+    private var rowHeight: CGFloat {
+        switch position {
+        case "1":
+            return 55
+        case "2":
+            return 45
+        case "3":
+            return 35
+        default:
+            return 30
+        }
+    }
+    
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Text(position)
                 .font(.title)
-                .frame(width: 40, alignment: .leading)
-                .foregroundColor(position == "1" ? .orange : position == "2" ? .gray : position == "3" ? .brown : .primary.opacity(0.8))
+                .bold()
+                .frame(width: 35, alignment: .leading)
+                .foregroundColor(PositionColor(position: position).color)
             
-            VStack(alignment: .leading){
-                Text("\(driverFirstName) \(driverLastName)")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .leading, spacing: 3) {
+                Text("\(driverLastName)")
+                    .font(.title3)
+                    .fontWeight(.semibold)
                 if let constructor = constructor {
                     DriverConstructorTag(constructor: constructor)
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
-            HStack(spacing: 3) {
+            HStack(spacing: 2) {
                 if pointsDiff == "0" {
                     Text("-")
                         .font(.caption)
@@ -49,10 +64,14 @@ struct DriversStandingsRowView: View {
                 
                 Text(points)
                     .font(.body)
-                    .frame(width: 50, alignment: .trailing)
+                    .fontWeight(.semibold)
+                    .frame(width: 45, alignment: .trailing)
             }
+            Image(systemName: "chevron.right")
+                .imageScale(.small)
+                .foregroundColor(.primary)
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, 2)
         .padding(.horizontal)
     }
 }

@@ -45,7 +45,7 @@ struct FullResultsListView: View {
             ScrollView{
                 VStack {
                     // If race results are available, iterate over them directly.
-                    Spacer().frame(height: 120)
+                    Spacer().frame(height: 135)
                     if let raceResults = raceResult {
                         ForEach(Array(raceResults.enumerated()), id: \.element.number) {index, result in
                             FullRaceResultListRowView(
@@ -59,8 +59,14 @@ struct FullResultsListView: View {
                                 constructor: result.constructor
                             )
                             
-                            if index < raceResults.count - 1 { // Avoids divider after the last row
+//                            if index < raceResults.count - 1 { // Avoids divider after the last row
+//                                Divider()
+//                                    .padding(.horizontal)
+//                            }
+                            if index < raceResults.count - 1 { // Avoid divider after the last row
                                 Divider()
+                                    .frame(height: (index == 9) ? 2 : 1) // Optional: thicker divider for index 10 and 15
+                                    .background((index == 9) ? Color(S.pitHubIconColor).opacity(0.5) : Color.clear)
                                     .padding(.horizontal)
                             }
                         }
@@ -69,10 +75,13 @@ struct FullResultsListView: View {
                             let lapTime = result.q3 ?? result.q2 ?? result.q1 ?? ""
                             FullQualifyingResultListRowView(number: result.number, position: result.position, driverFirstName: result.driver.givenName, driverLastName: result.driver.familyName, lapTime: lapTime, constructor: result.constructor)
                             
-                            if index < raceResults.count - 1 { // Avoids divider after the last row
+                            if index < raceResults.count - 1 { // Avoid divider after the last row
                                 Divider()
+                                    .frame(height: (index == 9 || index == 14) ? 2 : 1) // Optional: thicker divider for index 10 and 15
+                                    .background((index == 9 || index == 14) ? Color(S.pitHubIconColor).opacity(0.5) : Color.clear)
                                     .padding(.horizontal)
                             }
+
                         }
                     }
                     else {
@@ -128,15 +137,6 @@ struct FullQualifyingResultListRowView: View {
     let lapTime: String
     let constructor : Constructor?
     
-    private var positionColor: Color {
-        switch position {
-        case "1": return .orange
-        case "2": return .gray
-        case "3": return .brown
-        default:  return .primary.opacity(0.8)
-        }
-    }
-    
     private var constructorColor: Color {
         GetConstructorColor(constructorId: constructor?.constructorId ?? "")
     }
@@ -145,19 +145,20 @@ struct FullQualifyingResultListRowView: View {
         HStack (alignment: .center){
             Text(position)
                 .font(.title)
+                .bold()
                 .frame(width: 40, alignment: .center)
-                .foregroundColor(positionColor)
+                .foregroundColor(PositionColor(position: position).color)
 
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
                     Text("\(driverFirstName) \(driverLastName)")
                         .font(.headline)
+                        .fontWeight(.semibold)
                         .lineLimit(1)
-                        .truncationMode(.tail)
                     Text("\(number)")
-                        .font(.custom(S.orbitron, size: 18))
-                        .bold()
+                        .font(.headline)
+                        .fontWeight(.semibold)
                         .foregroundColor(constructorColor)
                         .frame(width: 35)
                 }
