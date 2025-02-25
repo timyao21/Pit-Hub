@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+@MainActor
 extension RaceCalendarDetailView{
     class RaceCalendarDetailViewModel: ObservableObject {
         private let gpManager = GPManager()
@@ -16,6 +16,7 @@ extension RaceCalendarDetailView{
         
         @Published var raceResults: [Results] = []
         @Published var qualifyingResults: [QualifyingResults] = []
+        @Published var sprintResults: [SprintResults] = []
         
         init(year: String, raceRound: String) {
             self.year = year
@@ -23,20 +24,38 @@ extension RaceCalendarDetailView{
         }
         
         func fetchRaceResults(for year: String, raceRound: String) async {
-            // Implement your API call here
-            print("Fetching\(year) Round\(raceRound)...")
-            do{
-                let allRaceResults = try await gpManager.fetchRaceResults(for: year, round: raceRound)
-                let allQualifyingResults = try await gpManager.fetchQualifyingResults(for: year, round: raceRound)
-                DispatchQueue.main.async {
-                    self.raceResults = allRaceResults
-                    self.qualifyingResults = allQualifyingResults
+            print("Fetching \(year) Round \(raceRound)...")
+            
+            // Run both calls concurrently, converting errors to nil.
+            async let raceResults = try? gpManager.fetchRaceResults(for: year, round: raceRound)
+            async let qualifyingResults = try? gpManager.fetchQualifyingResults(for: year, round: raceRound)
+            async let sprintResults = try? gpManager.fetchSprintResults(for: "2024", round: "23")
+            
+            // Await both results concurrently.
+            let allRaceResults = await raceResults
+            let allQualifyingResults = await qualifyingResults
+            let allSprintResults = await sprintResults
+            
+            // Ensure that updates happen on the main thread
+            await MainActor.run {
+                if let results = allRaceResults {
+                    self.raceResults = results
+                } else {
+                    print("Failed to fetch race results")
                 }
                 
-            }catch {
-                print("Failed to fetch races: \(error.localizedDescription)")
+                if let results = allQualifyingResults {
+                    self.qualifyingResults = results
+                } else {
+                    print("Failed to fetch qualifying results")
+                }
+                
+                if let sprintResults = allSprintResults {
+                    self.sprintResults = sprintResults
+                } else{
+                    print( "Failed to fetch sprint results")
+                }
             }
-            
         }
         
     }

@@ -17,6 +17,7 @@ struct FullResultsListView: View {
     let title: String
     let raceResult: [Results]?
     let qualifyingResult: [QualifyingResults]?
+    let sprintResult: [SprintResults]?
     
     init(raceName: String, season: String, round: String, date: String, time: String, raceResult: [Results]?) {
         self.raceName = raceName
@@ -27,6 +28,7 @@ struct FullResultsListView: View {
         self.time = time
         self.raceResult = raceResult
         self.qualifyingResult = nil
+        self.sprintResult = nil
     }
     
     init(raceName: String, season: String, round: String, date: String, time: String, qualifyingResult: [QualifyingResults]?) {
@@ -38,6 +40,19 @@ struct FullResultsListView: View {
         self.time = time
         self.raceResult = nil
         self.qualifyingResult = qualifyingResult
+        self.sprintResult = nil
+    }
+    
+    init(raceName: String, season: String, round: String, date: String, time: String, sprintResult: [SprintResults]?) {
+        self.raceName = raceName
+        self.title = "Sprint"
+        self.season = season
+        self.round = round
+        self.date = date
+        self.time = time
+        self.raceResult = nil
+        self.qualifyingResult = nil
+        self.sprintResult = sprintResult
     }
     
     var body: some View {
@@ -59,10 +74,6 @@ struct FullResultsListView: View {
                                 constructor: result.constructor
                             )
                             
-//                            if index < raceResults.count - 1 { // Avoids divider after the last row
-//                                Divider()
-//                                    .padding(.horizontal)
-//                            }
                             if index < raceResults.count - 1 { // Avoid divider after the last row
                                 Divider()
                                     .frame(height: (index == 9) ? 2 : 1) // Optional: thicker divider for index 10 and 15
@@ -83,8 +94,27 @@ struct FullResultsListView: View {
                             }
 
                         }
-                    }
-                    else {
+                    }else if let raceResults = sprintResult{
+                        ForEach(Array(raceResults.enumerated()), id: \.element.number) {index, result in
+                            FullRaceResultListRowView(
+                                number: result.number,
+                                position: result.position,
+                                driverFirstName: result.driver.givenName, // assuming 'Driver' has these properties
+                                driverLastName: result.driver.familyName,
+                                points: result.points,
+                                status: result.status,
+                                grid: result.grid,
+                                constructor: result.constructor
+                            )
+                            
+                            if index < raceResults.count - 1 { // Avoid divider after the last row
+                                Divider()
+                                    .frame(height: (index == 9) ? 2 : 1) // Optional: thicker divider for index 10 and 15
+                                    .background((index == 9) ? Color(S.pitHubIconColor).opacity(0.5) : Color.clear)
+                                    .padding(.horizontal)
+                            }
+                        }
+                    }else {
                         Text("empty")
                     }
                 }

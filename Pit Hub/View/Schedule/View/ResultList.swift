@@ -28,18 +28,22 @@ struct ResultList<T: RaceResults>: View {
             let halfIndex = results.count / 2
             
             VStack{
-                HStack(alignment: .top, spacing: 10) { // Create two columns with spacing
-                    VStack(alignment: .leading) {
-                        ForEach(results.prefix(halfIndex).indices, id: \.self) { index in
-                            ResultListRow(result: results[index])
+                if results.isEmpty {
+                    DataErrorView()
+                }else{
+                    HStack(alignment: .top, spacing: 10) { // Create two columns with spacing
+                        VStack(alignment: .leading, spacing: 2) {
+                            ForEach(results.prefix(halfIndex).indices, id: \.self) { index in
+                                ResultListRow(result: results[index])
+                            }
                         }
-                    }
-                    
-                    Divider()
-                    
-                    VStack(alignment: .leading) {
-                        ForEach(results.suffix(from: halfIndex).indices, id: \.self) { index in
-                            ResultListRow(result: results[index])
+                        
+                        Divider()
+                        
+                        VStack(alignment: .leading, spacing: 2) {
+                            ForEach(results.suffix(from: halfIndex).indices, id: \.self) { index in
+                                ResultListRow(result: results[index])
+                            }
                         }
                     }
                 }
@@ -54,20 +58,25 @@ struct ResultList<T: RaceResults>: View {
 struct ResultListRow<T: RaceResults>: View {
     let result: T
     var body: some View {
-        HStack(alignment: .firstTextBaseline) {
+        HStack(alignment: .center) {
             Text(result.position)
-                .font(.title3)
+                .font(.body)
                 .fontWeight(.semibold)
                 .foregroundColor(PositionColor(position: result.position).color)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(width: 20, alignment: .leading)
             
             Text(result.driver.code ?? result.driver.familyName)
-                .font(.headline)
+                .font(.callout)
                 .fontWeight(.semibold)
                 .foregroundColor(GetConstructorColor(constructorId: result.constructor?.constructorId ?? ""))
-                .frame(maxWidth: .infinity, alignment: .leading)
+//
+            
+            if let constructor = result.constructor {
+                DriverConstructorTag(constructor: constructor)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
         }
-        .padding(.horizontal, 25)
-        .frame(height: 30)
+        .padding(.horizontal, 8)
+        .frame(height: 33)
     }
 }

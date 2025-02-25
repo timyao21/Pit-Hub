@@ -45,7 +45,7 @@ struct RaceTime: Codable {
 }
 
 struct FastestLap: Codable {
-    let rank: String
+    let rank: String?
     let lap: String
     let time: RaceTime?  // For FastestLap, only "time" is provided in the JSON
     let averageSpeed: AverageSpeed?
@@ -81,5 +81,29 @@ struct QualifyingResults: Codable, RaceResults{
         case q1 = "Q1"
         case q2 = "Q2"
         case q3 = "Q3"
+    }
+}
+
+// MARK: - SprintResults
+
+struct SprintResults: Codable, RaceResults{
+    let number: String
+    let position: String
+    let positionText: String
+    let points: String
+    let grid: String?
+    let laps: String?
+    let status: String?
+    let time: RaceTime?
+    let driver: Driver
+    let constructor: Constructor?
+    let fastestLap: FastestLap?
+
+    enum CodingKeys: String, CodingKey {
+        case number, position, positionText, points, grid, laps, status
+        case time = "Time"
+        case driver = "Driver"
+        case constructor = "Constructor"
+        case fastestLap = "FastestLap"
     }
 }

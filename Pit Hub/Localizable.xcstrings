@@ -1166,6 +1166,17 @@
         }
       }
     },
+    "Quali" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排位"
+          }
+        }
+      }
+    },
     "Qualifying" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1187,6 +1198,9 @@
           }
         }
       }
+    },
+    "Race is still going on!" : {
+
     },
     "Race Results" : {
       "extractionState" : "manual",
@@ -1427,10 +1441,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "冲刺排位赛"
+            "value" : "冲刺排位"
           }
         }
       }
+    },
+    "Sprint Quali Results" : {
+
     },
     "Standings" : {
 

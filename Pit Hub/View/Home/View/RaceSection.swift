@@ -19,7 +19,7 @@ struct RaceSection: View {
         VStack{
             if (race != nil){
                 HStack {
-                    VStack (alignment: .leading){
+                    VStack (alignment: .leading,spacing: 2){
                         HStack{
                             Text(NSLocalizedString("\(race!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
                             if ((race?.sprint) != nil){
@@ -27,8 +27,8 @@ struct RaceSection: View {
                             }
                         }
                         Text(NSLocalizedString("\(race!.raceName)", comment: "Race name for upcoming Grand Prix"))
-                            .font(.custom(S.smileySans, size: 40))
-                            .padding(.vertical, 2)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
                         if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: "yyyy-MM-dd") {
                             Text("\(localDate)")
                         }
@@ -77,14 +77,14 @@ struct RaceList: View {
     var body: some View {
         HStack{
             Text("\(title)")
-                .font(.footnote)
+                .font(.body)
                 .frame(width: 80, alignment: .leading)
             
             Spacer()
             
             if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "yyyy-MM-dd") {
                 Text("\(localDate)")
-                    .font(.footnote)
+                    .font(.body)
                     .frame(width: 120, alignment: .center)
             }else {
                 Text("UTC: \(date)")
@@ -96,11 +96,11 @@ struct RaceList: View {
             
             if let localTime = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "HH:mm") {
                 Text("\(localTime)")
-                    .font(.footnote)
+                    .font(.body)
                     .frame(width: 100, alignment: .center)
             }else {
                 Text("UTC: \(time)")
-                    .font(.footnote)
+                    .font(.body)
                     .frame(width: 100, alignment: .center)
             }
         }
