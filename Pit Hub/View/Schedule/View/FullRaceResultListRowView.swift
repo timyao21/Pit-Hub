@@ -41,10 +41,11 @@ struct FullRaceResultListRowView: View {
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text("\(driverFirstName) \(driverLastName)")
+                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .lineLimit(1)
+
                     Text("\(number)")
                         .font(.headline)
                         .fontWeight(.semibold)

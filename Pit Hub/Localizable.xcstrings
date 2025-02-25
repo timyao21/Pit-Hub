@@ -127,6 +127,17 @@
         }
       }
     },
+    "Alpine F1 Team" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿尔派"
+          }
+        }
+      }
+    },
     "Aston Martin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -709,9 +720,27 @@
       }
     },
     "Home" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主页"
+          }
+        }
+      }
     },
     "Hulkenberg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "霍肯博格"
+          }
+        }
+      }
+    },
+    "Hülkenberg" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
@@ -1086,6 +1115,17 @@
         }
       }
     },
+    "Past" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回顾"
+          }
+        }
+      }
+    },
     "Perez" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1224,6 +1264,17 @@
         }
       }
     },
+    "RB F1 Team" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红牛"
+          }
+        }
+      }
+    },
     "Red Bull" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1262,7 +1313,18 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "刷新或烧熟后再试"
+            "value" : "刷新或稍后再试！🔄"
+          }
+        }
+      }
+    },
+    "Results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩"
           }
         }
       }
@@ -1333,6 +1395,17 @@
         }
       }
     },
+    "Sauber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "索博"
+          }
+        }
+      }
+    },
     "Saudi Arabian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1345,7 +1418,14 @@
       }
     },
     "Season Progress" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛季进度"
+          }
+        }
+      }
     },
     "Season: %@" : {
       "extractionState" : "manual",
@@ -1517,6 +1597,17 @@
         }
       }
     },
+    "Upcoming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前瞻"
+          }
+        }
+      }
+    },
     "UTC: %@" : {
 
     },
@@ -1542,8 +1633,19 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "维斯塔潘"
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气"
           }
         }
       }

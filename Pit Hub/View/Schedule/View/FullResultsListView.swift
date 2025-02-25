@@ -148,9 +148,9 @@ private struct FullResultsHeaderView: View {
             }
             .font(.headline)
             .foregroundColor(.secondary)
-            Text(time)
-                .font(.headline)
-                .foregroundColor(.secondary)
+//            Text(time)
+//                .font(.headline)
+//                .foregroundColor(.secondary)
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -182,7 +182,7 @@ struct FullQualifyingResultListRowView: View {
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text("\(driverFirstName) \(driverLastName)")
+                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
                         .font(.headline)
                         .fontWeight(.semibold)
                         .lineLimit(1)

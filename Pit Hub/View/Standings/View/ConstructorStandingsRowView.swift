@@ -18,11 +18,11 @@ struct ConstructorStandingsRowView: View {
             Text(position)
                 .font(.title)
                 .bold()
-                .frame(width: 35, alignment: .leading)
+                .frame(width: 40, alignment: .leading)
                 .foregroundColor(PositionColor(position: position).color)
             
             VStack(alignment: .leading, spacing: 3) {
-                Text("\(constructor?.name ?? "N/A")")
+                Text(NSLocalizedString("\(constructor?.name ?? "N/A")", comment: "Constructor Name"))
                     .font(.title3)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -74,13 +74,13 @@ struct ConstructorNationalityTag: View {
                 .font(.system(size: 16))
             
             // Display nationality text
-            Text(constructor.nationality)
+            Text(NSLocalizedString(constructor.nationality, comment: "nationality Name"))
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
                 .bold()
         }
         .padding(4)
-        .background(Color(.systemGray6))
+        .background(Color(GetConstructorColor(constructorId: constructor.constructorId)).opacity(0.8))
         .cornerRadius(5)
     }
 }

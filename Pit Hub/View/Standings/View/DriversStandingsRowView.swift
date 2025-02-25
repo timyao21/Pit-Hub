@@ -33,11 +33,12 @@ struct DriversStandingsRowView: View {
             Text(position)
                 .font(.title)
                 .bold()
-                .frame(width: 35, alignment: .leading)
+                .frame(width: 40, alignment: .leading)
                 .foregroundColor(PositionColor(position: position).color)
             
             VStack(alignment: .leading, spacing: 3) {
-                Text("\(driverLastName)")
+                Text("\(NSLocalizedString(driverFirstName, comment: "Driver's first name"))· \(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
+                    .font(.headline)
                     .font(.title3)
                     .fontWeight(.semibold)
                 if let constructor = constructor {

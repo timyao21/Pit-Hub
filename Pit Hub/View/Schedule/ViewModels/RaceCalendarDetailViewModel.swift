@@ -29,7 +29,7 @@ extension RaceCalendarDetailView{
             // Run both calls concurrently, converting errors to nil.
             async let raceResults = try? gpManager.fetchRaceResults(for: year, round: raceRound)
             async let qualifyingResults = try? gpManager.fetchQualifyingResults(for: year, round: raceRound)
-            async let sprintResults = try? gpManager.fetchSprintResults(for: "2024", round: "23")
+            async let sprintResults = try? gpManager.fetchSprintResults(for: year, round: raceRound)
             
             // Await both results concurrently.
             let allRaceResults = await raceResults
