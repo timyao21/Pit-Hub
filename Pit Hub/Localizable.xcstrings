@@ -10,6 +10,16 @@
     "%@" : {
 
     },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
     "%@ %@ result" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -94,6 +104,9 @@
         }
       }
     },
+    "All times are in your local time zone" : {
+      "comment" : "All times are in your local time zone"
+    },
     "Alonso" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -137,6 +150,12 @@
           }
         }
       }
+    },
+    "App Theme" : {
+
+    },
+    "Appearance" : {
+
     },
     "Aston Martin" : {
       "extractionState" : "manual",
@@ -864,6 +883,9 @@
         }
       }
     },
+    "Language" : {
+
+    },
     "Las Vegas Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1448,6 +1470,9 @@
           }
         }
       }
+    },
+    "Settings" : {
+
     },
     "Shanghai International Circuit" : {
       "extractionState" : "manual",

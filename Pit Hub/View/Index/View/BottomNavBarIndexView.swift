@@ -40,7 +40,6 @@ struct BottomNavBarIndexView: View {
             }
             .tag(2)
         }
-        
     }
 }
 

@@ -19,7 +19,7 @@ struct RaceSection: View {
         VStack{
             if (race != nil){
                 HStack {
-                    VStack (alignment: .leading,spacing: 2){
+                    VStack (alignment: .leading, spacing: 3) {
                         HStack{
                             Text(NSLocalizedString("\(race!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
                             if ((race?.sprint) != nil){
@@ -27,7 +27,7 @@ struct RaceSection: View {
                             }
                         }
                         Text(NSLocalizedString("\(race!.raceName)", comment: "Race name for upcoming Grand Prix"))
-                            .font(.largeTitle)
+                            .font(.custom(S.orbitron, size: 30))
                             .fontWeight(.bold)
                         if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: "yyyy-MM-dd") {
                             Text("\(localDate)")
@@ -64,6 +64,10 @@ struct RaceSection: View {
                     RaceList(title: NSLocalizedString("Qualifying", comment: "Qualifying"), date: "\(race!.qualifying!.date)", time: "\(race!.qualifying!.time!)")
                 }
                 RaceList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(race!.date)", time: "\(race!.time!)")
+                Text(NSLocalizedString("All times are in your local time zone", comment: "All times are in your local time zone"))
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
     }
@@ -82,7 +86,7 @@ struct RaceList: View {
             
             Spacer()
             
-            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "yyyy-MM-dd") {
+            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "MM-dd") {
                 Text("\(localDate)")
                     .font(.body)
                     .frame(width: 120, alignment: .center)

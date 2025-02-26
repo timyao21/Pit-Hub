@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var viewModel = IndexViewModel()
+    @State private var isSettingsPresented: Bool = false
     
     var body: some View {
         
@@ -25,28 +26,41 @@ struct HomeView: View {
                         .font(.custom(S.orbitron, size: 30))
                         .bold()
                     Spacer()
-                    Image(systemName: "gearshape.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 25, height: 25)
-                        .foregroundColor(Color(S.pitHubIconColor))
+                    // Gear icon button for presenting settings as a sheet
+                    Button {
+                        isSettingsPresented = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color(S.pitHubIconColor))
+                    }
                 }
-                .padding(.bottom, 10)
+                .padding(.bottom, 8)
                 if (viewModel.upcomingGP != nil){
                     RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
                 }
                 HomeWeatherRow()
                 Spacer()
+                
                 if let lat = viewModel.upcomingGP?.circuit.location.lat,
                    let long = viewModel.upcomingGP?.circuit.location.long,
                    lat != "0", long != "0" {
+                    PitSubtitle(for: "Circuit Location")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical)
                     CircuitMapView(lat: lat, long: long)
                 }
             }
             .padding()
         }
         .navigationBarHidden(true)
+        // Present the SettingsView as a sheet when isSettingsPresented is true
+        .sheet(isPresented: $isSettingsPresented) {
+            SettingsView()
+        }
     }
 }
 

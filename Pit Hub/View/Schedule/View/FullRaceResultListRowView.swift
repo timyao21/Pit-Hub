@@ -62,7 +62,7 @@ struct FullRaceResultListRowView: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+//            .frame(maxWidth: .infinity, alignment: .leading)
             
             // Constructor tag and points now use only the space they need.
             VStack(alignment: .trailing) {
@@ -73,9 +73,9 @@ struct FullRaceResultListRowView: View {
                     .font(.body)
                     .fontWeight(.semibold)
             }
-            
+            .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+//        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
     }
 }
@@ -107,6 +107,6 @@ struct GridDiffView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .frame(width: 30)
+        .frame(width: 40)
     }
 }
