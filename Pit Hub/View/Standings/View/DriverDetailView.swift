@@ -51,7 +51,6 @@ struct DriverDetailView: View {
                 StatView(iconName: "trophy.fill", iconColor: .orange, value: driverInfo.wins, label: "Wins")
             }
             .padding(.vertical, 10)
-//            .frame(maxWidth: .infinity, alignment: .center)
             Divider()
                 
             Spacer()
