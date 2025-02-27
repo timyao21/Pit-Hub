@@ -9,9 +9,13 @@ import SwiftUI
 
 struct DriverDetailView: View {
     let driverInfo: DriverStanding
+    var year: String
+    @ObservedObject var viewModel: DriverDetailViewModel
     
-    init(for driver: DriverStanding) {
+    init(for driver: DriverStanding, year: String) {
+        self.year = year
         self.driverInfo = driver
+        viewModel = DriverDetailViewModel()
     }
     
     var body: some View {
@@ -52,10 +56,15 @@ struct DriverDetailView: View {
             }
             .padding(.vertical, 10)
             Divider()
-                
+            
             Spacer()
         }
         .padding()
+        .onAppear(){
+            Task{
+                await viewModel.fetchDriverResults(for: self.year, driverID: self.driverInfo.driver.driverId)
+            }
+        }
     }
     
     private struct NationalityTag: View {
@@ -95,7 +104,7 @@ struct DriverDetailView: View {
                     Text(value)
                         .font(.title2)
                         .fontWeight(.bold)
-//                        .foregroundColor(iconColor)
+
                     
                     Text(label.uppercased())
                         .font(.caption)
@@ -109,5 +118,5 @@ struct DriverDetailView: View {
 }
 
 #Preview {
-    DriverDetailView(for: DriverStanding.sample)
+    DriverDetailView(for: DriverStanding.sample, year: "2024")
 }

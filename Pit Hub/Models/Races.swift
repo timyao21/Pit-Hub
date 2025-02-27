@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct F1ScheduleResponse: Codable {
+struct F1RaceResponse: Codable {
     let mrData: MRData
     
     enum CodingKeys: String, CodingKey {

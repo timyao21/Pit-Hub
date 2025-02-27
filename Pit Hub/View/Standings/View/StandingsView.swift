@@ -44,7 +44,7 @@ struct StandingsView: View {
                                 let previousPoints = index > 0 ? Int(viewModel.driverStanding[index - 1].points) ?? 0 : currentPoints
                                 let pointsDifference = previousPoints - currentPoints
                                 
-                                NavigationLink(destination: DriverDetailView(for: driverInfo)) {
+                                NavigationLink(destination: DriverDetailView(for: driverInfo, year: "2024")) {
                                     DriversStandingsRowView(position: "\(driverInfo.position!)", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.last ?? nil)
                                 }
                                 .foregroundColor(.primary)

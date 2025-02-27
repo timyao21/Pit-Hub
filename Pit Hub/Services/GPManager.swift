@@ -23,7 +23,7 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let scheduleResponse = try decoder.decode(F1ScheduleResponse.self, from: data)
+            let scheduleResponse = try decoder.decode(F1RaceResponse.self, from: data)
             let races = scheduleResponse.mrData.raceTable?.races ?? []
             print("Successfully fetched \(races.count) races for \(year). ------------- ")
             return races
@@ -47,7 +47,7 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let resultsResponse = try decoder.decode(F1ScheduleResponse.self, from: data)
+            let resultsResponse = try decoder.decode(F1RaceResponse.self, from: data)
             let results = resultsResponse.mrData.raceTable?.races.first?.results ?? []
 //            print("Successfully fetched \(results.count) Race results for \(year) Round \(round). ------------- ")
             return results
@@ -72,7 +72,7 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do{
-            let qualifyingResponse = try decoder.decode(F1ScheduleResponse.self, from: data)
+            let qualifyingResponse = try decoder.decode(F1RaceResponse.self, from: data)
             let qualifyingResults = qualifyingResponse.mrData.raceTable?.races.first?.qualifyingResults ?? []
             return qualifyingResults
         }catch{
@@ -96,7 +96,7 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let sprintResultsResponse = try decoder.decode(F1ScheduleResponse.self, from: data)
+            let sprintResultsResponse = try decoder.decode(F1RaceResponse.self, from: data)
             let sprintResults = sprintResultsResponse.mrData.raceTable?.races.first?.sprintResults ?? []
             print("Successfully fetched \(sprintResults.count) sprint results for \(year) Round \(round). ------------- ")
             return sprintResults
