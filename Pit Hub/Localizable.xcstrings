@@ -31,6 +31,16 @@
         }
       }
     },
+    "%@· %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@· %2$@"
+          }
+        }
+      }
+    },
     "%lld/%lld GP Completed" : {
       "localizations" : {
         "en" : {
@@ -94,6 +104,9 @@
         }
       }
     },
+    "All times are in your local time zone" : {
+      "comment" : "All times are in your local time zone"
+    },
     "Alonso" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -126,6 +139,23 @@
           }
         }
       }
+    },
+    "Alpine F1 Team" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿尔派"
+          }
+        }
+      }
+    },
+    "App Theme" : {
+
+    },
+    "Appearance" : {
+
     },
     "Aston Martin" : {
       "extractionState" : "manual",
@@ -340,7 +370,7 @@
       }
     },
     "Circuit" : {
-
+      "comment" : "Circuit Marker"
     },
     "Circuit de Barcelona-Catalunya" : {
       "extractionState" : "manual",
@@ -643,7 +673,7 @@
       }
     },
     "Full" : {
-      "extractionState" : "stale",
+      "comment" : "Localized title text",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -709,9 +739,27 @@
       }
     },
     "Home" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主页"
+          }
+        }
+      }
     },
     "Hulkenberg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "霍肯博格"
+          }
+        }
+      }
+    },
+    "Hülkenberg" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
@@ -834,6 +882,9 @@
           }
         }
       }
+    },
+    "Language" : {
+
     },
     "Las Vegas Grand Prix" : {
       "extractionState" : "manual",
@@ -1086,6 +1137,17 @@
         }
       }
     },
+    "Past" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回顾"
+          }
+        }
+      }
+    },
     "Perez" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1166,6 +1228,17 @@
         }
       }
     },
+    "Quali" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排位"
+          }
+        }
+      }
+    },
     "Qualifying" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1188,6 +1261,9 @@
         }
       }
     },
+    "Race is still going on!" : {
+
+    },
     "Race Results" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1200,6 +1276,17 @@
       }
     },
     "RB" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红牛"
+          }
+        }
+      }
+    },
+    "RB F1 Team" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
@@ -1248,7 +1335,18 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "刷新或烧熟后再试"
+            "value" : "刷新或稍后再试！🔄"
+          }
+        }
+      }
+    },
+    "Results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩"
           }
         }
       }
@@ -1319,6 +1417,17 @@
         }
       }
     },
+    "Sauber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "索博"
+          }
+        }
+      }
+    },
     "Saudi Arabian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1331,7 +1440,14 @@
       }
     },
     "Season Progress" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛季进度"
+          }
+        }
+      }
     },
     "Season: %@" : {
       "extractionState" : "manual",
@@ -1354,6 +1470,9 @@
           }
         }
       }
+    },
+    "Settings" : {
+
     },
     "Shanghai International Circuit" : {
       "extractionState" : "manual",
@@ -1427,10 +1546,13 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "冲刺排位赛"
+            "value" : "冲刺排位"
           }
         }
       }
+    },
+    "Sprint Quali Results" : {
+
     },
     "Standings" : {
 
@@ -1500,6 +1622,17 @@
         }
       }
     },
+    "Upcoming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "前瞻"
+          }
+        }
+      }
+    },
     "UTC: %@" : {
 
     },
@@ -1525,8 +1658,19 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "维斯塔潘"
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气"
           }
         }
       }

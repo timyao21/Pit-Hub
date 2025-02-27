@@ -18,15 +18,6 @@ struct FullRaceResultListRowView: View {
     let status: String?
     let grid: String?
     let constructor: Constructor?
-    
-    private var positionColor: Color {
-        switch position {
-        case "1": return .orange
-        case "2": return .gray
-        case "3": return .brown
-        default:  return .primary.opacity(0.8)
-        }
-    }
 
     private var constructorColor: Color {
         GetConstructorColor(constructorId: constructor?.constructorId ?? "")
@@ -42,20 +33,22 @@ struct FullRaceResultListRowView: View {
     var body: some View {
         HStack (alignment: .center){
             Text(position)
-                .font(.title)
                 .frame(width: 40, alignment: .center)
-                .foregroundColor(positionColor)
+                .font(.title)
+                .bold()
+                .foregroundColor(PositionColor(position: position).color)
             
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text("\(driverFirstName) \(driverLastName)")
+                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
                         .font(.headline)
+                        .fontWeight(.semibold)
                         .lineLimit(1)
-                        .truncationMode(.tail)
+
                     Text("\(number)")
-                        .font(.custom(S.orbitron, size: 18))
-                        .bold()
+                        .font(.headline)
+                        .fontWeight(.semibold)
                         .foregroundColor(constructorColor)
                         .frame(width: 35)
                 }
@@ -67,10 +60,9 @@ struct FullRaceResultListRowView: View {
                             .font(.body)
                             .foregroundColor(.gray)
                     }
-                    .frame(height: 20)
                 }
             }
-            .layoutPriority(1)
+//            .frame(maxWidth: .infinity, alignment: .leading)
             
             // Constructor tag and points now use only the space they need.
             VStack(alignment: .trailing) {
@@ -79,10 +71,11 @@ struct FullRaceResultListRowView: View {
                 }
                 Text("+ \(points) pts")
                     .font(.body)
+                    .fontWeight(.semibold)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+//        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
     }
 }
@@ -114,6 +107,6 @@ struct GridDiffView: View {
                     .foregroundColor(.secondary)
             }
         }
-        .frame(width: 30)
+        .frame(width: 40)
     }
 }

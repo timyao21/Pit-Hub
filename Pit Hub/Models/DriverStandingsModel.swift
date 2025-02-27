@@ -56,3 +56,32 @@ struct Constructor: Codable {
     let name: String
     let nationality: String?
 }
+
+
+extension DriverStanding {
+    static let sample = DriverStanding(
+        position: "1",
+        positionText: "1",
+        points: "350",
+        wins: "10",
+        driver: Driver(
+            driverId: "hamilton",
+            permanentNumber: "44",
+            code: "HAM",
+            url: "http://en.wikipedia.org/wiki/Lewis_Hamilton",
+            givenName: "Lewis",
+            familyName: "Hamilton",
+            dateOfBirth: "1985-01-07",
+            nationality: "British"
+        ),
+        constructors: [
+            Constructor(
+                constructorId: "mercedes",
+                url: "http://en.wikipedia.org/wiki/Mercedes-Benz_in_Formula_One",
+                name: "Mercedes",
+                nationality: "German"
+            )
+        ]
+    )
+}
+

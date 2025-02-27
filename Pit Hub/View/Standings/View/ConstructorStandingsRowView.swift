@@ -14,15 +14,17 @@ struct ConstructorStandingsRowView: View {
     let points: String
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Text(position)
                 .font(.title)
+                .bold()
                 .frame(width: 40, alignment: .leading)
-                .foregroundColor(position == "1" ? .orange : position == "2" ? .gray : position == "3" ? .brown : .primary.opacity(0.8))
+                .foregroundColor(PositionColor(position: position).color)
             
-            VStack(alignment: .leading){
-                Text("\(constructor?.name ?? "N/A")")
-                    .font(.headline)
+            VStack(alignment: .leading, spacing: 3) {
+                Text(NSLocalizedString("\(constructor?.name ?? "N/A")", comment: "Constructor Name"))
+                    .font(.title3)
+                    .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let constructor = constructor {
                     ConstructorNationalityTag(constructor: constructor)
@@ -47,10 +49,17 @@ struct ConstructorStandingsRowView: View {
                 
                 Text(points)
                     .font(.body)
+                    .fontWeight(.semibold)
                     .frame(width: 50, alignment: .trailing)
+                
             }
+            
+            Image(systemName: "chevron.right")
+                .imageScale(.small)
+                .foregroundColor(.primary)
+            
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, 3)
         .padding(.horizontal)
     }
 }
@@ -65,13 +74,13 @@ struct ConstructorNationalityTag: View {
                 .font(.system(size: 16))
             
             // Display nationality text
-            Text(constructor.nationality)
+            Text(NSLocalizedString(constructor.nationality, comment: "nationality Name"))
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.white)
                 .bold()
         }
         .padding(4)
-        .background(Color(.systemGray6))
+        .background(Color(GetConstructorColor(constructorId: constructor.constructorId)).opacity(0.8))
         .cornerRadius(5)
     }
 }

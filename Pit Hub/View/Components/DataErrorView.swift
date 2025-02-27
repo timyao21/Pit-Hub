@@ -40,6 +40,17 @@ struct DataErrorView: View {
         return messages.randomElement() ?? "Data is in the wind tunnel—stay tuned! 🔧"
     }
 }
+
+struct RaceResultUpdateErrorView: View {
+    var body: some View {
+        VStack{
+            Text("Race is still going on!")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 20)
+        }
+    }
+}
 #Preview {
     DataErrorView()
 }

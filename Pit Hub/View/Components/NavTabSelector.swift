@@ -25,13 +25,13 @@ struct NavTabSelector: View {
     private func tabButton(title: String, tab: Int) -> some View {
         Button(action: { selectedTab = tab }) {
             Text(NSLocalizedString(title, comment: "Localized title text"))
-                .font(.custom(S.smileySans, size: 16))
+                .font(.custom(S.smileySans, size: 18))
                 .foregroundColor(selectedTab == tab ? .white : .gray)
                 .padding(.vertical, 10)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, 13)
                 .background(selectedTab == tab ? Color(S.pitHubIconColor) : Color.clear)
                 .clipShape(Capsule()) // Rounded button style
-                .animation(.easeInOut(duration: 0.35), value: selectedTab)
+                .animation(.easeInOut(duration: 0.45), value: selectedTab)
         }
         .buttonStyle(PlainButtonStyle()) // Removes default button tap effect
     }
