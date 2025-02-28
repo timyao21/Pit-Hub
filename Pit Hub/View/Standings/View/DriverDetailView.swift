@@ -42,9 +42,13 @@ struct DriverDetailView: View {
                 
                 Spacer()
             }
-            Text("\(driverInfo.driver.givenName) \(driverInfo.driver.familyName)")
-                .font(.largeTitle)
-                .fontWeight(.semibold)
+            HStack {
+                Text(NSLocalizedString("\(driverInfo.driver.givenName)", comment: "Driver GivenName"))
+                Text("-")
+                Text(NSLocalizedString("\(driverInfo.driver.familyName)", comment: "Driver FamilyName"))
+            }
+            .font(.largeTitle)
+            .fontWeight(.semibold)
             
             Divider()
             

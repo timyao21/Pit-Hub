@@ -30,7 +30,7 @@ extension DriverDetailView {
                 if let results = driverResult {
                     self.driverRaceResult = results
                     for result in self.driverRaceResult {
-                        let chartData = PositionChart(year: results.first?.season ?? " ", driverName: result.results?.first?.driver.familyName ?? " ", driverNumber: result.results?.first?.number, round: result.round, position: result.results?.first?.position ?? " ")
+                        let chartData = PositionChart(year: results.first?.season ?? " ", driverName: result.results?.first?.driver.familyName ?? " ", driverNumber: result.results?.first?.number, round: result.round, circuitId: result.circuit.circuitId , position: result.results?.first?.position ?? " ")
                         self.driverRaceResultPositionChart.append(chartData)
                     }
                 } else {

@@ -13,5 +13,6 @@ struct PositionChart: Codable, Identifiable{
     let driverName: String
     let driverNumber: String?
     let round: String
+    let circuitId: String?
     let position: String
 }

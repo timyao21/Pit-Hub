@@ -10,17 +10,11 @@ import SwiftUI
 struct DataErrorView: View {
     var body: some View {
         VStack(spacing: 12) {
-            Text("🏎️ Overtake Denied! 🏁")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.red)
-
-            Text(errorMessage())
+            Text(NSLocalizedString(errorMessage(), comment: "Error message"))
                 .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 20)
+                .fontWeight(.bold)
 
-            Text("Refresh or check back later! 🔄")
+            Text(NSLocalizedString("Data is still in the pit lane! ⏳",comment: "Sub Error message"))
                 .font(.subheadline)
                 .foregroundColor(.gray)
         }
@@ -31,11 +25,10 @@ struct DataErrorView: View {
 
     private func errorMessage() -> String {
         let messages = [
-            "Data is still in the pit lane—hold tight! ⏳",
-            "We’re stuck in a red flag situation—stay tuned! 🚩",
-            "Telemetry isn’t coming through—engineers are on it! 🔧",
-            "Looks like we’re under Safety Car—data coming soon! 🚥",
-            "Fasten your seatbelt, the numbers are catching up! 🏎️"
+            "Red Flag! Red Flag! 🚩",
+            "GP2 Data, GP2!",
+            "Safety car! Matthew is clearing the track—we'll resume data as soon as possible.🚥",
+            "🏎️ 8.88s Pit Stop! 🏁",
         ]
         return messages.randomElement() ?? "Data is in the wind tunnel—stay tuned! 🔧"
     }

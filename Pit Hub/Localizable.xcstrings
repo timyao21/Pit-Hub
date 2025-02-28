@@ -10,6 +10,9 @@
     "%@" : {
 
     },
+    "%@ \nSeason Peformance (Positions)" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -41,6 +44,9 @@
         }
       }
     },
+    "%lld" : {
+
+    },
     "%lld/%lld GP Completed" : {
       "localizations" : {
         "en" : {
@@ -55,10 +61,28 @@
 
     },
     "+ %@ pts" : {
-
+      "shouldTranslate" : false
+    },
+    "🏎️ 8.88s Pit Stop! 🏁" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🏎️ 8.88秒 换胎! 🏁"
+          }
+        }
+      }
     },
     "🏎️ Overtake Denied! 🏁" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🏎️ 超车失败! 🏁"
+          }
+        }
+      }
     },
     "Abu Dhabi Grand Prix" : {
       "extractionState" : "manual",
@@ -78,6 +102,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "阿尔伯特公园赛道"
+          }
+        }
+      }
+    },
+    "albert_park" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "墨尔本"
           }
         }
       }
@@ -105,7 +140,15 @@
       }
     },
     "All times are in your local time zone" : {
-      "comment" : "All times are in your local time zone"
+      "comment" : "All times are in your local time zone",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "所有时间均为设备本地时区"
+          }
+        }
+      }
     },
     "Alonso" : {
       "extractionState" : "manual",
@@ -151,11 +194,47 @@
         }
       }
     },
+    "American" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "美国"
+          }
+        }
+      }
+    },
     "App Theme" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App主题"
+          }
+        }
+      }
     },
     "Appearance" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "主题"
+          }
+        }
+      }
+    },
+    "Argentinian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿根廷"
+          }
+        }
+      }
     },
     "Aston Martin" : {
       "extractionState" : "manual",
@@ -168,6 +247,17 @@
         }
       }
     },
+    "Australian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "澳大利亚"
+          }
+        }
+      }
+    },
     "Australian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -175,6 +265,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "澳大利亚大奖赛"
+          }
+        }
+      }
+    },
+    "Austrian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "奥地利"
           }
         }
       }
@@ -234,6 +335,19 @@
         }
       }
     },
+    "Average Position" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平均排名"
+          }
+        }
+      }
+    },
+    "Avg: %@" : {
+
+    },
     "Azerbaijan Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -241,6 +355,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "阿塞拜疆大奖赛"
+          }
+        }
+      }
+    },
+    "bahrain" : {
+      "comment" : "circuitId",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴林"
           }
         }
       }
@@ -311,6 +437,17 @@
         }
       }
     },
+    "British" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英国"
+          }
+        }
+      }
+    },
     "British Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -323,7 +460,25 @@
       }
     },
     "Calendar" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛历"
+          }
+        }
+      }
+    },
+    "Canadian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加拿大"
+          }
+        }
+      }
     },
     "Canadian Grand Prix" : {
       "extractionState" : "manual",
@@ -358,6 +513,17 @@
         }
       }
     },
+    "Chinese" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国"
+          }
+        }
+      }
+    },
     "Chinese Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -370,7 +536,15 @@
       }
     },
     "Circuit" : {
-      "comment" : "Circuit Marker"
+      "comment" : "Circuit Marker",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛道"
+          }
+        }
+      }
     },
     "Circuit de Barcelona-Catalunya" : {
       "extractionState" : "manual",
@@ -412,6 +586,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "维伦纽夫赛道"
+          }
+        }
+      }
+    },
+    "Circuit Location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛道位置"
           }
         }
       }
@@ -493,6 +678,29 @@
         }
       }
     },
+    "Danish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "丹麦"
+          }
+        }
+      }
+    },
+    "Data is still in the pit lane! ⏳" : {
+      "comment" : "缺失数据",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据还在维修区！⏳"
+          }
+        }
+      }
+    },
     "Destination" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -555,6 +763,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "车手积分榜"
+          }
+        }
+      }
+    },
+    "Dutch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "荷兰"
           }
         }
       }
@@ -628,6 +847,17 @@
         }
       }
     },
+    "Finnish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "芬兰"
+          }
+        }
+      }
+    },
     "FP1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -661,6 +891,17 @@
         }
       }
     },
+    "France" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "法国"
+          }
+        }
+      }
+    },
     "Franco" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -668,6 +909,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "弗兰科"
+          }
+        }
+      }
+    },
+    "French" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "法国"
           }
         }
       }
@@ -701,6 +953,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "乔治"
+          }
+        }
+      }
+    },
+    "German" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "德国"
+          }
+        }
+      }
+    },
+    "Germany" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "德国"
+          }
+        }
+      }
+    },
+    "GP2 Data, GP2!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GP2 数据, GP2!"
           }
         }
       }
@@ -792,6 +1077,28 @@
         }
       }
     },
+    "imola" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伊莫拉"
+          }
+        }
+      }
+    },
+    "Italian" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "意大利"
+          }
+        }
+      }
+    },
     "Italian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -814,6 +1121,17 @@
         }
       }
     },
+    "Japanese" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日本"
+          }
+        }
+      }
+    },
     "Japanese Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -821,6 +1139,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "日本大奖赛"
+          }
+        }
+      }
+    },
+    "jeddah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吉达"
           }
         }
       }
@@ -847,7 +1176,7 @@
         }
       }
     },
-    "Key" : {
+    "Key 1" : {
       "extractionState" : "manual"
     },
     "Kick Sauber" : {
@@ -884,7 +1213,14 @@
       }
     },
     "Language" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言"
+          }
+        }
+      }
     },
     "Las Vegas Grand Prix" : {
       "extractionState" : "manual",
@@ -1035,6 +1371,17 @@
         }
       }
     },
+    "Mexican" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "墨西哥"
+          }
+        }
+      }
+    },
     "Mexico City Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1042,6 +1389,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "墨西哥大奖赛"
+          }
+        }
+      }
+    },
+    "miami" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迈阿密"
           }
         }
       }
@@ -1068,6 +1426,17 @@
         }
       }
     },
+    "monaco" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摩纳哥"
+          }
+        }
+      }
+    },
     "Monaco Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1075,6 +1444,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "摩纳哥大奖赛"
+          }
+        }
+      }
+    },
+    "Monegasque" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摩纳哥"
+          }
+        }
+      }
+    },
+    "Netherlands" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "荷兰"
+          }
+        }
+      }
+    },
+    "New Zealander" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新西兰"
           }
         }
       }
@@ -1159,6 +1561,17 @@
         }
       }
     },
+    "Pérez" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "佩雷兹"
+          }
+        }
+      }
+    },
     "Piastri" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1182,7 +1595,18 @@
       }
     },
     "Pit Hub" : {
-
+      "shouldTranslate" : false
+    },
+    "Pit Line" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维修区"
+          }
+        }
+      }
     },
     "Podiums" : {
       "extractionState" : "manual",
@@ -1213,6 +1637,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "杆位"
+          }
+        }
+      }
+    },
+    "Position" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排名"
+          }
+        }
+      }
+    },
+    "Position: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "排名: %@"
           }
         }
       }
@@ -1330,6 +1775,17 @@
         }
       }
     },
+    "Red Flag! Red Flag! 🚩" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红旗！红旗！🚩"
+          }
+        }
+      }
+    },
     "Refresh or check back later! 🔄" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1362,6 +1818,16 @@
         }
       }
     },
+    "Round" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "轮次"
+          }
+        }
+      }
+    },
     "Round: %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1373,6 +1839,16 @@
         }
       }
     },
+    "Round: %@ - %@ \nPositions %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Round: %1$@ - %2$@ \nPositions %3$@"
+          }
+        }
+      }
+    },
     "Russell" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1380,6 +1856,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "拉塞尔"
+          }
+        }
+      }
+    },
+    "Safety car! Matthew is clearing the track—we'll resume data as soon as possible.🚥" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全车！马修正在清理赛道，我们会尽快恢复数据🚥"
           }
         }
       }
@@ -1472,7 +1959,25 @@
       }
     },
     "Settings" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
+          }
+        }
+      }
+    },
+    "shanghai" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上海"
+          }
+        }
+      }
     },
     "Shanghai International Circuit" : {
       "extractionState" : "manual",
@@ -1503,6 +2008,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新加坡大奖赛"
+          }
+        }
+      }
+    },
+    "Spanish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "西班牙"
           }
         }
       }
@@ -1555,7 +2071,14 @@
 
     },
     "Standings" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "积分榜"
+          }
+        }
+      }
     },
     "Start: %@" : {
       "localizations" : {
@@ -1578,6 +2101,17 @@
         }
       }
     },
+    "suzuka" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "铃鹿"
+          }
+        }
+      }
+    },
     "Suzuka Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1585,6 +2119,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "铃鹿赛车场"
+          }
+        }
+      }
+    },
+    "Swiss" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "瑞士"
+          }
+        }
+      }
+    },
+    "Thai" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "泰国"
           }
         }
       }
@@ -1660,6 +2216,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "维斯塔潘"
+          }
+        }
+      }
+    },
+    "villeneuve" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加拿大"
           }
         }
       }
