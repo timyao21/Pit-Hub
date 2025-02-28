@@ -55,8 +55,7 @@ struct DriverDetailView: View {
                 StatView(iconName: "trophy.fill", iconColor: .orange, value: driverInfo.wins, label: "Wins")
             }
             .padding(.vertical, 10)
-            Divider()
-            
+            SeasonChartView(results1: viewModel.driverRaceResultPositionChart)
             Spacer()
         }
         .padding()

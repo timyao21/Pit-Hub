@@ -11,41 +11,83 @@ import Charts
 struct SeasonChartView: View {
     let results1: [PositionChart]
     
+    // Base value used to flip the chart (for example, if max position is 20, baseValue = 21)
+    private let baseValue: Double = 25.0
+    
+    // Compute the average raw finishing position from the data
+    var averageRawPosition: Double {
+        let positions = results1.compactMap { Double($0.position) }
+        guard !positions.isEmpty else { return 0 }
+        return positions.reduce(0, +) / Double(positions.count)
+    }
+    
+    // Adjust the average to match the chart’s scale (where 1st becomes highest)
+    var adjustedAveragePosition: Double {
+        baseValue - averageRawPosition
+    }
+    
     var body: some View {
         VStack {
-            Text("\(results1.first?.year ?? " ") - \(results1.first?.driverName ?? " ")")
+            HStack {
+                Text("\(results1.first?.driverName ?? "Driver")")
+                    .font(.caption)
+                    .padding(.bottom, 8)
+                Text("\(results1.first?.year ?? "Year")")
+                    .font(.caption)
+                    .padding(.bottom, 8)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .fontWeight(.semibold)
+            .foregroundColor(.gray)
+            .padding(.horizontal)
+            
             Chart {
                 ForEach(results1) { result in
                     if let roundNumber = Int(result.round),
                        let positionNumber = Int(result.position) {
-                        // Draw a line connecting each round's finishing position
-                        let adjustedPosition = 21 - positionNumber
+                        // Adjust the raw position to flip the chart using baseValue
+                        let adjustedPosition = baseValue - Double(positionNumber)
                         LineMark(
                             x: .value("Round", roundNumber),
                             y: .value("Position", adjustedPosition)
                         )
-                        // Mark each data point for clarity
+                        .foregroundStyle(Color(S.pitHubIconColor))
+                        
                         PointMark(
                             x: .value("Round", roundNumber),
                             y: .value("Position", adjustedPosition)
                         )
+                        .foregroundStyle(Color(S.pitHubIconColor))
                     }
                 }
+                // Display a rule mark at the adjusted average position with a label.
+                RuleMark(y: .value("Average Position", adjustedAveragePosition))
+                    .foregroundStyle(.blue)
+                    .annotation(position: .bottom, alignment: .trailing) {
+                        Text("Avg: \(String(format: "%.1f", averageRawPosition))")
+                            .font(.caption)
+                            .foregroundColor(.blue)
+                    }
             }
-            // Optionally customize the x and y axes:
-            .chartYScale(domain: 1...20)
+            // Use baseValue to dynamically set the y-axis scale (1...baseValue-1)
+            .chartYScale(domain: 1.0...(baseValue - 1.0))
             .chartXAxis {
                 AxisMarks(values: .automatic)
             }
             .chartYAxis {
-                AxisMarks(position: .leading)
+                AxisMarks(position: .leading) { value in
+                    if let adjustedValue = value.as(Double.self) {
+                        // Convert adjusted value back to the original finishing position.
+                        let label = Int(baseValue - adjustedValue)
+                        AxisValueLabel("\(label)")
+                    }
+                }
             }
-            .padding()
         }
-        .background(Color.gray.opacity(0.1))
-        .frame(height: 320)
-        .cornerRadius(20)
-
+        .padding()
+//        .background(Color.gray.opacity(0.1))
+        .frame(height: 188)
+//        .cornerRadius(20)
     }
 }
 

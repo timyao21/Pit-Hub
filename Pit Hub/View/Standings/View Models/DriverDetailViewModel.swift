@@ -31,7 +31,7 @@ extension DriverDetailView {
                     self.driverRaceResult = results
                     for result in self.driverRaceResult {
                         let chartData = PositionChart(year: results.first?.season ?? " ", driverName: result.results?.first?.driver.familyName ?? " ", driverNumber: result.results?.first?.number, round: result.round, position: result.results?.first?.position ?? " ")
-                        print("\(chartData)")
+                        self.driverRaceResultPositionChart.append(chartData)
                     }
                 } else {
                     print("Failed to fetch \(driverID) results")
@@ -42,6 +42,5 @@ extension DriverDetailView {
         
         // MARK: - End
         
-
     }
 }
