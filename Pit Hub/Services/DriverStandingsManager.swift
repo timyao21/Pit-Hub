@@ -32,4 +32,29 @@ struct DriverStandingsManager {
             throw error
         }
     }
+    
+    func fetchDriverRaceResult(for year: String, driverID: String) async throws -> [Races]{
+        let baseURL = "https://api.jolpi.ca/ergast/f1/\(year)/drivers/\(driverID)/results/?format=json"
+        
+        guard let url = URL(string: baseURL) else {
+            throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do{
+            let driverResultRoot = try decoder.decode(F1RaceResponse.self, from: data)
+            let driverResult = driverResultRoot.mrData.raceTable?.races ?? []
+            
+            print("Successfully fetched \(driverResult.count) drivers result for \(driverID) - \(year). ------------- ")
+            return driverResult
+        } catch{
+            print("Error decoding \(driverID) result for \(year): \(error.localizedDescription)")
+            throw error
+        }
+    }
+    
 }

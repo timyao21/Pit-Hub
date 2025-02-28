@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct F1ScheduleResponse: Codable {
+struct F1RaceResponse: Codable {
     let mrData: MRData
     
     enum CodingKeys: String, CodingKey {
@@ -43,6 +43,8 @@ struct Races: Codable, Identifiable {
     let sprint: RaceSession?
     let results: [Results]?
     let qualifyingResults : [QualifyingResults]?
+    let sprintResults : [SprintResults]?
+    //    let sprintQualifyingResults : [SprintQualifyingResults]?
 
     enum CodingKeys: String, CodingKey {
         case season
@@ -59,6 +61,7 @@ struct Races: Codable, Identifiable {
         case sprint = "Sprint"
         case results = "Results"
         case qualifyingResults = "QualifyingResults"
+        case sprintResults = "SprintResults"
     }
 }
 
@@ -118,7 +121,8 @@ extension Races {
         sprintQualifying: nil,
         sprint: nil,
         results: nil,
-        qualifyingResults: nil
+        qualifyingResults: nil,
+        sprintResults: nil
     )
 }
 

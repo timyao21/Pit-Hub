@@ -20,9 +20,11 @@
 		B21DED432D013DB800DF6D11 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = B21DED422D013DB800DF6D11 /* FirebasePerformance */; };
 		B21DED452D013DB800DF6D11 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B21DED442D013DB800DF6D11 /* FirebaseStorage */; };
 		B21DED472D013DB800DF6D11 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B21DED462D013DB800DF6D11 /* FirebaseStorageCombine-Community */; };
+		B2291B072D6F74C9004597DD /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2291B062D6F74C9004597DD /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B2291B062D6F74C9004597DD /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		B2ABD3E42CFA9A48009C96F3 /* Pit Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pit Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -61,6 +63,7 @@
 		B2ABD3DB2CFA9A48009C96F3 = {
 			isa = PBXGroup;
 			children = (
+				B2291B062D6F74C9004597DD /* SettingView.swift */,
 				B2ABD3E62CFA9A48009C96F3 /* Pit Hub */,
 				B2ABD3E52CFA9A48009C96F3 /* Products */,
 			);
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2291B072D6F74C9004597DD /* SettingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

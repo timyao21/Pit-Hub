@@ -44,8 +44,10 @@ struct StandingsView: View {
                                 let previousPoints = index > 0 ? Int(viewModel.driverStanding[index - 1].points) ?? 0 : currentPoints
                                 let pointsDifference = previousPoints - currentPoints
                                 
-                                
-                                DriversStandingsRowView(position: "\(driverInfo.position!)", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.first ?? nil)
+                                NavigationLink(destination: DriverDetailView(for: driverInfo, year: "2024")) {
+                                    DriversStandingsRowView(position: "\(driverInfo.position!)", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.last ?? nil)
+                                }
+                                .foregroundColor(.primary)
                                 
                                 if index < viewModel.driverStanding.count - 1 { // Avoids divider after the last row
                                     Divider()
@@ -73,7 +75,6 @@ struct StandingsView: View {
                                 let pointsDifference = previousPoints - currentPoints
                                 
                                 ConstructorStandingsRowView(position: "\(constructorInfo.position!)", constructor: constructorInfo.constructor, pointsDiff: "\(pointsDifference)", points: "\(constructorInfo.points)")
-                                    .padding(.horizontal)
                                 
                                 if index < viewModel.constructorStanding.count - 1 {
                                     Divider()
