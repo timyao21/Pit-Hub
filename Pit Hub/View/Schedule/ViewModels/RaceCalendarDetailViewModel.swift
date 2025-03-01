@@ -7,7 +7,7 @@
 
 import Foundation
 
-@MainActor
+//@MainActor
 extension RaceCalendarDetailView{
     class RaceCalendarDetailViewModel: ObservableObject {
         private let gpManager = GPManager()

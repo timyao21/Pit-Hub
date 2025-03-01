@@ -7,26 +7,37 @@
 
 import Foundation
 
-
-class IndexViewModel: ObservableObject, @unchecked Sendable {
+//@MainActor
+class IndexViewModel: ObservableObject{
     // MARK: - Data Manager
     private let driverStandingsManager = DriverStandingsManager()
     private let constructorStandingsManager = ConstructorStandingsManager()
     private let gpManager = GPManager()
     
     // MARK: - Home View Properties
-    @Published var scheduleViewYear: String = String(Calendar.current.component(.year, from: Date()))
+//    @Published var scheduleViewYear = "\(Calendar.current.component(.year, from: Date()))"
     @Published var allGP: [Races] = []
     @Published var allPastGP: [Races] = []
     @Published var allUpcomingGP: [Races] = []
     @Published var upcomingGP: Races?
     
     // MARK: - Race Calendar View Properties
-    @Published var raceCalendarViewYear: String = String(Calendar.current.component(.year, from: Date()))
+    @Published var raceCalendarViewYear = "\(Calendar.current.component(.year, from: Date()))"
     @Published var raceCalendar: [Races] = []
     @Published var raceCalendarPast: [Races] = []
     @Published var raceCalendarUpcoming: [Races] = []
     
+    // MARK: - Standings View Properties
+    @Published var standingViewYear = "\(Calendar.current.component(.year, from: Date()))"
+    @Published var driverStanding: [DriverStanding] = []
+    @Published var constructorStanding: [ConstructorStanding] = []
+    
+    // MARK: - Computed Property for DateFormatter
+    private var isoDateFormatter: ISO8601DateFormatter {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
+        return formatter
+    }
     
     // MARK: - Home Page GP Data
     
@@ -40,10 +51,9 @@ class IndexViewModel: ObservableObject, @unchecked Sendable {
     
 //    Load All GP
     func fetchAllGP() async {
-        let dateFormatter = ISO8601DateFormatter()
-        dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
         let today = Date()
         let calendar = Calendar.current
+        let todayUTC = DateUtilities.convertToUTC(today)
         let currentYear = calendar.component(.year, from: today)
         
         
@@ -54,15 +64,15 @@ class IndexViewModel: ObservableObject, @unchecked Sendable {
             allGP = allGPs
             
             allUpcomingGP = allGPs.filter { gp in
-                if let gpDate = dateFormatter.date(from: gp.date) {
-                    return gpDate >= today
+                if let gpDate = isoDateFormatter.date(from: gp.date) {
+                    return gpDate >= todayUTC
                 }
                 return false
             }
             
             allPastGP = allGPs.filter { gp in
-                if let gpDate = dateFormatter.date(from: gp.date) {
-                    return gpDate < today
+                if let gpDate = isoDateFormatter.date(from: gp.date) {
+                    return gpDate < todayUTC
                 }
                 return false
             }
@@ -72,9 +82,7 @@ class IndexViewModel: ObservableObject, @unchecked Sendable {
             raceCalendar = allGP
             raceCalendarPast = allPastGP
             raceCalendarUpcoming = allUpcomingGP
-            
-            print("Upcoming GPs: \(allUpcomingGP.count)")
-            print("Past GPs: \(allPastGP.count)")
+        
             
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")
@@ -160,10 +168,10 @@ class IndexViewModel: ObservableObject, @unchecked Sendable {
         }
     }
     
-    // MARK: - Standings View Properties
-    @Published var driverStanding: [DriverStanding] = []
-    @Published var constructorStanding: [ConstructorStanding] = []
-    @Published var standingViewYear: String = String(Calendar.current.component(.year, from: Date()))
+//    // MARK: - Standings View Properties
+//    @Published var driverStanding: [DriverStanding] = []
+//    @Published var constructorStanding: [ConstructorStanding] = []
+//    @Published var standingViewYear: String = String(Calendar.current.component(.year, from: Date()))
     
     // MARK: - Able to refreshData the data
     func updateStandingViewYear(for year: String) {
