@@ -44,11 +44,15 @@ struct SeasonChartView: View {
                     .foregroundColor(.blue.opacity(0.8))
 
                 }else{
-                    Text("\(results1.first?.driverName ?? "Driver") \nSeason Peformance (Positions)")
-                        .font(.caption)
-                        .lineLimit(2)
-                        .padding(.bottom, 8)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack(alignment: .leading, spacing: 4){
+                        Text(NSLocalizedString("\(results1.first?.driverName ?? "Driver")", comment: "Driver name"))
+                        Text(NSLocalizedString("Season Peformance (Positions)", comment: "Chart Title"))
+                    }
+                    .font(.caption)
+                    .lineLimit(2)
+                    .padding(.bottom, 8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
                 }
                 Text("\(results1.first?.year ?? "Year")")
                     .font(.caption)
@@ -140,14 +144,14 @@ struct SeasonChartView: View {
             }
         }
         .aspectRatio(1.5,contentMode: .fit)
-        .padding()
+//        .padding()
     }
 }
 
 struct SeasonChartView_Previews: PreviewProvider {
     static var previews: some View {
         let sampleData = [
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "1", circuitId: "silverstone", position: "2"),
+            PositionChart(year: "2023", driverName: "Hamilton", driverNumber: "44", round: "1", circuitId: "silverstone", position: "2"),
             PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "2", circuitId: "monza", position: "1"),
             PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "3", circuitId: "spa", position: "3"),
             PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "4", circuitId: "interlagos", position: "4"),

@@ -205,6 +205,17 @@
         }
       }
     },
+    "americas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "美洲"
+          }
+        }
+      }
+    },
     "App Theme" : {
       "localizations" : {
         "zh-Hans" : {
@@ -393,6 +404,17 @@
         }
       }
     },
+    "baku" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴库"
+          }
+        }
+      }
+    },
     "Baku City Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -498,6 +520,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "卡洛斯"
+          }
+        }
+      }
+    },
+    "catalunya" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加泰罗尼亚"
           }
         }
       }
@@ -1066,6 +1099,17 @@
         }
       }
     },
+    "hungaroring" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "亨格罗宁"
+          }
+        }
+      }
+    },
     "Hungaroring" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1084,6 +1128,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "伊莫拉"
+          }
+        }
+      }
+    },
+    "interlagos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "英特拉格斯"
           }
         }
       }
@@ -1176,7 +1231,7 @@
         }
       }
     },
-    "Key 1" : {
+    "Key" : {
       "extractionState" : "manual"
     },
     "Kick Sauber" : {
@@ -1299,6 +1354,17 @@
         }
       }
     },
+    "losail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "卡塔尔"
+          }
+        }
+      }
+    },
     "Losail International Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1328,6 +1394,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "滨海湾市街赛道"
+          }
+        }
+      }
+    },
+    "marina_bay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新加坡"
           }
         }
       }
@@ -1455,6 +1532,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "摩纳哥"
+          }
+        }
+      }
+    },
+    "monza" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙扎"
           }
         }
       }
@@ -1786,6 +1874,17 @@
         }
       }
     },
+    "red_bull_ring" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红牛环"
+          }
+        }
+      }
+    },
     "Refresh or check back later! 🔄" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1814,6 +1913,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "里卡多"
+          }
+        }
+      }
+    },
+    "rodriguez" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "墨西哥"
           }
         }
       }
@@ -1926,6 +2036,17 @@
         }
       }
     },
+    "Season Peformance (Positions)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛季表现（排名）"
+          }
+        }
+      }
+    },
     "Season Progress" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1990,6 +2111,17 @@
         }
       }
     },
+    "silverstone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "银石"
+          }
+        }
+      }
+    },
     "Silverstone Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2008,6 +2140,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "新加坡大奖赛"
+          }
+        }
+      }
+    },
+    "spa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "斯帕"
           }
         }
       }
@@ -2203,6 +2346,17 @@
         }
       }
     },
+    "vegas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拉斯维加斯"
+          }
+        }
+      }
+    },
     "Verstappen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2275,6 +2429,17 @@
         }
       }
     },
+    "yas_marina" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿布扎比"
+          }
+        }
+      }
+    },
     "Yuki" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2282,6 +2447,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "角田"
+          }
+        }
+      }
+    },
+    "zandvoort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞德福特"
           }
         }
       }
