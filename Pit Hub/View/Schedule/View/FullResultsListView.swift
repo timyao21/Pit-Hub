@@ -84,7 +84,20 @@ struct FullResultsListView: View {
                     }else if let raceResults = qualifyingResult{
                         ForEach(Array(raceResults.enumerated()), id: \.element.number) {index, result in
                             let lapTime = result.q3 ?? result.q2 ?? result.q1 ?? ""
-                            FullQualifyingResultListRowView(number: result.number, position: result.position, driverFirstName: result.driver.givenName, driverLastName: result.driver.familyName, lapTime: lapTime, constructor: result.constructor)
+                            // Convert lap time to seconds
+                            let currentLapTime = timeInterval(from: lapTime)
+
+                            // Get the reference lap time (previous driver's time)
+                            let previousLapTime = index > 0 ? timeInterval(from: raceResults[index - 1].q3 ?? raceResults[index - 1].q2 ?? raceResults[index - 1].q1 ?? "") : nil
+
+                            // Calculate time difference (if possible)
+                            let lapTimeDifference = if let prev = previousLapTime, let curr = currentLapTime {
+                                String(format: "+%.3f", curr - prev) // Show with + sign
+                            } else {
+                                "-" // No difference for the first driver
+                            }
+                            
+                            FullQualifyingResultListRowView(number: result.number, position: result.position, driverFirstName: result.driver.givenName, driverLastName: result.driver.familyName, timeDiff: lapTimeDifference, lapTime: lapTime, constructor: result.constructor)
                             
                             if index < raceResults.count - 1 { // Avoid divider after the last row
                                 Divider()
@@ -148,9 +161,6 @@ private struct FullResultsHeaderView: View {
             }
             .font(.headline)
             .foregroundColor(.secondary)
-//            Text(time)
-//                .font(.headline)
-//                .foregroundColor(.secondary)
         }
         .padding()
         .frame(maxWidth: .infinity)
@@ -158,55 +168,15 @@ private struct FullResultsHeaderView: View {
     }
 }
 
-struct FullQualifyingResultListRowView: View {
-    
-    let number: String
-    let position: String
-    let driverFirstName: String
-    let driverLastName: String
-    let lapTime: String
-    let constructor : Constructor?
-    
-    private var constructorColor: Color {
-        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
+private func timeInterval(from time: String) -> TimeInterval? {
+    let components = time.split(separator: ":")
+    guard components.count == 2,
+          let minutes = Double(components[0]),
+          let seconds = Double(components[1]) else {
+        return nil
     }
-    
-    var body: some View {
-        HStack (alignment: .center){
-            Text(position)
-                .font(.title)
-                .bold()
-                .frame(width: 40, alignment: .center)
-                .foregroundColor(PositionColor(position: position).color)
-
-            // Driver info gets higher priority for available space.
-            VStack(alignment: .leading) {
-                HStack(spacing: 4) {
-                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
-                    Text("\(number)")
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(constructorColor)
-                        .frame(width: 35)
-                }
-                Text("\(lapTime)")
-                    .font(.body)
-                    .foregroundColor(.gray)
-            }
-            .layoutPriority(1)
-            
-            if let constructor = constructor {
-                DriverConstructorTag(constructor: constructor)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            }
-        }
-        .padding(.horizontal)
-    }
+    return (minutes * 60) + seconds
 }
-
 
 
 

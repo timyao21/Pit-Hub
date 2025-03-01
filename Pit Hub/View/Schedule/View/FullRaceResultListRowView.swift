@@ -57,12 +57,11 @@ struct FullRaceResultListRowView: View {
                     HStack(spacing: 3) {
                         GridDiffView(start: gridValues.gridInt, finish: gridValues.posInt)
                         Text("Start: \(gridValues.gridString)")
-                            .font(.body)
+                            .font(.footnote)
                             .foregroundColor(.gray)
                     }
                 }
             }
-//            .frame(maxWidth: .infinity, alignment: .leading)
             
             // Constructor tag and points now use only the space they need.
             VStack(alignment: .trailing) {
@@ -75,7 +74,6 @@ struct FullRaceResultListRowView: View {
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
-//        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal)
     }
 }
@@ -88,25 +86,25 @@ struct GridDiffView: View {
         // Calculate the difference
         let diff = start - finish
         
-        HStack(spacing: 3) {
+        HStack(alignment: .center, spacing: 3) {
             if diff == 0 {
                 Text("--")
-                    .font(.caption)
+                    .font(.footnote)
                     .foregroundColor(.gray)
             } else {
                 // Choose arrow based on whether diff is negative or positive.
                 // Negative diff -> arrow down, Positive diff -> arrow up.
                 Image(systemName: diff < 0 ? "arrowtriangle.down.fill" : "arrowtriangle.up.fill")
                     .resizable()
-                    .frame(width: 10, height: 10)
-                    .foregroundColor(.secondary)
+                    .frame(width: 7, height: 7)
+                    .foregroundColor(diff < 0 ? .red : .green)
                 
                 // Optionally display the absolute difference value
                 Text(String(abs(diff)))
-                    .font(.body)
-                    .foregroundColor(.secondary)
+                    .font(.footnote)
+                    .foregroundColor(diff < 0 ? .red : .green)
             }
         }
-        .frame(width: 40)
+        .frame(width: 40, height: 10)
     }
 }

@@ -58,7 +58,7 @@ struct SettingsView: View {
                     // You could use a default picker style or a wheel style if preferred
                 }
             }
-            .navigationTitle("Settings")
+            .navigationTitle("Pit Line")
         }
     }
 }

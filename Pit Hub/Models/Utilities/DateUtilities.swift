@@ -30,4 +30,9 @@ struct DateUtilities {
         
         return localFormatter.string(from: utcDate)
     }
+    
+    static func convertToUTC(_ date: Date) -> Date {
+        let timeZoneOffset = TimeInterval(TimeZone.current.secondsFromGMT(for: date))
+        return date.addingTimeInterval(-timeZoneOffset) // Convert local time to UTC
+    }
 }

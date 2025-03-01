@@ -63,7 +63,8 @@ struct RaceCalendarDetailView: View {
                     // (For simplicity, here we build a basic horizontal list.)
                     // Tab buttons
                     HStack(alignment: .center) {
-                        Text(NSLocalizedString("Results", comment: "Localized title text"))
+//                        Text(NSLocalizedString("Results", comment: "Localized title text"))
+                        PitSubtitle(for: "Results")
                             .bold()
                             .foregroundColor(Color(S.pitHubIconColor))
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -125,7 +126,7 @@ struct RaceCalendarDetailView: View {
                     .animation(.easeInOut, value: selectedTab)
                 }
                 
-                PitSubtitle(for: "Location")
+                PitSubtitle(for: "Circuit Location")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 if let lat = race?.circuit.location.lat,
                    let long = race?.circuit.location.long,

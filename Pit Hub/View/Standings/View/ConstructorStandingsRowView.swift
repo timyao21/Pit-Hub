@@ -54,9 +54,9 @@ struct ConstructorStandingsRowView: View {
                 
             }
             
-            Image(systemName: "chevron.right")
-                .imageScale(.small)
-                .foregroundColor(.primary)
+//            Image(systemName: "chevron.right")
+//                .imageScale(.small)
+//                .foregroundColor(.primary)
             
         }
         .padding(.vertical, 3)
