@@ -7,30 +7,29 @@
 
 import Foundation
 
-//@MainActor
-class IndexViewModel: ObservableObject{
+@Observable class IndexViewModel{
     // MARK: - Data Manager
     private let driverStandingsManager = DriverStandingsManager()
     private let constructorStandingsManager = ConstructorStandingsManager()
     private let gpManager = GPManager()
     
     // MARK: - Home View Properties
-//    @Published var scheduleViewYear = "\(Calendar.current.component(.year, from: Date()))"
-    @Published var allGP: [Races] = []
-    @Published var allPastGP: [Races] = []
-    @Published var allUpcomingGP: [Races] = []
-    @Published var upcomingGP: Races?
+    @MainActor var allGP: [Races] = []
+    @MainActor var allPastGP: [Races] = []
+    @MainActor var allUpcomingGP: [Races] = []
+    @MainActor var upcomingGP: Races?
     
     // MARK: - Race Calendar View Properties
-    @Published var raceCalendarViewYear = "\(Calendar.current.component(.year, from: Date()))"
-    @Published var raceCalendar: [Races] = []
-    @Published var raceCalendarPast: [Races] = []
-    @Published var raceCalendarUpcoming: [Races] = []
+    @MainActor var raceCalendarViewYear = "\(Calendar.current.component(.year, from: Date()))"
+    @MainActor var raceCalendar: [Races] = []
+    @MainActor var raceCalendarPast: [Races] = []
+    @MainActor var raceCalendarUpcoming: [Races] = []
+    var raceCalendarSelectedTab: Int = 1
     
     // MARK: - Standings View Properties
-    @Published var standingViewYear = "\(Calendar.current.component(.year, from: Date()))"
-    @Published var driverStanding: [DriverStanding] = []
-    @Published var constructorStanding: [ConstructorStanding] = []
+    @MainActor var standingViewYear = "\(Calendar.current.component(.year, from: Date()))"
+    @MainActor var driverStanding: [DriverStanding] = []
+    @MainActor var constructorStanding: [ConstructorStanding] = []
     
     // MARK: - Computed Property for DateFormatter
     private var isoDateFormatter: ISO8601DateFormatter {
@@ -40,149 +39,146 @@ class IndexViewModel: ObservableObject{
     }
     
     // MARK: - Home Page GP Data
-    
+    @MainActor
     init() {
         Task {
             await fetchAllGP() // Load data for both Homepage & Race Calendar
             await fetchDriverStanding() // Load standings data
             await fetchConstructorStanding() // Load standings data
+            if driverStanding.isEmpty && constructorStanding.isEmpty {
+                let currentYear = Calendar.current.component(.year, from: Date()) - 1
+                await updateStandingViewYear(for: "\(currentYear)")
+            }
         }
     }
     
-//    Load All GP
+    // MARK: - Load all the GP info (When lunch the app)
+    @MainActor
     func fetchAllGP() async {
         let today = Date()
-        let calendar = Calendar.current
         let todayUTC = DateUtilities.convertToUTC(today)
-        let currentYear = calendar.component(.year, from: today)
-        
+        let currentYear = Calendar.current.component(.year, from: today)
         
         do {
             let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
-            
-            // Ensure correct date conversion
             allGP = allGPs
             
-            allUpcomingGP = allGPs.filter { gp in
-                if let gpDate = isoDateFormatter.date(from: gp.date) {
-                    return gpDate >= todayUTC
-                }
-                return false
-            }
+            var upcoming = [Races]()
+            var past = [Races]()
             
-            allPastGP = allGPs.filter { gp in
+            // Split races into upcoming and past in one pass
+            for gp in allGPs {
                 if let gpDate = isoDateFormatter.date(from: gp.date) {
-                    return gpDate < todayUTC
+                    if gpDate >= todayUTC {
+                        upcoming.append(gp)
+                    } else {
+                        past.append(gp)
+                    }
                 }
-                return false
             }
+            allUpcomingGP = upcoming
+            allPastGP = past
+            upcomingGP = upcoming.first
             
-            upcomingGP = allUpcomingGP.first
             // Update Race Calendar Data
-            raceCalendar = allGP
-            raceCalendarPast = allPastGP
-            raceCalendarUpcoming = allUpcomingGP
-        
+            raceCalendar = allGPs
+            raceCalendarUpcoming = upcoming
+            raceCalendarPast = past
+            
+            if raceCalendarPast.isEmpty{
+                raceCalendarSelectedTab = 0
+            }
             
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")
         }
     }
     
-//    Refresh GP Data (Only Update the Upcoming GP)
-    func refreshHomeGPData() {
-        print("🔄 Refreshing Home Grand Prix Data...")
+    // MARK: - refrseh the Home page data
+    @MainActor
+    func refreshHomeGPData() async{
+        let today = Date()
+        let todayUTC = DateUtilities.convertToUTC(today)
+        let currentYear = Calendar.current.component(.year, from: today)
         
-        Task {
-            let dateFormatter = ISO8601DateFormatter()
-            dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
-            let today = Date()
-            let calendar = Calendar.current
-            let currentYear = calendar.component(.year, from: today)
+        do {
+            let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
+            allGP = allGPs
             
-            do {
-                let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
-                
-                // Ensure correct date conversion
-                allGP = allGPs
-                
-                allUpcomingGP = allGPs.filter { gp in
-                    if let gpDate = dateFormatter.date(from: gp.date) {
-                        return gpDate >= today
-                    }
-                    return false
+            var upcoming = [Races]()
+            for gp in allGPs {
+                if let gpDate = isoDateFormatter.date(from: gp.date), gpDate >= todayUTC {
+                    upcoming.append(gp)
                 }
-                
-                upcomingGP = allUpcomingGP.first
-                
-                print("Upcoming GPs: \(allUpcomingGP.count)")
-                print("Past GPs: \(allPastGP.count)")
-                
-            } catch {
-                print("Failed to fetch races: \(error.localizedDescription)")
             }
+            
+            upcomingGP = upcoming.first
+            
+        } catch {
+            print("Failed to fetch races: \(error.localizedDescription)")
         }
     }
     
     // MARK: - Race calendar view
-    
+    @MainActor
     func updateRaceCalendarViewYear(for year: String) {
-        self.raceCalendarViewYear = year
+        raceCalendarViewYear = year
         Task{
             await refreshRaceCalendarData()
         }
     }
     
+    @MainActor
     func refreshRaceCalendarData() async {
         print("Refreshing Calendar Data for \(raceCalendarViewYear)...")
+        let today = Date()
+        let todayUTC = DateUtilities.convertToUTC(today)
         
-        Task{
-            let dateFormatter = ISO8601DateFormatter()
-            dateFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate]
-            let today = Date()
-            do{
-                let allGPs = try await gpManager.fetchRaceSchedule(for: raceCalendarViewYear)
-                
-                // Ensure correct date conversion
-                DispatchQueue.main.async {
-                    self.raceCalendar = allGPs
-                    
-                    self.raceCalendarUpcoming = allGPs.filter { gp in
-                        if let gpDate = dateFormatter.date(from: gp.date) {
-                            return gpDate >= today
-                        }
-                        return false
-                    }
-                    
-                    self.raceCalendarPast = allGPs.filter { gp in
-                        if let gpDate = dateFormatter.date(from: gp.date) {
-                            return gpDate < today
-                        }
-                        return false
+        do{
+            let allGPs = try await gpManager.fetchRaceSchedule(for: raceCalendarViewYear)
+            raceCalendar = allGPs
+            
+            var upcoming = [Races]()
+            var past = [Races]()
+            
+            // Split races into upcoming and past in one pass
+            for gp in allGPs {
+                if let gpDate = isoDateFormatter.date(from: gp.date) {
+                    if gpDate >= todayUTC {
+                        upcoming.append(gp)
+                    } else {
+                        past.append(gp)
                     }
                 }
             }
-            catch {
-                print("Failed to fetch races: \(error.localizedDescription)")
+            
+            raceCalendar = allGPs
+            raceCalendarUpcoming = upcoming
+            raceCalendarPast = past
+            
+            if raceCalendarPast.isEmpty{
+                raceCalendarSelectedTab = 0
+            }else{
+                raceCalendarSelectedTab = 1
             }
+            
+        }catch {
+            print("Failed to fetch races: \(error.localizedDescription)")
         }
     }
     
-//    // MARK: - Standings View Properties
-//    @Published var driverStanding: [DriverStanding] = []
-//    @Published var constructorStanding: [ConstructorStanding] = []
-//    @Published var standingViewYear: String = String(Calendar.current.component(.year, from: Date()))
-    
-    // MARK: - Able to refreshData the data
-    func updateStandingViewYear(for year: String) {
-        self.standingViewYear = year
+    // MARK: - Standings View - Able to refreshData the data
+    @MainActor
+    func updateStandingViewYear(for year: String) async {
+        standingViewYear = year
         Task {
             await refreshStandingData()
         }
     }
     
+    @MainActor
     func refreshStandingData() async {
-        print("Refreshing standings data...")
+        print("Refreshing standings data for \(standingViewYear)")
         Task{
             await fetchDriverStanding()
             await fetchConstructorStanding()
@@ -190,39 +186,29 @@ class IndexViewModel: ObservableObject{
     }
     
     // MARK: - Fetch Driver Standing
+    @MainActor
     func fetchDriverStanding() async {
         do {
-            let fetchedStandings = try await driverStandingsManager.fetchDriverStandings(for: standingViewYear)
-            
-            DispatchQueue.main.async {
-                self.driverStanding = fetchedStandings
-            }
+            let fetchedDriverStandings = try await driverStandingsManager.fetchDriverStandings(for: standingViewYear)
+            driverStanding = fetchedDriverStandings
         } catch {
-            DispatchQueue.main.async {
-                self.driverStanding = []
-            }
             print("Failed to fetch driver standings: \(error.localizedDescription)")
         }
     }
     
     // MARK: - Fetch Constructor Standing
+    @MainActor
     func fetchConstructorStanding() async {
         do {
             let fetchConstructorStandings = try await constructorStandingsManager.fetchConstructorStandings(for: standingViewYear)
-            DispatchQueue.main.async {
-                self.constructorStanding = fetchConstructorStandings
-            }
+            constructorStanding = fetchConstructorStandings
         } catch {
-            DispatchQueue.main.async {
-                self.constructorStanding = []
-            }
             print("Failed to fetch driver standings: \(error.localizedDescription)")
         }
     }
     
     
-    // End
-    
+    // MARK: - End
 }
 
 

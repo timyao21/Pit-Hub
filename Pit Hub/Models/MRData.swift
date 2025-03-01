@@ -29,8 +29,8 @@ struct MRData: Codable {
 // MARK: - Standings Table
 struct StandingsTable: Codable {
     let season: String
-    let round: String
-    let standingsLists: [StandingsList]
+    let round: String?
+    let standingsLists: [StandingsList]?
     
     enum CodingKeys: String, CodingKey {
         case season, round

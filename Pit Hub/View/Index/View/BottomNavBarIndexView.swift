@@ -11,7 +11,7 @@ struct BottomNavBarIndexView: View {
     @State private var selectedTab = 1
     @State private var showNavBar = true // State to toggle visibility
     
-    @StateObject private var viewModel = IndexViewModel()
+    @State private var viewModel = IndexViewModel()
     
     var body: some View {
         TabView (selection: $selectedTab) {
@@ -26,6 +26,11 @@ struct BottomNavBarIndexView: View {
             
             NavigationStack {
                 HomeView(viewModel: viewModel)
+                    .refreshable {
+                        Task{
+                            await viewModel.refreshHomeGPData()
+                        }
+                    }
             }
             .tabItem {
                 Label("Home", systemImage: "house")
