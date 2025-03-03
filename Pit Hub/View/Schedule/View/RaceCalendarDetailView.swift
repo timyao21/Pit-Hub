@@ -21,7 +21,7 @@ struct ResultTab: Identifiable {
 
 struct RaceCalendarDetailView: View {
     
-    @ObservedObject var viewModel: RaceCalendarDetailViewModel
+    @State var viewModel: RaceCalendarDetailViewModel
     let race: Races?
     
     // Use one state to control showing the full results sheet.
@@ -63,7 +63,6 @@ struct RaceCalendarDetailView: View {
                     // (For simplicity, here we build a basic horizontal list.)
                     // Tab buttons
                     HStack(alignment: .center) {
-//                        Text(NSLocalizedString("Results", comment: "Localized title text"))
                         PitSubtitle(for: "Results")
                             .bold()
                             .foregroundColor(Color(S.pitHubIconColor))
@@ -97,7 +96,6 @@ struct RaceCalendarDetailView: View {
                             .bold()
                             .padding(3)
                             .foregroundColor(Color(S.pitHubIconColor).opacity(0.7))
-//                            .background(Color(S.pitHubIconColor).opacity(0.3))
                             .cornerRadius(5)
                         }
                     }
@@ -188,115 +186,6 @@ struct RaceCalendarDetailView: View {
         }
     }
 }
-
-
-//import SwiftUI
-//
-//struct RaceCalendarDetailView: View {
-//
-//    @ObservedObject var viewModel: RaceCalendarDetailViewModel
-//    let race: Races?
-//
-//    @State private var showFullResults: Bool = false
-//    private let resultsTabTitles = ["Race", "Quali"]
-//    private let resultsTabTitlesSprint = ["Race", "Quali", "Sprint", "Sprint Quali"]
-//
-//    @State private var raceTab = 0
-//    @State private var sprintTab = 0
-//
-//
-//    init(for race: Races) {
-//        viewModel = RaceCalendarDetailViewModel(year: race.season, raceRound: race.round)
-//        self.race = race
-//    }
-//
-//    var body: some View {
-//        ScrollView{
-//            VStack{
-//
-//                RaceSection(for: race)
-//
-//                if !viewModel.raceResults.isEmpty || !viewModel.qualifyingResults.isEmpty {
-//                    HStack(spacing: 0){
-//                        PitSubtitle(for: "Race Results")
-//                        Spacer()
-//                        Button(action: {
-//                            showFullResults.toggle()
-//                            print("Selected raceTab: \(raceTab)")
-//                        }) {
-//                            HStack(spacing: 0){
-//                                PitSubtitle(for: "Full")
-//                                Image(systemName: "arrow.up.forward")
-//                                    .imageScale(.small)
-//                                    .foregroundColor(Color(S.pitHubIconColor))
-//                            }
-//                            .padding(3)
-//                            .background(Color.gray.opacity(0.2))
-//                            .cornerRadius(5)
-//                        }
-//                    }
-//                    .padding(.vertical)
-//
-//                    SubTabSelector(selectedTab: $raceTab, tabTitles: resultsTabTitles)
-//                        .onChange(of: raceTab) { oldValue, newValue in
-//                            print("raceTab changed from \(oldValue) to \(newValue)")
-//                        }
-//
-//                    TabView(selection: $raceTab){
-//                        ResultList(length: 10, results: viewModel.raceResults)
-//                            .tag(0)
-//                        ResultList(length: 10, results: viewModel.qualifyingResults)
-//                            .tag(1)
-//                        ResultList(length: 10, results: viewModel.sprintResults)
-//                            .tag(2)
-//
-//                    }
-//                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//                    .frame(height: 200)
-//                }
-//
-//                PitSubtitle(for: "Location")
-//                    .frame(maxWidth: .infinity,alignment: .leading)
-//                if let lat = race?.circuit.location.lat,
-//                   let long = race?.circuit.location.long,
-//                   lat != "0", long != "0" {
-//                    CircuitMapView(lat: lat, long: long)
-//                }
-//
-//            }
-//            .padding()
-//        }
-//        .onAppear {
-//            Task {
-//                await viewModel.fetchRaceResults(for: viewModel.year, raceRound: viewModel.raceRound)
-//            }
-//        }
-//        .sheet(isPresented: $showFullResults) {
-//            Group {
-//                if raceTab == 0 {
-//                    FullResultsListView(
-//                        raceName: race?.raceName ?? "",
-//                        season: race?.season ?? "",
-//                        round: race?.round ?? "",
-//                        date: race?.date ?? "",
-//                        time: race?.time ?? "",
-//                        raceResult: viewModel.raceResults
-//                    )
-//                } else {
-//                    FullResultsListView(
-//                        raceName: race?.raceName ?? "",
-//                        season: race?.season ?? "",
-//                        round: race?.round ?? "",
-//                        date: race?.date ?? "",
-//                        time: race?.time ?? "",
-//                        qualifyingResult: viewModel.qualifyingResults
-//                    )
-//                }
-//            }
-//            .id(raceTab) // Force the sheet to refresh when raceTab changes
-//        }
-//    }
-//}
 
 #Preview {
     RaceCalendarDetailView(for: Races.sample)

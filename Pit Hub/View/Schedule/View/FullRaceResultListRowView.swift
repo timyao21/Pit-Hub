@@ -19,9 +19,9 @@ struct FullRaceResultListRowView: View {
     let grid: String?
     let constructor: Constructor?
 
-    private var constructorColor: Color {
-        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
-    }
+//    private var constructorColor: Color {
+//        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
+//    }
 
     private var gridValues: (gridString: String, gridInt: Int, posInt: Int)? {
         guard let grid = grid,
@@ -49,7 +49,7 @@ struct FullRaceResultListRowView: View {
                     Text("\(number)")
                         .font(.headline)
                         .fontWeight(.semibold)
-                        .foregroundColor(constructorColor)
+                        .foregroundColor(Color.constructorColor(for: constructor?.constructorId ?? ""))
                         .frame(width: 35)
                 }
                 

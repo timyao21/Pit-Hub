@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-//    @ObservedObject var viewModel = IndexViewModel()
     @Bindable var viewModel: IndexViewModel
     @State private var isSettingsPresented: Bool = false
     

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RaceSection: View {
-    
     let race: Races?
     
     init(for race: Races?) {
@@ -21,19 +20,21 @@ struct RaceSection: View {
                 HStack {
                     VStack (alignment: .leading, spacing: 3) {
                         HStack{
-                            Text(NSLocalizedString("\(race!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
+                            Text(LocalizedStringKey(race?.circuit.circuitName ?? ""))
+                                .font(.custom(S.smileySans, size: 18))
                             if ((race?.sprint) != nil){
                                 SprintBadge()
                             }
                         }
-                        Text(NSLocalizedString("\(race!.raceName)", comment: "Race name for upcoming Grand Prix"))
-                            .font(.custom(S.orbitron, size: 30))
+                        Text(LocalizedStringKey(race!.raceName))
+                            .font(.title)
                             .fontWeight(.bold)
-                        if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: "yyyy-MM-dd") {
+                        if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")) {
                             Text("\(localDate)")
+                                .font(.headline)
                         }
                     }
-                    .font(.custom(S.smileySans, size: 20))
+
                     Spacer()
                     Image(race!.circuit.circuitId)
                         .resizable()
@@ -44,49 +45,49 @@ struct RaceSection: View {
                     
                 }
             }
-            Text(NSLocalizedString("All times are in your local time zone", comment: "All times are in your local time zone"))
+            Text("All times are in your local time zone")
                 .font(.footnote)
                 .foregroundColor(.gray)
                 .frame(maxWidth: .infinity, alignment: .leading)
             VStack(spacing: 10) {
                 if (race!.firstPractice != nil){
-                    RaceSessionList(title: NSLocalizedString("FP1", comment: "First Practice"), date: "\(race!.firstPractice!.date)", time: "\(race!.firstPractice!.time!)")
+                    RaceSessionList(title: "FP1", date: "\(race!.firstPractice!.date)", time: "\(race!.firstPractice!.time!)")
                 }
                 if (race!.secondPractice != nil){
-                    RaceSessionList(title: NSLocalizedString("FP2", comment: "Second Practice"), date: "\(race!.secondPractice!.date)", time: "\(race!.secondPractice!.time!)")
+                    RaceSessionList(title: "FP2", date: "\(race!.secondPractice!.date)", time: "\(race!.secondPractice!.time!)")
                 }
                 if (race!.sprintQualifying != nil){
-                    RaceSessionList(title: NSLocalizedString("Sprint Quali", comment: "Sprint Quali"), date: "\(race!.sprintQualifying!.date)", time: "\(race!.sprintQualifying!.time!)")
+                    RaceSessionList(title: "Sprint Quali", date: "\(race!.sprintQualifying!.date)", time: "\(race!.sprintQualifying!.time!)")
                 }
                 if (race!.thirdPractice != nil){
-                    RaceSessionList(title: NSLocalizedString("FP3", comment: "Third Practice"), date: "\(race!.thirdPractice!.date)", time: "\(race!.thirdPractice!.time!)")
+                    RaceSessionList(title: "FP3", date: "\(race!.thirdPractice!.date)", time: "\(race!.thirdPractice!.time!)")
                 }
                 if (race!.sprint != nil){
-                    RaceSessionList(title: NSLocalizedString("Sprint", comment: "Sprint"), date: "\(race!.sprint!.date)", time: "\(race!.sprint!.time!)")
+                    RaceSessionList(title: "Sprint", date: "\(race!.sprint!.date)", time: "\(race!.sprint!.time!)")
                 }
                 if (race!.qualifying != nil){
-                    RaceSessionList(title: NSLocalizedString("Qualifying", comment: "Qualifying"), date: "\(race!.qualifying!.date)", time: "\(race!.qualifying!.time!)")
+                    RaceSessionList(title: "Qualifying", date: "\(race!.qualifying!.date)", time: "\(race!.qualifying!.time!)")
                 }
-                RaceSessionList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(race!.date)", time: "\(race!.time!)")
+                RaceSessionList(title: "Race", date: "\(race!.date)", time: "\(race!.time!)")
             }
         }
     }
 }
 
 struct RaceSessionList: View {
-    let title: String
+    let title: LocalizedStringKey
     let date: String
     let time: String
     
     var body: some View {
         HStack{
-            Text("\(title)")
+            Text(title)
                 .font(.body)
                 .frame(width: 80, alignment: .leading)
             
             Spacer()
             
-            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "MM-dd") {
+            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: DateUtilities.localizedDateFormat(for: "MM-dd")) {
                 Text("\(localDate)")
                     .font(.body)
                     .frame(width: 120, alignment: .center)

@@ -17,9 +17,9 @@ struct FullQualifyingResultListRowView: View {
     let lapTime: String
     let constructor : Constructor?
     
-    private var constructorColor: Color {
-        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
-    }
+//    private var constructorColor: Color {
+//        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
+//    }
     
     // Computed property to check if time difference should be hidden
     private var formattedTimeDiff: String {
@@ -44,7 +44,7 @@ struct FullQualifyingResultListRowView: View {
                     Text("\(number)")
                         .font(.headline)
                         .fontWeight(.semibold)
-                        .foregroundColor(constructorColor)
+                        .foregroundColor(Color.constructorColor(for: constructor?.constructorId ?? ""))
                         .frame(width: 35)
                 }
                 HStack {

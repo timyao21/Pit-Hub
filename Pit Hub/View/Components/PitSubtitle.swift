@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct PitSubtitle: View {
-    let title: String
-    init(for title: String) {
+    let title: LocalizedStringKey
+    
+    init(for title: LocalizedStringKey) {
         self.title = title
     }
     var body: some View {
-        Text(NSLocalizedString("\(title)", comment: "For PitSubtitle"))
+        Text(title)
             .font(.custom(S.smileySans, size: 20))
             .foregroundColor(Color(S.pitHubIconColor))
     }

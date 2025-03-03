@@ -10,6 +10,22 @@ import Foundation
 
 struct DateUtilities {
     
+    static func localizedDateFormat(for format: String) -> String {
+        let language = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "English"
+        
+        // Check if the language is set to Chinese.
+        if language == "中文" || language == "zh" {
+            switch format {
+            case "yyyy-MM-dd":
+                return "yyyy年MM月dd日"
+            case "MM-dd":
+                return "MM月dd日"
+            default:
+                return format
+            }
+        }
+        return format
+    }
     /// Converts separate UTC date and time strings to local time zone formatted string
     /// - Parameters:
     ///   - date: The date string in "yyyy-MM-dd" format

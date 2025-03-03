@@ -22,7 +22,7 @@ struct ConstructorStandingsRowView: View {
                 .foregroundColor(PositionColor(position: position).color)
             
             VStack(alignment: .leading, spacing: 3) {
-                Text(NSLocalizedString("\(constructor?.name ?? "N/A")", comment: "Constructor Name"))
+                Text(LocalizedStringKey(constructor?.name ?? "N/A"))
                     .font(.title3)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -74,13 +74,13 @@ struct ConstructorNationalityTag: View {
                 .font(.system(size: 16))
             
             // Display nationality text
-            Text(NSLocalizedString(constructor.nationality, comment: "nationality Name"))
+            Text(LocalizedStringKey(constructor.nationality))
                 .font(.caption)
                 .foregroundColor(.white)
                 .bold()
         }
         .padding(4)
-        .background(Color(GetConstructorColor(constructorId: constructor.constructorId)).opacity(0.8))
+        .background(Color.constructorColor(for: constructor.constructorId)).opacity(0.8)
         .cornerRadius(5)
     }
 }

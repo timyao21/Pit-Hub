@@ -34,7 +34,7 @@ struct SeasonChartView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
                             Text("Round: \(data.round)")
-                            Text(NSLocalizedString(data.circuitId ?? "Unknown Circuit", comment: "Circuit identifier"))
+                            Text(LocalizedStringKey(data.circuitId ?? "Unknown Circuit"))
                         }
                         Text("Position: \(data.position)")
                     }
@@ -45,8 +45,8 @@ struct SeasonChartView: View {
 
                 }else{
                     VStack(alignment: .leading, spacing: 4){
-                        Text(NSLocalizedString("\(results1.first?.driverName ?? "Driver")", comment: "Driver name"))
-                        Text(NSLocalizedString("Season Peformance (Positions)", comment: "Chart Title"))
+                        Text(LocalizedStringKey(results1.first?.driverName ?? "Driver"))
+                        Text("Season Peformance (Positions)")
                     }
                     .font(.caption)
                     .lineLimit(2)

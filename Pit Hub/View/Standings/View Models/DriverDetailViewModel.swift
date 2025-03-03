@@ -8,34 +8,43 @@
 import Foundation
 import SwiftUI
 
-@MainActor
 extension DriverDetailView {
-    class DriverDetailViewModel: ObservableObject{
+    @Observable class DriverDetailViewModel{
+        private let driverManager = DriverStandingsManager()
         
-        @Published var driverRaceResult: [Races] = []
-        @Published var driverRaceResultPositionChart: [PositionChart] = []
-        private let DriverManager = DriverStandingsManager()
+        @MainActor var driverRaceResult: [Races] = []
+        @MainActor var driverRaceResultPositionChart: [PositionChart] = []
         
         // MARK: - Fetch Driver Results
-        
+        @MainActor
         func fetchDriverResults(for year: String, driverID: String) async {
             print("Fetching \(year) result for \(driverID)...")
             
-            async let fetchedResults = try? DriverManager.fetchDriverRaceResult(for: year, driverID: driverID)
+            guard let results = try? await driverManager.fetchDriverRaceResult(for: year, driverID: driverID) else {
+                print("Failed to fetch \(driverID) results")
+                return
+            }
             
-            let driverResult = await fetchedResults
+            driverRaceResult = results
             
-            // Ensure that updates happen on the main thread
-            await MainActor.run {
-                if let results = driverResult {
-                    self.driverRaceResult = results
-                    for result in self.driverRaceResult {
-                        let chartData = PositionChart(year: results.first?.season ?? " ", driverName: result.results?.first?.driver.familyName ?? " ", driverNumber: result.results?.first?.number, round: result.round, circuitId: result.circuit.circuitId , position: result.results?.first?.position ?? " ")
-                        self.driverRaceResultPositionChart.append(chartData)
-                    }
-                } else {
-                    print("Failed to fetch \(driverID) results")
-                }
+            // Build the position chart data in a single pass
+            driverRaceResultPositionChart = results.map { result in
+                // Assuming that the season is constant across results; if not, adjust as needed.
+                let season = results.first?.season ?? " "
+                let driverName = result.results?.first?.driver.familyName ?? " "
+                let driverNumber = result.results?.first?.number
+                let round = result.round
+                let circuitId = result.circuit.circuitId
+                let position = result.results?.first?.position ?? " "
+                
+                return PositionChart(
+                    year: season,
+                    driverName: driverName,
+                    driverNumber: driverNumber,
+                    round: round,
+                    circuitId: circuitId,
+                    position: position
+                )
             }
         }
         

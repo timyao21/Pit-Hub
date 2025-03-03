@@ -7,6 +7,9 @@
     "--" : {
 
     },
+    "·" : {
+
+    },
     "%@" : {
 
     },
@@ -17,16 +20,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ %@ 成绩"
-          }
-        }
-      }
-    },
-    "%@· %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@· %2$@"
           }
         }
       }

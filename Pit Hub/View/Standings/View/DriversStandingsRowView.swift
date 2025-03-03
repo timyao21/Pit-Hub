@@ -37,10 +37,14 @@ struct DriversStandingsRowView: View {
                 .foregroundColor(PositionColor(position: position).color)
             
             VStack(alignment: .leading, spacing: 3) {
-                Text("\(NSLocalizedString(driverFirstName, comment: "Driver's first name"))· \(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
-                    .font(.headline)
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                HStack(spacing: 2){
+                    Text(LocalizedStringKey(driverFirstName))
+                    Text("·")
+                    Text(LocalizedStringKey(driverLastName))
+                }
+                .font(.headline)
+                .font(.title3)
+                .fontWeight(.semibold)
                 if let constructor = constructor {
                     DriverConstructorTag(constructor: constructor)
                 }

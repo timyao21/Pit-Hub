@@ -24,7 +24,7 @@ struct NavTabSelector: View {
 
     private func tabButton(title: String, tab: Int) -> some View {
         Button(action: { selectedTab = tab }) {
-            Text(NSLocalizedString(title, comment: "Localized title text"))
+            Text(LocalizedStringKey(title))
                 .font(.custom(S.smileySans, size: 18))
                 .foregroundColor(selectedTab == tab ? .white : .gray)
                 .padding(.vertical, 10)

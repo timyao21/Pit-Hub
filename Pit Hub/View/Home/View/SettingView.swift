@@ -21,7 +21,7 @@ struct SettingsView: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: String = "English"
     
     // List of available languages (you can expand this list as needed)
-    private let languages = ["English", "中文"]
+    private let languages = ["中文", "English"]
     
     // Customize UISegmentedControl appearance
     init() {
@@ -60,6 +60,9 @@ struct SettingsView: View {
             }
             .navigationTitle("Pit Line")
         }
+        .preferredColorScheme(
+            selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
+        )
     }
 }
 

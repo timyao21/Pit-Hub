@@ -7,16 +7,16 @@
 
 import Foundation
 
-//@MainActor
 extension RaceCalendarDetailView{
-    class RaceCalendarDetailViewModel: ObservableObject {
+    @MainActor
+    @Observable class RaceCalendarDetailViewModel {
         private let gpManager = GPManager()
-        @Published var year: String
-        @Published var raceRound: String
+        var year: String
+        var raceRound: String
         
-        @Published var raceResults: [Results] = []
-        @Published var qualifyingResults: [QualifyingResults] = []
-        @Published var sprintResults: [SprintResults] = []
+        var raceResults: [Results] = []
+        var qualifyingResults: [QualifyingResults] = []
+        var sprintResults: [SprintResults] = []
         
         init(year: String, raceRound: String) {
             self.year = year
@@ -37,24 +37,22 @@ extension RaceCalendarDetailView{
             let allSprintResults = await sprintResults
             
             // Ensure that updates happen on the main thread
-            await MainActor.run {
-                if let results = allRaceResults {
-                    self.raceResults = results
-                } else {
-                    print("Failed to fetch race results")
-                }
-                
-                if let results = allQualifyingResults {
-                    self.qualifyingResults = results
-                } else {
-                    print("Failed to fetch qualifying results")
-                }
-                
-                if let sprintResults = allSprintResults {
-                    self.sprintResults = sprintResults
-                } else{
-                    print( "Failed to fetch sprint results")
-                }
+            if let results = allRaceResults {
+                self.raceResults = results
+            } else {
+                print("Failed to fetch race results")
+            }
+            
+            if let results = allQualifyingResults {
+                self.qualifyingResults = results
+            } else {
+                print("Failed to fetch qualifying results")
+            }
+            
+            if let sprintResults = allSprintResults {
+                self.sprintResults = sprintResults
+            } else{
+                print( "Failed to fetch sprint results")
             }
         }
         

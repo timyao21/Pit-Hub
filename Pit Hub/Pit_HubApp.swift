@@ -7,28 +7,20 @@
 
 import SwiftUI
 
-//class AppDelegate: NSObject, UIApplicationDelegate {
-//    func application(_ application: UIApplication,
-//                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-//        
-//        return true
-//    }
-//    
-//    func applicationDidBecomeActive(_ application: UIApplication) {
-//        
-//    }
-//}
-
 @main
 struct Pit_HubApp: App {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     let persistenceController = PersistenceController.shared
+    @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
+    @AppStorage("selectedLanguage") private var selectedLanguage: String = "English"
     
     var body: some Scene {
         WindowGroup {
-            SplashView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            BottomNavBarIndexView()
+                .preferredColorScheme(
+                    selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
+                )
+                .environment(\.locale, Locale(identifier: selectedLanguage == "English" ? "en" : "zh"))
         }
     }
 }
