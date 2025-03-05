@@ -12,7 +12,7 @@ struct Pit_HubApp: App {
     
     let persistenceController = PersistenceController.shared
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
-    @AppStorage("selectedLanguage") private var selectedLanguage: String = "English"
+    @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
     
     var body: some Scene {
         WindowGroup {
@@ -20,7 +20,7 @@ struct Pit_HubApp: App {
                 .preferredColorScheme(
                     selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
                 )
-                .environment(\.locale, Locale(identifier: selectedLanguage == "English" ? "en" : "zh"))
+                .environment(\.locale, Locale(identifier: selectedLanguage.localeIdentifier))
         }
     }
 }

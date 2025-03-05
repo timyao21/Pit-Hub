@@ -83,7 +83,7 @@ struct DriverDetailView: View {
                     .font(.caption)
                 
                 // Display nationality text
-                Text(NSLocalizedString(nationality, comment: "nationality Name"))
+                Text(LocalizedStringKey(nationality))
                     .font(.caption)
                     .foregroundColor(.white)
                     .bold()

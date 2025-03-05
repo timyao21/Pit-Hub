@@ -72,7 +72,7 @@ struct RaceCalendarDetailView: View {
                                     Button {
                                         selectedTab = tab.type
                                     } label: {
-                                        Text(NSLocalizedString(tab.title, comment: "Localized title text"))
+                                        Text(LocalizedStringKey(tab.title))
                                             .bold()
                                             .foregroundColor(selectedTab == tab.type ? Color(S.pitHubIconColor) : .secondary)
                                             .padding(5)
@@ -89,7 +89,7 @@ struct RaceCalendarDetailView: View {
                             showFullResults.toggle()
                         }) {
                             HStack {
-                                Text(NSLocalizedString("Full", comment: "Localized title text"))
+                                Text("Full")
                                 Image(systemName: "chevron.up.2")
                                     .imageScale(.small)
                             }

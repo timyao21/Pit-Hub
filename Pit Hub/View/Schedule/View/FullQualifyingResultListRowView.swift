@@ -37,7 +37,7 @@ struct FullQualifyingResultListRowView: View {
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
+                    Text(LocalizedStringKey(driverLastName))
                         .font(.headline)
                         .fontWeight(.semibold)
                         .lineLimit(1)

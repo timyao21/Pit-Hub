@@ -15,60 +15,78 @@ struct RaceSection: View {
     }
     
     var body: some View {
-        VStack{
-            if (race != nil){
-                HStack {
-                    VStack (alignment: .leading, spacing: 3) {
-                        HStack{
-                            Text(LocalizedStringKey(race?.circuit.circuitName ?? ""))
-                                .font(.custom(S.smileySans, size: 18))
-                            if ((race?.sprint) != nil){
-                                SprintBadge()
+        Group {
+            if let race = race {
+                VStack (spacing: 6){
+                    
+                    // Race title and date with circuit image
+                    HStack {
+                        VStack(alignment: .leading, spacing: 3) {
+                            HStack {
+                                Text(LocalizedStringKey(race.circuit.circuitName))
+                                    .font(.custom(S.smileySans, size: 18))
+                                if race.sprint != nil {
+                                    SprintBadge()
+                                }
+                            }
+                            
+                            Text(LocalizedStringKey(race.raceName))
+                                .font(.title)
+                                .fontWeight(.bold)
+                            if let localDate = DateUtilities.convertUTCToLocal(
+                                date: race.date,
+                                time: race.time!,
+                                format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")
+                            ) {
+                                Text("\(localDate)")
+                                    .font(.headline)
                             }
                         }
-                        Text(LocalizedStringKey(race!.raceName))
-                            .font(.title)
-                            .fontWeight(.bold)
-                        if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")) {
-                            Text("\(localDate)")
-                                .font(.headline)
-                        }
+                        
+                        Spacer()
+                        
+                        Image(race.circuit.circuitId)
+                            .resizable()
+                            .renderingMode(.template)
+                            .scaledToFit()
+                            .frame(width: 125)
+                            .foregroundColor(Color("circuitColor"))
                     }
-
-                    Spacer()
-                    Image(race!.circuit.circuitId)
-                        .resizable()
-                        .renderingMode(.template) // Makes the image render as a template
-                        .scaledToFit()
-                        .frame(width: 125)
-                        .foregroundColor(Color("circuitColor")) // Applies the color to the image
                     
+                    // Local time zone notice
+                    Text("All times are in your local time zone")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    // Session list
+                    VStack(spacing: 10) {
+                        // Optionally you could iterate over an array of sessions, but here we use if-lets.
+                        if let fp1 = race.firstPractice {
+                            RaceSessionList(title: "FP1", date: "\(fp1.date)", time: "\(fp1.time!)")
+                        }
+                        if let fp2 = race.secondPractice {
+                            RaceSessionList(title: "FP2", date: "\(fp2.date)", time: "\(fp2.time!)")
+                        }
+                        if let sprintQuali = race.sprintQualifying {
+                            RaceSessionList(title: "Sprint Quali", date: "\(sprintQuali.date)", time: "\(sprintQuali.time!)")
+                        }
+                        if let fp3 = race.thirdPractice {
+                            RaceSessionList(title: "FP3", date: "\(fp3.date)", time: "\(fp3.time!)")
+                        }
+                        if let sprint = race.sprint {
+                            RaceSessionList(title: "Sprint", date: "\(sprint.date)", time: "\(sprint.time!)")
+                        }
+                        if let qualifying = race.qualifying {
+                            RaceSessionList(title: "Qualifying", date: "\(qualifying.date)", time: "\(qualifying.time!)")
+                        }
+                        // "Race" session is always shown
+                        RaceSessionList(title: "Race", date: "\(race.date)", time: "\(race.time!)")
+                    }
                 }
-            }
-            Text("All times are in your local time zone")
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            VStack(spacing: 10) {
-                if (race!.firstPractice != nil){
-                    RaceSessionList(title: "FP1", date: "\(race!.firstPractice!.date)", time: "\(race!.firstPractice!.time!)")
-                }
-                if (race!.secondPractice != nil){
-                    RaceSessionList(title: "FP2", date: "\(race!.secondPractice!.date)", time: "\(race!.secondPractice!.time!)")
-                }
-                if (race!.sprintQualifying != nil){
-                    RaceSessionList(title: "Sprint Quali", date: "\(race!.sprintQualifying!.date)", time: "\(race!.sprintQualifying!.time!)")
-                }
-                if (race!.thirdPractice != nil){
-                    RaceSessionList(title: "FP3", date: "\(race!.thirdPractice!.date)", time: "\(race!.thirdPractice!.time!)")
-                }
-                if (race!.sprint != nil){
-                    RaceSessionList(title: "Sprint", date: "\(race!.sprint!.date)", time: "\(race!.sprint!.time!)")
-                }
-                if (race!.qualifying != nil){
-                    RaceSessionList(title: "Qualifying", date: "\(race!.qualifying!.date)", time: "\(race!.qualifying!.time!)")
-                }
-                RaceSessionList(title: "Race", date: "\(race!.date)", time: "\(race!.time!)")
+            } else {
+                // Provide a fallback view when race is nil
+                Text("No race information available.")
             }
         }
     }

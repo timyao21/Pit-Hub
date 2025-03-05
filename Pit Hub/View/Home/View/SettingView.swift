@@ -15,15 +15,13 @@ enum AppTheme: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
+
 struct SettingsView: View {
     // Using AppStorage to persist user settings
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
-    @AppStorage("selectedLanguage") private var selectedLanguage: String = "English"
-    
-    // List of available languages (you can expand this list as needed)
-    private let languages = ["中文", "English"]
-    
+    @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
     // Customize UISegmentedControl appearance
+    
     init() {
         let segmentedAppearance = UISegmentedControl.appearance()
         segmentedAppearance.selectedSegmentTintColor = UIColor(Color(S.pitHubIconColor))  // Custom selected color
@@ -39,7 +37,7 @@ struct SettingsView: View {
                 Section(header: Text("Appearance")) {
                     Picker("App Theme", selection: $selectedTheme) {
                         ForEach(AppTheme.allCases) { theme in
-                            Text(theme.rawValue)
+                            Text(LocalizedStringKey(theme.rawValue))
                                 .fontWeight(.semibold)
                                 .tag(theme)
                         }
@@ -51,11 +49,11 @@ struct SettingsView: View {
                 // Section for language settings
                 Section(header: Text("Language")) {
                     Picker("Language", selection: $selectedLanguage) {
-                        ForEach(languages, id: \.self) { language in
-                            Text(language).tag(language)
+                        ForEach(AppLanguage.allCases) { language in
+                            Text(language.displayName)
+                                .tag(language)
                         }
                     }
-                    // You could use a default picker style or a wheel style if preferred
                 }
             }
             .navigationTitle("Pit Line")

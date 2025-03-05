@@ -19,10 +19,6 @@ struct FullRaceResultListRowView: View {
     let grid: String?
     let constructor: Constructor?
 
-//    private var constructorColor: Color {
-//        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
-//    }
-
     private var gridValues: (gridString: String, gridInt: Int, posInt: Int)? {
         guard let grid = grid,
               let gridInt = Int(grid),
@@ -41,7 +37,7 @@ struct FullRaceResultListRowView: View {
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
+                    Text(LocalizedStringKey(driverLastName))
                         .font(.headline)
                         .fontWeight(.semibold)
                         .lineLimit(1)
