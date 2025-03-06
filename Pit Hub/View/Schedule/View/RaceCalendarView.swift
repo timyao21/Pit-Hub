@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct RaceCalendarView: View {
-    @ObservedObject var viewModel = IndexViewModel()
+    @Bindable var viewModel: IndexViewModel
     
-    @State private var selectedTab = 1
+//    @State private var raceCalendarSelectedTab = 1
     @Namespace private var animation
     private let tabTitles = ["Upcoming", "Past"]
     
@@ -22,7 +22,7 @@ struct RaceCalendarView: View {
                     .scaledToFit()
                     .frame(width: 40)
                 Spacer()
-                NavTabSelector(selectedTab: $selectedTab, tabTitles: tabTitles)
+                NavTabSelector(selectedTab: $viewModel.raceCalendarSelectedTab, tabTitles: tabTitles)
                 Spacer()
                 YearDropdownSelector(selectedYear: $viewModel.raceCalendarViewYear) {
                     newYear in
@@ -38,7 +38,7 @@ struct RaceCalendarView: View {
             .padding(.horizontal)
             
             // MARK: - TabView
-            TabView(selection: $selectedTab) {
+            TabView(selection: $viewModel.raceCalendarSelectedTab) {
                 VStack{
                     raceCalendarScrollView(raceCalendar: viewModel.raceCalendarUpcoming)
                 }
@@ -54,9 +54,6 @@ struct RaceCalendarView: View {
         .refreshable {
             await viewModel.refreshRaceCalendarData()
         }
-        
-        
-        //End of vstack
     }
 }
 
@@ -86,7 +83,7 @@ private func raceCalendarScrollView(raceCalendar: [Races] = []) -> some View {
                         )
                     }
                     
-                    // ✅ Place a divider unless it's the last item
+                    // Place a divider unless it's the last item
                     if index < raceCalendar.count - 1 {
                         Divider()
                             .padding(.horizontal)

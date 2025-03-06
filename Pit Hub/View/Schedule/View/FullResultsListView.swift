@@ -151,13 +151,20 @@ private struct FullResultsHeaderView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(String(format: NSLocalizedString("%@ %@ result", comment: "Title for race result with race name and title"), NSLocalizedString(raceName, comment: "Race name"), NSLocalizedString(title, comment: "type of result")))
-                .font(.title2)
-                .fontWeight(.bold)
+            (
+                Text(LocalizedStringKey(raceName))
+                + Text(" ")
+                + Text(LocalizedStringKey(title))
+                + Text(" ")
+                + Text("Result")
+            )
+            .font(.title2)
+            .fontWeight(.bold)
+
             HStack {
-                Text(String(format: NSLocalizedString("Season: %@", comment: "Label for season"), season))
+                Text("Season: \(season)")
                 Spacer()
-                Text(String(format: NSLocalizedString("Round: %@", comment: "Label for round"), round))
+                Text("Round: \(round)")
             }
             .font(.headline)
             .foregroundColor(.secondary)

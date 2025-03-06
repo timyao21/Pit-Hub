@@ -102,6 +102,7 @@ struct MapStyleToggle: View {
 struct CircuitMapView: View {
     let circuit: CLLocationCoordinate2D
     @State var position: MapCameraPosition
+    @State private var isLoading = true
     @State private var isFullScreen = false
     @State private var isHybrid = false
 
@@ -118,38 +119,53 @@ struct CircuitMapView: View {
     }
     
     var body: some View {
-        Map(position: $position) {
-            Marker(
-                NSLocalizedString("Circuit", comment: "Circuit Marker"),
-                systemImage: "flag.pattern.checkered.2.crossed",
-                coordinate: circuit
-            )
-        }
-        .disabled(true)
-        .mapStyle(isHybrid ? .hybrid : .standard(elevation: .automatic))
-        .safeAreaInset(edge: .leading) {
-            ZoomControls(circuit: circuit, position: $position)
-        }
-        .safeAreaInset(edge: .trailing) {
-            VStack(spacing: 12) {
-                Spacer()
-                MapStyleToggle(isHybrid: $isHybrid)
-                Button {
-                    isFullScreen = true
-                } label: {
-                    Image(systemName: "arrow.down.backward.and.arrow.up.forward.rectangle.fill")
-                }
-                .controlButtonStyle()
-                Spacer().frame(height: 20)
+        ZStack{
+            Map(position: $position) {
+                Marker(
+                    LocalizedStringKey("Circuit"),
+                    systemImage: "flag.pattern.checkered.2.crossed",
+                    coordinate: circuit
+                )
             }
-            .padding()
+            .disabled(true)
+            .mapStyle(isHybrid ? .hybrid : .standard(elevation: .automatic))
+            .safeAreaInset(edge: .leading) {
+                ZoomControls(circuit: circuit, position: $position)
+            }
+            .safeAreaInset(edge: .trailing) {
+                VStack(spacing: 12) {
+                    Spacer()
+                    MapStyleToggle(isHybrid: $isHybrid)
+                    Button {
+                        isFullScreen = true
+                    } label: {
+                        Image(systemName: "arrow.down.backward.and.arrow.up.forward.rectangle.fill")
+                    }
+                    .controlButtonStyle()
+                    Spacer().frame(height: 20)
+                }
+                .padding()
+            }
+            .fullScreenCover(isPresented: $isFullScreen) {
+                FullScreenMapView(circuit: circuit, isPresented: $isFullScreen)
+            }
+            .frame(height: 300)
+            .cornerRadius(20)
+            .shadow(radius: 5)
+            .onAppear(){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    isLoading = false
+                }
+            }
+            
+            // Loading Overlay
+            if isLoading {
+                LoadingOverlay()
+                    .frame(height: 300)
+                    .cornerRadius(20)
+            }
+            
         }
-        .fullScreenCover(isPresented: $isFullScreen) {
-            FullScreenMapView(circuit: circuit, isPresented: $isFullScreen)
-        }
-        .frame(height: 300)
-        .cornerRadius(20)
-        .shadow(radius: 5)
     }
 }
 

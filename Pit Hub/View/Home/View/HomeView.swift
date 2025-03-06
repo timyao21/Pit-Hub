@@ -9,13 +9,13 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var viewModel = IndexViewModel()
+    @Bindable var viewModel: IndexViewModel
     @State private var isSettingsPresented: Bool = false
     
     var body: some View {
         
         ScrollView{
-            VStack(spacing: 0){
+            VStack(spacing: 3){
                 HStack {
                     Image(S.pitIcon)
                         .resizable()
@@ -37,7 +37,7 @@ struct HomeView: View {
                             .foregroundColor(Color(S.pitHubIconColor))
                     }
                 }
-                .padding(.bottom, 8)
+                
                 if (viewModel.upcomingGP != nil){
                     RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
@@ -62,8 +62,4 @@ struct HomeView: View {
             SettingsView()
         }
     }
-}
-
-#Preview {
-    HomeView()
 }

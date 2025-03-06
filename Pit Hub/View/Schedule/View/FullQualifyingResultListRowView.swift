@@ -17,9 +17,9 @@ struct FullQualifyingResultListRowView: View {
     let lapTime: String
     let constructor : Constructor?
     
-    private var constructorColor: Color {
-        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
-    }
+//    private var constructorColor: Color {
+//        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
+//    }
     
     // Computed property to check if time difference should be hidden
     private var formattedTimeDiff: String {
@@ -37,14 +37,14 @@ struct FullQualifyingResultListRowView: View {
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text("\(NSLocalizedString(driverLastName, comment: "Driver's last name"))")
+                    Text(LocalizedStringKey(driverLastName))
                         .font(.headline)
                         .fontWeight(.semibold)
                         .lineLimit(1)
                     Text("\(number)")
                         .font(.headline)
                         .fontWeight(.semibold)
-                        .foregroundColor(constructorColor)
+                        .foregroundColor(Color.constructorColor(for: constructor?.constructorId ?? ""))
                         .frame(width: 35)
                 }
                 HStack {

@@ -10,14 +10,13 @@ struct DriverConstructorTag: View {
     let constructor: Constructor
     
     var body: some View {
-        Text(NSLocalizedString(constructor.name, comment: "Constructor Name"))
+        Text(LocalizedStringKey(constructor.name))
             .font(.caption)
             .foregroundStyle(.white)
             .bold()
             .padding(4)
             .background(
-                GetConstructorColor(constructorId: constructor.constructorId ?? "")
-                    .opacity(0.8)
+                Color.constructorColor(for: constructor.constructorId)
             )
             .cornerRadius(5)
     }
@@ -25,10 +24,18 @@ struct DriverConstructorTag: View {
 }
 
 // Helper function to get color or default to black
-func GetConstructorColor(constructorId: String) -> Color {
-    if let uiColor = UIColor(named: constructorId) {
+//func GetConstructorColor(constructorId: String) -> Color {
+//    if let uiColor = UIColor(named: constructorId) {
+//        return Color(uiColor)
+//    } else {
+//        return Color.black
+//    }
+//}
+extension Color {
+    static func constructorColor(for constructorId: String?) -> Color {
+        guard let id = constructorId, !id.isEmpty, let uiColor = UIColor(named: id) else {
+            return .black
+        }
         return Color(uiColor)
-    } else {
-        return Color.black
     }
 }

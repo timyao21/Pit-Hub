@@ -8,7 +8,7 @@ import SwiftUI
 
 struct SprintBadge: View {
     var body: some View {
-        Text(NSLocalizedString("SPRINT", comment: "SPRINT"))
+        Text(LocalizedStringKey("SPRINT"))
             .font(.caption)
             .bold()
             .padding(.horizontal, 6)

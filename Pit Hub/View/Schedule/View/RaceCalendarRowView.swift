@@ -25,19 +25,21 @@ struct RaceCalendarRowView: View {
                 .foregroundColor(.primary)
 
             VStack(alignment: .leading, spacing: 4) {
-                HStack(spacing: 2){
+                HStack(spacing: 3){
                     Text(CountryFlags.flag(for: country))
-                    Text(NSLocalizedString(locality, comment: "Locality"))
-                        .font(.headline)
+                    Text(LocalizedStringKey(locality))
+                        .font(.subheadline)
                         .foregroundColor(.primary)
                     if sprint {
                         SprintBadge()
                     }
                 }
                 
-                Text(NSLocalizedString(raceName, comment: "Race name"))
-                    .font(.title2)
+                Text(LocalizedStringKey(raceName))
+                    .font(.title3)
+                    .bold()
                     .foregroundColor(.primary)
+                    .frame(maxWidth: .infinity, alignment: .leading )
                 if let localDate = DateUtilities.convertUTCToLocal(date: date, time: time, format: "yyyy-MM-dd") {
                     Text("\(localDate)")
                         .font(.subheadline)
@@ -51,9 +53,10 @@ struct RaceCalendarRowView: View {
             
             Image(circuitId)
                 .resizable()
+                .renderingMode(.template) // Makes the image render as a template
                 .scaledToFit()
                 .frame(width: 100)
-                .foregroundColor(Color("circuitColor")) // Applies the color to the image
+                .foregroundColor(.primary) // Applies the color to the image
             Image(systemName: "chevron.right")
                 .imageScale(.small)
                 .foregroundColor(.primary)

@@ -68,7 +68,8 @@ struct ResultListRow<T: RaceResults>: View {
             Text(result.driver.code ?? result.driver.familyName)
                 .font(.callout)
                 .fontWeight(.semibold)
-                .foregroundColor(GetConstructorColor(constructorId: result.constructor?.constructorId ?? ""))
+//                .foregroundColor(GetConstructorColor(constructorId: result.constructor?.constructorId ?? ""))
+                .foregroundColor(Color.constructorColor(for: result.constructor?.constructorId ?? ""))
 //
             
             if let constructor = result.constructor {

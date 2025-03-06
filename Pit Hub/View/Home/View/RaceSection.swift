@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct RaceSection: View {
-    
     let race: Races?
     
     init(for race: Races?) {
@@ -16,77 +15,97 @@ struct RaceSection: View {
     }
     
     var body: some View {
-        VStack{
-            if (race != nil){
-                HStack {
-                    VStack (alignment: .leading, spacing: 3) {
-                        HStack{
-                            Text(NSLocalizedString("\(race!.circuit.circuitName)", comment: "Circuit name for upcoming Grand Prix"))
-                            if ((race?.sprint) != nil){
-                                SprintBadge()
+        Group {
+            if let race = race {
+                VStack (spacing: 6){
+                    
+                    // Race title and date with circuit image
+                    HStack {
+                        VStack(alignment: .leading, spacing: 3) {
+                            HStack {
+                                Text(LocalizedStringKey(race.circuit.circuitName))
+                                    .font(.custom(S.smileySans, size: 18))
+                                if race.sprint != nil {
+                                    SprintBadge()
+                                }
+                            }
+                            
+                            Text(LocalizedStringKey(race.raceName))
+                                .font(.title)
+                                .fontWeight(.bold)
+                            if let localDate = DateUtilities.convertUTCToLocal(
+                                date: race.date,
+                                time: race.time!,
+                                format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")
+                            ) {
+                                Text("\(localDate)")
+                                    .font(.headline)
                             }
                         }
-                        Text(NSLocalizedString("\(race!.raceName)", comment: "Race name for upcoming Grand Prix"))
-                            .font(.custom(S.orbitron, size: 30))
-                            .fontWeight(.bold)
-                        if let localDate = DateUtilities.convertUTCToLocal(date: race!.date, time: race!.time!, format: "yyyy-MM-dd") {
-                            Text("\(localDate)")
-                        }
+                        
+                        Spacer()
+                        
+                        Image(race.circuit.circuitId)
+                            .resizable()
+                            .renderingMode(.template)
+                            .scaledToFit()
+                            .frame(width: 125)
+                            .foregroundColor(Color("circuitColor"))
                     }
-                    .font(.custom(S.smileySans, size: 20))
-                    Spacer()
-                    Image(race!.circuit.circuitId)
-                        .resizable()
-                        .renderingMode(.template) // Makes the image render as a template
-                        .scaledToFit()
-                        .frame(width: 125)
-                        .foregroundColor(Color("circuitColor")) // Applies the color to the image
                     
+                    // Local time zone notice
+                    Text("All times are in your local time zone")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    // Session list
+                    VStack(spacing: 10) {
+                        // Optionally you could iterate over an array of sessions, but here we use if-lets.
+                        if let fp1 = race.firstPractice {
+                            RaceSessionList(title: "FP1", date: "\(fp1.date)", time: "\(fp1.time!)")
+                        }
+                        if let fp2 = race.secondPractice {
+                            RaceSessionList(title: "FP2", date: "\(fp2.date)", time: "\(fp2.time!)")
+                        }
+                        if let sprintQuali = race.sprintQualifying {
+                            RaceSessionList(title: "Sprint Quali", date: "\(sprintQuali.date)", time: "\(sprintQuali.time!)")
+                        }
+                        if let fp3 = race.thirdPractice {
+                            RaceSessionList(title: "FP3", date: "\(fp3.date)", time: "\(fp3.time!)")
+                        }
+                        if let sprint = race.sprint {
+                            RaceSessionList(title: "Sprint", date: "\(sprint.date)", time: "\(sprint.time!)")
+                        }
+                        if let qualifying = race.qualifying {
+                            RaceSessionList(title: "Qualifying", date: "\(qualifying.date)", time: "\(qualifying.time!)")
+                        }
+                        // "Race" session is always shown
+                        RaceSessionList(title: "Race", date: "\(race.date)", time: "\(race.time!)")
+                    }
                 }
-            }
-            Text(NSLocalizedString("All times are in your local time zone", comment: "All times are in your local time zone"))
-                .font(.footnote)
-                .foregroundColor(.gray)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            VStack(spacing: 10) {
-                if (race!.firstPractice != nil){
-                    RaceSessionList(title: NSLocalizedString("FP1", comment: "First Practice"), date: "\(race!.firstPractice!.date)", time: "\(race!.firstPractice!.time!)")
-                }
-                if (race!.secondPractice != nil){
-                    RaceSessionList(title: NSLocalizedString("FP2", comment: "Second Practice"), date: "\(race!.secondPractice!.date)", time: "\(race!.secondPractice!.time!)")
-                }
-                if (race!.sprintQualifying != nil){
-                    RaceSessionList(title: NSLocalizedString("Sprint Quali", comment: "Sprint Quali"), date: "\(race!.sprintQualifying!.date)", time: "\(race!.sprintQualifying!.time!)")
-                }
-                if (race!.thirdPractice != nil){
-                    RaceSessionList(title: NSLocalizedString("FP3", comment: "Third Practice"), date: "\(race!.thirdPractice!.date)", time: "\(race!.thirdPractice!.time!)")
-                }
-                if (race!.sprint != nil){
-                    RaceSessionList(title: NSLocalizedString("Sprint", comment: "Sprint"), date: "\(race!.sprint!.date)", time: "\(race!.sprint!.time!)")
-                }
-                if (race!.qualifying != nil){
-                    RaceSessionList(title: NSLocalizedString("Qualifying", comment: "Qualifying"), date: "\(race!.qualifying!.date)", time: "\(race!.qualifying!.time!)")
-                }
-                RaceSessionList(title: NSLocalizedString("Race", comment: "First Practice"), date: "\(race!.date)", time: "\(race!.time!)")
+            } else {
+                // Provide a fallback view when race is nil
+                Text("No race information available.")
             }
         }
     }
 }
 
 struct RaceSessionList: View {
-    let title: String
+    let title: LocalizedStringKey
     let date: String
     let time: String
     
     var body: some View {
         HStack{
-            Text("\(title)")
+            Text(title)
                 .font(.body)
                 .frame(width: 80, alignment: .leading)
             
             Spacer()
             
-            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "MM-dd") {
+            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: DateUtilities.localizedDateFormat(for: "MM-dd")) {
                 Text("\(localDate)")
                     .font(.body)
                     .frame(width: 120, alignment: .center)

@@ -10,7 +10,7 @@ import SwiftUI
 struct DriverDetailView: View {
     let driverInfo: DriverStanding
     var year: String
-    @ObservedObject var viewModel: DriverDetailViewModel
+    @State var viewModel: DriverDetailViewModel
     
     init(for driver: DriverStanding, year: String) {
         self.year = year
@@ -28,7 +28,7 @@ struct DriverDetailView: View {
                 .font(.custom(S.orbitron, size: 30))
                 .fontWeight(.semibold)
                 .foregroundColor(
-                    GetConstructorColor(constructorId: driverInfo.constructors.last?.constructorId ?? "")
+                    Color.constructorColor(for: driverInfo.constructors.last?.constructorId ?? "")
                         .opacity(0.8)
                 )
                 
@@ -43,9 +43,9 @@ struct DriverDetailView: View {
                 Spacer()
             }
             HStack {
-                Text(NSLocalizedString("\(driverInfo.driver.givenName)", comment: "Driver GivenName"))
-                Text("-")
-                Text(NSLocalizedString("\(driverInfo.driver.familyName)", comment: "Driver FamilyName"))
+                Text(LocalizedStringKey(driverInfo.driver.givenName))
+                Text("·")
+                Text(LocalizedStringKey(driverInfo.driver.familyName))
             }
             .font(.largeTitle)
             .fontWeight(.semibold)
@@ -53,8 +53,7 @@ struct DriverDetailView: View {
             Divider()
             
             HStack(spacing: 20) {
-                StatView(iconName: "number.circle.fill", iconColor: Color(                    GetConstructorColor(constructorId: driverInfo.constructors.last?.constructorId ?? "")
-                    .opacity(0.8)), value: driverInfo.positionText ?? "0", label: "Position")
+                StatView(iconName: "number.circle.fill", iconColor: Color.constructorColor(for: driverInfo.constructors.last?.constructorId ?? "").opacity(0.8), value: driverInfo.positionText ?? "0", label: "Position")
                 StatView(iconName: "star.fill", iconColor: .yellow, value: driverInfo.points, label: "Points")
                 StatView(iconName: "trophy.fill", iconColor: .orange, value: driverInfo.wins, label: "Wins")
             }
@@ -84,7 +83,7 @@ struct DriverDetailView: View {
                     .font(.caption)
                 
                 // Display nationality text
-                Text(NSLocalizedString(nationality, comment: "nationality Name"))
+                Text(LocalizedStringKey(nationality))
                     .font(.caption)
                     .foregroundColor(.white)
                     .bold()
@@ -99,7 +98,7 @@ struct DriverDetailView: View {
         var iconName: String
         var iconColor: Color = .black
         var value: String
-        var label: String
+        var label: LocalizedStringKey
         
         var body: some View {
             HStack(alignment: .center, spacing: 8) {
@@ -113,7 +112,7 @@ struct DriverDetailView: View {
                         .fontWeight(.bold)
 
                     
-                    Text(NSLocalizedString(label, comment: "Label"))
+                    Text(label)
                         .font(.caption)
                         .foregroundColor(.gray)
                 }

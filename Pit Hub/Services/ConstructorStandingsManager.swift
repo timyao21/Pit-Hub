@@ -23,7 +23,7 @@ struct ConstructorStandingsManager {
         
         do{
             let constructorStandingsRoot = try decoder.decode(ConstructorStandingsRoot.self, from: data)
-            let constructorStandingsList = constructorStandingsRoot.mrData.standingsTable?.standingsLists.first?.constructorStandings ?? []
+            let constructorStandingsList = constructorStandingsRoot.mrData.standingsTable?.standingsLists?.first?.constructorStandings ?? []
             
             return constructorStandingsList
             

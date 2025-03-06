@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SeasonProgressView: View {
-    @ObservedObject var viewModel: IndexViewModel
+//    @ObservedObject var viewModel: IndexViewModel
+    @Bindable var viewModel: IndexViewModel
     
     private var totalGP: Int { viewModel.raceCalendar.count }
     private var pastGP: Int { viewModel.raceCalendarPast.count }

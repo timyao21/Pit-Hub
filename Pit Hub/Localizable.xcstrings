@@ -1,35 +1,20 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    " " : {
+
+    },
     "-" : {
 
     },
     "--" : {
 
     },
-    "%@" : {
+    "·" : {
 
     },
-    "%@ %@ result" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ %@ 成绩"
-          }
-        }
-      }
-    },
-    "%@· %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@· %2$@"
-          }
-        }
-      }
+    "%@" : {
+
     },
     "%lld" : {
 
@@ -40,6 +25,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "%1$lld/%2$lld GP Completed"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld/%2$lld 已完成"
           }
         }
       }
@@ -710,6 +701,17 @@
         }
       }
     },
+    "Dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深色"
+          }
+        }
+      }
+    },
     "Data is still in the pit lane! ⏳" : {
       "comment" : "缺失数据",
       "extractionState" : "manual",
@@ -1219,9 +1221,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "Kick Sauber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1327,6 +1326,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "利亚姆"
+          }
+        }
+      }
+    },
+    "Light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "浅色"
           }
         }
       }
@@ -1567,6 +1577,9 @@
           }
         }
       }
+    },
+    "No race information available." : {
+
     },
     "No Results" : {
 
@@ -1880,6 +1893,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "刷新或稍后再试！🔄"
+          }
+        }
+      }
+    },
+    "Result" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成绩"
           }
         }
       }
@@ -2253,6 +2276,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "瑞士"
+          }
+        }
+      }
+    },
+    "System" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "系统"
           }
         }
       }
