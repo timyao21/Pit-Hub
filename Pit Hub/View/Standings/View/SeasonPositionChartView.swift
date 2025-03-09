@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct SeasonChartView: View {
+struct SeasonPositionChartView: View {
     let results1: [PositionChart]
     
     // Chart Size (I set to 25 just in case there are more drives in the feature)
@@ -65,13 +65,13 @@ struct SeasonChartView: View {
             // MARK: - make sure the data is sorted
             
 
-            let sortedResults = results1.sorted {
-                guard let round1 = Int($0.round), let round2 = Int($1.round) else { return false }
-                return round1 < round2
-            }
+//            let sortedResults = results1.sorted {
+//                guard let round1 = Int($0.round), let round2 = Int($1.round) else { return false }
+//                return round1 < round2
+//            }
             
             Chart {
-                ForEach(sortedResults) { result in
+                ForEach(results1) { result in
                     if let roundNumber = Int(result.round),
                        let positionNumber = Int(result.position) {
                         // Adjust the raw position to flip the chart using baseValue
@@ -130,7 +130,7 @@ struct SeasonChartView: View {
                                     let location = value.location
                                     if let round: Int = proxy.value(atX: location.x) {
                                         // Find the first matching data point.
-                                        if let matched = sortedResults.first(where: { Int($0.round) == round }) {
+                                        if let matched = results1.first(where: { Int($0.round) == round }) {
                                             selectedData = matched
                                         }
                                     }
@@ -144,7 +144,6 @@ struct SeasonChartView: View {
             }
         }
         .aspectRatio(1.5,contentMode: .fit)
-//        .padding()
     }
 }
 
@@ -172,7 +171,7 @@ struct SeasonChartView_Previews: PreviewProvider {
 
         
 
-            SeasonChartView(results1: sampleData)
+        SeasonPositionChartView(results1: sampleData)
         
     }
 }

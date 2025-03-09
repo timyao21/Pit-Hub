@@ -35,7 +35,7 @@ struct RaceCalendarDetailView: View {
     }
     
     // Compute available tabs based on which data is present.
-    var availableTabs: [ResultTab] {
+    private var availableTabs: [ResultTab] {
         var tabs = [ResultTab]()
         if !viewModel.raceResults.isEmpty {
             tabs.append(ResultTab(title: "Race", type: .race))
@@ -51,6 +51,22 @@ struct RaceCalendarDetailView: View {
         //     tabs.append(ResultTab(title: "Sprint Quali", type: .sprintQuali))
         // }
         return tabs
+    }
+    
+    // Helper to build the results view for a given type.
+    @ViewBuilder
+    private func resultsView(for type: ResultType) -> some View {
+        switch type {
+        case .race:
+            ResultList(length: 10, results: viewModel.raceResults)
+        case .quali:
+            ResultList(length: 10, results: viewModel.qualifyingResults)
+        case .sprint:
+            ResultList(length: 10, results: viewModel.sprintResults)
+        case .sprintQuali:
+            // Replace with your sprint quali view if available.
+            Text("Sprint Quali Results")
+        }
     }
     
     var body: some View {
@@ -103,25 +119,31 @@ struct RaceCalendarDetailView: View {
                     // The TabView uses the available tabs.
                     TabView(selection: $selectedTab) {
                         ForEach(availableTabs) { tab in
-                            Group {
-                                switch tab.type {
-                                case .race:
-                                    ResultList(length: 10, results: viewModel.raceResults)
-                                case .quali:
-                                    ResultList(length: 10, results: viewModel.qualifyingResults)
-                                case .sprint:
-                                    ResultList(length: 10, results: viewModel.sprintResults)
-                                case .sprintQuali:
-                                    // Replace with your sprint quali view if available.
-                                    Text("Sprint Quali Results")
-                                }
+                            ForEach(availableTabs) { tab in
+                                resultsView(for: tab.type)
+                                    .tag(tab.type)
                             }
-                            .tag(tab.type)
                         }
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                     .frame(height: 200)
                     .animation(.easeInOut, value: selectedTab)
+                    
+                }else{
+                    VStack{
+                        HStack{
+                            PitSubtitle(for: "Results")
+                                .bold()
+                                .foregroundColor(Color(S.pitHubIconColor))
+                            Spacer()
+                        }
+                        Spacer()
+                        Text("The red light is still on in the pit lane - Data is Unavailable")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                    .frame(height: 200)
                 }
                 
                 PitSubtitle(for: "Circuit Location")
@@ -180,7 +202,7 @@ struct RaceCalendarDetailView: View {
                     round: race?.round ?? "",
                     date: race?.date ?? "",
                     time: race?.time ?? "",
-                    sprintResult: [] // Replace with actual data if available.
+                    qualifyingResult: [] // Replace with actual data if available.
                 )
             }
         }

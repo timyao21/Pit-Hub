@@ -52,17 +52,6 @@
         }
       }
     },
-    "🏎️ Overtake Denied! 🏁" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🏎️ 超车失败! 🏁"
-          }
-        }
-      }
-    },
     "Abu Dhabi Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -336,7 +325,7 @@
       }
     },
     "Avg: %@" : {
-
+      "shouldTranslate" : false
     },
     "Azerbaijan Grand Prix" : {
       "extractionState" : "manual",
@@ -521,6 +510,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "夏尔"
+          }
+        }
+      }
+    },
+    "Check, Check, Radio Check" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "测试，测试，无线电测试"
           }
         }
       }
@@ -724,17 +724,6 @@
         }
       }
     },
-    "Destination" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "目的地"
-          }
-        }
-      }
-    },
     "Did Not Finish" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -747,7 +736,7 @@
       }
     },
     "DNF" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -824,7 +813,14 @@
       }
     },
     "empty" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无"
+          }
+        }
+      }
     },
     "Esteban" : {
       "extractionState" : "manual",
@@ -1221,6 +1217,12 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Key 1" : {
+      "extractionState" : "manual"
+    },
     "Kick Sauber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1578,6 +1580,16 @@
         }
       }
     },
+    "No Internet Connection" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无网络连接"
+          }
+        }
+      }
+    },
     "No race information available." : {
 
     },
@@ -1886,17 +1898,6 @@
         }
       }
     },
-    "Refresh or check back later! 🔄" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "刷新或稍后再试！🔄"
-          }
-        }
-      }
-    },
     "Result" : {
       "localizations" : {
         "zh-Hans" : {
@@ -2077,17 +2078,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "塞尔吉奥"
-          }
-        }
-      }
-    },
-    "Settings" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置"
           }
         }
       }
@@ -2302,6 +2292,16 @@
         }
       }
     },
+    "The red light is still on in the pit lane - Data is Unavailable" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维修区通道红灯还未熄灭 - 暂无比赛数据"
+          }
+        }
+      }
+    },
     "Time" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2331,6 +2331,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "美国大奖赛"
+          }
+        }
+      }
+    },
+    "Unknown Circuit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未知赛道"
           }
         }
       }

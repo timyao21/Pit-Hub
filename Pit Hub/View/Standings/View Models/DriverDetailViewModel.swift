@@ -46,6 +46,13 @@ extension DriverDetailView {
                     position: position
                 )
             }
+            .sorted { firstChart, secondChart in
+                // Safely convert the round strings to integers for sorting
+                if let round1 = Int(firstChart.round), let round2 = Int(secondChart.round) {
+                    return round1 < round2
+                }
+                return false
+            }
         }
         
         

@@ -60,8 +60,13 @@ struct DriverDetailView: View {
             .padding(.vertical, 10)
             
 //            Chart
-            
-            SeasonChartView(results1: viewModel.driverRaceResultPositionChart)
+            if viewModel.driverRaceResultPositionChart.isEmpty {
+                LoadingOverlay()
+                    .frame(height: 300)
+                    .cornerRadius(20)
+            }else{
+                SeasonPositionChartView(results1: viewModel.driverRaceResultPositionChart)
+            }
             
             Spacer()
         }
