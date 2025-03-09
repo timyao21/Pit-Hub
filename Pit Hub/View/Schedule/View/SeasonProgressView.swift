@@ -21,7 +21,7 @@ struct SeasonProgressView: View {
     }
     
     var body: some View {
-        VStack {
+        
             VStack(alignment: .leading) {
                 Text("Season Progress")
                     .font(.headline)
@@ -48,12 +48,16 @@ struct SeasonProgressView: View {
                     .foregroundColor(.gray)
                     .padding(.top, 5)
             }
-        }
-        .onAppear {
-            animatedProgress = progress
-        }
-        .onChange(of: pastGP) {
-            animatedProgress = progress
-        }
+        
+            .onAppear {
+                DispatchQueue.main.async {
+                    animatedProgress = progress
+                }
+            }
+            .onChange(of: pastGP) { oldValue, newValue in
+                DispatchQueue.main.async {
+                    animatedProgress = progress
+                }
+            }
     }
 }

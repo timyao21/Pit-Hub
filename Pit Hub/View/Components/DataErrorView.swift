@@ -10,11 +10,11 @@ import SwiftUI
 struct DataErrorView: View {
     var body: some View {
         VStack(spacing: 12) {
-            Text(NSLocalizedString(errorMessage(), comment: "Error message"))
+            Text(LocalizedStringKey(errorMessage()))
                 .font(.headline)
                 .fontWeight(.bold)
 
-            Text(NSLocalizedString("Data is still in the pit lane! ⏳",comment: "Sub Error message"))
+            Text("Data is still in the pit lane! ⏳")
                 .font(.subheadline)
                 .foregroundColor(.gray)
         }
