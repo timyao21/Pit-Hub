@@ -22,6 +22,8 @@ struct SettingsView: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
     // Customize UISegmentedControl appearance
     
+    @State private var seasonPassSheetIsPresented: Bool = false
+    
     init() {
         let segmentedAppearance = UISegmentedControl.appearance()
         segmentedAppearance.selectedSegmentTintColor = UIColor(Color(S.pitHubIconColor))  // Custom selected color
@@ -34,6 +36,11 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 // Section for appearance settings
+                Section(header: Text("Paddock Club")) {
+                    Button(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/) {
+                        seasonPassSheetIsPresented = true
+                    }
+                }
                 Section(header: Text("Appearance")) {
                     Picker("App Theme", selection: $selectedTheme) {
                         ForEach(AppTheme.allCases) { theme in

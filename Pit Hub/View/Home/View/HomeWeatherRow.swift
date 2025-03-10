@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
-import WeatherKit
 
 struct HomeWeatherRow: View {
+    @State private var viewModel = HomeWeatherRowViewModel()
+    
+    init (for race: Races?) {
+        self.viewModel.race = race
+    }
     
     var body: some View {
         VStack{
-            PitSubtitle(for: "Weather")
-                .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
                 VStack{
-                    Text("周五")
+                    Text((viewModel.race?.secondPractice?.date.isEmpty ?? true) ? "Practice" : "Sprint Quali")
                     Image(systemName: "sun.max")
                         .font(.system(size: 45))
                         .padding(2)
@@ -24,7 +26,7 @@ struct HomeWeatherRow: View {
                 }
                 Spacer()
                 VStack{
-                    Text("周六")
+                    Text("Qualifying")
                     Image(systemName: "cloud.heavyrain")
                         .font(.system(size: 45))
                         .padding(2)
@@ -32,7 +34,7 @@ struct HomeWeatherRow: View {
                 }
                 Spacer()
                 VStack{
-                    Text("周日")
+                    Text("Race")
                     Image(systemName: "cloud.bolt.rain")
                         .font(.system(size: 45))
                         .padding(2)
@@ -43,5 +45,14 @@ struct HomeWeatherRow: View {
             .frame(maxWidth: .infinity)
             .frame(height: 130)
         }
+        .onAppear(){
+            Task{
+                await viewModel.fetchWeather()
+            }
+        }
     }
+}
+
+#Preview {
+    HomeWeatherRow(for: Races.sample)
 }

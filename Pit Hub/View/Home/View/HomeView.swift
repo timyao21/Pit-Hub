@@ -42,7 +42,14 @@ struct HomeView: View {
                     RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
                 }
-                HomeWeatherRow()
+                
+                PitSubtitle(for: "Weather")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical)
+                
+                if (viewModel.upcomingGP != nil){
+                    HomeWeatherRow(for: viewModel.upcomingGP)
+                }
                 Spacer()
                 
                 if let lat = viewModel.upcomingGP?.circuit.location.lat,

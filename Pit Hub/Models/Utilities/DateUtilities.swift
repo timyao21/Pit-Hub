@@ -47,7 +47,6 @@ struct DateUtilities {
         let localFormatter = DateFormatter()
         localFormatter.dateFormat = format
         localFormatter.timeZone = TimeZone.current
-        
         return localFormatter.string(from: utcDate)
     }
     
