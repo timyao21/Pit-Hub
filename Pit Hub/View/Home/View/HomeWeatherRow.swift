@@ -18,7 +18,7 @@ struct HomeWeatherRow: View {
         VStack{
             HStack{
                 VStack{
-                    Text((viewModel.race?.secondPractice?.date.isEmpty ?? true) ? "Practice" : "Sprint Quali")
+                    Text((viewModel.race?.secondPractice?.date.isEmpty ?? true) ? "Sprint Quali" : "Practice")
                     Image(systemName: "sun.max")
                         .font(.system(size: 45))
                         .padding(2)
@@ -47,7 +47,7 @@ struct HomeWeatherRow: View {
         }
         .onAppear(){
             Task{
-                await viewModel.fetchWeather()
+                await viewModel.loadWeatherData()
             }
         }
     }
