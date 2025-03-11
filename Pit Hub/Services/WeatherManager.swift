@@ -29,8 +29,7 @@ class WeatherManager {
     func fetchHourlyWeather(for location: CLLocation, on dateString: String) async -> HourWeather? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
-        // Force unwrap since the format is guaranteed.
-        formatter.timeZone = TimeZone(abbreviation: "UTC")
+//        formatter.timeZone = TimeZone(abbreviation: "UTC")
         let date = formatter.date(from: dateString)!
         
         let weatherService = WeatherService()

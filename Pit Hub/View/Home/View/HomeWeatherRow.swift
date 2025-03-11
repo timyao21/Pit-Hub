@@ -19,10 +19,16 @@ struct HomeWeatherRow: View {
             HStack{
                 VStack{
                     Text((viewModel.race?.secondPractice?.date.isEmpty ?? true) ? "Sprint Quali" : "Practice")
-                    Image(systemName: "sun.max")
+                    Image(systemName: viewModel.day1Weather.first?.symbolName ?? "")
                         .font(.system(size: 45))
                         .padding(2)
-                    Text("\(20)°C")
+                    if let temperature = viewModel.day1Weather.first?.temperature {
+                        let formatter = MeasurementFormatter()
+                        let temperatureString = formatter.string(from: temperature)
+                        Text(temperatureString)
+                    } else {
+                        Text("N/A")
+                    }
                 }
                 Spacer()
                 VStack{

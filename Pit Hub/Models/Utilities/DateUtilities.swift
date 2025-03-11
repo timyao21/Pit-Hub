@@ -54,4 +54,18 @@ struct DateUtilities {
         let timeZoneOffset = TimeInterval(TimeZone.current.secondsFromGMT(for: date))
         return date.addingTimeInterval(-timeZoneOffset) // Convert local time to UTC
     }
+    
+    static func convertToUTCString (date: String, time: String, format: String = "yyyy-MM-dd HH:mm:ss") -> String? {
+        let utcDateTimeString = "\(date)T\(time)"
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
+        guard let utcDate = dateFormatter.date(from: utcDateTimeString) else { return nil }
+        
+        let localFormatter = DateFormatter()
+        localFormatter.dateFormat = format
+        localFormatter.timeZone = TimeZone.current
+        return localFormatter.string(from: utcDate)
+    }
+    
 }
