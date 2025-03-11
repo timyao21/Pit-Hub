@@ -1217,9 +1217,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "Key 1" : {
       "extractionState" : "manual"
     },
@@ -1759,6 +1756,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "排名: %@"
+          }
+        }
+      }
+    },
+    "Practice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习赛"
           }
         }
       }

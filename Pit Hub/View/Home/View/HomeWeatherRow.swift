@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WeatherKit
 
 struct HomeWeatherRow: View {
     @State private var viewModel = HomeWeatherRowViewModel()
@@ -18,11 +19,11 @@ struct HomeWeatherRow: View {
         VStack{
             HStack{
                 VStack{
-                    Text((viewModel.race?.secondPractice?.date.isEmpty ?? true) ? "Sprint Quali" : "Practice")
-                    Image(systemName: viewModel.day1Weather.first?.symbolName ?? "")
+                    Text((viewModel.practiceWeather.isEmpty) ? "N/A" : "Practice")
+                    Image(systemName: viewModel.practiceWeather.first?.symbolName ?? "network.slash")
                         .font(.system(size: 45))
                         .padding(2)
-                    if let temperature = viewModel.day1Weather.first?.temperature {
+                    if let temperature = viewModel.practiceWeather.first?.temperature {
                         let formatter = MeasurementFormatter()
                         let temperatureString = formatter.string(from: temperature)
                         Text(temperatureString)
@@ -30,7 +31,9 @@ struct HomeWeatherRow: View {
                         Text("N/A")
                     }
                 }
-                Spacer()
+                
+                Divider()
+                
                 VStack{
                     Text("Qualifying")
                     Image(systemName: "cloud.heavyrain")
@@ -38,14 +41,11 @@ struct HomeWeatherRow: View {
                         .padding(2)
                     Text("\(20)°C")
                 }
-                Spacer()
-                VStack{
-                    Text("Race")
-                    Image(systemName: "cloud.bolt.rain")
-                        .font(.system(size: 45))
-                        .padding(2)
-                    Text("\(20)°C")
-                }
+                
+                Divider()
+                
+                ExtractedView(raceDayWeather: viewModel.day3Weather)
+                
             }
             .font(.custom(S.smileySans, size: 17))
             .frame(maxWidth: .infinity)
@@ -62,3 +62,39 @@ struct HomeWeatherRow: View {
 #Preview {
     HomeWeatherRow(for: Races.sample)
 }
+
+struct ExtractedView: View {
+    let raceDayWeather: [HourWeather]
+    
+    var body: some View {
+        Group {
+            if raceDayWeather.count == 3 {
+                HStack(alignment: .bottom) {
+                    ForEach(0..<3, id: \.self) { index in
+                        let weather = raceDayWeather[index]
+                        VStack {
+                            // For the first element, display a label
+                            if index == 0 {
+                                Text("Race")
+                            }
+                            
+                            Image(systemName: weather.symbolName)
+                                .font(.system(size: 45))
+                                .padding(2)
+                            
+                            Text({
+                                let formatter = MeasurementFormatter()
+                                formatter.numberFormatter.maximumFractionDigits = 0
+                                return formatter.string(from: weather.temperature)
+                            }())
+                        }
+                    }
+                }
+            } else {
+                Text("Unable to fetch Race weather data")
+                    .frame(width: 150)
+            }
+        }
+    }
+}
+
