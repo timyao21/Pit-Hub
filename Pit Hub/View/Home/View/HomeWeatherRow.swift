@@ -107,9 +107,11 @@ struct ExtractedView: View {
                 .font(.footnote)
                 .fontWeight(.bold)
             
-            Image(systemName: weatherData.symbolName)
+            Image(systemName: "\(weatherData.symbolName)")
                 .font(.system(size: 45))
                 .frame(height: 60, alignment: .top)
+                .symbolRenderingMode(.palette)
+                .foregroundStyle(.primary, weatherData.precipitationChance == 0 ? Color.orange : Color.blue)   
             
             Text("\(Int((weatherData.precipitationChance * 100).rounded())) %")
                 .font(.footnote)
