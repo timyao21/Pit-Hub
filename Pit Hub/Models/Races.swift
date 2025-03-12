@@ -112,8 +112,8 @@ extension Races {
             ),
             url: "https://en.wikipedia.org/wiki/Bahrain_International_Circuit"
         ),
-        date: "2024-03-02",
-        time: "15:00:00Z",
+        date: "2025-03-15",
+        time: "15:30:00Z",
         firstPractice: nil,
         secondPractice: nil,
         thirdPractice: nil,

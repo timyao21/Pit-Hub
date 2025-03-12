@@ -18,33 +18,20 @@ struct HomeWeatherRow: View {
     var body: some View {
         VStack{
             HStack{
-                VStack{
-                    Text((viewModel.practiceWeather.isEmpty) ? "N/A" : "Practice")
-                    Image(systemName: viewModel.practiceWeather.first?.symbolName ?? "network.slash")
-                        .font(.system(size: 45))
-                        .padding(2)
-                    if let temperature = viewModel.practiceWeather.first?.temperature {
-                        let formatter = MeasurementFormatter()
-                        let temperatureString = formatter.string(from: temperature)
-                        Text(temperatureString)
-                    } else {
-                        Text("N/A")
-                    }
+                if !viewModel.day1Weather.isEmpty {
+                    ExtractedView(title: "Practice", weatherData: viewModel.day1Weather.first!)
+                }
+                
+                
+                Divider()
+                
+                if !viewModel.day2Weather.isEmpty {
+                    ExtractedView(title: "Practice", weatherData: viewModel.day2Weather.first!)
                 }
                 
                 Divider()
                 
-                VStack{
-                    Text("Qualifying")
-                    Image(systemName: "cloud.heavyrain")
-                        .font(.system(size: 45))
-                        .padding(2)
-                    Text("\(20)°C")
-                }
-                
-                Divider()
-                
-                ExtractedView(raceDayWeather: viewModel.day3Weather)
+                RaceWeatherRowView(raceDayWeather: viewModel.day3Weather)
                 
             }
             .font(.custom(S.smileySans, size: 17))
@@ -63,7 +50,7 @@ struct HomeWeatherRow: View {
     HomeWeatherRow(for: Races.sample)
 }
 
-struct ExtractedView: View {
+struct RaceWeatherRowView: View {
     let raceDayWeather: [HourWeather]
     
     var body: some View {
@@ -72,7 +59,7 @@ struct ExtractedView: View {
                 HStack(alignment: .bottom) {
                     ForEach(0..<3, id: \.self) { index in
                         let weather = raceDayWeather[index]
-                        VStack {
+                        VStack(spacing: 2){
                             // For the first element, display a label
                             if index == 0 {
                                 Text("Race")
@@ -80,7 +67,10 @@ struct ExtractedView: View {
                             
                             Image(systemName: weather.symbolName)
                                 .font(.system(size: 45))
-                                .padding(2)
+                                .frame(height: 55, alignment: .top)
+                            
+                            Text("\(Int((weather.precipitationChance * 100).rounded())) %")
+                                .font(.footnote)
                             
                             Text({
                                 let formatter = MeasurementFormatter()
@@ -98,3 +88,27 @@ struct ExtractedView: View {
     }
 }
 
+
+struct ExtractedView: View {
+    let title: String
+    let weatherData: HourWeather
+    
+    var body: some View {
+        VStack{
+            Text(title)
+            
+            Image(systemName: weatherData.symbolName)
+                .font(.system(size: 45))
+                .frame(height: 55, alignment: .top)
+            
+            Text("\(Int((weatherData.precipitationChance * 100).rounded())) %")
+                .font(.footnote)
+            
+            Text({
+                let formatter = MeasurementFormatter()
+                formatter.numberFormatter.maximumFractionDigits = 0
+                return formatter.string(from: weatherData.temperature)
+            }())
+        }
+    }
+}

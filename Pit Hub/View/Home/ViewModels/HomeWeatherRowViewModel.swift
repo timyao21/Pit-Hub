@@ -23,7 +23,7 @@ import CoreLocation
     @MainActor var forecastDay: HourWeather?
     
     @MainActor var showWeatherData: Bool = false
-    @MainActor var practiceWeather: [HourWeather] = []
+    @MainActor var day1Weather: [HourWeather] = []
     @MainActor var day2Weather: [HourWeather] = []
     @MainActor var day3Weather: [HourWeather] = []
     
@@ -43,14 +43,22 @@ import CoreLocation
         if race?.secondPractice?.date != nil && race?.secondPractice?.time != nil{            
             let dateString = "\(race!.secondPractice!.date) \(race!.secondPractice!.time!)"
             Task{
-                practiceWeather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
+                day1Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
+            }
+        }
+        
+        if let date = race?.qualifying?.date,
+           let time = race?.qualifying?.time {
+            let dateString = "\(date) \(time)"
+            Task {
+                day2Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
             }
         }
         
         if race?.date != nil && race?.time != nil{
             let dateString = "\(race!.date) \(race!.time!)"
             Task{
-                day3Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 3)
+                day3Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
             }
         }
         

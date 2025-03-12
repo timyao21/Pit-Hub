@@ -30,12 +30,12 @@ struct DateUtilities {
         
         return format
     }
-    /// Converts separate UTC date and time strings to local time zone formatted string
-    /// - Parameters:
-    ///   - date: The date string in "yyyy-MM-dd" format
-    ///   - time: The time string in "HH:mm:ssZ" format
-    ///   - format: The desired output format (default: "yyyy-MM-dd HH:mm:ss")
-    /// - Returns: A formatted string in the local time zone
+    // Converts separate UTC date and time strings to local time zone formatted string
+    // - Parameters:
+    //   - date: The date string in "yyyy-MM-dd" format
+    //   - time: The time string in "HH:mm:ssZ" format
+    //   - format: The desired output format (default: "yyyy-MM-dd HH:mm:ss")
+    // - Returns: A formatted string in the local time zone
     static func convertUTCToLocal(date: String, time: String, format: String = "yyyy-MM-dd HH:mm:ss") -> String? {
         let utcDateTimeString = "\(date)T\(time)"
         
