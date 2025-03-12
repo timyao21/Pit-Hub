@@ -48,7 +48,7 @@ struct HomeView: View {
                     .padding(.vertical)
                 
                 if (viewModel.upcomingGP != nil){
-                    HomeWeatherRow(for: viewModel.upcomingGP)
+                    HomeWeatherRow(viewModel: viewModel)
                 }
                 
                 if let lat = viewModel.upcomingGP?.circuit.location.lat,

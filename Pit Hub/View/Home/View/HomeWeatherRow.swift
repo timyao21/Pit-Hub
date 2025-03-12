@@ -9,12 +9,12 @@ import SwiftUI
 import WeatherKit
 
 struct HomeWeatherRow: View {
-    @State private var viewModel = HomeWeatherRowViewModel()
+    @Bindable var viewModel: IndexViewModel
     @State private var selectedTab: Int = 0
     
-    init(for race: Races?) {
-        self.viewModel.race = race
-    }
+//    init(for race: Races?) {
+//        self.viewModel.race = race
+//    }
     
     var body: some View {
         VStack{
@@ -55,22 +55,12 @@ struct HomeWeatherRow: View {
                 .tag(1)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .onAppear {
-                Task {
-                    await viewModel.loadWeatherData()
-                }
-            }
             .frame(minHeight: 133)
             .frame(maxHeight: .infinity, alignment: .top)
         }
         CustomPageIndicator(selectedTab: $selectedTab, numberOfPages: 2)
     }
 }
-
-
-//#Preview {
-//    HomeWeatherRow(for: Races.sample)
-//}
 
 #Preview {
     BottomNavBarIndexView()
@@ -98,6 +88,7 @@ struct RaceWeatherRowView: View {
 
 
 struct ExtractedView: View {
+    
     let title: LocalizedStringKey
     let weatherData: HourWeather
     
@@ -126,6 +117,7 @@ struct ExtractedView: View {
         }
         .frame(maxWidth: .infinity)
     }
+    
 }
 
 

@@ -69,3 +69,15 @@ struct DateUtilities {
     }
     
 }
+
+
+extension Date {
+    // Returns the date rounded down to the nearest whole hour in UTC.
+    func roundedToHour() -> Date {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: self)
+        return calendar.date(from: components)!
+    }
+    
+}

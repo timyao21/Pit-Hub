@@ -15,12 +15,9 @@ import CoreLocation
 //    let symbolName: String
 //}
 
-@Observable class HomeWeatherRowViewModel {
+@Observable class HomeWeatherViewModel {
     let weatherManager = WeatherManager.shared
-    
-    @MainActor var race: Races?
-//    @MainActor var currentWeather: CurrentWeather?
-//    @MainActor var forecastDay: HourWeather?
+//    @MainActor var race: Races?
     
     @MainActor var showWeatherData: Bool = false
     @MainActor var fp1Weather: HourWeather?
@@ -33,7 +30,7 @@ import CoreLocation
     @MainActor var fullRaceWeather: [HourWeather] = []
     
     @MainActor
-    func loadWeatherData() async {
+    func loadWeatherData(for race: Races?) async {
         guard let latString = race?.circuit.location.lat,
               let latDouble = Double(latString),
               let longString = race?.circuit.location.long,
@@ -42,6 +39,7 @@ import CoreLocation
             showWeatherData = false
             return
         }
+        
         // get the full race weather Data
         let location = CLLocation(latitude: latDouble, longitude: longDouble)
         
@@ -95,12 +93,8 @@ import CoreLocation
                         raceWeather = fullRaceWeather.filter { $0.date >= raceFullDate && $0.date < endDate }
                     }
                 }
-                
-                
             }
         }
-
-        
     }
     
     @MainActor
@@ -128,7 +122,6 @@ import CoreLocation
         }
     }
 
-    
     private func getUTCTimeDate(for date: String, time: String) -> Date {
         let dateString = "\(date) \(time)"
         let formatter = DateFormatter()
@@ -139,12 +132,13 @@ import CoreLocation
 
 }
 
-extension Date {
-    /// Returns the date rounded down to the nearest whole hour in UTC.
-    func roundedToHour() -> Date {
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = TimeZone(identifier: "UTC")!
-        let components = calendar.dateComponents([.year, .month, .day, .hour], from: self)
-        return calendar.date(from: components)!
-    }
-}
+//extension Date {
+//    // Returns the date rounded down to the nearest whole hour in UTC.
+//    func roundedToHour() -> Date {
+//        var calendar = Calendar(identifier: .gregorian)
+//        calendar.timeZone = TimeZone(identifier: "UTC")!
+//        let components = calendar.dateComponents([.year, .month, .day, .hour], from: self)
+//        return calendar.date(from: components)!
+//    }
+//    
+//}

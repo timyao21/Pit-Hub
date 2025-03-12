@@ -10,8 +10,9 @@ import SwiftUI
 struct BottomNavBarIndexView: View {
     @State private var selectedTab = 1
     
-    @State private var networkMonitor = NetworkMonitor ()
+    @State private var networkMonitor = NetworkMonitor()
     @State private var viewModel = IndexViewModel()
+    
     @State private var showNetworkWarning = false
     
     var body: some View {
