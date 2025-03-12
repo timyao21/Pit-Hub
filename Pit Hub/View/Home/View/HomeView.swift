@@ -50,7 +50,6 @@ struct HomeView: View {
                 if (viewModel.upcomingGP != nil){
                     HomeWeatherRow(for: viewModel.upcomingGP)
                 }
-                Spacer()
                 
                 if let lat = viewModel.upcomingGP?.circuit.location.lat,
                    let long = viewModel.upcomingGP?.circuit.location.long,
@@ -64,7 +63,6 @@ struct HomeView: View {
             .padding()
         }
         .navigationBarHidden(true)
-        // Present the SettingsView as a sheet when isSettingsPresented is true
         .sheet(isPresented: $isSettingsPresented) {
             SettingsView()
         }

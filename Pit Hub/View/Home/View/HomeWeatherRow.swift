@@ -10,44 +10,70 @@ import WeatherKit
 
 struct HomeWeatherRow: View {
     @State private var viewModel = HomeWeatherRowViewModel()
+    @State private var selectedTab: Int = 0
     
-    init (for race: Races?) {
+    init(for race: Races?) {
         self.viewModel.race = race
     }
     
     var body: some View {
         VStack{
-            HStack{
-                if !viewModel.day1Weather.isEmpty {
-                    ExtractedView(title: "Practice", weatherData: viewModel.day1Weather.first!)
+            TabView(selection: $selectedTab){
+                RaceWeatherRowView(raceDayWeather: viewModel.raceWeather)
+                    .tag(0)
+                
+                HStack(alignment: .bottom, spacing: 8){
+                    if let fp1Weather = viewModel.fp1Weather {
+                        ExtractedView(title: "FP1", weatherData: fp1Weather)
+                        Divider()
+                            .padding(3)
+                    }
+                    
+                    if let sprintQualiWeather = viewModel.sprintQualiWeather.first {
+                        ExtractedView(title: "Sprint Quali", weatherData: sprintQualiWeather)
+                        Divider()
+                            .padding(3)
+                    }
+                    
+                    if let fp2Weather = viewModel.secondPracticeWeather.first {
+                        ExtractedView(title: "FP2", weatherData: fp2Weather)
+                        Divider()
+                            .padding(3)
+                    }
+                    
+                    if let fp3Weather = viewModel.thirdPracticeWeather.first {
+                        ExtractedView(title: "FP3", weatherData: fp3Weather)
+                        Divider()
+                            .padding(3)
+                    }
+                    
+                    if let qualifyingWeather = viewModel.qualifyingWeather.first {
+                        ExtractedView(title: "Qualifying", weatherData: qualifyingWeather)
+                    }
                 }
-                
-                
-                Divider()
-                
-                if !viewModel.day2Weather.isEmpty {
-                    ExtractedView(title: "Practice", weatherData: viewModel.day2Weather.first!)
+                .frame(maxWidth: .infinity)
+                .tag(1)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .onAppear {
+                Task {
+                    await viewModel.loadWeatherData()
                 }
-                
-                Divider()
-                
-                RaceWeatherRowView(raceDayWeather: viewModel.day3Weather)
-                
             }
-            .font(.custom(S.smileySans, size: 17))
-            .frame(maxWidth: .infinity)
-            .frame(height: 130)
+            .frame(minHeight: 133)
+            .frame(maxHeight: .infinity, alignment: .top)
         }
-        .onAppear(){
-            Task{
-                await viewModel.loadWeatherData()
-            }
-        }
+        CustomPageIndicator(selectedTab: $selectedTab, numberOfPages: 2)
     }
 }
 
+
+//#Preview {
+//    HomeWeatherRow(for: Races.sample)
+//}
+
 #Preview {
-    HomeWeatherRow(for: Races.sample)
+    BottomNavBarIndexView()
 }
 
 struct RaceWeatherRowView: View {
@@ -55,29 +81,11 @@ struct RaceWeatherRowView: View {
     
     var body: some View {
         Group {
-            if raceDayWeather.count == 3 {
-                HStack(alignment: .bottom) {
-                    ForEach(0..<3, id: \.self) { index in
-                        let weather = raceDayWeather[index]
-                        VStack(spacing: 2){
-                            // For the first element, display a label
-                            if index == 0 {
-                                Text("Race")
-                            }
-                            
-                            Image(systemName: weather.symbolName)
-                                .font(.system(size: 45))
-                                .frame(height: 55, alignment: .top)
-                            
-                            Text("\(Int((weather.precipitationChance * 100).rounded())) %")
-                                .font(.footnote)
-                            
-                            Text({
-                                let formatter = MeasurementFormatter()
-                                formatter.numberFormatter.maximumFractionDigits = 0
-                                return formatter.string(from: weather.temperature)
-                            }())
-                        }
+            if raceDayWeather.count == 4 {
+                HStack(alignment: .bottom, spacing: 8) {
+                    ForEach(0..<4, id: \.self) { index in
+                        ExtractedView(title: index == 0 ? "Race" : "", weatherData: raceDayWeather[index])
+//                            .frame(maxWidth: .infinity)
                     }
                 }
             } else {
@@ -90,25 +98,32 @@ struct RaceWeatherRowView: View {
 
 
 struct ExtractedView: View {
-    let title: String
+    let title: LocalizedStringKey
     let weatherData: HourWeather
     
     var body: some View {
-        VStack{
+        VStack(spacing: 2){
             Text(title)
+                .font(.footnote)
+                .fontWeight(.bold)
             
             Image(systemName: weatherData.symbolName)
                 .font(.system(size: 45))
-                .frame(height: 55, alignment: .top)
+                .frame(height: 60, alignment: .top)
             
             Text("\(Int((weatherData.precipitationChance * 100).rounded())) %")
                 .font(.footnote)
+                .padding(.bottom, 3)
             
             Text({
                 let formatter = MeasurementFormatter()
                 formatter.numberFormatter.maximumFractionDigits = 0
                 return formatter.string(from: weatherData.temperature)
             }())
+            .fontWeight(.medium)
         }
+        .frame(maxWidth: .infinity)
     }
 }
+
+

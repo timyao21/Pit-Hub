@@ -19,13 +19,18 @@ import CoreLocation
     let weatherManager = WeatherManager.shared
     
     @MainActor var race: Races?
-    @MainActor var currentWeather: CurrentWeather?
-    @MainActor var forecastDay: HourWeather?
+//    @MainActor var currentWeather: CurrentWeather?
+//    @MainActor var forecastDay: HourWeather?
     
     @MainActor var showWeatherData: Bool = false
-    @MainActor var day1Weather: [HourWeather] = []
-    @MainActor var day2Weather: [HourWeather] = []
-    @MainActor var day3Weather: [HourWeather] = []
+    @MainActor var fp1Weather: HourWeather?
+    @MainActor var sprintQualiWeather: [HourWeather] = []
+    @MainActor var secondPracticeWeather: [HourWeather] = []
+    @MainActor var thirdPracticeWeather: [HourWeather] = []
+    @MainActor var sprintWeather: [HourWeather] = []
+    @MainActor var qualifyingWeather: [HourWeather] = []
+    @MainActor var raceWeather: [HourWeather] = []
+    @MainActor var fullRaceWeather: [HourWeather] = []
     
     @MainActor
     func loadWeatherData() async {
@@ -37,41 +42,70 @@ import CoreLocation
             showWeatherData = false
             return
         }
-        
+        // get the full race weather Data
         let location = CLLocation(latitude: latDouble, longitude: longDouble)
         
-        if race?.secondPractice?.date != nil && race?.secondPractice?.time != nil{            
-            let dateString = "\(race!.secondPractice!.date) \(race!.secondPractice!.time!)"
-            Task{
-                day1Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
-            }
-        }
-        
-        if let date = race?.qualifying?.date,
-           let time = race?.qualifying?.time {
-            let dateString = "\(date) \(time)"
+        if let dateString = race?.firstPractice?.date,
+           let timeString = race?.firstPractice?.time {
+            let date = getUTCTimeDate(for: dateString, time: timeString).roundedToHour()
+            
             Task {
-                day2Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
+                fullRaceWeather = await fetchHourlyWeather(for: location, on: date, hours: 96)
+                if let fpWeather = fullRaceWeather.first {
+                    fp1Weather = fpWeather
+                }
+                
+                if let sprintQualiDate = race?.sprintQualifying?.date,
+                   let sprintQualiTime = race?.sprintQualifying?.time {
+                    let sprintQualiFullDate = getUTCTimeDate(for: sprintQualiDate, time: sprintQualiTime).roundedToHour()
+                    sprintQualiWeather = fullRaceWeather.filter { $0.date == sprintQualiFullDate }
+                }
+                
+                if let spDate = race?.secondPractice?.date,
+                   let spTime = race?.secondPractice?.time {
+                    let spFullDate = getUTCTimeDate(for: spDate, time: spTime).roundedToHour()
+                    secondPracticeWeather = fullRaceWeather.filter { $0.date == spFullDate }
+                }
+                
+                if let tpDate = race?.thirdPractice?.date,
+                   let tpTime = race?.thirdPractice?.time {
+                    let tpFullDate = getUTCTimeDate(for: tpDate, time: tpTime).roundedToHour()
+                    thirdPracticeWeather = fullRaceWeather.filter { $0.date == tpFullDate }
+                    print(tpFullDate)
+                }
+                
+                if let sDate = race?.sprint?.date,
+                   let sTime = race?.sprint?.time {
+                    let sFullDate = getUTCTimeDate(for: sDate, time: sTime).roundedToHour()
+                    sprintWeather = fullRaceWeather.filter { $0.date == sFullDate }
+                }
+                
+                if let qualDate = race?.qualifying?.date,
+                   let qualTime = race?.qualifying?.time {
+                    let qualFullDate = getUTCTimeDate(for: qualDate, time: qualTime).roundedToHour()
+                    qualifyingWeather = fullRaceWeather.filter { $0.date == qualFullDate }
+                    print(qualifyingWeather)
+                }
+                
+                if let raceDate = race?.date, let raceTime = race?.time {
+                    var calendar = Calendar(identifier: .gregorian)
+                    calendar.timeZone = TimeZone(identifier: "UTC")!
+                    let raceFullDate = getUTCTimeDate(for: raceDate, time: raceTime).roundedToHour()
+                    if let endDate = calendar.date(byAdding: .hour, value: 4, to: raceFullDate) {
+                        raceWeather = fullRaceWeather.filter { $0.date >= raceFullDate && $0.date < endDate }
+                    }
+                }
+                
+                
             }
         }
-        
-        if race?.date != nil && race?.time != nil{
-            let dateString = "\(race!.date) \(race!.time!)"
-            Task{
-                day3Weather = await fetchHourlyWeather(for: location, on: dateString, hours: 1)
-            }
-        }
+
         
     }
     
     @MainActor
-    func fetchHourlyWeather(for location: CLLocation, on dateString: String, hours: Int) async -> [HourWeather]{
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
-        // Set the formatter's time zone to UTC. The "Z" in the input indicates UTC.
-        formatter.timeZone = TimeZone(identifier: "UTC")
-        let startDate = formatter.date(from: dateString)!
-        print(startDate)
+    func fetchHourlyWeather(for location: CLLocation, on date: Date, hours: Int) async -> [HourWeather] {
+        print(date)
 
         do {
             let weather = try await weatherManager.service.weather(for: location)
@@ -80,100 +114,37 @@ import CoreLocation
             var calendar = Calendar(identifier: .gregorian)
             calendar.timeZone = TimeZone(identifier: "UTC")!
             
-            // Calculate the end date: 3 hours after the start date.
-            let endDate = calendar.date(byAdding: .hour, value: hours, to: startDate)!
+            // Calculate the end date: 'hours' after the given date.
+            let endDate = calendar.date(byAdding: .hour, value: hours, to: date)!
             
-            // Filter the forecast to include hourly entries between startDate (inclusive) and endDate (exclusive).
+            // Filter the forecast to include hourly entries between date (inclusive) and endDate (exclusive).
             let hourlyForecast = weather.hourlyForecast.forecast.filter { forecast in
-                forecast.date >= startDate && forecast.date < endDate
+                forecast.date >= date && forecast.date < endDate
             }
-            print("------")
-            print("Hourly forecast:", hourlyForecast)
             return hourlyForecast
         } catch {
             print("Failed to fetch hourly weather data: \(error)")
             return []
         }
     }
-    
-    
-//    @MainActor
-//    func fetchHourlyWeather(lat: Double, long: Double, date: String, time: String, hour: Int) async -> [HourWeather]{
-//        let location = CLLocation(latitude: lat, longitude: long)
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        
-//        // Convert UTC to local using your utility which returns a date string.
-//        guard let baseTimeString = DateUtilities.convertUTCToLocal(date: date, time: time, format: "yyyy-MM-dd HH:mm"),
-//              let baseDate = dateFormatter.date(from: baseTimeString) else {
-//            print("Invalid base date: \(date) \(time)")
-//            return []
-//        }
-//        
-//        var hourlyForecasts: [HourWeather] = []
-//        
-//        // Fetch hourly forecasts for the specified number of hours.
-//        for hourOffset in 0..<hour {
-//            let forecastDate = baseDate.addingTimeInterval(Double(hourOffset * 3600))
-//            let forecastTimeString = dateFormatter.string(from: forecastDate)
-//            
-//            if let forecast = await weatherManager.fetchHourlyWeather(for: location, on: forecastTimeString) {
-//                hourlyForecasts.append(forecast)
-//            }
-//        }
-//        print(hourlyForecasts)
-//        return []
-//    }
 
     
-//    @MainActor
-//    func fetchWeather() async {
-//        if let latString = race?.circuit.location.lat,
-//           let latDouble = Double(latString),
-//           let longString = race?.circuit.location.long,
-//           let longDouble = Double(longString) {
-//            // Use latDouble and longDouble as needed (e.g., assign to a variable or property)
-//            forecastDay = await weatherManager.fetchHourlyWeather(for: CLLocation(latitude: latDouble, longitude: longDouble), on: "2025-03-16 4:00")
-//            print("Latitude: \(latDouble), Longitude: \(longDouble)")
-//            print("temp - \(forecastDay?.temperature)")
-//        } else {
-//            // Handle the error appropriately (e.g., return, throw an error, etc.)
-//            print("Conversion from string to double failed.")
-//        }
-//
-//
-////        forecastDay = await weatherManager.fetchHourlyWeather(for: CLLocation(latitude: latDouble!, longitude: longDouble!), on: "2025-03-10 5:00")
-//        print(forecastDay?.symbolName ?? "No weather data")
-//    }
-    
-//    func fetchHourlyWeather(for location: CLLocation, on dateString: String) async -> HourWeather? {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy-MM-dd HH:mm"
-//        // Set the formatter's time zone to UTC since the dateString is in UTC.
-//        formatter.timeZone = TimeZone(abbreviation: "UTC")
-//        let date = formatter.date(from: dateString)!
-//        
-//        print(date)
-//
-////        do {
-////            let weather = try await weatherService.weather(for: location)
-////            
-////            // Use a UTC calendar for date comparisons.
-////            var calendar = Calendar(identifier: .gregorian)
-////            calendar.timeZone = TimeZone(abbreviation: "UTC")!
-////            
-////            // Find the hourly forecast entry that exactly matches the given date (minute granularity).
-////            let hourWeather = weather.hourlyForecast.forecast.first { forecast in
-////                calendar.compare(forecast.date, to: date, toGranularity: .minute) == .orderedSame
-////            }
-////            print("hourWeather!")
-////            return hourWeather
-////        } catch {
-////            print("Failed to fetch hourly weather data: \(error)")
-////            return nil
-////        }
-//        return nil
-//    }
+    private func getUTCTimeDate(for date: String, time: String) -> Date {
+        let dateString = "\(date) \(time)"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ssZ"
+        formatter.timeZone = TimeZone(identifier: "UTC")
+        return formatter.date(from: dateString)!
+    }
 
-    
+}
+
+extension Date {
+    /// Returns the date rounded down to the nearest whole hour in UTC.
+    func roundedToHour() -> Date {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC")!
+        let components = calendar.dateComponents([.year, .month, .day, .hour], from: self)
+        return calendar.date(from: components)!
+    }
 }

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     " " : {
 
     },
@@ -19,6 +22,9 @@
     "%lld" : {
 
     },
+    "%lld %%" : {
+
+    },
     "%lld/%lld GP Completed" : {
       "localizations" : {
         "en" : {
@@ -34,9 +40,6 @@
           }
         }
       }
-    },
-    "%lld°C" : {
-
     },
     "+ %@ pts" : {
       "shouldTranslate" : false
@@ -448,6 +451,9 @@
           }
         }
       }
+    },
+    "Button" : {
+
     },
     "Calendar" : {
       "localizations" : {
@@ -1637,6 +1643,9 @@
         }
       }
     },
+    "Paddock Club" : {
+
+    },
     "Past" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2332,6 +2341,9 @@
         }
       }
     },
+    "Unable to fetch Race weather data" : {
+
+    },
     "United States Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2505,15 +2517,6 @@
           }
         }
       }
-    },
-    "周五" : {
-
-    },
-    "周六" : {
-
-    },
-    "周日" : {
-
     }
   },
   "version" : "1.0"
