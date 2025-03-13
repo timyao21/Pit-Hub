@@ -467,6 +467,9 @@
         }
       }
     },
+    "Bilibili" : {
+
+    },
     "Bottas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1818,9 +1821,6 @@
         }
       }
     },
-    "On bilibili" : {
-
-    },
     "Oscar" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2106,6 +2106,9 @@
           }
         }
       }
+    },
+    "Rednotes" : {
+
     },
     "Report" : {
 

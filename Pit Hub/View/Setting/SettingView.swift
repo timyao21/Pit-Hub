@@ -44,44 +44,56 @@ struct SettingsView: View {
             Form {
                 // Section for appearance settings
                 Section(header: Text("Pit App Paddock Pass")) {
-                    Button("Button") {
+                    Button("Become Paddock Club Member") {
                         seasonPassSheetIsPresented = true
                     }
                 }
-                Section(header: Text("Tune Your Look")) {
-                    Picker("Language", selection: $selectedLanguage) {
-                        ForEach(AppLanguage.allCases) { language in
-                            Text(language.displayName)
-                                .tag(language)
-                        }
-                    }
-
-                    Picker("App Theme", selection: $selectedTheme) {
-                        ForEach(AppTheme.allCases) { theme in
-                            Text(LocalizedStringKey(theme.rawValue))
-                                .fontWeight(.semibold)
-                                .tag(theme)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(3)
-                    
-                    Picker("Weather Unit", selection: $selectedWeatherUnit) {
-                        ForEach(WeatherUnit.allCases) { unit in
-                            Text(unit.rawValue)
-                                .tag(unit)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
                 
-                // Section for language settings
-//                Section(header: Text("About")) {
-//                    Text("Pit App is proudly crafted and developed by Junyu Yao and Jiyang He.")
-//                    NavigationLink(destination: About()) {
-//                        Text("About Us")
-//                    }
-//                }
+                Section(header: Text("Tune Your Look")) {
+                    HStack {
+                        Image(systemName: "translate")
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.primary, .cyan)
+                        
+                        Picker("Language", selection: $selectedLanguage) {
+                            ForEach(AppLanguage.allCases) { language in
+                                Text(language.displayName)
+                                    .tag(language)
+                            }
+                        }
+                    }
+                    HStack{
+                        Image(systemName: "iphone.app.switcher")
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.primary, .indigo)
+                        
+                        Picker("App Theme", selection: $selectedTheme) {
+                                
+                                ForEach(AppTheme.allCases) { theme in
+                                    Text(LocalizedStringKey(theme.rawValue))
+                                        .fontWeight(.semibold)
+                                        .tag(theme)
+                                }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(3)
+                    }
+                    
+                    HStack{
+                        Image(systemName: "thermometer.medium")
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.primary, .indigo)
+                        
+                        Picker("Weather Unit", selection: $selectedWeatherUnit) {
+                            ForEach(WeatherUnit.allCases) { unit in
+                                Text(unit.rawValue)
+                                    .tag(unit)
+                            }
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(3)
+                    }
+                }
                 
                 Section(header: Text("About")) {
                     let aboutText: AttributedString = {
@@ -108,20 +120,28 @@ struct SettingsView: View {
                         }
                         .padding(.vertical, 4)
                     }
-                    
-                    Text("Follow Us")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    HStack{
-                        Button("On bilibili") {
-                            let urlString = "https://space.bilibili.com/626701417?spm_id_from=333.1365.0.0"
-                            if let url = URL(string: urlString) {
-                                openURL(url)
-                            }
+                }
+                
+                Section(header: Text("Follow Us")) {
+                    Button("Bilibili") {
+                        let urlString = "https://space.bilibili.com/626701417?spm_id_from=333.1365.0.0"
+                        if let url = URL(string: urlString) {
+                            openURL(url)
                         }
                     }
+                    .tint(.primary)
                     
+                    Button("Rednotes") {
+                        let urlString = "https://www.xiaohongshu.com/user/profile/635c844d000000001802a186"
+                        if let url = URL(string: urlString) {
+                            openURL(url)
+                        }
+                    }
+                    .tint(.primary)
+                }
+                
+                
+                Section(header: Text("About")) {
                     Button("Report") {
                         let email = "yjy197@outlook.com"  // Replace with your email address
                         let subject = "Report Issue - Pit App"
@@ -130,9 +150,15 @@ struct SettingsView: View {
                             openURL(url)
                         }
                     }
+                    .tint(.primary)
                     
+                    HStack {
+                        Text("Version")
+                        Spacer()
+                        Text("v0.1.0")
+                            .foregroundColor(.secondary)
+                    }
                 }
-
                 
             }
             .navigationTitle("Pit Line")
