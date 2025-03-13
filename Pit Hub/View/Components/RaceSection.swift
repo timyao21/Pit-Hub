@@ -23,6 +23,7 @@ struct RaceSection: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 3) {
                             HStack {
+                                Text(CountryFlags.flag(for: race.circuit.location.country))
                                 Text(LocalizedStringKey(race.circuit.circuitName))
                                     .font(.custom(S.smileySans, size: 18))
                                 if race.sprint != nil {

@@ -66,6 +66,7 @@ struct BottomNavBarIndexView: View {
                 }
             }
         }
+        .environment(viewModel)
     }
 }
 

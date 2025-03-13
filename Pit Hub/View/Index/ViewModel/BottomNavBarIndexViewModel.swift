@@ -95,8 +95,6 @@ import CoreLocation
             allPastGP = past
             upcomingGP = upcoming.first
             
-            await loadWeatherData(for: upcomingGP)
-            
             // Update Race Calendar Data
             raceCalendar = allGPs
             raceCalendarUpcoming = upcoming
@@ -106,9 +104,18 @@ import CoreLocation
                 raceCalendarSelectedTab = 0
             }
             
+            if let upcomingRace = upcomingGP,
+               let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
+                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: todayUTC)!
+                if gpDate <= sevenDaysFromToday {
+                    await loadWeatherData(for: upcomingRace)
+                }
+            }
+            
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")
         }
+            
     }
     
     // MARK: - refrseh the Home page data
@@ -130,6 +137,15 @@ import CoreLocation
             }
             
             upcomingGP = upcoming.first
+            
+            if let upcomingRace = upcomingGP,
+               let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
+                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: todayUTC)!
+                if gpDate <= sevenDaysFromToday {
+                    await loadWeatherData(for: upcomingRace)
+                }
+            }
+
             
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")

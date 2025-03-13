@@ -9,12 +9,9 @@ import SwiftUI
 import WeatherKit
 
 struct HomeWeatherRow: View {
+    
     @Bindable var viewModel: IndexViewModel
     @State private var selectedTab: Int = 0
-    
-//    init(for race: Races?) {
-//        self.viewModel.race = race
-//    }
     
     var body: some View {
         VStack{
@@ -62,10 +59,6 @@ struct HomeWeatherRow: View {
     }
 }
 
-#Preview {
-    BottomNavBarIndexView()
-}
-
 struct RaceWeatherRowView: View {
     let raceDayWeather: [HourWeather]
     
@@ -75,7 +68,6 @@ struct RaceWeatherRowView: View {
                 HStack(alignment: .bottom, spacing: 8) {
                     ForEach(0..<4, id: \.self) { index in
                         ExtractedView(title: index == 0 ? "Race" : "", weatherData: raceDayWeather[index])
-//                            .frame(maxWidth: .infinity)
                     }
                 }
             } else {
@@ -88,7 +80,7 @@ struct RaceWeatherRowView: View {
 
 
 struct ExtractedView: View {
-    
+    @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     let title: LocalizedStringKey
     let weatherData: HourWeather
     
@@ -97,6 +89,7 @@ struct ExtractedView: View {
             Text(title)
                 .font(.footnote)
                 .fontWeight(.bold)
+                .padding(.bottom, 5)
             
             Image(systemName: "\(weatherData.symbolName)")
                 .font(.system(size: 45))
@@ -107,13 +100,19 @@ struct ExtractedView: View {
             Text("\(Int((weatherData.precipitationChance * 100).rounded())) %")
                 .font(.footnote)
                 .padding(.bottom, 3)
-            
             Text({
                 let formatter = MeasurementFormatter()
+                formatter.unitOptions = .providedUnit  // Use the unit provided by the measurement
                 formatter.numberFormatter.maximumFractionDigits = 0
-                return formatter.string(from: weatherData.temperature)
+                var temperature = weatherData.temperature
+                // Convert temperature to Fahrenheit if selected
+                if selectedWeatherUnit == .fahrenheit {
+                    temperature = temperature.converted(to: .fahrenheit)
+                }
+                return formatter.string(from: temperature)
             }())
             .fontWeight(.medium)
+
         }
         .frame(maxWidth: .infinity)
     }

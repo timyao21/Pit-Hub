@@ -54,7 +54,8 @@ struct CountryFlags {
         "Monegasque": "🇲🇨",
         "Danish": "🇩🇰",
         "Canadian": "🇨🇦",
-        "Dutch": "🇳🇱"
+        "Dutch": "🇳🇱",
+        "UAE": "🇦🇪"
     ]
     
     /// Retrieves the flag emoji for a given full country name, or returns a default flag if not found.

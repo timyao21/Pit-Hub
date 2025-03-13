@@ -14,6 +14,12 @@ class WeatherManager {
     static let shared = WeatherManager()
     let service = WeatherService.shared
     
+    var temperatureFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 0
+        return formatter
+    }()
+    
     func currentWeather(for location: CLLocation) async -> CurrentWeather? {
         print("Fetching current weather for \(location)...")
         do {
