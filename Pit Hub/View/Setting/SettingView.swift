@@ -45,7 +45,7 @@ struct SettingsView: View {
                 // Section for appearance settings
                 Section(header: Text("Pit App Paddock Pass")) {
                     Button("Become Paddock Club Member") {
-                        seasonPassSheetIsPresented = true
+                        seasonPassSheetIsPresented.toggle()
                     }
                 }
                 
@@ -166,6 +166,10 @@ struct SettingsView: View {
         .preferredColorScheme(
             selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
         )
+        .sheet(isPresented: $seasonPassSheetIsPresented) {
+            inapptest()
+                .presentationDetents([.medium])
+        }
     }
 }
 
