@@ -82,7 +82,7 @@ struct SettingsView: View {
                     HStack{
                         Image(systemName: "thermometer.medium")
                             .symbolRenderingMode(.palette)
-                            .foregroundStyle(.primary, .indigo)
+                            .foregroundStyle(.red, .primary)
                         
                         Picker("Weather Unit", selection: $selectedWeatherUnit) {
                             ForEach(WeatherUnit.allCases) { unit in
