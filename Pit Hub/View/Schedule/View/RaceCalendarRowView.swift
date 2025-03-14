@@ -68,6 +68,6 @@ struct RaceCalendarRowView: View {
 
 struct RaceCalendarRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RaceCalendarRowView(round: "10", raceName: "Bahrain GP", circuitId: "americas",locality:"Austin", country:"USA", date: "March 2, 2024", time: "15:00 GMT", sprint: true)
+        RaceCalendarRowView(round: "10", raceName: "Saudi Arabian Grand Prix123", circuitId: "americas",locality:"Austin", country:"USA", date: "March 2, 2024", time: "15:00 GMT", sprint: true)
     }
 }

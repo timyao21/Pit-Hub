@@ -105,16 +105,16 @@ extension Races {
             circuitId: "bahrain",
             circuitName: "Bahrain International Circuit",
             location: Location(
-                lat: "26.0325",
-                long: "50.5106",
+                lat: "-37.84970",
+                long: "144.96800",
                 locality: "Sakhir",
                 country: "Bahrain"
             ),
             url: "https://en.wikipedia.org/wiki/Bahrain_International_Circuit"
         ),
-        date: "2024-03-02",
-        time: "15:00:00Z",
-        firstPractice: nil,
+        date: "2025-03-16",
+        time: "04:00:00Z",
+        firstPractice: RaceSession(date: "2025-03-14", time: "01:30:00Z"),
         secondPractice: nil,
         thirdPractice: nil,
         qualifying: nil,

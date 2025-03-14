@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     " " : {
 
     },
@@ -19,6 +22,9 @@
     "%lld" : {
 
     },
+    "%lld %%" : {
+
+    },
     "%lld/%lld GP Completed" : {
       "localizations" : {
         "en" : {
@@ -35,9 +41,6 @@
         }
       }
     },
-    "%lld°C" : {
-
-    },
     "+ %@ pts" : {
       "shouldTranslate" : false
     },
@@ -52,6 +55,20 @@
         }
       }
     },
+    "About" : {
+
+    },
+    "Abu Dhabi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "阿布扎比"
+          }
+        }
+      }
+    },
     "Abu Dhabi Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -59,6 +76,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "阿布扎比大奖赛"
+          }
+        }
+      }
+    },
+    "Al Daayen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "宰阿因自治市"
           }
         }
       }
@@ -195,6 +223,7 @@
       }
     },
     "Appearance" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -222,6 +251,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "阿斯顿马丁"
+          }
+        }
+      }
+    },
+    "Austin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "奥斯汀"
           }
         }
       }
@@ -383,6 +423,17 @@
         }
       }
     },
+    "Baku" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "巴库"
+          }
+        }
+      }
+    },
     "Baku City Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -416,6 +467,9 @@
         }
       }
     },
+    "Bilibili" : {
+
+    },
     "Bottas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -448,6 +502,20 @@
           }
         }
       }
+    },
+    "Budapest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "布达佩斯"
+          }
+        }
+      }
+    },
+    "Button" : {
+
     },
     "Calendar" : {
       "localizations" : {
@@ -877,6 +945,9 @@
         }
       }
     },
+    "Follow Us" : {
+
+    },
     "FP1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1118,6 +1189,17 @@
         }
       }
     },
+    "Imola" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伊莫拉"
+          }
+        }
+      }
+    },
     "interlagos" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1195,6 +1277,17 @@
         }
       }
     },
+    "Jeddah" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吉达"
+          }
+        }
+      }
+    },
     "Jeddah Corniche Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1216,9 +1309,6 @@
           }
         }
       }
-    },
-    "Key" : {
-      "extractionState" : "manual"
     },
     "Key 1" : {
       "extractionState" : "manual"
@@ -1266,6 +1356,17 @@
         }
       }
     },
+    "Las Vegas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拉斯维加斯"
+          }
+        }
+      }
+    },
     "Las Vegas Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1298,6 +1399,9 @@
           }
         }
       }
+    },
+    "Learn More About Us" : {
+
     },
     "Leclerc" : {
       "extractionState" : "manual",
@@ -1387,6 +1491,17 @@
         }
       }
     },
+    "Marina Bay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "滨海湾"
+          }
+        }
+      }
+    },
     "Marina Bay Street Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1437,6 +1552,17 @@
         }
       }
     },
+    "Melbourne" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "墨尔本"
+          }
+        }
+      }
+    },
     "Mercedes" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1459,6 +1585,17 @@
         }
       }
     },
+    "Mexico City" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "墨西哥城"
+          }
+        }
+      }
+    },
     "Mexico City Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1471,6 +1608,17 @@
       }
     },
     "miami" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "迈阿密"
+          }
+        }
+      }
+    },
+    "Miami" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
@@ -1536,7 +1684,51 @@
         }
       }
     },
+    "Monte-Carlo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙特卡洛"
+          }
+        }
+      }
+    },
+    "Montmeló" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙特梅洛"
+          }
+        }
+      }
+    },
+    "Montreal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙特利尔"
+          }
+        }
+      }
+    },
     "monza" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蒙扎"
+          }
+        }
+      }
+    },
+    "Monza" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
@@ -1695,6 +1887,12 @@
         }
       }
     },
+    "Pit App is designed and developed by Junyu Yao." : {
+
+    },
+    "Pit App Paddock Pass" : {
+
+    },
     "Pit Hub" : {
       "shouldTranslate" : false
     },
@@ -1759,6 +1957,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "排名: %@"
+          }
+        }
+      }
+    },
+    "Practice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习赛"
           }
         }
       }
@@ -1898,6 +2107,12 @@
         }
       }
     },
+    "Rednotes" : {
+
+    },
+    "Report" : {
+
+    },
     "Result" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1991,6 +2206,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "赛恩斯"
+          }
+        }
+      }
+    },
+    "Sakhir" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "萨基尔"
+          }
+        }
+      }
+    },
+    "São Paulo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "圣保罗"
           }
         }
       }
@@ -2093,6 +2330,17 @@
         }
       }
     },
+    "Shanghai" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "上海"
+          }
+        }
+      }
+    },
     "Shanghai International Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2105,6 +2353,17 @@
       }
     },
     "silverstone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "银石"
+          }
+        }
+      }
+    },
+    "Silverstone" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
@@ -2148,6 +2407,17 @@
         }
       }
     },
+    "Spa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "斯帕"
+          }
+        }
+      }
+    },
     "Spanish" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2166,6 +2436,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "西班牙大奖赛"
+          }
+        }
+      }
+    },
+    "Spielberg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "史匹堡"
           }
         }
       }
@@ -2248,6 +2529,17 @@
         }
       }
     },
+    "Suzuka" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "铃鹿市"
+          }
+        }
+      }
+    },
     "Suzuka Circuit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2323,6 +2615,12 @@
           }
         }
       }
+    },
+    "Tune Your Look" : {
+
+    },
+    "Unable to fetch Race weather data" : {
+
     },
     "United States Grand Prix" : {
       "extractionState" : "manual",
@@ -2421,6 +2719,9 @@
         }
       }
     },
+    "Weather Unit" : {
+
+    },
     "Williams" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2487,6 +2788,17 @@
         }
       }
     },
+    "Zandvoort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赞德福特"
+          }
+        }
+      }
+    },
     "Zhou" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2497,15 +2809,6 @@
           }
         }
       }
-    },
-    "周五" : {
-
-    },
-    "周六" : {
-
-    },
-    "周日" : {
-
     }
   },
   "version" : "1.0"

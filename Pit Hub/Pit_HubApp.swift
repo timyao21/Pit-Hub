@@ -13,6 +13,7 @@ struct Pit_HubApp: App {
     let persistenceController = PersistenceController.shared
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
     @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
+    @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     
     var body: some Scene {
         WindowGroup {

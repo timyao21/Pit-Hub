@@ -42,8 +42,14 @@ struct HomeView: View {
                     RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
                 }
-                HomeWeatherRow()
-                Spacer()
+                
+                PitSubtitle(for: "Weather")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical)
+                
+                if (viewModel.upcomingGP != nil){
+                    HomeWeatherRow(viewModel: viewModel)
+                }
                 
                 if let lat = viewModel.upcomingGP?.circuit.location.lat,
                    let long = viewModel.upcomingGP?.circuit.location.long,
@@ -57,7 +63,6 @@ struct HomeView: View {
             .padding()
         }
         .navigationBarHidden(true)
-        // Present the SettingsView as a sheet when isSettingsPresented is true
         .sheet(isPresented: $isSettingsPresented) {
             SettingsView()
         }
