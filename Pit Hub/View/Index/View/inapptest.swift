@@ -9,12 +9,35 @@ import SwiftUI
 import StoreKit
 
 struct inapptest: View {
+    let storeManager = StoreManager()
     var body: some View {
-        StoreView(ids: [Products.yearly])
-            .productViewStyle(.compact)
+        VStack {
+            SubscriptionStoreView(groupID: "21650064"){
+                ProductsHeaderView()
+            }
+        }
+        .onAppear {
+            Task {
+                await storeManager.loadProduct()
+            }
+        }
     }
 }
 
 #Preview {
     inapptest()
+}
+
+struct ProductsHeaderView: View {
+    var body: some View {
+        VStack {
+            Image(S.pitIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 300)
+            Text("Get your Season Pass for Pit App")
+                .font(.title)
+                .fontWeight(.bold)
+        }
+    }
 }

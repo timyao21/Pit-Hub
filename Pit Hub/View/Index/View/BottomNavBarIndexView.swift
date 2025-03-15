@@ -67,6 +67,9 @@ struct BottomNavBarIndexView: View {
             }
         }
         .environment(viewModel)
+        .subscriptionStatusTask(for: "21650064") { taskStatus in
+            print("Subscription status task status:\(taskStatus)")
+        }
     }
 }
 
