@@ -20,12 +20,12 @@ struct LoadingOverlay: View {
             VStack(spacing: 16) {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: tint))
-                    .scaleEffect(1.5)
+                    .scaleEffect(1.25)
                 Text(message)
                     .font(.headline)
                     .foregroundColor(.primary)
             }
-            .padding(24)
+            .padding(15)
             .background(.ultraThinMaterial) // Provides a translucent blurred effect.
             .cornerRadius(20)
             .shadow(radius: 10)

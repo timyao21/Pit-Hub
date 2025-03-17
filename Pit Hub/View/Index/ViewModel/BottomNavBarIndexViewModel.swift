@@ -62,7 +62,6 @@ import StoreKit
             await membership = storeManager.checkMember()
             await fetchAllGP() // Load data for both Homepage & Race Calendar
             await fetchDriverStanding() // Load standings data
-            print(driverStanding)
             await fetchConstructorStanding() // Load standings data
             if driverStanding.isEmpty && constructorStanding.isEmpty {
                 let currentYear = Calendar.current.component(.year, from: Date()) - 1
@@ -108,13 +107,7 @@ import StoreKit
                 raceCalendarSelectedTab = 0
             }
             
-            if let upcomingRace = upcomingGP,
-               let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
-                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: today)!
-                if gpDate <= sevenDaysFromToday {
-                    await loadWeatherData(for: upcomingRace)
-                }
-            }
+            await initWeatherData()
             
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")
@@ -141,13 +134,7 @@ import StoreKit
             
             upcomingGP = upcoming.first
             
-            if let upcomingRace = upcomingGP,
-               let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
-                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: today)!
-                if gpDate <= sevenDaysFromToday {
-                    await loadWeatherData(for: upcomingRace)
-                }
-            }
+            await initWeatherData()
 
             
         } catch {
@@ -243,8 +230,23 @@ import StoreKit
     }
     
     // MARK: - Load Weather Data
+    
+    @MainActor
+    func initWeatherData() async {
+        let today = Date()
+        if membership,
+           let upcomingRace = upcomingGP,
+           let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
+            let fourteenDaysFromToday = Calendar.current.date(byAdding: .day, value: 14, to: today)!
+            if gpDate <= fourteenDaysFromToday {
+                await loadWeatherData(for: upcomingRace)
+            }
+        }
+    }
+    
     @MainActor
     func loadWeatherData(for race: Races?) async {
+        print(" ----- Loading weather data for race...")
         guard let latString = race?.circuit.location.lat,
               let latDouble = Double(latString),
               let longString = race?.circuit.location.long,
@@ -285,7 +287,6 @@ import StoreKit
                    let tpTime = race?.thirdPractice?.time {
                     let tpFullDate = getUTCTimeDate(for: tpDate, time: tpTime).roundedToHour()
                     thirdPracticeWeather = fullRaceWeather.filter { $0.date == tpFullDate }
-                    print(tpFullDate)
                 }
                 
                 if let sDate = race?.sprint?.date,
@@ -298,7 +299,6 @@ import StoreKit
                    let qualTime = race?.qualifying?.time {
                     let qualFullDate = getUTCTimeDate(for: qualDate, time: qualTime).roundedToHour()
                     qualifyingWeather = fullRaceWeather.filter { $0.date == qualFullDate }
-                    print(qualifyingWeather)
                 }
                 
                 if let raceDate = race?.date, let raceTime = race?.time {

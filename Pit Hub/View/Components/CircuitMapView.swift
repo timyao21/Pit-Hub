@@ -151,7 +151,7 @@ struct CircuitMapView: View {
             }
             .frame(height: 300)
             .cornerRadius(20)
-            .shadow(radius: 5)
+            .shadow(radius:3,x: 3,y: 3)
             .onAppear(){
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     isLoading = false
