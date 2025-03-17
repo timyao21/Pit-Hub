@@ -38,6 +38,12 @@ struct HomeWeatherRow: View {
                                 .padding(3)
                         }
                         
+                        if let spWeather = viewModel.sprintWeather.first {
+                            ExtractedView(title: "Sprint", weatherData: spWeather)
+                            Divider()
+                                .padding(3)
+                        }
+                        
                         if let fp3Weather = viewModel.thirdPracticeWeather.first {
                             ExtractedView(title: "FP3", weatherData: fp3Weather)
                             Divider()
