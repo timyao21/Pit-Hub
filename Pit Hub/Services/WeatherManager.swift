@@ -52,6 +52,13 @@ class WeatherManager {
             return nil
         }
     }
+    
+    func weatherAttribution() async -> WeatherAttribution? {
+        let attribution = await Task(priority: .userInitiated) {
+            return try? await self.service.attribution
+        }.value
+        return attribution
+    }
 
     //end
 }

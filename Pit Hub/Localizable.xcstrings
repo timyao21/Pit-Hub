@@ -16,6 +16,16 @@
     "·" : {
 
     },
+    "[%@](%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "[%1$@](%2$@)"
+          }
+        }
+      }
+    },
     "%@" : {
 
     },
@@ -56,6 +66,17 @@
       }
     },
     "About" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于"
+          }
+        }
+      }
+    },
+    "About Us" : {
 
     },
     "Abu Dhabi" : {
@@ -212,23 +233,34 @@
         }
       }
     },
+    "Andrea Kimi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安德烈亚·基米"
+          }
+        }
+      }
+    },
+    "Antonelli" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安东内利"
+          }
+        }
+      }
+    },
     "App Theme" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "App主题"
-          }
-        }
-      }
-    },
-    "Appearance" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主题"
           }
         }
       }
@@ -254,6 +286,9 @@
           }
         }
       }
+    },
+    "Attribution logo unavailable" : {
+
     },
     "Austin" : {
       "extractionState" : "manual",
@@ -456,9 +491,6 @@
         }
       }
     },
-    "Become Paddock Club Member" : {
-
-    },
     "Belgian Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -471,7 +503,18 @@
       }
     },
     "Bilibili" : {
-
+      "shouldTranslate" : false
+    },
+    "Bortoleto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "博尔托莱托"
+          }
+        }
+      }
     },
     "Bottas" : {
       "extractionState" : "manual",
@@ -946,7 +989,15 @@
       }
     },
     "Follow Us" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关注我们"
+          }
+        }
+      }
     },
     "FP1" : {
       "extractionState" : "manual",
@@ -1025,6 +1076,17 @@
         }
       }
     },
+    "Gabriel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加布里埃尔"
+          }
+        }
+      }
+    },
     "Gasly" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1035,6 +1097,9 @@
           }
         }
       }
+    },
+    "General" : {
+
     },
     "George" : {
       "extractionState" : "manual",
@@ -1069,6 +1134,9 @@
         }
       }
     },
+    "Get your Season Pass for Pit App" : {
+
+    },
     "GP2 Data, GP2!" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1098,6 +1166,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "哈斯"
+          }
+        }
+      }
+    },
+    "Hadjar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "哈贾尔"
           }
         }
       }
@@ -1211,6 +1290,17 @@
         }
       }
     },
+    "Isack" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伊萨克"
+          }
+        }
+      }
+    },
     "Italian" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1299,6 +1389,9 @@
         }
       }
     },
+    "Join in Pit App Paddock Club" : {
+
+    },
     "Kevin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1309,9 +1402,6 @@
           }
         }
       }
-    },
-    "Key 1" : {
-      "extractionState" : "manual"
     },
     "Kick Sauber" : {
       "extractionState" : "manual",
@@ -1447,6 +1537,9 @@
         }
       }
     },
+    "Loading attribution..." : {
+
+    },
     "Logan" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1490,6 +1583,9 @@
           }
         }
       }
+    },
+    "Manage Subscriptions" : {
+
     },
     "Marina Bay" : {
       "extractionState" : "manual",
@@ -1888,6 +1984,9 @@
       }
     },
     "Pit App is designed and developed by Junyu Yao." : {
+
+    },
+    "Pit App Paddock Club Member!" : {
 
     },
     "Pit App Paddock Pass" : {

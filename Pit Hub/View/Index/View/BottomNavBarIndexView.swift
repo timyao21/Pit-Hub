@@ -54,6 +54,7 @@ struct BottomNavBarIndexView: View {
                     .animation(.easeInOut, value: showNetworkWarning)
             }
         }
+        .environment(viewModel)
         .onChange(of: networkMonitor.isActive) { oldValue, newValue in
             DispatchQueue.main.async {
                 if !newValue {
@@ -65,10 +66,6 @@ struct BottomNavBarIndexView: View {
                     showNetworkWarning = false
                 }
             }
-        }
-        .environment(viewModel)
-        .subscriptionStatusTask(for: "21650064") { taskStatus in
-            print("Subscription status task status:\(taskStatus)")
         }
     }
 }

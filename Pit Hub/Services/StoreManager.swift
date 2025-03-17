@@ -8,18 +8,34 @@
 import Foundation
 import StoreKit
 
-@MainActor
-@Observable class StoreManager {
-    @MainActor var product: Product?
-    
-    func loadProduct() async {
+struct StoreManager {
+    func checkMember() async -> Bool{
         do {
-            let products = try await Product.products(for: [Products.yearly])
-            self.product = products.first
-            
+//            let products = try await Product.products(for: [Products.yearly])
+            let membership = try await isPurchased(Products.yearly)
+            return membership
         } catch {
             print("Failed to load product: \(error)")
+            return false
         }
+    }
+    
+    func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
+        switch result {
+            case .verified(let safe):
+            return safe
+        case .unverified:
+            throw StoreKitError.unknown
+            
+        }
+    }
+    
+    func isPurchased(_ productIdentifier: String) async throws -> Bool {
+        guard let result = await Transaction.latest(for: productIdentifier) else{
+            return false
+        }
+        let transaction = try checkVerified(result)
+        return transaction.revocationDate == nil
     }
     
 }

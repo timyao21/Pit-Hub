@@ -10,15 +10,19 @@ import StoreKit
 
 struct inapptest: View {
     let storeManager = StoreManager()
+
     var body: some View {
         VStack {
-            SubscriptionStoreView(groupID: "21650064"){
+            SubscriptionStoreView(productIDs: ["com.yjytim.PitHub.YearlyPlan"]){
                 ProductsHeaderView()
+                
             }
+            .storeButton(.visible, for: .redeemCode)
+            .storeButton(.visible, for: .restorePurchases)
         }
         .onAppear {
             Task {
-                await storeManager.loadProduct()
+                await storeManager.checkMember()
             }
         }
     }
@@ -29,12 +33,14 @@ struct inapptest: View {
 }
 
 struct ProductsHeaderView: View {
+    @State private var isPresented: Bool = false
     var body: some View {
         VStack {
             Image(S.pitIcon)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 300)
+                .frame(width: 188)
+                .padding()
             Text("Get your Season Pass for Pit App")
                 .font(.title)
                 .fontWeight(.bold)

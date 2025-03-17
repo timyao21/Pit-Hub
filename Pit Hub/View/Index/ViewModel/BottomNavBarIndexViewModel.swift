@@ -16,6 +16,7 @@ import StoreKit
     private let constructorStandingsManager = ConstructorStandingsManager()
     private let gpManager = GPManager()
     let weatherManager = WeatherManager.shared
+    let storeManager = StoreManager()
     
     // MARK: - Home View Properties
     @MainActor var allGP: [Races] = []
@@ -24,8 +25,8 @@ import StoreKit
     @MainActor var upcomingGP: Races?
     
     // Weather
-    @MainActor var showWeatherData: Bool = false
-    @MainActor var fp1Weather: HourWeather?
+    @MainActor var membership: Bool = false
+    @MainActor var fp1Weather: [HourWeather] = []
     @MainActor var sprintQualiWeather: [HourWeather] = []
     @MainActor var secondPracticeWeather: [HourWeather] = []
     @MainActor var thirdPracticeWeather: [HourWeather] = []
@@ -58,8 +59,10 @@ import StoreKit
     @MainActor
     init() {
         Task {
+            await membership = storeManager.checkMember()
             await fetchAllGP() // Load data for both Homepage & Race Calendar
             await fetchDriverStanding() // Load standings data
+            print(driverStanding)
             await fetchConstructorStanding() // Load standings data
             if driverStanding.isEmpty && constructorStanding.isEmpty {
                 let currentYear = Calendar.current.component(.year, from: Date()) - 1
@@ -72,7 +75,6 @@ import StoreKit
     @MainActor
     func fetchAllGP() async {
         let today = Date()
-        let todayUTC = DateUtilities.convertToUTC(today)
         let currentYear = Calendar.current.component(.year, from: today)
         
         do {
@@ -84,10 +86,11 @@ import StoreKit
             
             // Split races into upcoming and past in one pass
             for gp in allGPs {
-                if let gpDate = isoDateFormatter.date(from: gp.date) {
-                    if gpDate >= todayUTC {
+                if let gpDate = DateUtilities.combineDateToUtc(from: gp.date, and: gp.time ?? " ") {
+                    if gpDate >= today {
                         upcoming.append(gp)
                     } else {
+                        print("pass gpDate: \(gpDate)")
                         past.append(gp)
                     }
                 }
@@ -107,7 +110,7 @@ import StoreKit
             
             if let upcomingRace = upcomingGP,
                let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
-                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: todayUTC)!
+                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: today)!
                 if gpDate <= sevenDaysFromToday {
                     await loadWeatherData(for: upcomingRace)
                 }
@@ -123,7 +126,6 @@ import StoreKit
     @MainActor
     func refreshHomeGPData() async{
         let today = Date()
-        let todayUTC = DateUtilities.convertToUTC(today)
         let currentYear = Calendar.current.component(.year, from: today)
         
         do {
@@ -132,7 +134,7 @@ import StoreKit
             
             var upcoming = [Races]()
             for gp in allGPs {
-                if let gpDate = isoDateFormatter.date(from: gp.date), gpDate >= todayUTC {
+                if let gpDate = DateUtilities.combineDateToUtc(from: gp.date, and: gp.time ?? " "), gpDate >= today {
                     upcoming.append(gp)
                 }
             }
@@ -141,7 +143,7 @@ import StoreKit
             
             if let upcomingRace = upcomingGP,
                let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
-                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: todayUTC)!
+                let sevenDaysFromToday = Calendar.current.date(byAdding: .day, value: 7, to: today)!
                 if gpDate <= sevenDaysFromToday {
                     await loadWeatherData(for: upcomingRace)
                 }
@@ -166,7 +168,6 @@ import StoreKit
     func refreshRaceCalendarData() async {
         print("Refreshing Calendar Data for \(raceCalendarViewYear)...")
         let today = Date()
-        let todayUTC = DateUtilities.convertToUTC(today)
         
         do{
             let allGPs = try await gpManager.fetchRaceSchedule(for: raceCalendarViewYear)
@@ -177,8 +178,8 @@ import StoreKit
             
             // Split races into upcoming and past in one pass
             for gp in allGPs {
-                if let gpDate = isoDateFormatter.date(from: gp.date) {
-                    if gpDate >= todayUTC {
+                if let gpDate = DateUtilities.combineDateToUtc(from: gp.date, and: gp.time ?? " ") {
+                    if gpDate >= today {
                         upcoming.append(gp)
                     } else {
                         past.append(gp)
@@ -249,7 +250,7 @@ import StoreKit
               let longString = race?.circuit.location.long,
               let longDouble = Double(longString) else {
             print("Conversion from string to double failed.")
-            showWeatherData = false
+            membership = false
             return
         }
         
@@ -262,8 +263,10 @@ import StoreKit
             
             Task {
                 fullRaceWeather = await fetchHourlyWeather(for: location, on: date, hours: 96)
-                if let fpWeather = fullRaceWeather.first {
-                    fp1Weather = fpWeather
+                if let fpDate = race?.firstPractice?.date,
+                   let fpTime = race?.firstPractice?.time{
+                    let fpFullDate = getUTCTimeDate(for: fpDate, time: fpTime).roundedToHour()
+                    fp1Weather = fullRaceWeather.filter { $0.date == fpFullDate }
                 }
                 
                 if let sprintQualiDate = race?.sprintQualifying?.date,

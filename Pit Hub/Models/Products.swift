@@ -8,5 +8,6 @@
 import Foundation
 
 struct Products{
+    static let subscriptionGroups = "21650064"
     static let yearly = "com.yjytim.PitHub.YearlyPlan"
 }
