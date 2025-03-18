@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct UnlockView: View {
-    private let title: LocalizedStringKey = "Unlock Content"
+    @Environment(IndexViewModel.self) private var indexViewModel
+    
+    private let title: LocalizedStringKey = ""
     private let subtitle: LocalizedStringKey = "Subscribe to access full content."
     
     var body: some View {
@@ -31,15 +33,16 @@ struct UnlockView: View {
                 
                 Text(subtitle)
                     .font(.body)
+                    .fontWeight(.semibold)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                 
                 Button {
-                    print("Pressed Unlock")
+                    indexViewModel.subscriptionSheetIsPresented.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "flag.pattern.checkered.2.crossed")
-                        Text("Unlock")
+                        Text("Subscribe")
                             .fontWeight(.bold)
                     }
                 }
@@ -51,8 +54,4 @@ struct UnlockView: View {
             }
         }
     }
-}
-
-#Preview {
-    UnlockView()
 }

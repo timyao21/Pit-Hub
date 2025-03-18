@@ -65,19 +65,15 @@
         }
       }
     },
-    "About" : {
-      "extractionState" : "stale",
+    "About Us" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关于"
+            "value" : "关于我们"
           }
         }
       }
-    },
-    "About Us" : {
-
     },
     "Abu Dhabi" : {
       "extractionState" : "manual",
@@ -988,17 +984,6 @@
         }
       }
     },
-    "Follow Us" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关注我们"
-          }
-        }
-      }
-    },
     "FP1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1099,7 +1084,14 @@
       }
     },
     "General" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
+          }
+        }
+      }
     },
     "George" : {
       "extractionState" : "manual",
@@ -1134,7 +1126,7 @@
         }
       }
     },
-    "Get your Season Pass for Pit App" : {
+    "Get your Paddock Pass for Pit App" : {
 
     },
     "GP2 Data, GP2!" : {
@@ -1389,8 +1381,16 @@
         }
       }
     },
-    "Join in Pit App Paddock Club" : {
-
+    "Join Pit App Paddock Club" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入Pit App围场俱乐部"
+          }
+        }
+      }
     },
     "Kevin" : {
       "extractionState" : "manual",
@@ -1491,7 +1491,14 @@
       }
     },
     "Learn More About Us" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深入了解我们"
+          }
+        }
+      }
     },
     "Leclerc" : {
       "extractionState" : "manual",
@@ -1987,10 +1994,24 @@
 
     },
     "Pit App Paddock Club Member!" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pit App 围场会员！"
+          }
+        }
+      }
     },
     "Pit App Paddock Pass" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pit App 围场通行证"
+          }
+        }
+      }
     },
     "Pit Hub" : {
       "shouldTranslate" : false
@@ -2115,9 +2136,6 @@
         }
       }
     },
-    "Race is still going on!" : {
-
-    },
     "Race Results" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2207,10 +2225,24 @@
       }
     },
     "Rednotes" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红书"
+          }
+        }
+      }
     },
     "Report" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反馈"
+          }
+        }
+      }
     },
     "Result" : {
       "localizations" : {
@@ -2584,7 +2616,14 @@
       }
     },
     "Sprint Quali Results" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲刺排位"
+          }
+        }
+      }
     },
     "Standings" : {
       "localizations" : {
@@ -2613,6 +2652,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "斯托尔"
+          }
+        }
+      }
+    },
+    "Subscribe" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "订阅"
+          }
+        }
+      }
+    },
+    "Subscribe to access full content." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "订阅解锁所有功能"
           }
         }
       }
@@ -2716,10 +2776,14 @@
       }
     },
     "Tune Your Look" : {
-
-    },
-    "Unable to fetch Race weather data" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改涂装"
+          }
+        }
+      }
     },
     "United States Grand Prix" : {
       "extractionState" : "manual",
@@ -2783,7 +2847,14 @@
       }
     },
     "Version" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
+          }
+        }
+      }
     },
     "Verstappen" : {
       "extractionState" : "manual",
@@ -2820,6 +2891,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "天气"
+          }
+        }
+      }
+    },
+    "Weather data only available 14 days before the race Day" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气数据仅在比赛开始前 14 天提供"
+          }
+        }
+      }
+    },
+    "Weather Forecast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气预测"
           }
         }
       }

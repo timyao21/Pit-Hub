@@ -35,7 +35,6 @@ struct SettingsView: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     
-    @State private var seasonPassSheetIsPresented: Bool = false
     
     init() {
         let segmentedAppearance = UISegmentedControl.appearance()
@@ -51,11 +50,11 @@ struct SettingsView: View {
                 Section(header: Text("Pit App Paddock Pass")) {
                     if indexViewModel.membership == false {
                         Button(action: {
-                            seasonPassSheetIsPresented.toggle()
+                            indexViewModel.subscriptionSheetIsPresented.toggle()
                         }) {
                             HStack {
                                 Image(systemName: "star.fill")
-                                Text("Join in Pit App Paddock Club")
+                                Text("Join Pit App Paddock Club")
                                     .fontWeight(.semibold)
                                 Image(systemName: "star.fill")
                             }
@@ -75,6 +74,7 @@ struct SettingsView: View {
                         
                         Button(action:{
                             viewModel.isShowManageSubscription.toggle()
+                            print(viewModel.isShowManageSubscription)
                         }) {
                             HStack{
                                 Image(systemName: "wallet.pass")
@@ -232,16 +232,6 @@ struct SettingsView: View {
         .preferredColorScheme(
             selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
         )
-        .sheet(isPresented: $seasonPassSheetIsPresented) {
-            inapptest()
-                .presentationDetents([.medium])
-        }
     }
 }
-
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView()
-//    }
-//}
 

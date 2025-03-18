@@ -10,40 +10,55 @@ import StoreKit
 
 struct inapptest: View {
     let storeManager = StoreManager()
-
+    
     var body: some View {
         VStack {
-            SubscriptionStoreView(productIDs: ["com.yjytim.PitHub.YearlyPlan"]){
+            SubscriptionStoreView(productIDs: [Products.yearly]){
                 ProductsHeaderView()
-                
+                    .frame(maxWidth: .infinity)
             }
             .storeButton(.visible, for: .redeemCode)
             .storeButton(.visible, for: .restorePurchases)
         }
-        .onAppear {
-            Task {
-                await storeManager.checkMember()
-            }
-        }
     }
-}
-
-#Preview {
-    inapptest()
 }
 
 struct ProductsHeaderView: View {
-    @State private var isPresented: Bool = false
     var body: some View {
-        VStack {
-            Image(S.pitIcon)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 188)
-                .padding()
-            Text("Get your Season Pass for Pit App")
-                .font(.title)
-                .fontWeight(.bold)
+        VStack(alignment: .leading, spacing: 15) {
+            // Centered section: Image and title
+            VStack(spacing: 5) {
+                Image(S.pitIcon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 188)
+                Text("Get your Paddock Pass for Pit App")
+                    .font(.title2)
+                    .fontWeight(.bold)
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            
+            // Left aligned section: Featured function row
+            FeaturedFunctionsRow(title: "Weather Forecast")
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
     }
+}
+
+private struct FeaturedFunctionsRow: View {
+    let title: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "bookmark.fill")
+            Text(title)
+        }
+        .font(.headline)
+    }
+}
+
+
+#Preview {
+    inapptest()
 }

@@ -18,6 +18,10 @@ import StoreKit
     let weatherManager = WeatherManager.shared
     let storeManager = StoreManager()
     
+    // MARK: - Check Membership
+    @MainActor var membership: Bool = false
+    @MainActor var subscriptionSheetIsPresented: Bool = false
+    
     // MARK: - Home View Properties
     @MainActor var allGP: [Races] = []
     @MainActor var allPastGP: [Races] = []
@@ -25,7 +29,6 @@ import StoreKit
     @MainActor var upcomingGP: Races?
     
     // Weather
-    @MainActor var membership: Bool = false
     @MainActor var fp1Weather: [HourWeather] = []
     @MainActor var sprintQualiWeather: [HourWeather] = []
     @MainActor var secondPracticeWeather: [HourWeather] = []

@@ -34,16 +34,17 @@ struct DataErrorView: View {
     }
 }
 
-struct RaceResultUpdateErrorView: View {
-    var body: some View {
-        VStack{
-            Text("Race is still going on!")
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 20)
-        }
-    }
-}
+//struct RaceResultUpdateErrorView: View {
+//    var body: some View {
+//        VStack{
+//            Text("Race is still going on!")
+//                .font(.headline)
+//                .multilineTextAlignment(.center)
+//                .padding(.horizontal, 20)
+//        }
+//    }
+//}
+
 #Preview {
     DataErrorView()
 }
