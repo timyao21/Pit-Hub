@@ -75,6 +75,17 @@
         }
       }
     },
+    "about_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pit App is proudly crafted and developed by <a href=\\\"https://yjytim.com/\\\">Junyu Yao</a>, and Caroline He provides art support. Follow us on all your favorite platforms, and join the fun adventure!"
+          }
+        }
+      }
+    },
     "Abu Dhabi" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2743,6 +2754,17 @@
         }
       }
     },
+    "The green tractor is on its way with the data." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绿色拖拉机正带着数据赶来"
+          }
+        }
+      }
+    },
     "The red light is still on in the pit lane - Data is Unavailable" : {
       "localizations" : {
         "zh-Hans" : {
@@ -2822,7 +2844,7 @@
 
     },
     "v0.1.0" : {
-
+      "shouldTranslate" : false
     },
     "Valtteri" : {
       "extractionState" : "manual",
@@ -2917,7 +2939,14 @@
       }
     },
     "Weather Unit" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "气象单位"
+          }
+        }
+      }
     },
     "Williams" : {
       "extractionState" : "manual",

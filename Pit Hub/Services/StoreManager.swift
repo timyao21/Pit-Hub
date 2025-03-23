@@ -11,9 +11,14 @@ import StoreKit
 struct StoreManager {
     func checkMember() async -> Bool{
         do {
-//            let products = try await Product.products(for: [Products.yearly])
-            let membership = try await isPurchased(Products.yearly)
-            return membership
+            // If they’ve unlocked lifetime, no need to check yearly
+            if try await isPurchased(Products.lifetime) {
+                print(">>> Lifetime purchased")
+                return true
+            }
+            
+            return try await !isPurchased(Products.yearly)
+            
         } catch {
             print("Failed to load product: \(error)")
             return false

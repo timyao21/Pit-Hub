@@ -40,6 +40,9 @@ struct HomeView: View {
                 if (viewModel.upcomingGP != nil){
                     RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
+                }else{
+                    DataErrorView()
+                        .frame(height: 300)
                 }
                 
                 PitSubtitle(for: "Weather")
