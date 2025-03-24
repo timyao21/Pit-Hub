@@ -8,7 +8,7 @@
 import SwiftUI
 import StoreKit
 
-struct inapptest: View {
+struct InAppPurchases: View {
     let storeManager = StoreManager()
     
     var body: some View {
@@ -32,14 +32,14 @@ struct ProductsHeaderView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 188)
-                Text("Get your Paddock Pass for Pit App")
+                Text("Get your Pit App Paddock Club Annual Pass")
                     .font(.title2)
                     .fontWeight(.bold)
             }
             .frame(maxWidth: .infinity, alignment: .center)
             
             // Left aligned section: Featured function row
-            FeaturedFunctionsRow(title: "Weather Forecast")
+            FeaturedFunctionsRow(for: "Race Day Weather Forecasts")
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
@@ -47,7 +47,11 @@ struct ProductsHeaderView: View {
 }
 
 private struct FeaturedFunctionsRow: View {
-    let title: String
+    let title: LocalizedStringKey
+    
+    init(for title: LocalizedStringKey) {
+        self.title = title
+    }
     
     var body: some View {
         HStack {
@@ -60,5 +64,5 @@ private struct FeaturedFunctionsRow: View {
 
 
 #Preview {
-    inapptest()
+    InAppPurchases()
 }

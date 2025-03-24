@@ -55,7 +55,7 @@ struct BottomNavBarIndexView: View {
             }
         }
         .sheet(isPresented: $viewModel.subscriptionSheetIsPresented) {
-            inapptest()
+            InAppPurchases()
                 .presentationDetents([.medium])
         }
         .environment(viewModel)

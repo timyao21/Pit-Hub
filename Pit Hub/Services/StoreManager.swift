@@ -17,7 +17,7 @@ struct StoreManager {
                 return true
             }
             
-            return try await !isPurchased(Products.yearly)
+            return try await isPurchased(Products.yearly)
             
         } catch {
             print("Failed to load product: \(error)")

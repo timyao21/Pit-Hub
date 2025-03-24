@@ -66,6 +66,7 @@ struct FullResultsListView: View {
                             FullRaceResultListRowView(
                                 number: result.number,
                                 position: result.position,
+                                positionText: result.positionText,
                                 driverFirstName: result.driver.givenName, // assuming 'Driver' has these properties
                                 driverLastName: result.driver.familyName,
                                 points: result.points,
@@ -112,6 +113,7 @@ struct FullResultsListView: View {
                             FullRaceResultListRowView(
                                 number: result.number,
                                 position: result.position,
+                                positionText: result.positionText,
                                 driverFirstName: result.driver.givenName, // assuming 'Driver' has these properties
                                 driverLastName: result.driver.familyName,
                                 points: result.points,
@@ -150,7 +152,7 @@ private struct FullResultsHeaderView: View {
     let title: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 5) {
             (
                 Text(LocalizedStringKey(raceName))
                 + Text(" ")
@@ -167,6 +169,13 @@ private struct FullResultsHeaderView: View {
                 Text("Round: \(round)")
             }
             .font(.headline)
+            .foregroundColor(.secondary)
+            
+            HStack{
+                Text("R - Retired")
+                Text("D - Disqualified")
+            }
+            .font(.footnote)
             .foregroundColor(.secondary)
         }
         .padding()

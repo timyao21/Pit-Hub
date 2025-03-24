@@ -75,17 +75,6 @@
         }
       }
     },
-    "about_text" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pit App is proudly crafted and developed by <a href=\\\"https://yjytim.com/\\\">Junyu Yao</a>, and Caroline He provides art support. Follow us on all your favorite platforms, and join the fun adventure!"
-          }
-        }
-      }
-    },
     "Abu Dhabi" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -279,6 +268,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "阿根廷"
+          }
+        }
+      }
+    },
+    "Art direction by Caroline He" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caroline He 提供美术支持"
           }
         }
       }
@@ -797,6 +797,17 @@
         }
       }
     },
+    "D - Disqualified" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D - 取消资格"
+          }
+        }
+      }
+    },
     "Daniel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -838,6 +849,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "数据还在维修区！⏳"
+          }
+        }
+      }
+    },
+    "Developed with passion by Junyu Yao (yjytim)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由姚俊煜 (yjytim) 独立开发"
+          }
+        }
+      }
+    },
+    "Developed with passion by Junyu Yao (yjytim)\\nArt direction by Caroline He\\n\\nFollow our journey across platforms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开发者：Junyu Yao (yjytim) 倾力打造\\n美术指导：Caroline He\\n\\n欢迎全平台关注我们～"
           }
         }
       }
@@ -995,6 +1028,17 @@
         }
       }
     },
+    "Follow our journey across platforms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎在全平台关注我们的旅程"
+          }
+        }
+      }
+    },
     "FP1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1137,8 +1181,16 @@
         }
       }
     },
-    "Get your Paddock Pass for Pit App" : {
-
+    "Get your Pit App Paddock Club Annual Pass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获取Pit App年度围场通行证"
+          }
+        }
+      }
     },
     "GP2 Data, GP2!" : {
       "extractionState" : "manual",
@@ -1414,6 +1466,9 @@
         }
       }
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "Kick Sauber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1601,9 +1656,6 @@
           }
         }
       }
-    },
-    "Manage Subscriptions" : {
-
     },
     "Marina Bay" : {
       "extractionState" : "manual",
@@ -2001,9 +2053,6 @@
         }
       }
     },
-    "Pit App is designed and developed by Junyu Yao." : {
-
-    },
     "Pit App Paddock Club Member!" : {
       "localizations" : {
         "zh-Hans" : {
@@ -2136,6 +2185,17 @@
         }
       }
     },
+    "R - Retired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R - 退赛"
+          }
+        }
+      }
+    },
     "Race" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2143,6 +2203,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正赛"
+          }
+        }
+      }
+    },
+    "Race Day Weather Forecasts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比赛日天气预报"
           }
         }
       }

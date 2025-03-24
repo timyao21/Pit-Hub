@@ -48,44 +48,50 @@ struct SettingsView: View {
             Form {
                 // Section for appearance settings
                 Section(header: Text("Pit App Paddock Pass")) {
-                    if indexViewModel.membership == false {
-                        Button(action: {
-                            indexViewModel.subscriptionSheetIsPresented.toggle()
-                        }) {
+                    if indexViewModel.membership {
+                        // Member UI
+                        VStack (spacing: 8){
                             HStack {
-                                Image(systemName: "star.fill")
-                                Text("Join Pit App Paddock Club")
+                                Image(systemName: "wallet.pass.fill")
+                                    .frame(width: 30)
+                                Text("Pit App Paddock Club Member!")
                                     .fontWeight(.semibold)
-                                Image(systemName: "star.fill")
+                                Spacer()
+                                Image(systemName: "star.square")
                             }
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundColor(Color(S.pitHubIconColor))
+                            
+                            FeatureRow(title: "Race Day Weather Forecasts", color: Color(S.pitHubIconColor))
                         }
-                    } else {
-                        HStack{
-                            Image(systemName: "person.crop.circle.fill")
-                                .frame(width: 30)
-                            Text("Pit App Paddock Club Member!")
-                                .fontWeight(.semibold)
-                            Spacer()
-                        }
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(Color(S.pitHubIconColor))
                         
-                        Button(action:{
-                            viewModel.isShowManageSubscription.toggle()
-                            print(viewModel.isShowManageSubscription)
+                    } else {
+                        // Non-member UI presented as a button
+                        
+                        Button(action: {
+                            indexViewModel.subscriptionSheetIsPresented.toggle()
                         }) {
-                            HStack{
-                                Image(systemName: "wallet.pass")
-                                    .frame(width: 30)
-                                Text("Manage Subscriptions")
+                            VStack(spacing: 8) {
+                                HStack {
+                                    Image(systemName: "wallet.pass.fill")
+                                        .frame(width: 30)
+                                    
+                                    Text("Join Pit App Paddock Club")
+                                        .fontWeight(.semibold)
+                                    Spacer()
+                                    Image(systemName: "chevron.up.right.2")
+                                }
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundColor(Color(S.pitHubIconColor))
+                                .padding(.bottom, 10)
+                                
+                                FeatureRow(title: "Race Day Weather Forecasts", color: .secondary)
                             }
-                            .foregroundColor(.accentColor)
                         }
-                        .manageSubscriptionsSheet(isPresented: $viewModel.isShowManageSubscription, subscriptionGroupID: Products.subscriptionGroups)
+                    
                     }
                 }
+
                 
                 Section(header: Text("Tune Your Look")) {
                     HStack {
@@ -137,18 +143,11 @@ struct SettingsView: View {
                 }
                 
                 Section(header: Text("About Us")) {
-                    let aboutText: AttributedString = {
-                        var string = AttributedString("Pit App is proudly crafted and developed by Junyu Yao (yjytim), and Caroline He provides art support. Follow us on all your favorite platforms, and join the fun adventure!")
-                        if let range = string.range(of: "Junyu Yao") {
-                            string[range].link = URL(string: "https://yjytim.com/")!
-                            string[range].foregroundColor = .blue
-                            string[range].underlineStyle = .single
-                        }
-                        return string
-                    }()
-                    
-                    Text(aboutText)
-                        .font(.body)
+                    VStack(alignment: .leading, spacing: 10){
+                        FeatureRow(icon:"laptopcomputer", title: "Developed with passion by Junyu Yao (yjytim)", color: .primary)
+                        FeatureRow(icon:"pencil.and.scribble", title: "Art direction by Caroline He", color: .primary)
+                        FeatureRow(icon:"suit.heart.fill", title: "Follow our journey across platforms", color: .primary)
+                    }
                     
                     Button(action: {
                         let urlString = "https://space.bilibili.com/626701417?spm_id_from=333.1365.0.0"
@@ -235,3 +234,35 @@ struct SettingsView: View {
     }
 }
 
+
+private struct FeatureRow: View {
+    let icon: String
+    let title: LocalizedStringKey
+    let color: Color
+    
+    init(title: LocalizedStringKey, color: Color) {
+        self.icon = "star.fill"
+        self.title = title
+        self.color = color
+    }
+    
+    init(icon: String, title: LocalizedStringKey, color: Color) {
+        self.icon = icon
+        self.title = title
+        self.color = color
+    }
+    
+    var body: some View {
+        HStack {
+            Image(systemName: icon)
+                .frame(width: 30)
+            Text(title)
+                .fontWeight(.semibold)
+            Spacer()
+        }
+        .font(.footnote)
+        .frame(maxWidth: .infinity, alignment: .center)
+        .foregroundColor(color)
+
+    }
+}

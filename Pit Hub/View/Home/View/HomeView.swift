@@ -45,7 +45,7 @@ struct HomeView: View {
                         .frame(height: 300)
                 }
                 
-                PitSubtitle(for: "Weather")
+                PitSubtitle(for: "Race Day Weather Forecasts")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical)
                 
