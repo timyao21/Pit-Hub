@@ -240,7 +240,7 @@ import StoreKit
         if membership,
            let upcomingRace = upcomingGP,
            let gpDate = isoDateFormatter.date(from: upcomingRace.date) {
-            let fourteenDaysFromToday = Calendar.current.date(byAdding: .day, value: 14, to: today)!
+            let fourteenDaysFromToday = Calendar.current.date(byAdding: .day, value: 10, to: today)!
             if gpDate <= fourteenDaysFromToday {
                 await loadWeatherData(for: upcomingRace)
             }

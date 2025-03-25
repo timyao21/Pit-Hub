@@ -78,7 +78,7 @@ struct RaceWeatherRowView: View {
                     }
                 }
             } else {
-                Text("Weather data only available 14 days before the race Day")
+                Text("Weather data only available 10 days before the race Day")
                     .frame(width: 150)
             }
         }

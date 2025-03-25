@@ -10,33 +10,47 @@ struct About: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .english
 
     private let aboutUs_en = """
-Pit App was designed and developed by [Junyu Yao (yjytim)](https://yjytim.com/). Caroline He provided art support.
+Pit App was designed and developed by [Junyu Yao (yjytim)](https://yjytim.com/), with artistic support from Caroline He.
 
-The idea to develop Pit App came about as I observed over the years following F1 that accessing Chinese F1 information was quite fragmented. Many relied on various social media influencers to share updates. That’s why I decided to create an app exclusively for F1 fans—a tool that is both user-friendly and visually appealing.
+Over the past few years, I’ve noticed that accessing F1 news in China comes with high barriers and the available sources are quite fragmented. This inspired me to create an app specifically for F1 fans in China—a tool that’s both practical and visually appealing.
 
-Owning my own iOS app had always been my dream. After graduation, I self-taught SwiftUI and embarked on this development journey. As my first independent project, it may contain some bugs. I hope you will be patient and provide timely feedback so I can fix any issues quickly.
+Having my own iOS app has always been a dream of mine. After graduating, I taught myself SwiftUI and embarked on the journey of developing this app. As my first independent project, it may have a few bugs; I hope you’ll be understanding and provide feedback so I can fix them as quickly as possible.
 
-The entire process rekindled my initial passion for programming and exploring new ideas. I also documented my journey on YouTube, which led to the series “yjy's independent development” on the account “[197的大头和Caro](https://space.bilibili.com/626701417?spm_id_from=333.788.0.0)”.
+The whole development process rekindled the excitement I felt when I first learned to code and constantly explore new things. I also documented the entire journey through video, which led to the “yjy’s Independent Development” series on the “[197的大头和Caro](https://space.bilibili.com/626701417?spm_id_from=333.788.0.0)” channel, sharing this growth experience with everyone.
 """
 
     private let aboutUs_cn = """
-Pit App 全部是由[姚俊煜（yjytim）](https://yjytim.com/)设计开发完成的。Caroline He提供美术支持。
+Pit App 全部是由[姚俊煜（yjytim）](https://yjytim.com/)设计并开发完成的。Caroline He提供美术支持。
 
-开发Pit的起因是我关注F1的这几年来发现获取中文F1信息的方式都很杂。大家都靠着各种社交媒体上的博主转发来获取资讯。所以我就有了这个”开发一个属于我们自己F1 粉丝的App“的想法。 想要给大家提供一个好用，好看的F1工具。
+这几年来我发现在中国获取F1资讯的方式是有门槛的，且途径来源都很碎片化。这促使我萌生了开发一款专为中国F1粉丝打造的App的想法，想要给大家提供一个实用又好看的F1工具。
 
-拥有一款属于自己的 iOS App 也一直是我自己的梦想。毕业后，我自学了 SwiftUI 并开始了这款 App 的开发之旅。作为我首次独立开发的作品，难免会存在一些 Bug，希望大家能够包容并及时反馈问题，我会尽快进行修复。
+拥有一款属于自己的 iOS App 也一直是我的梦想。毕业后，我自学了 SwiftUI 并开始了这款 App 的开发之旅。作为我首次独立开发的作品，难免会有些许Bug，希望大家多多包涵，并及时反馈问题，我会尽快进行优化修复。
 
-整个开发的过程让我重新找到了最初学习编程的感觉，一直在探索新鲜的事物。我也用视频的方式记录下了我独立开发的整个过程，这才有了“[197的大头和Caro](https://space.bilibili.com/626701417?spm_id_from=333.788.0.0)”的帐号上“yjy的独立开发”这个系列。
+整个开发的过程让我重新找到了最初学习编程的感觉，一直在探索新鲜的事物。我也用视频的方式记录下了我独立开发的整个过程，这才有了“[197的大头和Caro](https://space.bilibili.com/626701417?spm_id_from=333.788.0.0)”的帐号上“yjy的独立开发”这个系列，希望与大家共享这段成长历程。
 """
 
     // Computed property that returns the properly formatted content.
     private var contentText: AttributedString {
-        if selectedLanguage == .chinese,
-           let attributed = try? AttributedString(markdown: aboutUs_cn, options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)) {
-            return attributed
+        if selectedLanguage == .chinese {
+            if let attributed = try? AttributedString(
+                markdown: aboutUs_cn,
+                options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+            ) {
+                return attributed
+            }
         }
-        return (try? AttributedString(markdown: aboutUs_en)) ?? AttributedString(aboutUs_en)
+        
+        if let attributed = try? AttributedString(
+            markdown: aboutUs_en,
+            options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+        ) {
+            return attributed
+        } else {
+            // Fallback: return plain text if markdown parsing fails.
+            return AttributedString(aboutUs_en)
+        }
     }
+
 
     var body: some View {
         NavigationView {

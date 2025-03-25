@@ -45,6 +45,7 @@ struct CountryFlags {
         "Swiss": "🇨🇭",
         "Italian": "🇮🇹",
         "British": "🇬🇧",
+        "UK": "🇬🇧",
         "American": "🇺🇸",
         "USA": "🇺🇸",
         "Thai": "🇹🇭",

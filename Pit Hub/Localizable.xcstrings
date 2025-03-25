@@ -16,6 +16,9 @@
     "·" : {
 
     },
+    "·​" : {
+
+    },
     "[%@](%@)" : {
       "localizations" : {
         "en" : {
@@ -295,7 +298,7 @@
       }
     },
     "Attribution logo unavailable" : {
-
+      "shouldTranslate" : false
     },
     "Austin" : {
       "extractionState" : "manual",
@@ -1466,9 +1469,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "Kick Sauber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1611,7 +1611,7 @@
       }
     },
     "Loading attribution..." : {
-
+      "shouldTranslate" : false
     },
     "Logan" : {
       "extractionState" : "manual",
@@ -1949,10 +1949,24 @@
       }
     },
     "No race information available." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无比赛信息。"
+          }
+        }
+      }
     },
     "No Results" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无结果"
+          }
+        }
+      }
     },
     "Norris" : {
       "extractionState" : "manual",
@@ -2912,7 +2926,7 @@
       }
     },
     "UTC: %@" : {
-
+      "shouldTranslate" : false
     },
     "v0.1.0" : {
       "shouldTranslate" : false
@@ -2988,12 +3002,12 @@
         }
       }
     },
-    "Weather data only available 14 days before the race Day" : {
+    "Weather data only available 10 days before the race Day" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "天气数据仅在比赛开始前 14 天提供"
+            "value" : "天气数据仅在比赛开始前 10 天提供"
           }
         }
       }

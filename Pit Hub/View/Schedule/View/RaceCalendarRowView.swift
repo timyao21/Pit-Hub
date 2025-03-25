@@ -45,11 +45,8 @@ struct RaceCalendarRowView: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
-//                Text("\(date)")
-//                    .font(.subheadline)
-//                    .foregroundColor(.secondary)
             }
-            Spacer()
+            .frame(maxWidth:.infinity, alignment: .leading)
             
             Image(circuitId)
                 .resizable()
