@@ -28,22 +28,24 @@ struct DataErrorView: View {
             "Red Flag! Red Flag! 🚩",
             "GP2 Data, GP2!",
             "Safety car! Matthew is clearing the track—we'll resume data as soon as possible.🚥",
-            "🏎️ 8.88s Pit Stop! 🏁",
+            "🏎️ 52.4s Pit Stop! 🏁",
+            "🚜 The green tractor is on its way with the data.",
         ]
         return messages.randomElement() ?? "Data is in the wind tunnel—stay tuned! 🔧"
     }
 }
 
-struct RaceResultUpdateErrorView: View {
-    var body: some View {
-        VStack{
-            Text("Race is still going on!")
-                .font(.headline)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 20)
-        }
-    }
-}
+//struct RaceResultUpdateErrorView: View {
+//    var body: some View {
+//        VStack{
+//            Text("Race is still going on!")
+//                .font(.headline)
+//                .multilineTextAlignment(.center)
+//                .padding(.horizontal, 20)
+//        }
+//    }
+//}
+
 #Preview {
     DataErrorView()
 }

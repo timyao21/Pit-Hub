@@ -20,7 +20,7 @@ struct StandingsView: View {
             
             TabView(selection: $selectedTab) {
                 VStack {
-                    driversStandingsScrollView(driverStanding: viewModel.driverStanding)
+                    driversStandingsScrollView(driverStanding: viewModel.driverStanding, for: viewModel.standingViewYear)
                         .refreshable {
                             await viewModel.refreshStandingData()
                         }
@@ -60,7 +60,7 @@ struct StandingsView: View {
 }
 
 @ViewBuilder
-private func driversStandingsScrollView(driverStanding: [DriverStanding] = []) -> some View {
+private func driversStandingsScrollView(driverStanding: [DriverStanding] = [], for year: String) -> some View {
     ScrollView{
         if (driverStanding.isEmpty) {
             DataErrorView()
@@ -70,8 +70,8 @@ private func driversStandingsScrollView(driverStanding: [DriverStanding] = []) -
                 let previousPoints = index > 0 ? Int(driverStanding[index - 1].points) ?? 0 : currentPoints
                 let pointsDifference = previousPoints - currentPoints
                 
-                NavigationLink(destination: DriverDetailView(for: driverInfo, year: "2024")) {
-                    DriversStandingsRowView(position: "\(driverInfo.position!)", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.last ?? nil)
+                NavigationLink(destination: DriverDetailView(for: driverInfo, year: year)) {
+                    DriversStandingsRowView(position: "\(driverInfo.positionText ?? "")", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.last ?? nil)
                 }
                 .foregroundColor(.primary)
                 
@@ -95,7 +95,7 @@ private func constructorsStandingsScrollView(constructorsStanding: [ConstructorS
                 let previousPoints = index > 0 ? Int(constructorsStanding[index - 1].points) ?? 0 : currentPoints
                 let pointsDifference = previousPoints - currentPoints
                 
-                ConstructorStandingsRowView(position: "\(constructorInfo.position!)", constructor: constructorInfo.constructor, pointsDiff: "\(pointsDifference)", points: "\(constructorInfo.points)")
+                ConstructorStandingsRowView(position: "\(constructorInfo.positionText)", constructor: constructorInfo.constructor, pointsDiff: "\(pointsDifference)", points: "\(constructorInfo.points)")
                 
                 if index < constructorsStanding.count - 1 {
                     Divider()

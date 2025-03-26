@@ -10,6 +10,16 @@ import Foundation
 
 struct DateUtilities {
     
+    static func combineDateToUtc(from dateString: String, and timeString: String) -> Date? {
+        // Combine the date and time strings into a full ISO8601 string.
+        // e.g., "2025-03-16" + "T" + "04:00:00Z" -> "2025-03-16T04:00:00Z"
+        let combined = "\(dateString)T\(timeString)"
+        
+        let isoFormatter = ISO8601DateFormatter()
+        return isoFormatter.date(from: combined)
+    }
+
+    
     static func localizedDateFormat(for format: String) -> String {
         // Retrieve the stored language string and convert it to an AppLanguage.
         let languageRaw = UserDefaults.standard.string(forKey: "selectedLanguage") ?? AppLanguage.english.rawValue

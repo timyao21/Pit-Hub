@@ -13,6 +13,7 @@ struct PitSubtitle: View {
     init(for title: LocalizedStringKey) {
         self.title = title
     }
+    
     var body: some View {
         Text(title)
             .font(.custom(S.smileySans, size: 20))

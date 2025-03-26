@@ -18,44 +18,51 @@ struct HomeWeatherRow: View {
             TabView(selection: $selectedTab){
                 RaceWeatherRowView(raceDayWeather: viewModel.raceWeather)
                     .tag(0)
-                
-                HStack(alignment: .bottom, spacing: 8){
-                    if let fp1Weather = viewModel.fp1Weather {
-                        ExtractedView(title: "FP1", weatherData: fp1Weather)
-                        Divider()
-                            .padding(3)
+                if !viewModel.qualifyingWeather.isEmpty {
+                    HStack(alignment: .bottom, spacing: 8){
+                        if let fp1Weather = viewModel.fp1Weather.first {
+                            ExtractedView(title: "FP1", weatherData: fp1Weather)
+                            Divider()
+                                .padding(3)
+                        }
+                        
+                        if let sprintQualiWeather = viewModel.sprintQualiWeather.first {
+                            ExtractedView(title: "Sprint Quali", weatherData: sprintQualiWeather)
+                            Divider()
+                                .padding(3)
+                        }
+                        
+                        if let fp2Weather = viewModel.secondPracticeWeather.first {
+                            ExtractedView(title: "FP2", weatherData: fp2Weather)
+                            Divider()
+                                .padding(3)
+                        }
+                        
+                        if let spWeather = viewModel.sprintWeather.first {
+                            ExtractedView(title: "Sprint", weatherData: spWeather)
+                            Divider()
+                                .padding(3)
+                        }
+                        
+                        if let fp3Weather = viewModel.thirdPracticeWeather.first {
+                            ExtractedView(title: "FP3", weatherData: fp3Weather)
+                            Divider()
+                                .padding(3)
+                        }
+                        
+                        if let qualifyingWeather = viewModel.qualifyingWeather.first {
+                            ExtractedView(title: "Qualifying", weatherData: qualifyingWeather)
+                        }
                     }
-                    
-                    if let sprintQualiWeather = viewModel.sprintQualiWeather.first {
-                        ExtractedView(title: "Sprint Quali", weatherData: sprintQualiWeather)
-                        Divider()
-                            .padding(3)
-                    }
-                    
-                    if let fp2Weather = viewModel.secondPracticeWeather.first {
-                        ExtractedView(title: "FP2", weatherData: fp2Weather)
-                        Divider()
-                            .padding(3)
-                    }
-                    
-                    if let fp3Weather = viewModel.thirdPracticeWeather.first {
-                        ExtractedView(title: "FP3", weatherData: fp3Weather)
-                        Divider()
-                            .padding(3)
-                    }
-                    
-                    if let qualifyingWeather = viewModel.qualifyingWeather.first {
-                        ExtractedView(title: "Qualifying", weatherData: qualifyingWeather)
-                    }
+                    .frame(maxWidth: .infinity)
+                    .tag(1)
                 }
-                .frame(maxWidth: .infinity)
-                .tag(1)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .frame(minHeight: 133)
             .frame(maxHeight: .infinity, alignment: .top)
         }
-        CustomPageIndicator(selectedTab: $selectedTab, numberOfPages: 2)
+        CustomPageIndicator(selectedTab: $selectedTab, numberOfPages: viewModel.qualifyingWeather.isEmpty ? 0: 2)
     }
 }
 
@@ -71,7 +78,7 @@ struct RaceWeatherRowView: View {
                     }
                 }
             } else {
-                Text("Unable to fetch Race weather data")
+                Text("Weather data only available 10 days before the race Day")
                     .frame(width: 150)
             }
         }

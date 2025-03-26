@@ -13,7 +13,6 @@ struct HomeView: View {
     @State private var isSettingsPresented: Bool = false
     
     var body: some View {
-        
         ScrollView{
             VStack(spacing: 3){
                 HStack {
@@ -41,14 +40,23 @@ struct HomeView: View {
                 if (viewModel.upcomingGP != nil){
                     RaceSection(for: viewModel.upcomingGP)
                         .padding(.bottom, 10)
+                }else{
+                    DataErrorView()
+                        .frame(height: 300)
                 }
                 
-                PitSubtitle(for: "Weather")
+                PitSubtitle(for: "Race Day Weather Forecasts")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical)
                 
-                if (viewModel.upcomingGP != nil){
-                    HomeWeatherRow(viewModel: viewModel)
+                if (viewModel.membership == true){
+                    if (viewModel.upcomingGP != nil){
+                        HomeWeatherRow(viewModel: viewModel)
+                    }
+                }else{
+                    UnlockView()
+                        .cornerRadius(10)
+                        .shadow(radius:3,x: 3,y: 3)
                 }
                 
                 if let lat = viewModel.upcomingGP?.circuit.location.lat,

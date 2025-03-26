@@ -64,12 +64,6 @@ struct SeasonPositionChartView: View {
             
             // MARK: - make sure the data is sorted
             
-
-//            let sortedResults = results1.sorted {
-//                guard let round1 = Int($0.round), let round2 = Int($1.round) else { return false }
-//                return round1 < round2
-//            }
-            
             Chart {
                 ForEach(results1) { result in
                     if let roundNumber = Int(result.round),
@@ -106,6 +100,7 @@ struct SeasonPositionChartView: View {
             }
             // Use baseValue to dynamically set the y-axis scale (1...baseValue-1)
             .chartYScale(domain: 1.0...(baseValue - 1.0))
+            .chartXScale(domain: 1.0...Double(results1.count + 1))
             .chartXAxis {
                 AxisMarks(values: .automatic)
             }
@@ -154,19 +149,19 @@ struct SeasonChartView_Previews: PreviewProvider {
             PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "2", circuitId: "monza", position: "1"),
             PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "3", circuitId: "spa", position: "3"),
             PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "4", circuitId: "interlagos", position: "4"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "5", circuitId: "hockenheim", position: "10"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "6", circuitId: "sakhir", position: "6"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "7", circuitId: "redbullring", position: "7"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "8", circuitId: "suzuka", position: "6"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "9", circuitId: "marinabay", position: "6"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "10", circuitId: "americas", position: "18"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "11", circuitId: "bahrain", position: "2"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "12", circuitId: "mexico", position: "1"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "13", circuitId: "italy", position: "9"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "14", circuitId: "austria", position: "10"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "15", circuitId: "hungaroring", position: "3"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "16", circuitId: "sochi", position: "4"),
-            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "17", circuitId: "zandvoort", position: "1")
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "5", circuitId: "hockenheim", position: "10"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "6", circuitId: "sakhir", position: "6"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "7", circuitId: "redbullring", position: "7"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "8", circuitId: "suzuka", position: "6"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "9", circuitId: "marinabay", position: "6"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "10", circuitId: "americas", position: "18"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "11", circuitId: "bahrain", position: "2"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "12", circuitId: "mexico", position: "1"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "13", circuitId: "italy", position: "9"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "14", circuitId: "austria", position: "10"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "15", circuitId: "hungaroring", position: "3"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "16", circuitId: "sochi", position: "4"),
+//            PositionChart(year: "2023", driverName: "Lewis Hamilton", driverNumber: "44", round: "17", circuitId: "zandvoort", position: "1")
         ]
 
         

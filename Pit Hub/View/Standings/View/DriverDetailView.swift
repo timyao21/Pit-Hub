@@ -18,6 +18,12 @@ struct DriverDetailView: View {
         viewModel = DriverDetailViewModel()
     }
     
+    var composedName: Text {
+        Text(LocalizedStringKey(driverInfo.driver.givenName)) +
+        Text(LocalizedStringKey("·\u{200B}")) +
+        Text(LocalizedStringKey(driverInfo.driver.familyName))
+    }
+    
     var body: some View {
         VStack(alignment: .leading){
             HStack(alignment: .center, spacing: 10){
@@ -42,13 +48,10 @@ struct DriverDetailView: View {
                 
                 Spacer()
             }
-            HStack {
-                Text(LocalizedStringKey(driverInfo.driver.givenName))
-                Text("·")
-                Text(LocalizedStringKey(driverInfo.driver.familyName))
-            }
-            .font(.largeTitle)
-            .fontWeight(.semibold)
+
+            composedName
+                .font(.largeTitle)
+                .fontWeight(.semibold)
             
             Divider()
             

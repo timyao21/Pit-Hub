@@ -33,7 +33,7 @@ struct DriversStandingsRowView: View {
             Text(position)
                 .font(.title)
                 .bold()
-                .frame(width: 40, alignment: .leading)
+                .frame(width: 40, alignment: .center)
                 .foregroundColor(PositionColor(position: position).color)
             
             VStack(alignment: .leading, spacing: 3) {

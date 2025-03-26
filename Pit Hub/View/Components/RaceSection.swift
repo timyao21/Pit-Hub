@@ -26,25 +26,28 @@ struct RaceSection: View {
                                 Text(CountryFlags.flag(for: race.circuit.location.country))
                                 Text(LocalizedStringKey(race.circuit.circuitName))
                                     .font(.custom(S.smileySans, size: 18))
-                                if race.sprint != nil {
-                                    SprintBadge()
-                                }
                             }
                             
                             Text(LocalizedStringKey(race.raceName))
                                 .font(.title)
                                 .fontWeight(.bold)
-                            if let localDate = DateUtilities.convertUTCToLocal(
-                                date: race.date,
-                                time: race.time!,
-                                format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")
-                            ) {
-                                Text("\(localDate)")
-                                    .font(.headline)
+                            
+                            HStack{
+                                if let localDate = DateUtilities.convertUTCToLocal(
+                                    date: race.date,
+                                    time: race.time!,
+                                    format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")
+                                ) {
+                                    Text("\(localDate)")
+                                        .font(.headline)
+                                }
+                                
+                                if race.sprint != nil {
+                                    SprintBadge()
+                                }
                             }
                         }
-                        
-                        Spacer()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Image(race.circuit.circuitId)
                             .resizable()
@@ -102,7 +105,7 @@ struct RaceSessionList: View {
         HStack{
             Text(title)
                 .font(.body)
-                .frame(width: 80, alignment: .leading)
+                .frame(width: 100, alignment: .leading)
             
             Spacer()
             

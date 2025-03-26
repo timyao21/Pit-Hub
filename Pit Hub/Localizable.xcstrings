@@ -16,6 +16,19 @@
     "·" : {
 
     },
+    "·​" : {
+
+    },
+    "[%@](%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "[%1$@](%2$@)"
+          }
+        }
+      }
+    },
     "%@" : {
 
     },
@@ -55,8 +68,15 @@
         }
       }
     },
-    "About" : {
-
+    "About Us" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于我们"
+          }
+        }
+      }
     },
     "Abu Dhabi" : {
       "extractionState" : "manual",
@@ -105,9 +125,15 @@
     "albert_park" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Albert Park"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "墨尔本"
           }
         }
@@ -204,10 +230,38 @@
     "americas" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Americas"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "美洲"
+          }
+        }
+      }
+    },
+    "Andrea Kimi" : {
+      "extractionState" : "manual",
+      "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "美洲"
+            "value" : "安德烈亚·基米"
+          }
+        }
+      }
+    },
+    "Antonelli" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安东内利"
           }
         }
       }
@@ -218,17 +272,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App主题"
-          }
-        }
-      }
-    },
-    "Appearance" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主题"
           }
         }
       }
@@ -244,6 +287,17 @@
         }
       }
     },
+    "Art direction by Caroline He" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Caroline He 提供美术支持"
+          }
+        }
+      }
+    },
     "Aston Martin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -254,6 +308,9 @@
           }
         }
       }
+    },
+    "Attribution logo unavailable" : {
+      "shouldTranslate" : false
     },
     "Austin" : {
       "extractionState" : "manual",
@@ -382,9 +439,15 @@
       "comment" : "circuitId",
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Bahrain"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "巴林"
           }
         }
@@ -415,9 +478,15 @@
     "baku" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Baku"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "巴库"
           }
         }
@@ -468,7 +537,18 @@
       }
     },
     "Bilibili" : {
-
+      "shouldTranslate" : false
+    },
+    "Bortoleto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "博尔托莱托"
+          }
+        }
+      }
     },
     "Bottas" : {
       "extractionState" : "manual",
@@ -513,9 +593,6 @@
           }
         }
       }
-    },
-    "Button" : {
-
     },
     "Calendar" : {
       "localizations" : {
@@ -563,9 +640,15 @@
     "catalunya" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Catalunya"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "加泰罗尼亚"
           }
         }
@@ -747,6 +830,17 @@
         }
       }
     },
+    "D - Disqualified" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "D - 取消资格"
+          }
+        }
+      }
+    },
     "Daniel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -788,6 +882,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "数据还在维修区！⏳"
+          }
+        }
+      }
+    },
+    "Developed with passion by Junyu Yao (yjytim)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由姚俊煜 (yjytim) 独立开发"
+          }
+        }
+      }
+    },
+    "Developed with passion by Junyu Yao (yjytim)\\nArt direction by Caroline He\\n\\nFollow our journey across platforms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开发者：Junyu Yao (yjytim) 倾力打造\\n美术指导：Caroline He\\n\\n欢迎全平台关注我们～"
           }
         }
       }
@@ -945,8 +1061,16 @@
         }
       }
     },
-    "Follow Us" : {
-
+    "Follow our journey across platforms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎在全平台关注我们的旅程"
+          }
+        }
+      }
     },
     "FP1" : {
       "extractionState" : "manual",
@@ -1025,6 +1149,17 @@
         }
       }
     },
+    "Gabriel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加布里埃尔"
+          }
+        }
+      }
+    },
     "Gasly" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1032,6 +1167,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "加斯利"
+          }
+        }
+      }
+    },
+    "General" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通用"
           }
         }
       }
@@ -1069,6 +1214,17 @@
         }
       }
     },
+    "Get your Pit App Paddock Club Annual Pass" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "获取Pit App年度围场通行证"
+          }
+        }
+      }
+    },
     "GP2 Data, GP2!" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1098,6 +1254,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "哈斯"
+          }
+        }
+      }
+    },
+    "Hadjar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "哈贾尔"
           }
         }
       }
@@ -1181,9 +1348,15 @@
     "imola" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Imola"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "伊莫拉"
           }
         }
@@ -1207,6 +1380,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "英特拉格斯"
+          }
+        }
+      }
+    },
+    "Isack" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伊萨克"
           }
         }
       }
@@ -1269,9 +1453,15 @@
     "jeddah" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Jeddah"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "吉达"
           }
         }
@@ -1299,6 +1489,17 @@
         }
       }
     },
+    "Join Pit App Paddock Club" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "加入Pit App围场俱乐部"
+          }
+        }
+      }
+    },
     "Kevin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1309,9 +1510,6 @@
           }
         }
       }
-    },
-    "Key 1" : {
-      "extractionState" : "manual"
     },
     "Kick Sauber" : {
       "extractionState" : "manual",
@@ -1401,7 +1599,14 @@
       }
     },
     "Learn More About Us" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深入了解我们"
+          }
+        }
+      }
     },
     "Leclerc" : {
       "extractionState" : "manual",
@@ -1446,6 +1651,9 @@
           }
         }
       }
+    },
+    "Loading attribution..." : {
+      "shouldTranslate" : false
     },
     "Logan" : {
       "extractionState" : "manual",
@@ -1516,9 +1724,15 @@
     "marina_bay" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Marina Bay"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "新加坡"
           }
         }
@@ -1610,9 +1824,15 @@
     "miami" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Miami"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "迈阿密"
           }
         }
@@ -1720,9 +1940,15 @@
     "monza" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Monza"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "蒙扎"
           }
         }
@@ -1783,10 +2009,24 @@
       }
     },
     "No race information available." : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无比赛信息。"
+          }
+        }
+      }
     },
     "No Results" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无结果"
+          }
+        }
+      }
     },
     "Norris" : {
       "extractionState" : "manual",
@@ -1887,11 +2127,25 @@
         }
       }
     },
-    "Pit App is designed and developed by Junyu Yao." : {
-
+    "Pit App Paddock Club Member!" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pit App 围场会员！"
+          }
+        }
+      }
     },
     "Pit App Paddock Pass" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pit App 围场通行证"
+          }
+        }
+      }
     },
     "Pit Hub" : {
       "shouldTranslate" : false
@@ -2005,6 +2259,17 @@
         }
       }
     },
+    "R - Retired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R - 退赛"
+          }
+        }
+      }
+    },
     "Race" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2016,8 +2281,16 @@
         }
       }
     },
-    "Race is still going on!" : {
-
+    "Race Day Weather Forecasts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比赛日天气预报"
+          }
+        }
+      }
     },
     "Race Results" : {
       "extractionState" : "manual",
@@ -2108,10 +2381,24 @@
       }
     },
     "Rednotes" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "小红书"
+          }
+        }
+      }
     },
     "Report" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "反馈"
+          }
+        }
+      }
     },
     "Result" : {
       "localizations" : {
@@ -2148,9 +2435,15 @@
     "rodriguez" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Rodriguez"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "墨西哥"
           }
         }
@@ -2322,9 +2615,15 @@
     "shanghai" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Shanghai"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "上海"
           }
         }
@@ -2355,9 +2654,15 @@
     "silverstone" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Silverstone"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "银石"
           }
         }
@@ -2399,9 +2704,15 @@
     "spa" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Spa"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "斯帕"
           }
         }
@@ -2485,7 +2796,14 @@
       }
     },
     "Sprint Quali Results" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲刺排位"
+          }
+        }
+      }
     },
     "Standings" : {
       "localizations" : {
@@ -2518,12 +2836,39 @@
         }
       }
     },
-    "suzuka" : {
+    "Subscribe" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "订阅"
+          }
+        }
+      }
+    },
+    "Subscribe to access full content." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "订阅解锁所有功能"
+          }
+        }
+      }
+    },
+    "suzuka" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suzuka"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "铃鹿"
           }
         }
@@ -2584,6 +2929,17 @@
         }
       }
     },
+    "The green tractor is on its way with the data." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绿色拖拉机正带着数据赶来"
+          }
+        }
+      }
+    },
     "The red light is still on in the pit lane - Data is Unavailable" : {
       "localizations" : {
         "zh-Hans" : {
@@ -2617,10 +2973,14 @@
       }
     },
     "Tune Your Look" : {
-
-    },
-    "Unable to fetch Race weather data" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更改涂装"
+          }
+        }
+      }
     },
     "United States Grand Prix" : {
       "extractionState" : "manual",
@@ -2656,7 +3016,10 @@
       }
     },
     "UTC: %@" : {
-
+      "shouldTranslate" : false
+    },
+    "v0.1.0" : {
+      "shouldTranslate" : false
     },
     "Valtteri" : {
       "extractionState" : "manual",
@@ -2672,10 +3035,26 @@
     "vegas" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vegas"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "拉斯维加斯"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "拉斯维加斯"
+            "value" : "版本"
           }
         }
       }
@@ -2700,9 +3079,15 @@
     "villeneuve" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Villeneuve"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "加拿大"
           }
         }
@@ -2719,8 +3104,36 @@
         }
       }
     },
+    "Weather data only available 10 days before the race Day" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气数据仅在比赛开始前 10 天提供"
+          }
+        }
+      }
+    },
+    "Weather Forecast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "天气预测"
+          }
+        }
+      }
+    },
     "Weather Unit" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "气象单位"
+          }
+        }
+      }
     },
     "Williams" : {
       "extractionState" : "manual",
@@ -2758,9 +3171,15 @@
     "yas_marina" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Yas Marina"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "阿布扎比"
           }
         }
@@ -2780,9 +3199,15 @@
     "zandvoort" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Zandvoort"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "赞德福特"
           }
         }

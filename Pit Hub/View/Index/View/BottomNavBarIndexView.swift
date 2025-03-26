@@ -54,6 +54,11 @@ struct BottomNavBarIndexView: View {
                     .animation(.easeInOut, value: showNetworkWarning)
             }
         }
+        .sheet(isPresented: $viewModel.subscriptionSheetIsPresented) {
+            InAppPurchases()
+                .presentationDetents([.medium])
+        }
+        .environment(viewModel)
         .onChange(of: networkMonitor.isActive) { oldValue, newValue in
             DispatchQueue.main.async {
                 if !newValue {
@@ -66,7 +71,6 @@ struct BottomNavBarIndexView: View {
                 }
             }
         }
-        .environment(viewModel)
     }
 }
 

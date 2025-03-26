@@ -11,7 +11,8 @@ import SwiftUI
 struct FullRaceResultListRowView: View {
     
     let number: String
-    let position: String
+    let position: String?
+    let positionText: String
     let driverFirstName: String
     let driverLastName: String
     let points: String
@@ -22,17 +23,17 @@ struct FullRaceResultListRowView: View {
     private var gridValues: (gridString: String, gridInt: Int, posInt: Int)? {
         guard let grid = grid,
               let gridInt = Int(grid),
-              let posInt = Int(position) else { return nil }
+              let posInt = Int(position ?? "0") else { return nil }
         return (grid, gridInt, posInt)
     }
 
     var body: some View {
         HStack (alignment: .center){
-            Text(position)
+            Text(positionText)
                 .frame(width: 40, alignment: .center)
                 .font(.title)
                 .bold()
-                .foregroundColor(PositionColor(position: position).color)
+                .foregroundColor(PositionColor(position: position ?? "5").color)
             
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
