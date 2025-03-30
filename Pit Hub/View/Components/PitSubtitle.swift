@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct PitSubtitle: View {
-    let title: LocalizedStringKey
+    let title: LocalizedStringResource
     
-    init(for title: LocalizedStringKey) {
+    init(for title: LocalizedStringResource) {
         self.title = title
     }
     

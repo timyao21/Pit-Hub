@@ -9,8 +9,8 @@ import SwiftUI
 
 struct RaceCalendarView: View {
     @Bindable var viewModel: IndexViewModel
+//    @Environment(IndexViewModel.self) var viewModel
     
-//    @State private var raceCalendarSelectedTab = 1
     @Namespace private var animation
     private let tabTitles = ["Upcoming", "Past"]
     
@@ -31,11 +31,11 @@ struct RaceCalendarView: View {
             }
             .padding(.horizontal)
             
-            HStack {
-                Spacer()
-                SeasonProgressView(viewModel: viewModel)
-            }
-            .padding(.horizontal)
+//            HStack {
+//                Spacer()
+//                SeasonProgressView(viewModel: viewModel)
+//            }
+//            .padding(.horizontal)
             
             // MARK: - TabView
             TabView(selection: $viewModel.raceCalendarSelectedTab) {

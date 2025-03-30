@@ -98,7 +98,7 @@ struct RaceSession: Codable {
 
 extension Races {
     static let sample = Races(
-        season: "2024",
+        season: "2025",
         round: "1",
         raceName: "Bahrain Grand Prix",
         circuit: Circuit(
@@ -112,12 +112,12 @@ extension Races {
             ),
             url: "https://en.wikipedia.org/wiki/Bahrain_International_Circuit"
         ),
-        date: "2025-03-16",
-        time: "04:00:00Z",
-        firstPractice: RaceSession(date: "2025-03-14", time: "01:30:00Z"),
-        secondPractice: nil,
+        date: "2025-04-6",
+        time: "05:00:00Z",
+        firstPractice: RaceSession(date: "2025-04-4", time: "02:30:00Z"),
+        secondPractice: RaceSession(date: "2025-04-4", time: "06:00:00Z"),
         thirdPractice: nil,
-        qualifying: nil,
+        qualifying: RaceSession(date: "2025-04-5", time: "06:00:00Z"),
         sprintQualifying: nil,
         sprint: nil,
         results: nil,

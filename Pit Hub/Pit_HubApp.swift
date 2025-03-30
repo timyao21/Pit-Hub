@@ -21,7 +21,6 @@ struct Pit_HubApp: App {
                 .preferredColorScheme(
                     selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
                 )
-                .environment(\.locale, Locale(identifier: selectedLanguage.localeIdentifier))
         }
     }
 }

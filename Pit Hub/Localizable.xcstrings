@@ -594,6 +594,9 @@
         }
       }
     },
+    "Button" : {
+
+    },
     "Calendar" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1072,6 +1075,17 @@
         }
       }
     },
+    "FP" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习"
+          }
+        }
+      }
+    },
     "FP1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1279,6 +1293,9 @@
           }
         }
       }
+    },
+    "Hello, World!" : {
+
     },
     "Home" : {
       "localizations" : {
@@ -1540,16 +1557,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "兰多"
-          }
-        }
-      }
-    },
-    "Language" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "语言"
           }
         }
       }
@@ -1987,6 +1994,17 @@
         }
       }
     },
+    "Next Race" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一场比赛"
+          }
+        }
+      }
+    },
     "Nico" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2160,6 +2178,9 @@
           }
         }
       }
+    },
+    "Pit this lap" : {
+
     },
     "Podiums" : {
       "extractionState" : "manual",

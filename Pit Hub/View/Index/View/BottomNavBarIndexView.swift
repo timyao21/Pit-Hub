@@ -46,6 +46,7 @@ struct BottomNavBarIndexView: View {
                     Label("Standings", systemImage: "trophy")
                 }
                 .tag(2)
+                
             }
             if showNetworkWarning {
                 NetworkWarningView()

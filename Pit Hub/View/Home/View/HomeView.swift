@@ -37,10 +37,35 @@ struct HomeView: View {
                     }
                 }
                 
-                if (viewModel.upcomingGP != nil){
-                    RaceSection(for: viewModel.upcomingGP)
+                if let upcomingGP = viewModel.upcomingGP {
+                    NavigationLink {
+                        // Replace RaceDetailView with your desired destination view.
+                        ScheduleIndexView()
+                    } label: {
+                        VStack{
+                            HStack{
+                                PitSubtitle(for: "Next Race")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Image(systemName: "calendar")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color(S.pitHubIconColor))
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 20, height: 20)
+                                    .foregroundColor(Color(S.pitHubIconColor))
+                            }
+                            .padding(.vertical)
+                            HomeCalendarView(for: upcomingGP)
+                                .frame(height: 178)
+                        }
+                    }
+                    Divider()
+                    RaceSection(for: upcomingGP)
                         .padding(.bottom, 10)
-                }else{
+                } else {
                     DataErrorView()
                         .frame(height: 300)
                 }

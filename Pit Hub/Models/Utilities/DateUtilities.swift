@@ -90,4 +90,12 @@ extension Date {
         return calendar.date(from: components)!
     }
     
+    static var capitalizedFirstLetterOfWeekdays: [String] {
+        let calendar = Calendar.current
+        let weekdays = calendar.veryShortWeekdaySymbols
+        // Reorder so that Monday ("一") becomes the first element.
+        let mondayBasedWeekdays = Array(weekdays[1..<weekdays.count]) + [weekdays[0]]
+        return mondayBasedWeekdays
+    }
+    
 }

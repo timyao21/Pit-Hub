@@ -4,8 +4,8 @@
 //
 //  Created by Junyu Yao on 2/26/25.
 //
-
 import SwiftUI
+
 
 struct DriverDetailView: View {
     let driverInfo: DriverStanding
