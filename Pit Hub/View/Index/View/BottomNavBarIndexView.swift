@@ -47,6 +47,14 @@ struct BottomNavBarIndexView: View {
                 }
                 .tag(2)
                 
+                NavigationStack{
+                    AcademyView()
+                }
+                .tabItem {
+                    Label("Academy", systemImage: "text.book.closed.fill")
+                }
+                .tag(3)
+                
             }
             if showNetworkWarning {
                 NetworkWarningView()
