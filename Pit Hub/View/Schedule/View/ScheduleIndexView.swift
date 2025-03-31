@@ -34,7 +34,3 @@ struct ScheduleIndexView: View {
         }
     }
 }
-
-//#Preview {
-//    ScheduleIndexView()
-//}

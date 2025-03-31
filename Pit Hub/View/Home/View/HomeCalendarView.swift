@@ -35,7 +35,7 @@ struct HomeCalendarView: View {
             ForEach(daysOfWeek.indices, id: \.self) { index in
                 Text(daysOfWeek[index])
                     .fontWeight(.heavy)
-                    .foregroundColor(Color(S.pitHubIconColor))
+                    .foregroundColor(.primary)
                     .frame(maxWidth: .infinity)
             }
         }
@@ -104,6 +104,7 @@ struct HomeCalendarView: View {
             return VStack(spacing: 2) {
                 if dayComponent == 1 {
                     Text(calendar.shortMonthSymbols[monthComponent - 1])
+                        .foregroundColor(Color(S.pitHubIconColor).opacity(0.8))
                         .font(.caption)
                         .fontWeight(.bold)
                         .frame(height: 10)
@@ -122,7 +123,7 @@ struct HomeCalendarView: View {
                 Text(LocalizedStringKey(session))
                     .font(.caption)
             }
-            .foregroundColor(hasRace ? Color(S.pitHubIconColor) : Color.primary)
+            .foregroundColor(hasRace ? Color(S.pitHubIconColor) : Color.secondary)
             .frame(maxWidth: .infinity, minHeight: 60)
         }
     }
