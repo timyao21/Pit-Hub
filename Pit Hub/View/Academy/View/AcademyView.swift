@@ -21,8 +21,8 @@ struct AcademyView: View {
             
             NavigationStack {
                 
-                NavigationLink(destination: CircularCircuitView()) {
-                    AcademyViewRowView()
+                NavigationLink(destination: UndercutAndOvercutView()) {
+                    AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race strategy")
                 }
                 Divider()
                 NavigationLink(destination: CircularCircuitView()) {
@@ -37,14 +37,34 @@ struct AcademyView: View {
 
 private struct AcademyViewRowView: View {
     let icon: String = "\(S.pitIcon)"
-    let title: LocalizedStringResource = "Academy title"
+    let title: String
+    let subtitle: String
+
+
+    init() {
+        self.title = String(localized: "Academy title")
+        self.subtitle = String(localized: "Academy subtitle")
+    }
+
+    init(title: String, subtitle: String) {
+        self.title = title
+        self.subtitle = subtitle
+    }
+    
     var body: some View {
         HStack{
             Image(icon)
                 .resizable()
                 .frame(width: 50, height: 50)
-            Text(title)
-                .font(.title3)
+            VStack(alignment: .leading){
+                Text(title)
+                    .font(.title3)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                Text(subtitle)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+            }
             Spacer()
             Image(systemName: "chevron.right")
                 .imageScale(.small)
