@@ -10,6 +10,17 @@
     "-" : {
 
     },
+    "- Commonly Called: Swap Out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 俗称：翻掉"
+          }
+        }
+      }
+    },
     "--" : {
 
     },
@@ -2342,6 +2353,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "比赛成绩"
+          }
+        }
+      }
+    },
+    "Race Strategy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比赛策略"
           }
         }
       }

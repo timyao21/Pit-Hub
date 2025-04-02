@@ -9,6 +9,11 @@ import SwiftUI
 
 struct AcademyView: View {
     @Environment(IndexViewModel.self) var viewModel
+    @Environment(\.locale) var locale
+    var curLanguage: String {
+        locale.language.languageCode?.identifier ?? "en"
+    }
+    
     var body: some View {
         VStack{
             HStack {
@@ -22,7 +27,11 @@ struct AcademyView: View {
             NavigationStack {
                 
                 NavigationLink(destination: UndercutAndOvercutView()) {
-                    AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race strategy")
+                    if curLanguage == "zh"{
+                        AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
+                    }else{
+                        AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race Strategy")
+                    }
                 }
                 Divider()
                 NavigationLink(destination: CircularCircuitView()) {
@@ -32,6 +41,9 @@ struct AcademyView: View {
             Spacer()
         }
         .padding()
+        .onAppear(){
+            print(curLanguage)
+        }
     }
 }
 
@@ -39,16 +51,25 @@ private struct AcademyViewRowView: View {
     let icon: String = "\(S.pitIcon)"
     let title: LocalizedStringKey
     let subtitle: LocalizedStringKey
+    let subtitleCN: LocalizedStringKey
 
     init() {
         self.title = LocalizedStringKey("Academy title")
         self.subtitle = LocalizedStringKey("Academy subtitle")
+        self.subtitleCN = LocalizedStringKey("")
     }
     
 
     init(title: String, subtitle: String) {
         self.title = LocalizedStringKey(title)
         self.subtitle = LocalizedStringKey(subtitle)
+        self.subtitleCN = LocalizedStringKey("")
+    }
+    
+    init(title: String, subtitle: String, subtitleCN: String) {
+        self.title = LocalizedStringKey(title)
+        self.subtitle = LocalizedStringKey(subtitle)
+        self.subtitleCN = LocalizedStringKey(subtitleCN)
     }
     
     var body: some View {
@@ -61,9 +82,12 @@ private struct AcademyViewRowView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-                Text(subtitle)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
+                HStack {
+                    Text(subtitle)
+                    Text(subtitleCN)
+                }
+                .font(.footnote)
+                .foregroundColor(.secondary)
             }
             Spacer()
             Image(systemName: "chevron.right")
