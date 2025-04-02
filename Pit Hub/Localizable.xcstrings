@@ -2046,6 +2046,17 @@
         }
       }
     },
+    "Normal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常"
+          }
+        }
+      }
+    },
     "Norris" : {
       "extractionState" : "manual",
       "localizations" : {

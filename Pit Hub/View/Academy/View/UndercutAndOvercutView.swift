@@ -34,7 +34,7 @@ Undercut (Strategic Early Pit Stop)
 
 In Formula 1, an "undercut" refers to a trailing driver (e.g., Driver A) choosing to pit earlier than the leading driver (e.g., Driver B) to change tires. By leveraging the speed advantage of fresh tires, the trailing driver achieves faster lap times in the subsequent laps. When the leading driver (Driver B) completes their regular pit stop, the trailing driver (Driver A) has already accumulated enough of a lap time advantage through the new tires to overtake the opponent in total race time, ultimately securing a position ahead after Driver B exits the pit lane. (Key: The position swap occurs after the opponent's pit stop, not through on-track overtaking.)
 
-Example for Animation:
+Animated Demonstration:
 The Red Car opts to pit one lap earlier. Using fresh tires, it delivers a faster lap time during its out lap (the first full lap after exiting the pits), quickly building a time gap. By the time the Blue Car enters the pits for its tire change, the Red Car has established a sufficient advantage through tire performance. When the Blue Car completes its pit stop and rejoins the track, the Red Car has already surpassed it in total race time, securing the lead position.
 """
     
@@ -51,8 +51,26 @@ Overcut（策略性延迟进站）
 Overcut (Strategic Delayed Pit Stop)
 In Formula 1, "overcut" refers to when a trailing car (e.g., Driver A) deliberately pits later than the leading car (e.g., Driver B). By extending their stint with older tires, the trailing car leverages improved track conditions (clean air, enhanced grip) or the leading car encountering post-pit traffic interference to accumulate a time advantage through additional laps. This strategy ultimately allows the trailing car to overtake the leading car after completing its own pit stop.
 
-Example for Animation:
+Animated Demonstration:
 When the blue car 🔵 pits for tires, the red car 🔴 delays its pit stop by one lap. Utilizing clean air and improved track grip, the red car rapidly extends its time gap. By the time the red car 🔴 completes its pit stop, it has built a sufficient lead through total elapsed time to emerge ahead of the blue car.
+"""
+    
+    private let normal_cn = """
+正常进站（无战术策略)
+
+在F1中，当两车（如车手A与车手B）换胎耗时、出站后圈速完全一致时，双方的赛道位置将维持不变。此类进站通常仅服务于常规轮胎更换或规则强制要求，不涉及战术博弈。
+
+动画演示：
+假设红车🔴与蓝车🔵双方换胎耗时均为2.5秒，且出站后圈速完全相同。红车完成停站后仍落后蓝车，与进站前的相对位置完全一致。
+"""
+    
+    private let normal_us = """
+Standard Pit Stop (No Tactical Strategy Involved)
+
+In Formula 1, when two cars (e.g., Driver A and Driver B) have identical pit stop durations and post-pit lap times, their positions on the track remain unchanged. These pit stops typically serve routine tire changes or fulfill mandatory regulations, without any tactical maneuvers involved.
+
+Animated Demonstration:
+Assume both the red car 🔴 and the blue car 🔵 have identical pit stop durations of 2.5 seconds, and their lap times after rejoining the track are exactly the same. After the red car completes its pit stop, it remains behind the blue car—exactly the same relative position as before the stop.
 """
     
     // Returns parameters for the CircularCircuitView based on the selected strategy.
@@ -74,7 +92,7 @@ When the blue car 🔵 pits for tires, the red car 🔴 delays its pit stop by o
         VStack {
             Picker("Strategy", selection: $strategy) {
                 ForEach(Strategy.allCases) { strategy in
-                    Text(strategy.rawValue)
+                    Text(LocalizedStringKey(strategy.rawValue))
                         .tag(strategy)
                 }
             }
@@ -92,9 +110,8 @@ When the blue car 🔵 pits for tires, the red car 🔴 delays its pit stop by o
                         Text(locale.language.languageCode?.identifier == "zh" ? overcut_cn : overcut_us)
                             .id(strategy)
                     case .normal:
-                        Text("Normal strategy details here...")
+                        Text(locale.language.languageCode?.identifier == "zh" ? normal_cn : normal_us)
                             .id(strategy)
-                            .padding()
                     }
                 }
                 .animation(.easeInOut, value: strategy)
