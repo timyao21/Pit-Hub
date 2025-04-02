@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUICore
 
 
 struct DateUtilities {
@@ -21,13 +22,12 @@ struct DateUtilities {
 
     
     static func localizedDateFormat(for format: String) -> String {
-        // Retrieve the stored language string and convert it to an AppLanguage.
-        let languageRaw = UserDefaults.standard.string(forKey: "selectedLanguage") ?? AppLanguage.english.rawValue
-        guard let language = AppLanguage(rawValue: languageRaw) else {
-            return format
-        }
+        @Environment(\.locale) var locale
+        // Retrieve the language identifier from the iOS native locale settings.
+        // If the property chain fails, default to English ("en")
+        let languageIdentifier = locale.language.languageCode?.identifier ?? "en"
     
-        if language == .chinese {
+        if languageIdentifier == "zh" {
             switch format {
             case "yyyy-MM-dd":
                 return "yyyy年MM月dd日"
@@ -37,9 +37,27 @@ struct DateUtilities {
                 return format
             }
         }
-        
         return format
+//        // Retrieve the stored language string and convert it to an AppLanguage.
+//        let languageRaw = UserDefaults.standard.string(forKey: "selectedLanguage") ?? AppLanguage.english.rawValue
+//        guard let language = AppLanguage(rawValue: languageRaw) else {
+//            return format
+//        }
+//    
+//        if language == .chinese {
+//            switch format {
+//            case "yyyy-MM-dd":
+//                return "yyyy年MM月dd日"
+//            case "MM-dd":
+//                return "MM月dd日"
+//            default:
+//                return format
+//            }
+//        }
+//        
+//        return format
     }
+    
     // Converts separate UTC date and time strings to local time zone formatted string
     // - Parameters:
     //   - date: The date string in "yyyy-MM-dd" format

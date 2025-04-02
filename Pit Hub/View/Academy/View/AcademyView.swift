@@ -37,18 +37,18 @@ struct AcademyView: View {
 
 private struct AcademyViewRowView: View {
     let icon: String = "\(S.pitIcon)"
-    let title: String
-    let subtitle: String
-
+    let title: LocalizedStringKey
+    let subtitle: LocalizedStringKey
 
     init() {
-        self.title = String(localized: "Academy title")
-        self.subtitle = String(localized: "Academy subtitle")
+        self.title = LocalizedStringKey("Academy title")
+        self.subtitle = LocalizedStringKey("Academy subtitle")
     }
+    
 
     init(title: String, subtitle: String) {
-        self.title = title
-        self.subtitle = subtitle
+        self.title = LocalizedStringKey(title)
+        self.subtitle = LocalizedStringKey(subtitle)
     }
     
     var body: some View {

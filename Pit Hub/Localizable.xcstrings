@@ -100,6 +100,17 @@
         }
       }
     },
+    "Academy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学院"
+          }
+        }
+      }
+    },
     "Al Daayen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3010,6 +3021,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更改涂装"
+          }
+        }
+      }
+    },
+    "Undercut and Overcut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undercut 和 Overcut"
           }
         }
       }

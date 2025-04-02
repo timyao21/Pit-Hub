@@ -40,7 +40,9 @@ struct HomeView: View {
                 if let upcomingGP = viewModel.upcomingGP {
                     NavigationLink {
                         // Replace RaceDetailView with your desired destination view.
-                        ScheduleIndexView()
+//                        ScheduleIndexView()
+                        RaceCalendarView(viewModel: viewModel)
+                            .toolbar(.hidden, for: .tabBar)
                     } label: {
                         VStack{
                             HStack{

@@ -130,7 +130,6 @@ struct RaceCalendarDate {
     @MainActor
     func getRaceCalendarTimes(for races: [Races]) async -> [RaceCalendarDate] {
         var calendarTimes: [RaceCalendarDate] = []
-        print("getRaceCalendarTimes FUNC")
         for race in races {
             // Main Race
             if let raceDate = dateFromComponents(date: race.date, time: race.time) {
@@ -201,8 +200,6 @@ struct RaceCalendarDate {
                                                       session: "Sprint"))
             }
         }
-        
-        print("highLight: \(calendarTimes)")
         return calendarTimes
     }
     
