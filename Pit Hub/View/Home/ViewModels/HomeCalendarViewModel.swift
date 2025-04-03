@@ -16,6 +16,7 @@ struct RaceCalendarDate {
 }
 
 @Observable class HomeCalendarViewModel{
+//    @MainActor var upcomingGP: [Races]
     @MainActor var races: [Races]
     @MainActor var days: [Date?] = []
     @MainActor var raceCalendarDate: [RaceCalendarDate] = []
@@ -135,7 +136,7 @@ struct RaceCalendarDate {
             if let raceDate = dateFromComponents(date: race.date, time: race.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: raceDate,
                                                       session: "Race"))
             }
@@ -145,7 +146,7 @@ struct RaceCalendarDate {
                let fpDate = dateFromComponents(date: firstPractice.date, time: firstPractice.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: fpDate,
                                                       session: "FP"))
             }
@@ -155,7 +156,7 @@ struct RaceCalendarDate {
                let spDate = dateFromComponents(date: secondPractice.date, time: secondPractice.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: spDate,
                                                       session: "FP"))
             }
@@ -165,9 +166,9 @@ struct RaceCalendarDate {
                let tpDate = dateFromComponents(date: thirdPractice.date, time: thirdPractice.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: tpDate,
-                                                      session: "FP"))
+                                                      session: "FP3"))
             }
             
             // Qualifying
@@ -175,7 +176,7 @@ struct RaceCalendarDate {
                let qDate = dateFromComponents(date: qualifying.date, time: qualifying.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: qDate,
                                                       session: "Quali"))
             }
@@ -185,9 +186,9 @@ struct RaceCalendarDate {
                let sqDate = dateFromComponents(date: sprintQualifying.date, time: sprintQualifying.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: sqDate,
-                                                      session: "SQ"))
+                                                      session: "S-Quali"))
             }
             
             // Sprint
@@ -195,7 +196,7 @@ struct RaceCalendarDate {
                let sDate = dateFromComponents(date: sprint.date, time: sprint.time) {
                 calendarTimes.append(RaceCalendarDate(season: race.season,
                                                       round: race.round,
-                                                      raceName: race.raceName,
+                                                      raceName: race.circuit.circuitId,
                                                       date: sDate,
                                                       session: "Sprint"))
             }

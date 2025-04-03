@@ -56,6 +56,7 @@ struct HomeCalendarView: View {
 
                                 DayCell(
                                     day: day,
+                                    circuitId: matchingRace?.raceName ?? "-",
                                     hasRace: matchingRace != nil,
                                     session: matchingRace?.session ?? "-"
                                 )
@@ -92,6 +93,7 @@ struct HomeCalendarView: View {
     // A reusable day cell view.
     private struct DayCell: View {
         let day: Date
+        let circuitId: String
         let hasRace: Bool
         let session: String
         private let calendar = Calendar.current
@@ -104,11 +106,17 @@ struct HomeCalendarView: View {
             return VStack(spacing: 2) {
                 if dayComponent == 1 {
                     Text(calendar.shortMonthSymbols[monthComponent - 1])
-                        .foregroundColor(Color(S.pitHubIconColor).opacity(0.8))
+                        .foregroundColor(.primary)
                         .font(.caption)
                         .fontWeight(.bold)
                         .frame(height: 10)
-                } else {
+                } else if session == "FP"{
+                    Text(LocalizedStringKey(circuitId))
+                        .foregroundColor(Color(S.pitHubIconColor))
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .frame(height: 10)
+                }else {
                     Text("")
                         .font(.caption)
                         .frame(height: 10)
@@ -118,12 +126,17 @@ struct HomeCalendarView: View {
                     .padding(5)
                     .background {
                         Circle()
-                            .fill(isToday ? Color.blue.opacity(0.5) : Color.clear)
+                            .fill(isToday ? Color.blue : Color.clear)
                     }
+                    .foregroundColor(
+                        isToday
+                            ? Color.white
+                            : (hasRace ? Color(S.pitHubIconColor) : Color.primary)
+                    )
                 Text(LocalizedStringKey(session))
                     .font(.caption)
+                    .foregroundColor(hasRace ? Color(S.pitHubIconColor) : Color.secondary)
             }
-            .foregroundColor(hasRace ? Color(S.pitHubIconColor) : Color.secondary)
             .frame(maxWidth: .infinity, minHeight: 60)
         }
     }

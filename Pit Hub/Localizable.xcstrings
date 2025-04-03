@@ -43,6 +43,9 @@
     "%@" : {
 
     },
+    "%@x" : {
+
+    },
     "%lld" : {
 
     },
@@ -121,6 +124,12 @@
           }
         }
       }
+    },
+    "Academy subtitle" : {
+
+    },
+    "Academy title" : {
+
     },
     "Al Daayen" : {
       "extractionState" : "manual",
@@ -1114,7 +1123,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习赛1"
+            "value" : "练习1"
           }
         }
       }
@@ -1125,7 +1134,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习赛2"
+            "value" : "练习2"
           }
         }
       }
@@ -1136,7 +1145,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习赛3"
+            "value" : "练习3"
           }
         }
       }
@@ -1315,9 +1324,6 @@
           }
         }
       }
-    },
-    "Hello, World!" : {
-
     },
     "Home" : {
       "localizations" : {
@@ -2546,6 +2552,17 @@
         }
       }
     },
+    "S-Quali" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲排位"
+          }
+        }
+      }
+    },
     "Safety car! Matthew is clearing the track—we'll resume data as soon as possible.🚥" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2816,6 +2833,9 @@
         }
       }
     },
+    "Speed:" : {
+
+    },
     "Spielberg" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2889,6 +2909,9 @@
           }
         }
       }
+    },
+    "Strategy" : {
+
     },
     "Stroll" : {
       "extractionState" : "manual",
@@ -3046,6 +3069,9 @@
           }
         }
       }
+    },
+    "Undercut & Overcut" : {
+
     },
     "Undercut and Overcut" : {
       "extractionState" : "manual",

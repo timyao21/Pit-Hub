@@ -114,7 +114,6 @@ Assume both the red car 🔴 and the blue car 🔵 have identical pit stop durat
                     }
                 }
                 .animation(.easeInOut, value: strategy)
-                .frame(height: .infinity)
             }
             
             

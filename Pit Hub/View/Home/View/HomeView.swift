@@ -37,10 +37,8 @@ struct HomeView: View {
                     }
                 }
                 
-                if let upcomingGP = viewModel.upcomingGP {
+                if !viewModel.allUpcomingGP.isEmpty {
                     NavigationLink {
-                        // Replace RaceDetailView with your desired destination view.
-//                        ScheduleIndexView()
                         RaceCalendarView(viewModel: viewModel)
                             .toolbar(.hidden, for: .tabBar)
                     } label: {
@@ -51,20 +49,23 @@ struct HomeView: View {
                                 Image(systemName: "calendar")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 25, height: 25)
+                                    .frame(width: 23, height: 23)
                                     .foregroundColor(Color(S.pitHubIconColor))
                                 Image(systemName: "chevron.right")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 18, height: 18)
                                     .foregroundColor(Color(S.pitHubIconColor))
                             }
                             .padding(.vertical)
-                            HomeCalendarView(for: upcomingGP)
-                                .frame(height: 178)
+                            HomeCalendarView(for: viewModel.allUpcomingGP)
+                                .frame(height: 170)
                         }
                     }
                     Divider()
+                }
+                
+                if let upcomingGP = viewModel.upcomingGP {
                     RaceSection(for: upcomingGP)
                         .padding(.bottom, 10)
                 } else {

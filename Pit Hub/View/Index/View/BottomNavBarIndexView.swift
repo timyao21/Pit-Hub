@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BottomNavBarIndexView: View {
-    @State private var selectedTab = 1
+    @State private var selectedTab = 0
     
     @State private var networkMonitor = NetworkMonitor()
     @State private var viewModel = IndexViewModel()
@@ -18,13 +18,13 @@ struct BottomNavBarIndexView: View {
     var body: some View {
         ZStack {
             TabView (selection: $selectedTab) {
-                NavigationStack {
-                    RaceCalendarView(viewModel: viewModel)
-                }
-                .tabItem {
-                    Label("Calendar", systemImage: "calendar")
-                }
-                .tag(0)
+//                NavigationStack {
+//                    RaceCalendarView(viewModel: viewModel)
+//                }
+//                .tabItem {
+//                    Label("Calendar", systemImage: "calendar")
+//                }
+//                .tag(0)
                 
                 NavigationStack {
                     HomeView(viewModel: viewModel)
@@ -37,7 +37,7 @@ struct BottomNavBarIndexView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-                .tag(1)
+                .tag(0)
                 
                 NavigationStack{
                     StandingsView(viewModel: viewModel)
@@ -45,7 +45,7 @@ struct BottomNavBarIndexView: View {
                 .tabItem {
                     Label("Standings", systemImage: "trophy")
                 }
-                .tag(2)
+                .tag(1)
                 
                 NavigationStack{
                     AcademyView()
@@ -53,7 +53,7 @@ struct BottomNavBarIndexView: View {
                 .tabItem {
                     Label("Academy", systemImage: "text.book.closed.fill")
                 }
-                .tag(3)
+                .tag(2)
                 
             }
             if showNetworkWarning {

@@ -21,13 +21,9 @@ struct DateUtilities {
     }
 
     
-    static func localizedDateFormat(for format: String) -> String {
-        @Environment(\.locale) var locale
-        // Retrieve the language identifier from the iOS native locale settings.
-        // If the property chain fails, default to English ("en")
-        let languageIdentifier = locale.language.languageCode?.identifier ?? "en"
+    static func localizedDateFormat(for format: String, language: String) -> String {
     
-        if languageIdentifier == "zh" {
+        if language == "zh" {
             switch format {
             case "yyyy-MM-dd":
                 return "yyyy年MM月dd日"

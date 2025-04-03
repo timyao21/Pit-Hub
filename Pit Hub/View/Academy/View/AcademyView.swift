@@ -34,7 +34,7 @@ struct AcademyView: View {
                     }
                 }
                 Divider()
-                NavigationLink(destination: CircularCircuitView()) {
+                NavigationLink(destination: UndercutAndOvercutView()) {
                     AcademyViewRowView()
                 }
             }
