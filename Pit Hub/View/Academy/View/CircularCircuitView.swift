@@ -127,5 +127,4 @@ struct SpeedIndicatorView: View {
 
 #Preview {
     CircularCircuitView(redPitLap: 2, redPitStopTime: 0.5, redSpeedChangeLap: 1, redSpeedNew: 1.08, bluePitLap: 1, bluePitStopTime: 0.5, blueSpeedChangeLap: 1, blueSpeedNew: 1.04)
-    CircularCircuitView(redPitLap: 1, redPitStopTime: 0.5, redSpeedChangeLap: 1, redSpeedNew: 1.08, bluePitLap: 2, bluePitStopTime: 0.5, blueSpeedChangeLap: 2, blueSpeedNew: 1.04)
 }

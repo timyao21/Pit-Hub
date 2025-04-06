@@ -16,7 +16,7 @@ struct RaceFlagView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 3){
             Group {
-                Text("F1 Race Flag Signals: A Visual Guide")
+                Text("F1 Race Flag Signals")
                     .font(.title)
                     .fontWeight(.bold)
                 Text("In F1 races, flag signals are an important way for the organizers to communicate real-time instructions and track conditions to the drivers using flags of different colors.")
@@ -65,8 +65,8 @@ struct RaceFlagView: View {
                         }
                     }
                 }
-                .onChange(of: scrollTarget) { target in
-                    if let target = target {
+                .onChange(of: scrollTarget) { newTarget, _ in
+                    if let target = newTarget {
                         withAnimation {
                             proxy.scrollTo(target, anchor: .top)
                         }
@@ -74,6 +74,7 @@ struct RaceFlagView: View {
                 }
             }
         }
+        .navigationTitle("F1 Race Flag Signals")
     }
 }
 

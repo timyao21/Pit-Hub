@@ -25,12 +25,11 @@ struct AcademyView: View {
             }
             
             NavigationStack {
-                
                 NavigationLink(destination: UndercutAndOvercutView()) {
                     if curLanguage == "zh"{
-                        AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
+                        AcademyViewRowView(icon: "\(S.pitIcon)", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{
-                        AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race Strategy")
+                        AcademyViewRowView(icon: "BlueFlag", title:"Undercut and Overcut", subtitle:"Race Strategy")
                     }
                 }
                 Divider()
@@ -48,25 +47,28 @@ struct AcademyView: View {
 }
 
 private struct AcademyViewRowView: View {
-    let icon: String = "\(S.pitIcon)"
+    let icon: String
     let title: LocalizedStringKey
     let subtitle: LocalizedStringKey
     let subtitleCN: LocalizedStringKey
 
     init() {
+        self.icon = "\(S.pitIcon)"
         self.title = LocalizedStringKey("Academy title")
         self.subtitle = LocalizedStringKey("Academy subtitle")
         self.subtitleCN = LocalizedStringKey("")
     }
     
 
-    init(title: String, subtitle: String) {
+    init(icon: String, title: String, subtitle: String) {
+        self.icon = icon
         self.title = LocalizedStringKey(title)
         self.subtitle = LocalizedStringKey(subtitle)
         self.subtitleCN = LocalizedStringKey("")
     }
     
-    init(title: String, subtitle: String, subtitleCN: String) {
+    init(icon: String, title: String, subtitle: String, subtitleCN: String) {
+        self.icon = icon
         self.title = LocalizedStringKey(title)
         self.subtitle = LocalizedStringKey(subtitle)
         self.subtitleCN = LocalizedStringKey(subtitleCN)
