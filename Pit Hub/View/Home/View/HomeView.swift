@@ -68,6 +68,8 @@ struct HomeView: View {
                 if let upcomingGP = viewModel.upcomingGP {
                     RaceSection(for: upcomingGP)
                         .padding(.bottom, 10)
+//                    RaceCalendarDetailView(for: upcomingGP)
+//                        .padding(.bottom, 10)
                 } else {
                     DataErrorView()
                         .frame(height: 300)

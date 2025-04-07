@@ -79,6 +79,7 @@ struct DriverDetailView: View {
                 await viewModel.fetchDriverResults(for: self.year, driverID: self.driverInfo.driver.driverId)
             }
         }
+        .toolbar(.hidden, for: .tabBar)
     }
     
     private struct NationalityTag: View {

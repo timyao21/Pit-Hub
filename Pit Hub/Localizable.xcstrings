@@ -43,6 +43,9 @@
     "%@" : {
 
     },
+    "%@ Flag" : {
+
+    },
     "%@x" : {
 
     },
@@ -285,6 +288,9 @@
           }
         }
       }
+    },
+    "Animated Demonstration:" : {
+
     },
     "Antonelli" : {
       "extractionState" : "manual",
@@ -1095,6 +1101,9 @@
         }
       }
     },
+    "F1 Race Flag Signals" : {
+
+    },
     "Fastest Laps" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1381,6 +1390,7 @@
       }
     },
     "Home" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1472,6 +1482,9 @@
           }
         }
       }
+    },
+    "In F1 races, flag signals are an important way for the organizers to communicate real-time instructions and track conditions to the drivers using flags of different colors." : {
+
     },
     "interlagos" : {
       "extractionState" : "manual",
@@ -2066,6 +2079,9 @@
         }
       }
     },
+    "New Unercut and Overcut" : {
+
+    },
     "New Zealander" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2183,6 +2199,9 @@
           }
         }
       }
+    },
+    "Overcut (Strategic Delayed Pit Stop)" : {
+
     },
     "Past" : {
       "extractionState" : "manual",
@@ -2956,6 +2975,9 @@
         }
       }
     },
+    "Standard Pit Stop (No Tactical Strategy Involved)" : {
+
+    },
     "Standings" : {
       "localizations" : {
         "zh-Hans" : {
@@ -2975,9 +2997,6 @@
           }
         }
       }
-    },
-    "Strategy" : {
-
     },
     "Stroll" : {
       "extractionState" : "manual",
@@ -3136,7 +3155,7 @@
         }
       }
     },
-    "Undercut & Overcut" : {
+    "Undercut (Strategic Early Pit Stop)" : {
 
     },
     "Undercut and Overcut" : {

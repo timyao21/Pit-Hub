@@ -35,7 +35,7 @@ struct BottomNavBarIndexView: View {
                         }
                 }
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Calendar", systemImage: "calendar")
                 }
                 .tag(0)
                 

@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct RaceSection: View {
+    @Environment(\.locale) var locale
     let race: Races?
+    
     
     init(for race: Races?) {
         self.race = race
     }
     
     var body: some View {
-        @Environment(\.locale) var locale
         Group {
             if let race = race {
                 VStack (spacing: 6){
