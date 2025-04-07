@@ -10,6 +10,9 @@ import SwiftUI
 struct AcademyView: View {
     @Environment(IndexViewModel.self) var viewModel
     @Environment(\.locale) var locale
+    
+    @State private var isSettingsPresented: Bool = false
+    
     var curLanguage: String {
         locale.language.languageCode?.identifier ?? "en"
     }
@@ -21,7 +24,20 @@ struct AcademyView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40)
+                Text(S.title)
+                    .foregroundColor(Color(S.pitHubIconColor))
+                    .font(.custom(S.orbitron, size: 30))
+                    .bold()
                 Spacer()
+                Button {
+                    isSettingsPresented = true
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color(S.pitHubIconColor))
+                }
             }
             
             NavigationStack {
@@ -40,6 +56,9 @@ struct AcademyView: View {
             Spacer()
         }
         .padding()
+        .sheet(isPresented: $isSettingsPresented) {
+            SettingsView()
+        }
     }
 }
 

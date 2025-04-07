@@ -18,12 +18,11 @@ struct NewRaceFlag: View {
             HStack(alignment: .bottom){
                 Image(systemName: "chevron.left.chevron.left.dotted")
                     .foregroundColor(Color(S.pitHubIconColor))
-                    .frame(height: 30)
+                    .frame(height: 25)
                 SubTabSelector(selectedTab: $selectedTab, tabTitles: tabs)
-                    .padding(.top)
                 Image(systemName: "chevron.right.dotted.chevron.right")
                     .foregroundColor(Color(S.pitHubIconColor))
-                    .frame(height: 30)
+                    .frame(height: 25)
             }
             .padding()
             
