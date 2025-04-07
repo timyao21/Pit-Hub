@@ -25,7 +25,7 @@ struct AcademyView: View {
             }
             
             NavigationStack {
-                NavigationLink(destination: UndercutAndOvercutView()) {
+                NavigationLink(destination: NewUnercutAndOvercutView()) {
                     if curLanguage == "zh"{
                         AcademyViewRowView(icon: "\(S.pitIcon)", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{
@@ -33,16 +33,13 @@ struct AcademyView: View {
                     }
                 }
                 Divider()
-                NavigationLink(destination: RaceFlagView()) {
-                    AcademyViewRowView()
+                NavigationLink(destination: NewRaceFlag()) {
+                    AcademyViewRowView(icon: "Checked flag", title:"F1 Race Flag Signals", subtitle:"Race Regulations")
                 }
             }
             Spacer()
         }
         .padding()
-        .onAppear(){
-            print(curLanguage)
-        }
     }
 }
 

@@ -570,6 +570,50 @@
     "Bilibili" : {
       "shouldTranslate" : false
     },
+    "Black And White flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑白旗"
+          }
+        }
+      }
+    },
+    "Black flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑旗"
+          }
+        }
+      }
+    },
+    "Black flag with an orange disc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "橙点黑旗"
+          }
+        }
+      }
+    },
+    "Blue flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蓝旗"
+          }
+        }
+      }
+    },
     "Bortoleto" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1277,6 +1321,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GP2 数据, GP2!"
+          }
+        }
+      }
+    },
+    "Green flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绿旗"
           }
         }
       }
@@ -2429,6 +2484,17 @@
         }
       }
     },
+    "Red flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红旗"
+          }
+        }
+      }
+    },
     "Red Flag! Red Flag! 🚩" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3283,6 +3349,17 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "阿布扎比"
+          }
+        }
+      }
+    },
+    "Yellow flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黄旗"
           }
         }
       }
