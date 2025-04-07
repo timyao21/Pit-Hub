@@ -74,6 +74,9 @@
     "+ %@ pts" : {
       "shouldTranslate" : false
     },
+    "+%lld" : {
+
+    },
     "🏎️ 8.88s Pit Stop! 🏁" : {
       "extractionState" : "manual",
       "localizations" : {
