@@ -43,6 +43,9 @@
     "%@" : {
 
     },
+    "%@ Flag" : {
+
+    },
     "%@x" : {
 
     },
@@ -70,6 +73,9 @@
     },
     "+ %@ pts" : {
       "shouldTranslate" : false
+    },
+    "+ %lld" : {
+
     },
     "🏎️ 8.88s Pit Stop! 🏁" : {
       "extractionState" : "manual",
@@ -285,6 +291,9 @@
           }
         }
       }
+    },
+    "Animated Demonstration:" : {
+
     },
     "Antonelli" : {
       "extractionState" : "manual",
@@ -569,6 +578,50 @@
     },
     "Bilibili" : {
       "shouldTranslate" : false
+    },
+    "Black And White flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑白旗"
+          }
+        }
+      }
+    },
+    "Black flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑旗"
+          }
+        }
+      }
+    },
+    "Black flag with an orange disc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "橙点黑旗"
+          }
+        }
+      }
+    },
+    "Blue flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蓝旗"
+          }
+        }
+      }
     },
     "Bortoleto" : {
       "extractionState" : "manual",
@@ -1051,6 +1104,9 @@
         }
       }
     },
+    "F1 Race Flag Signals" : {
+
+    },
     "Fastest Laps" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1281,6 +1337,17 @@
         }
       }
     },
+    "Green flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绿旗"
+          }
+        }
+      }
+    },
     "Guanyu" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1326,6 +1393,7 @@
       }
     },
     "Home" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1417,6 +1485,9 @@
           }
         }
       }
+    },
+    "In F1 races, flag signals are an important way for the organizers to communicate real-time instructions and track conditions to the drivers using flags of different colors." : {
+
     },
     "interlagos" : {
       "extractionState" : "manual",
@@ -2011,6 +2082,9 @@
         }
       }
     },
+    "New Unercut and Overcut" : {
+
+    },
     "New Zealander" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2074,6 +2148,9 @@
         }
       }
     },
+    "No upcoming races" : {
+
+    },
     "Normal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2128,6 +2205,9 @@
           }
         }
       }
+    },
+    "Overcut (Strategic Delayed Pit Stop)" : {
+
     },
     "Past" : {
       "extractionState" : "manual",
@@ -2425,6 +2505,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "红牛环赛道"
+          }
+        }
+      }
+    },
+    "Red flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红旗"
           }
         }
       }
@@ -2890,6 +2981,9 @@
         }
       }
     },
+    "Standard Pit Stop (No Tactical Strategy Involved)" : {
+
+    },
     "Standings" : {
       "localizations" : {
         "zh-Hans" : {
@@ -2909,9 +3003,6 @@
           }
         }
       }
-    },
-    "Strategy" : {
-
     },
     "Stroll" : {
       "extractionState" : "manual",
@@ -3070,7 +3161,7 @@
         }
       }
     },
-    "Undercut & Overcut" : {
+    "Undercut (Strategic Early Pit Stop)" : {
 
     },
     "Undercut and Overcut" : {
@@ -3283,6 +3374,17 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "阿布扎比"
+          }
+        }
+      }
+    },
+    "Yellow flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黄旗"
           }
         }
       }

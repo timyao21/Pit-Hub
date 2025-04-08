@@ -37,36 +37,43 @@ struct HomeView: View {
                     }
                 }
                 
-                if !viewModel.allUpcomingGP.isEmpty {
-                    NavigationLink {
-                        RaceCalendarView(viewModel: viewModel)
-                            .toolbar(.hidden, for: .tabBar)
-                    } label: {
-                        VStack{
-                            HStack{
-                                PitSubtitle(for: "Next Race")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Image(systemName: "calendar")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 23, height: 23)
-                                    .foregroundColor(Color(S.pitHubIconColor))
-                                Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 18, height: 18)
-                                    .foregroundColor(Color(S.pitHubIconColor))
-                            }
-                            .padding(.vertical)
+                NavigationLink {
+                    RaceCalendarView(viewModel: viewModel)
+                        .toolbar(.hidden, for: .tabBar)
+                } label: {
+                    VStack{
+                        HStack{
+                            PitSubtitle(for: "Next Race")
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            Image(systemName: "calendar")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 23, height: 23)
+                                .foregroundColor(Color(S.pitHubIconColor))
+                            Image(systemName: "chevron.right")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 18, height: 18)
+                                .foregroundColor(Color(S.pitHubIconColor))
+                        }
+                        .padding(.vertical)
+                        if viewModel.allUpcomingGP.isEmpty {
+                            Text("No upcoming races")
+                                .foregroundColor(.secondary)
+                                .frame(height: 170)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                        } else{
                             HomeCalendarView(for: viewModel.allUpcomingGP)
                                 .frame(height: 170)
                         }
                     }
-                    Divider()
                 }
                 
+                Divider()
+                
                 if let upcomingGP = viewModel.upcomingGP {
-                    RaceSection(for: upcomingGP)
+                    RaceCalendarDetailView(for: upcomingGP, homepage: true)
+                        .padding(.horizontal, -16)
                         .padding(.bottom, 10)
                 } else {
                     DataErrorView()

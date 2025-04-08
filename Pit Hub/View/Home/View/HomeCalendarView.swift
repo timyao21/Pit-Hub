@@ -26,6 +26,8 @@ struct HomeCalendarView: View {
             calendarGrid
         }
         .onAppear{
+            print("Calendar view:")
+            print(viewModel.races)
         }
     }
     

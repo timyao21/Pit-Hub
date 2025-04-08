@@ -10,6 +10,9 @@ import SwiftUI
 struct AcademyView: View {
     @Environment(IndexViewModel.self) var viewModel
     @Environment(\.locale) var locale
+    
+    @State private var isSettingsPresented: Bool = false
+    
     var curLanguage: String {
         locale.language.languageCode?.identifier ?? "en"
     }
@@ -21,52 +24,67 @@ struct AcademyView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 40)
+                Text(S.title)
+                    .foregroundColor(Color(S.pitHubIconColor))
+                    .font(.custom(S.orbitron, size: 30))
+                    .bold()
                 Spacer()
+                Button {
+                    isSettingsPresented = true
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color(S.pitHubIconColor))
+                }
             }
             
             NavigationStack {
-                
-                NavigationLink(destination: UndercutAndOvercutView()) {
+                NavigationLink(destination: UnercutAndOvercutView()) {
                     if curLanguage == "zh"{
-                        AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
+                        AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{
-                        AcademyViewRowView(title:"Undercut and Overcut", subtitle:"Race Strategy")
+                        AcademyViewRowView(icon: "BlueFlag", title:"Undercut and Overcut", subtitle:"Race Strategy")
                     }
                 }
                 Divider()
-                NavigationLink(destination: UndercutAndOvercutView()) {
-                    AcademyViewRowView()
+                NavigationLink(destination: NewRaceFlag()) {
+                    AcademyViewRowView(icon: "Checked flag", title:"F1 Race Flag Signals", subtitle:"Race Regulations")
                 }
             }
             Spacer()
         }
         .padding()
-        .onAppear(){
-            print(curLanguage)
+        .sheet(isPresented: $isSettingsPresented) {
+            SettingsView()
         }
     }
 }
 
 private struct AcademyViewRowView: View {
-    let icon: String = "\(S.pitIcon)"
+    let icon: String
     let title: LocalizedStringKey
     let subtitle: LocalizedStringKey
     let subtitleCN: LocalizedStringKey
 
     init() {
+        self.icon = "\(S.pitIcon)"
         self.title = LocalizedStringKey("Academy title")
         self.subtitle = LocalizedStringKey("Academy subtitle")
         self.subtitleCN = LocalizedStringKey("")
     }
     
 
-    init(title: String, subtitle: String) {
+    init(icon: String, title: String, subtitle: String) {
+        self.icon = icon
         self.title = LocalizedStringKey(title)
         self.subtitle = LocalizedStringKey(subtitle)
         self.subtitleCN = LocalizedStringKey("")
     }
     
-    init(title: String, subtitle: String, subtitleCN: String) {
+    init(icon: String, title: String, subtitle: String, subtitleCN: String) {
+        self.icon = icon
         self.title = LocalizedStringKey(title)
         self.subtitle = LocalizedStringKey(subtitle)
         self.subtitleCN = LocalizedStringKey(subtitleCN)

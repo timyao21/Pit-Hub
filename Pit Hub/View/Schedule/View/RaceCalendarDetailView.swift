@@ -21,17 +21,23 @@ struct ResultTab: Identifiable {
 
 struct RaceCalendarDetailView: View {
     
-    @State var viewModel: RaceCalendarDetailViewModel
-    let race: Races?
     
-    // Use one state to control showing the full results sheet.
+    @State var viewModel: RaceCalendarDetailViewModel
     @State private var showFullResults: Bool = false
-    // This will hold the ID of the currently selected tab.
     @State private var selectedTab: ResultType = .race
+    private let homepage: Bool
+    let race: Races?
     
     init(for race: Races) {
         viewModel = RaceCalendarDetailViewModel(year: race.season, raceRound: race.round)
         self.race = race
+        self.homepage = false
+    }
+    
+    init(for race: Races, homepage: Bool) {
+        viewModel = RaceCalendarDetailViewModel(year: race.season, raceRound: race.round)
+        self.race = race
+        self.homepage = homepage
     }
     
     // Compute available tabs based on which data is present.
@@ -145,13 +151,14 @@ struct RaceCalendarDetailView: View {
                     }
                     .frame(height: 200)
                 }
-                
-                PitSubtitle(for: "Circuit Location")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                if let lat = race?.circuit.location.lat,
-                   let long = race?.circuit.location.long,
-                   lat != "0", long != "0" {
-                    CircuitMapView(lat: lat, long: long)
+                if homepage == false {
+                    PitSubtitle(for: "Circuit Location")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if let lat = race?.circuit.location.lat,
+                       let long = race?.circuit.location.long,
+                       lat != "0", long != "0" {
+                        CircuitMapView(lat: lat, long: long)
+                    }
                 }
             }
             .padding()

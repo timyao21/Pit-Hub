@@ -74,7 +74,7 @@ struct RaceWeatherRowView: View {
             if raceDayWeather.count == 4 {
                 HStack(alignment: .bottom, spacing: 8) {
                     ForEach(0..<4, id: \.self) { index in
-                        ExtractedView(title: index == 0 ? "Race" : "", weatherData: raceDayWeather[index])
+                        ExtractedView(title: index == 0 ? "Race" : "+ \(index)", weatherData: raceDayWeather[index])
                     }
                 }
             } else {
