@@ -41,7 +41,7 @@ struct AcademyView: View {
             }
             
             NavigationStack {
-                NavigationLink(destination: NewUnercutAndOvercutView()) {
+                NavigationLink(destination: UnercutAndOvercutView()) {
                     if curLanguage == "zh"{
                         AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{

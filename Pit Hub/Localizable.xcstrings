@@ -74,7 +74,7 @@
     "+ %@ pts" : {
       "shouldTranslate" : false
     },
-    "+%lld" : {
+    "+ %lld" : {
 
     },
     "🏎️ 8.88s Pit Stop! 🏁" : {
@@ -2147,6 +2147,9 @@
           }
         }
       }
+    },
+    "No upcoming races" : {
+
     },
     "Normal" : {
       "extractionState" : "manual",

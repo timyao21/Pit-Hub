@@ -15,7 +15,7 @@ enum Strategy: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 }
 
-struct NewUnercutAndOvercutView: View {
+struct UnercutAndOvercutView: View {
     @State private var selectedTab: Int = 0
 
     private let tabs = ["Normal", "Undercut", "Overcut"]
@@ -179,5 +179,5 @@ Assume both the red car 🔴 and the blue car 🔵 have identical pit stop durat
 
 
 #Preview {
-    NewUnercutAndOvercutView()
+    UnercutAndOvercutView()
 }
