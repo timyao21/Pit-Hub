@@ -66,10 +66,11 @@ struct HomeView: View {
                 }
                 
                 if let upcomingGP = viewModel.upcomingGP {
-                    RaceSection(for: upcomingGP)
-                        .padding(.bottom, 10)
-//                    RaceCalendarDetailView(for: upcomingGP)
+//                    RaceSection(for: upcomingGP)
 //                        .padding(.bottom, 10)
+                    RaceCalendarDetailView(for: upcomingGP, homepage: true)
+                        .padding(.horizontal, -16)
+                        .padding(.bottom, 10)
                 } else {
                     DataErrorView()
                         .frame(height: 300)

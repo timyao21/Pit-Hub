@@ -43,7 +43,7 @@ struct AcademyView: View {
             NavigationStack {
                 NavigationLink(destination: NewUnercutAndOvercutView()) {
                     if curLanguage == "zh"{
-                        AcademyViewRowView(icon: "\(S.pitIcon)", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
+                        AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{
                         AcademyViewRowView(icon: "BlueFlag", title:"Undercut and Overcut", subtitle:"Race Strategy")
                     }
