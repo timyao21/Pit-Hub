@@ -14,8 +14,8 @@ struct InAppPurchases: View {
     @State private var showSafari = false
     @State private var selectedURL: IdentifiableURL?
 
-    let termsURL = URL(string: "https://yjytim.com/")!
-    let policyURL = URL(string: "https://yjytim.com/")!
+    let termsURL = URL(string: "https://developer.apple.com/app-store/review/guidelines/#legal")!
+    let policyURL = URL(string: "https://yjytim.notion.site/Privacy-Policy-1d07a0c9b0ac80639353fd8641d268d3?pvs=4")!
     
     var body: some View {
         VStack {
@@ -26,18 +26,7 @@ struct InAppPurchases: View {
             .storeButton(.visible, for: .redeemCode)
             .storeButton(.visible, for: .restorePurchases)
             
-            HStack(spacing: 20) {
-                Button {
-                    // Set the URL and the sheet appears when selectedURL is non-nil.
-                    selectedURL = IdentifiableURL(url: policyURL)
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "doc.text")
-                        Text("Privacy Policy")
-                    }
-                    .foregroundColor(.blue)
-                }
-
+            HStack(spacing: 15) {
                 Button {
                     selectedURL = IdentifiableURL(url: termsURL)
                 } label: {
@@ -45,7 +34,18 @@ struct InAppPurchases: View {
                         Image(systemName: "doc.text")
                         Text("Terms of Service")
                     }
-                    .foregroundColor(.blue)
+                    .foregroundColor(.primary)
+                }
+
+                Button {
+                    // Set the URL and the sheet appears when selectedURL is non-nil.
+                    selectedURL = IdentifiableURL(url: policyURL)
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "lock")
+                        Text("Privacy Policy")
+                    }
+                    .foregroundColor(.primary)
                 }
             }
         }
