@@ -11,6 +11,12 @@ import StoreKit
 struct InAppPurchases: View {
     let storeManager = StoreManager()
     
+    @State private var showSafari = false
+    @State private var selectedURL: IdentifiableURL?
+
+    let termsURL = URL(string: "https://yjytim.com/")!
+    let policyURL = URL(string: "https://yjytim.com/")!
+    
     var body: some View {
         VStack {
             SubscriptionStoreView(productIDs: [Products.yearly]){
@@ -19,6 +25,32 @@ struct InAppPurchases: View {
             }
             .storeButton(.visible, for: .redeemCode)
             .storeButton(.visible, for: .restorePurchases)
+            
+            HStack(spacing: 20) {
+                Button {
+                    // Set the URL and the sheet appears when selectedURL is non-nil.
+                    selectedURL = IdentifiableURL(url: policyURL)
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "doc.text")
+                        Text("Privacy Policy")
+                    }
+                    .foregroundColor(.blue)
+                }
+
+                Button {
+                    selectedURL = IdentifiableURL(url: termsURL)
+                } label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "doc.text")
+                        Text("Terms of Service")
+                    }
+                    .foregroundColor(.blue)
+                }
+            }
+        }
+        .sheet(item: $selectedURL) { item in
+            SafariView(url: item.url)
         }
     }
 }

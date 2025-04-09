@@ -43,9 +43,6 @@
     "%@" : {
 
     },
-    "%@ Flag" : {
-
-    },
     "%@x" : {
 
     },
@@ -684,9 +681,6 @@
           }
         }
       }
-    },
-    "Button" : {
-
     },
     "Calendar" : {
       "localizations" : {
@@ -1500,9 +1494,6 @@
         }
       }
     },
-    "In F1 races, flag signals are an important way for the organizers to communicate real-time instructions and track conditions to the drivers using flags of different colors." : {
-
-    },
     "interlagos" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2107,9 +2098,6 @@
         }
       }
     },
-    "New Unercut and Overcut" : {
-
-    },
     "New Zealander" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2330,9 +2318,6 @@
         }
       }
     },
-    "Pit this lap" : {
-
-    },
     "Podiums" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2397,6 +2382,9 @@
           }
         }
       }
+    },
+    "Privacy Policy" : {
+
     },
     "Qatar Grand Prix" : {
       "extractionState" : "manual",
@@ -3142,6 +3130,9 @@
           }
         }
       }
+    },
+    "Terms and Conditions" : {
+
     },
     "Thai" : {
       "extractionState" : "manual",
