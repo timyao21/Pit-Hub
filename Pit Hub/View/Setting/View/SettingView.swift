@@ -118,7 +118,7 @@ struct SettingsView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(.primary, .cyan)
                                 .frame(width: 30)
-                            Text("Pit this lap")
+                            Text("Language")
                                 .foregroundColor(.primary)
                             Spacer()
                             Image(systemName: "chevron.right")

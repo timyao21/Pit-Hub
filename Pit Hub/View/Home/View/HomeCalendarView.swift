@@ -25,10 +25,6 @@ struct HomeCalendarView: View {
             headerView
             calendarGrid
         }
-        .onAppear{
-            print("Calendar view:")
-            print(viewModel.races)
-        }
     }
     
     // Header view with days of the week.

@@ -92,7 +92,6 @@ import StoreKit
                     if gpDate >= today {
                         upcoming.append(gp)
                     } else {
-                        print("pass gpDate: \(gpDate)")
                         past.append(gp)
                     }
                 }

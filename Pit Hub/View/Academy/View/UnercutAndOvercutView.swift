@@ -32,7 +32,7 @@ struct UnercutAndOvercutView: View {
                     .tag(2)
             }
         }
-        .navigationTitle(Text("New Unercut and Overcut"))
+        .navigationTitle(Text("Undercut and Overcut"))
         .toolbar(.hidden, for: .tabBar)
     }
 }

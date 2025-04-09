@@ -293,7 +293,14 @@
       }
     },
     "Animated Demonstration:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "动画演示"
+          }
+        }
+      }
     },
     "Antonelli" : {
       "extractionState" : "manual",
@@ -1105,7 +1112,14 @@
       }
     },
     "F1 Race Flag Signals" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "F1 比赛旗语"
+          }
+        }
+      }
     },
     "Fastest Laps" : {
       "extractionState" : "manual",
@@ -1660,6 +1674,17 @@
         }
       }
     },
+    "Language" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言"
+          }
+        }
+      }
+    },
     "Las Vegas" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2207,7 +2232,14 @@
       }
     },
     "Overcut (Strategic Delayed Pit Stop)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overcut（战术性延迟进站）"
+          }
+        }
+      }
     },
     "Past" : {
       "extractionState" : "manual",
@@ -2925,7 +2957,14 @@
       }
     },
     "Speed:" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速度："
+          }
+        }
+      }
     },
     "Spielberg" : {
       "extractionState" : "manual",
@@ -2982,7 +3021,14 @@
       }
     },
     "Standard Pit Stop (No Tactical Strategy Involved)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常进站"
+          }
+        }
+      }
     },
     "Standings" : {
       "localizations" : {
@@ -3162,7 +3208,14 @@
       }
     },
     "Undercut (Strategic Early Pit Stop)" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undercut（战术性早进站）"
+          }
+        }
+      }
     },
     "Undercut and Overcut" : {
       "extractionState" : "manual",

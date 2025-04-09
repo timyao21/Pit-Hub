@@ -50,7 +50,7 @@ struct AcademyView: View {
                 }
                 Divider()
                 NavigationLink(destination: NewRaceFlag()) {
-                    AcademyViewRowView(icon: "Checked flag", title:"F1 Race Flag Signals", subtitle:"Race Regulations")
+                    AcademyViewRowView(icon: "Checked flag", title:"F1 Race Flag Signals", subtitle:"比赛规则")
                 }
             }
             Spacer()
