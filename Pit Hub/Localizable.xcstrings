@@ -1400,17 +1400,6 @@
         }
       }
     },
-    "Home" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主页"
-          }
-        }
-      }
-    },
     "Hulkenberg" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2162,7 +2151,14 @@
       }
     },
     "No upcoming races" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近期无赛事"
+          }
+        }
+      }
     },
     "Normal" : {
       "extractionState" : "manual",
@@ -2384,7 +2380,14 @@
       }
     },
     "Privacy Policy" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
+          }
+        }
+      }
     },
     "Qatar Grand Prix" : {
       "extractionState" : "manual",
@@ -3132,7 +3135,14 @@
       }
     },
     "Terms and Conditions" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用条款"
+          }
+        }
+      }
     },
     "Thai" : {
       "extractionState" : "manual",
