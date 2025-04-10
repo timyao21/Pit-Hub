@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Pit_HubApp: App {
     
     let persistenceController = PersistenceController.shared
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
-    @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     
     var body: some Scene {
@@ -21,6 +21,7 @@ struct Pit_HubApp: App {
                 .preferredColorScheme(
                     selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
                 )
+                .modelContainer(for: [DriverNickname.self])
         }
     }
 }

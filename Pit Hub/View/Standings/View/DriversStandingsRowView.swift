@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DriversStandingsRowView: View {
+    let driverId: String
     let position: String
     let driverFirstName: String
     let driverLastName: String

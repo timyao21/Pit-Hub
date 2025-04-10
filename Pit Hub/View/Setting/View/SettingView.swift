@@ -94,19 +94,6 @@ struct SettingsView: View {
 
                 
                 Section(header: Text("Tune Your Look")) {
-//                    HStack {
-//                        Image(systemName: "translate")
-//                            .symbolRenderingMode(.palette)
-//                            .foregroundStyle(.primary, .cyan)
-//                            .frame(width: 30)
-//                        
-//                        Picker("Language", selection: $selectedLanguage) {
-//                            ForEach(AppLanguage.allCases) { language in
-//                                Text(language.displayName)
-//                                    .tag(language)
-//                            }
-//                        }
-//                    }
                     Button(action: {
                         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
                         if UIApplication.shared.canOpenURL(settingsURL) {
@@ -125,6 +112,13 @@ struct SettingsView: View {
                                 .tint(.secondary)
                         }
                     }
+                    
+                    NavigationLink {
+                        DriverNicknameView()
+                    } label: {
+                        Text("Driver Nickname")
+                    }
+
 
                     HStack{
                         Image(systemName: "iphone.app.switcher")

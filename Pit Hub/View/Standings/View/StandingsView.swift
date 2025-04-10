@@ -71,7 +71,7 @@ private func driversStandingsScrollView(driverStanding: [DriverStanding] = [], f
                 let pointsDifference = previousPoints - currentPoints
                 
                 NavigationLink(destination: DriverDetailView(for: driverInfo, year: year)) {
-                    DriversStandingsRowView(position: "\(driverInfo.positionText ?? "")", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.last ?? nil)
+                    DriversStandingsRowView(driverId: driverInfo.driver.driverId, position: "\(driverInfo.positionText ?? "")", driverFirstName: driverInfo.driver.givenName, driverLastName: driverInfo.driver.familyName, pointsDiff: "\(pointsDifference)", points: "\(driverInfo.points)", constructor: driverInfo.constructors.last ?? nil)
                 }
                 .foregroundColor(.primary)
                 

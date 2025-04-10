@@ -134,6 +134,12 @@
     "Academy title" : {
 
     },
+    "Add" : {
+
+    },
+    "Add Driver" : {
+
+    },
     "Al Daayen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -918,6 +924,9 @@
         }
       }
     },
+    "Customize Driver Nicknames" : {
+
+    },
     "D - Disqualified" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1040,6 +1049,12 @@
         }
       }
     },
+    "Driver Nickname" : {
+
+    },
+    "Driver Nicknames" : {
+
+    },
     "Driver Standings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1093,6 +1108,9 @@
           }
         }
       }
+    },
+    "Enter the Nickname" : {
+
     },
     "Esteban" : {
       "extractionState" : "manual",
@@ -2765,6 +2783,9 @@
         }
       }
     },
+    "Save" : {
+
+    },
     "Season Peformance (Positions)" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2796,6 +2817,9 @@
           }
         }
       }
+    },
+    "Select a Driver" : {
+
     },
     "Sergio" : {
       "extractionState" : "manual",
@@ -3135,6 +3159,7 @@
       }
     },
     "Terms and Conditions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -3143,6 +3168,9 @@
           }
         }
       }
+    },
+    "Terms of Service" : {
+
     },
     "Thai" : {
       "extractionState" : "manual",
