@@ -61,6 +61,7 @@ struct StandingsView: View {
 
 @ViewBuilder
 private func driversStandingsScrollView(driverStanding: [DriverStanding] = [], for year: String) -> some View {
+
     ScrollView{
         if (driverStanding.isEmpty) {
             DataErrorView()

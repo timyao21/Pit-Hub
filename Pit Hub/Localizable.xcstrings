@@ -30,6 +30,12 @@
     "·​" : {
 
     },
+    "(" : {
+
+    },
+    ")" : {
+
+    },
     "[%@](%@)" : {
       "localizations" : {
         "en" : {
@@ -2127,6 +2133,9 @@
         }
       }
     },
+    "Nicknames" : {
+
+    },
     "Nico" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2147,6 +2156,9 @@
           }
         }
       }
+    },
+    "No Nicknames" : {
+
     },
     "No race information available." : {
       "localizations" : {
@@ -3054,6 +3066,9 @@
           }
         }
       }
+    },
+    "Start adding driver nicknames!" : {
+
     },
     "Start: %@" : {
       "localizations" : {

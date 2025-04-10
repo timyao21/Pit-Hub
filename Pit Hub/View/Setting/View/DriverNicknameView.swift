@@ -34,15 +34,9 @@ struct DriverNicknameView: View {
                             .foregroundColor(Color(S.pitHubIconColor))
                         }
                     }
-                    Section(){
+                    Section("Nicknames"){
                         ForEach(driverNickname){ driver in
-                            HStack{
-                                Text(driver.driverId)
-                                Spacer()
-                                Text(driver.nickname)
-                                    .bold()
-                                    .foregroundColor(Color(S.pitHubIconColor))
-                            }
+                            DriverNicknameRowView(for: driver)
                         }
                         .onDelete { indexSet in
                             for index in indexSet {
@@ -52,6 +46,23 @@ struct DriverNicknameView: View {
                     }
                 }
                 .navigationTitle("Driver Nicknames")
+                .overlay {
+                    if driverNickname.isEmpty {
+                        VStack(spacing: 10){
+                            Image(systemName: "heart.text.clipboard.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 66)
+                                .foregroundColor(.primary)
+                            Text("No Nicknames")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.primary)
+                            Text("Start adding driver nicknames!")
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
         }
         .sheet(isPresented: $isAddingPresented) {
             VStack(alignment: .leading, spacing: 5){
@@ -108,15 +119,21 @@ struct DriverNicknameView: View {
                         return
                     }
                     
-                    let newDriverNickname = DriverNickname(driverId: viewModel.selectedDriverId, nickname: nickname)
-                    
-                    // Save the Data
-                    do {
-                        context.insert(newDriverNickname)
-                        try context.save()
-                    } catch {
-                        // Handle duplicate insertion error
-                        print("Error saving context: \(error)")
+                    if let selectedDriver = viewModel.drivers.first(where: { $0.id == viewModel.selectedDriverId }){
+                        
+                        let newDriverNickname = DriverNickname(driverId: viewModel.selectedDriverId, driver: selectedDriver, nickname: nickname)
+                        
+                        // Save the Data
+                        do {
+                            context.insert(newDriverNickname)
+                            try context.save()
+                        } catch {
+                            // Handle duplicate insertion error
+                            print("Error saving context: \(error)")
+                        }
+                    } else{
+                        error = "Error saving context: No driver found"
+                        return
                     }
                     
                     // Reset the Data
@@ -149,4 +166,27 @@ struct DriverNicknameView: View {
 
 #Preview {
     DriverNicknameView()
+}
+
+struct DriverNicknameRowView: View {
+    let driverNickname: DriverNickname
+    
+    init(for driver: DriverNickname) {
+        self.driverNickname = driver
+    }
+    
+    var body: some View {
+        HStack(spacing: 10){
+            Text(driverNickname.driver.permanentNumber ?? "")
+                .font(.custom(S.orbitron, size: 16))
+                .fontWeight(.bold)
+            Text(LocalizedStringKey(driverNickname.driver.familyName))
+            Spacer()
+            Image(systemName: "arrowshape.right.fill")
+            Spacer()
+            Text(driverNickname.nickname)
+                .bold()
+                .foregroundColor(Color(S.pitHubIconColor))
+        }
+    }
 }
