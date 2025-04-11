@@ -48,7 +48,7 @@ struct HomeCalendarView: View {
                         Group {
                             if let day = viewModel.days[index] {
                                 // Find a race that occurs on this day.
-                                let matchingRace = viewModel.raceCalendarDate.last { race in
+                                let matchingRace = viewModel.raceCalendarDate.first { race in
                                     Calendar.current.isDate(race.date, inSameDayAs: day)
                                 }
 

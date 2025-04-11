@@ -135,16 +135,46 @@
       }
     },
     "Academy subtitle" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学院子标题"
+          }
+        }
+      }
     },
     "Academy title" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学院标题"
+          }
+        }
+      }
     },
     "Add" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加"
+          }
+        }
+      }
     },
-    "Add Driver" : {
-
+    "Add a Nickname" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加一个昵称"
+          }
+        }
+      }
     },
     "Al Daayen" : {
       "extractionState" : "manual",
@@ -931,7 +961,14 @@
       }
     },
     "Customize Driver Nicknames" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义车手昵称"
+          }
+        }
+      }
     },
     "D - Disqualified" : {
       "extractionState" : "manual",
@@ -1056,10 +1093,47 @@
       }
     },
     "Driver Nickname" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手昵称"
+          }
+        }
+      }
+    },
+    "Driver Nickname Handbook" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手昵称手册"
+          }
+        }
+      }
     },
     "Driver Nicknames" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手昵称"
+          }
+        }
+      }
+    },
+    "Driver not in position! Pick your racer first!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手未就位！请先选择你的车手！"
+          }
+        }
+      }
     },
     "Driver Standings" : {
       "extractionState" : "manual",
@@ -1094,6 +1168,17 @@
         }
       }
     },
+    "Edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
+        }
+      }
+    },
     "Emilia Romagna Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1115,8 +1200,26 @@
         }
       }
     },
+    "Engine stall! Nickname can't be empty!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "引擎爆缸！昵称不能为空"
+          }
+        }
+      }
+    },
     "Enter the Nickname" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "输入车手昵称"
+          }
+        }
+      }
     },
     "Esteban" : {
       "extractionState" : "manual",
@@ -2134,7 +2237,14 @@
       }
     },
     "Nicknames" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "昵称"
+          }
+        }
+      }
     },
     "Nico" : {
       "extractionState" : "manual",
@@ -2158,7 +2268,14 @@
       }
     },
     "No Nicknames" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无昵称"
+          }
+        }
+      }
     },
     "No race information available." : {
       "localizations" : {
@@ -2326,6 +2443,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pit App 围场通行证"
+          }
+        }
+      }
+    },
+    "Pit crew won't approve text over 7 words." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维修区不批准超过七个字的外号。"
           }
         }
       }
@@ -2796,7 +2924,14 @@
       }
     },
     "Save" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
     },
     "Season Peformance (Positions)" : {
       "extractionState" : "manual",
@@ -2831,7 +2966,14 @@
       }
     },
     "Select a Driver" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择车手"
+          }
+        }
+      }
     },
     "Sergio" : {
       "extractionState" : "manual",
@@ -3068,7 +3210,14 @@
       }
     },
     "Start adding driver nicknames!" : {
-
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快来为你的车手取个昵称吧！"
+          }
+        }
+      }
     },
     "Start: %@" : {
       "localizations" : {
@@ -3173,8 +3322,7 @@
         }
       }
     },
-    "Terms and Conditions" : {
-      "extractionState" : "stale",
+    "Terms of Service" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -3183,9 +3331,6 @@
           }
         }
       }
-    },
-    "Terms of Service" : {
-
     },
     "Thai" : {
       "extractionState" : "manual",

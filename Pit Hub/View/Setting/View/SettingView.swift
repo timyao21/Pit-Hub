@@ -108,15 +108,20 @@ struct SettingsView: View {
                             Text("Language")
                                 .foregroundColor(.primary)
                             Spacer()
-                            Image(systemName: "chevron.right")
-                                .tint(.secondary)
                         }
                     }
                     
                     NavigationLink {
                         DriverNicknameView()
                     } label: {
-                        Text("Driver Nickname")
+                        HStack {
+                            Image(systemName: "heart.text.clipboard")
+                                .symbolRenderingMode(.palette)
+                                .frame(width: 30)
+                            Text("Driver Nickname Handbook")
+                                .foregroundColor(.primary)
+                            Spacer()
+                        }
                     }
 
 

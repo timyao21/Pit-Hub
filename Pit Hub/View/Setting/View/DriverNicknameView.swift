@@ -20,13 +20,13 @@ struct DriverNicknameView: View {
     var body: some View {
         NavigationStack{
                 List{
-                    Section("Add"){
+                    Section("Edit"){
                         Button {
                             isAddingPresented = true
                         } label:{
                             HStack{
                                 Text("Customize Driver Nicknames")
-                                    .font(.title3)
+                                    .font(.subheadline)
                                     .bold()
                                 Spacer()
                                 Image(systemName: "plus")
@@ -45,7 +45,7 @@ struct DriverNicknameView: View {
                         }
                     }
                 }
-                .navigationTitle("Driver Nicknames")
+                .navigationTitle("Driver Nickname")
                 .overlay {
                     if driverNickname.isEmpty {
                         VStack(spacing: 10){
@@ -67,7 +67,7 @@ struct DriverNicknameView: View {
         .sheet(isPresented: $isAddingPresented) {
             VStack(alignment: .leading, spacing: 5){
                 HStack {
-                    Text("Add Driver")
+                    Text("Add a Nickname")
                         .font(.title2)
                         .bold()
                     Spacer()
@@ -80,11 +80,13 @@ struct DriverNicknameView: View {
                 }
                 .padding(.bottom, 15)
 
-                Text("\(error ?? "")")
+                Text(LocalizedStringKey(error ?? ""))
+                    .font(.caption)
+                    .foregroundColor(.red)
                 
                 HStack{
                     Text("Select a Driver")
-                        .font(.subheadline)
+                        .font(.system(size: 20))
                         .foregroundColor(.secondary)
                     Spacer()
                     Picker(selection: $viewModel.selectedDriverId, label: Text("Select a Driver")) {
@@ -110,12 +112,17 @@ struct DriverNicknameView: View {
                 
                 Button(action: {
                     guard !viewModel.selectedDriverId.isEmpty else {
-                        error = "Please select a driver."
+                        error = "Driver not in position! Pick your racer first!"
                         return
                     }
                     
                     guard !nickname.isEmpty else {
-                        error = "Please enter a nickname."
+                        error = "Engine stall! Nickname can't be empty!"
+                        return
+                    }
+                    
+                    guard nickname.count <= 7 else {
+                        error = "Pit crew won't approve text over 7 words."
                         return
                     }
                     
@@ -180,13 +187,15 @@ struct DriverNicknameRowView: View {
             Text(driverNickname.driver.permanentNumber ?? "")
                 .font(.custom(S.orbitron, size: 16))
                 .fontWeight(.bold)
+                .frame(width: 30)
             Text(LocalizedStringKey(driverNickname.driver.familyName))
+                .frame(width: 88, alignment: .leading)
             Spacer()
             Image(systemName: "arrowshape.right.fill")
-            Spacer()
             Text(driverNickname.nickname)
                 .bold()
                 .foregroundColor(Color(S.pitHubIconColor))
+                .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
 }
