@@ -120,6 +120,7 @@ import StoreKit
     // MARK: - refrseh the Home page data
     @MainActor
     func refreshHomeGPData() async{
+        await membership = storeManager.checkMember()
         let today = Date()
         let currentYear = Calendar.current.component(.year, from: today)
         
