@@ -30,7 +30,7 @@ struct NewRaceFlag: View {
             .padding()
             
             TabView(selection: $selectedTab){
-                ForEach(tabs.indices) { index in
+                ForEach(0..<tabs.count, id: \.self) { index in
                     RaceFlagSubview(title: tabs[index])
                         .tag(index)
                 }

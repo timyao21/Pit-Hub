@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 @Observable class CircularCircuitViewModels{
     
     
@@ -134,11 +135,13 @@ import Foundation
         isRunning = true
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.001, repeats: true) { [weak self] _ in
-            guard let self else { return }
-            if self.progress >= 1 {
-                self.stopTimer()
-            } else {
-                self.progress += 0.0001
+            Task{ @MainActor in
+                guard let self else { return }
+                if self.progress >= 1 {
+                    self.stopTimer()
+                } else {
+                    self.progress += 0.0001
+                }
             }
         }
     }
