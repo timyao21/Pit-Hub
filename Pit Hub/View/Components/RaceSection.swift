@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct RaceSection: View {
+    @Environment(\.locale) var locale
     let race: Races?
+    
     
     init(for race: Races?) {
         self.race = race
@@ -36,7 +38,7 @@ struct RaceSection: View {
                                 if let localDate = DateUtilities.convertUTCToLocal(
                                     date: race.date,
                                     time: race.time!,
-                                    format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd")
+                                    format: DateUtilities.localizedDateFormat(for: "yyyy-MM-dd", language: locale.language.languageCode?.identifier ?? "en")
                                 ) {
                                     Text("\(localDate)")
                                         .font(.headline)
@@ -97,6 +99,7 @@ struct RaceSection: View {
 }
 
 struct RaceSessionList: View {
+    @Environment(\.locale) var locale
     let title: LocalizedStringKey
     let date: String
     let time: String
@@ -109,7 +112,7 @@ struct RaceSessionList: View {
             
             Spacer()
             
-            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: DateUtilities.localizedDateFormat(for: "MM-dd")) {
+            if let localDate = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: DateUtilities.localizedDateFormat(for: "MM-dd", language: locale.language.languageCode?.identifier ?? "en")) {
                 Text("\(localDate)")
                     .font(.body)
                     .frame(width: 120, alignment: .center)

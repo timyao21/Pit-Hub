@@ -4,8 +4,8 @@
 //
 //  Created by Junyu Yao on 2/26/25.
 //
-
 import SwiftUI
+
 
 struct DriverDetailView: View {
     let driverInfo: DriverStanding
@@ -79,6 +79,7 @@ struct DriverDetailView: View {
                 await viewModel.fetchDriverResults(for: self.year, driverID: self.driverInfo.driver.driverId)
             }
         }
+        .toolbar(.hidden, for: .tabBar)
     }
     
     private struct NationalityTag: View {

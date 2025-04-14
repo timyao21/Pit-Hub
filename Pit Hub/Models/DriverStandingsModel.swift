@@ -34,7 +34,8 @@ struct DriverStanding: Codable {
 }
 
 // MARK: - Driver
-struct Driver: Codable {
+struct Driver: Codable, Identifiable {
+    var id: String { driverId }
     let driverId: String
     let permanentNumber: String?
     let code: String?

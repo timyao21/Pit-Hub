@@ -94,19 +94,37 @@ struct SettingsView: View {
 
                 
                 Section(header: Text("Tune Your Look")) {
-                    HStack {
-                        Image(systemName: "translate")
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(.primary, .cyan)
-                            .frame(width: 30)
-                        
-                        Picker("Language", selection: $selectedLanguage) {
-                            ForEach(AppLanguage.allCases) { language in
-                                Text(language.displayName)
-                                    .tag(language)
-                            }
+                    Button(action: {
+                        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                        if UIApplication.shared.canOpenURL(settingsURL) {
+                            UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+                        }
+                    }) {
+                        HStack {
+                            Image(systemName: "translate")
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(.primary, .cyan)
+                                .frame(width: 30)
+                            Text("Language")
+                                .foregroundColor(.primary)
+                            Spacer()
                         }
                     }
+                    
+                    NavigationLink {
+                        DriverNicknameView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "heart.text.clipboard")
+                                .symbolRenderingMode(.palette)
+                                .frame(width: 30)
+                            Text("Driver Nickname Handbook")
+                                .foregroundColor(.primary)
+                            Spacer()
+                        }
+                    }
+
+
                     HStack{
                         Image(systemName: "iphone.app.switcher")
                             .symbolRenderingMode(.palette)

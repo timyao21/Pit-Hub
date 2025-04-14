@@ -8,6 +8,7 @@ import SwiftUI
 
 struct About: View {
     @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .english
+    @Environment(\.locale) var locale
 
     private let aboutUs_en = """
 Pit App was designed and developed by [Junyu Yao (yjytim)](https://yjytim.com/), with artistic support from Caroline He.
@@ -31,7 +32,8 @@ Pit App 全部是由[姚俊煜（yjytim）](https://yjytim.com/)设计并开发�
 
     // Computed property that returns the properly formatted content.
     private var contentText: AttributedString {
-        if selectedLanguage == .chinese {
+        
+        if locale.language.languageCode?.identifier == "zh" {
             if let attributed = try? AttributedString(
                 markdown: aboutUs_cn,
                 options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)
@@ -39,7 +41,6 @@ Pit App 全部是由[姚俊煜（yjytim）](https://yjytim.com/)设计并开发�
                 return attributed
             }
         }
-        
         if let attributed = try? AttributedString(
             markdown: aboutUs_en,
             options: AttributedString.MarkdownParsingOptions(interpretedSyntax: .inlineOnlyPreservingWhitespace)

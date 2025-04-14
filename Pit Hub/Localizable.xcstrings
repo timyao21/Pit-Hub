@@ -10,6 +10,17 @@
     "-" : {
 
     },
+    "- Commonly Called: Swap Out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "- 俗称：翻掉"
+          }
+        }
+      }
+    },
     "--" : {
 
     },
@@ -17,6 +28,12 @@
 
     },
     "·​" : {
+
+    },
+    "(" : {
+
+    },
+    ")" : {
 
     },
     "[%@](%@)" : {
@@ -30,6 +47,9 @@
       }
     },
     "%@" : {
+
+    },
+    "%@x" : {
 
     },
     "%lld" : {
@@ -56,6 +76,9 @@
     },
     "+ %@ pts" : {
       "shouldTranslate" : false
+    },
+    "+ %lld" : {
+
     },
     "🏎️ 8.88s Pit Stop! 🏁" : {
       "extractionState" : "manual",
@@ -96,6 +119,59 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "阿布扎比大奖赛"
+          }
+        }
+      }
+    },
+    "Academy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学院"
+          }
+        }
+      }
+    },
+    "Academy subtitle" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学院子标题"
+          }
+        }
+      }
+    },
+    "Academy title" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "学院标题"
+          }
+        }
+      }
+    },
+    "Add" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加"
+          }
+        }
+      }
+    },
+    "Add a Nickname" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加一个昵称"
           }
         }
       }
@@ -251,6 +327,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "安德烈亚·基米"
+          }
+        }
+      }
+    },
+    "Animated Demonstration:" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "动画演示"
           }
         }
       }
@@ -538,6 +624,50 @@
     },
     "Bilibili" : {
       "shouldTranslate" : false
+    },
+    "Black And White flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑白旗"
+          }
+        }
+      }
+    },
+    "Black flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黑旗"
+          }
+        }
+      }
+    },
+    "Black flag with an orange disc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "橙点黑旗"
+          }
+        }
+      }
+    },
+    "Blue flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "蓝旗"
+          }
+        }
+      }
     },
     "Bortoleto" : {
       "extractionState" : "manual",
@@ -830,6 +960,16 @@
         }
       }
     },
+    "Customize Driver Nicknames" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义车手昵称"
+          }
+        }
+      }
+    },
     "D - Disqualified" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -952,6 +1092,49 @@
         }
       }
     },
+    "Driver Nickname" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手昵称"
+          }
+        }
+      }
+    },
+    "Driver Nickname Handbook" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手昵称手册"
+          }
+        }
+      }
+    },
+    "Driver Nicknames" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手昵称"
+          }
+        }
+      }
+    },
+    "Driver not in position! Pick your racer first!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "车手未就位！请先选择你的车手！"
+          }
+        }
+      }
+    },
     "Driver Standings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -985,6 +1168,17 @@
         }
       }
     },
+    "Edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑"
+          }
+        }
+      }
+    },
     "Emilia Romagna Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1006,6 +1200,27 @@
         }
       }
     },
+    "Engine stall! Nickname can't be empty!" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "引擎爆缸！昵称不能为空"
+          }
+        }
+      }
+    },
+    "Enter the Nickname" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "输入车手昵称"
+          }
+        }
+      }
+    },
     "Esteban" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1013,6 +1228,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "埃斯特班"
+          }
+        }
+      }
+    },
+    "F1 Race Flag Signals" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "F1 比赛旗语"
           }
         }
       }
@@ -1072,13 +1297,24 @@
         }
       }
     },
+    "FP" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "练习"
+          }
+        }
+      }
+    },
     "FP1" : {
       "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习赛1"
+            "value" : "练习1"
           }
         }
       }
@@ -1089,7 +1325,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习赛2"
+            "value" : "练习2"
           }
         }
       }
@@ -1100,7 +1336,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "练习赛3"
+            "value" : "练习3"
           }
         }
       }
@@ -1236,6 +1472,17 @@
         }
       }
     },
+    "Green flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "绿旗"
+          }
+        }
+      }
+    },
     "Guanyu" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1276,16 +1523,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "汉密尔顿"
-          }
-        }
-      }
-    },
-    "Home" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "主页"
           }
         }
       }
@@ -1545,6 +1782,7 @@
       }
     },
     "Language" : {
+      "extractionState" : "manual",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -1987,6 +2225,27 @@
         }
       }
     },
+    "Next Race" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一场比赛"
+          }
+        }
+      }
+    },
+    "Nicknames" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "昵称"
+          }
+        }
+      }
+    },
     "Nico" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2008,6 +2267,16 @@
         }
       }
     },
+    "No Nicknames" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂无昵称"
+          }
+        }
+      }
+    },
     "No race information available." : {
       "localizations" : {
         "zh-Hans" : {
@@ -2024,6 +2293,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "暂无结果"
+          }
+        }
+      }
+    },
+    "No upcoming races" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "近期无赛事"
+          }
+        }
+      }
+    },
+    "Normal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常"
           }
         }
       }
@@ -2068,6 +2358,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "奥斯卡"
+          }
+        }
+      }
+    },
+    "Overcut (Strategic Delayed Pit Stop)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overcut（战术性延迟进站）"
           }
         }
       }
@@ -2143,6 +2443,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pit App 围场通行证"
+          }
+        }
+      }
+    },
+    "Pit crew won't approve text over 7 words." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "维修区不批准超过七个字的外号。"
           }
         }
       }
@@ -2226,6 +2537,16 @@
         }
       }
     },
+    "Privacy Policy" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
+          }
+        }
+      }
+    },
     "Qatar Grand Prix" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2303,6 +2624,17 @@
         }
       }
     },
+    "Race Strategy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比赛策略"
+          }
+        }
+      }
+    },
     "RB" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2354,6 +2686,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "红牛环赛道"
+          }
+        }
+      }
+    },
+    "Red flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "红旗"
           }
         }
       }
@@ -2481,6 +2824,17 @@
         }
       }
     },
+    "S-Quali" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲排位"
+          }
+        }
+      }
+    },
     "Safety car! Matthew is clearing the track—we'll resume data as soon as possible.🚥" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2569,6 +2923,16 @@
         }
       }
     },
+    "Save" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "保存"
+          }
+        }
+      }
+    },
     "Season Peformance (Positions)" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2597,6 +2961,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "赛季: %@"
+          }
+        }
+      }
+    },
+    "Select a Driver" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择车手"
           }
         }
       }
@@ -2751,6 +3125,16 @@
         }
       }
     },
+    "Speed:" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "速度："
+          }
+        }
+      }
+    },
     "Spielberg" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2805,12 +3189,32 @@
         }
       }
     },
+    "Standard Pit Stop (No Tactical Strategy Involved)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常进站"
+          }
+        }
+      }
+    },
     "Standings" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "积分榜"
+          }
+        }
+      }
+    },
+    "Start adding driver nicknames!" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快来为你的车手取个昵称吧！"
           }
         }
       }
@@ -2918,6 +3322,16 @@
         }
       }
     },
+    "Terms of Service" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用条款"
+          }
+        }
+      }
+    },
     "Thai" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2978,6 +3392,27 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "更改涂装"
+          }
+        }
+      }
+    },
+    "Undercut (Strategic Early Pit Stop)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undercut（战术性早进站）"
+          }
+        }
+      }
+    },
+    "Undercut and Overcut" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undercut 和 Overcut"
           }
         }
       }
@@ -3181,6 +3616,17 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "阿布扎比"
+          }
+        }
+      }
+    },
+    "Yellow flag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "黄旗"
           }
         }
       }

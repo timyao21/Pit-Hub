@@ -56,4 +56,29 @@ struct DriverStandingsManager {
         }
     }
     
+    func fetchDrivers(for year: String) async throws -> [Driver]{
+        let baseURL = "https://api.jolpi.ca/ergast/f1/\(year)/drivers/?format=json"
+        
+        guard let url = URL(string: baseURL) else {
+            throw NSError(domain: "Invalid URL", code: 0, userInfo: nil)
+        }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do{
+            let driverResultRoot = try decoder.decode(DriversRoot.self, from: data)
+            let driverResult = driverResultRoot.mrData.driverTable?.drivers ?? []
+            
+            print("Successfully fetched \(driverResult.count) ")
+            return driverResult
+        } catch{
+            print("Error decoding Drivers")
+            throw error
+        }
+    }
+
+    
 }

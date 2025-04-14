@@ -15,6 +15,7 @@ struct MRData: Codable {
     let total: String
     let raceTable: RaceTable?
     let standingsTable: StandingsTable?
+    let driverTable: DriverTable?
     
     enum CodingKeys: String, CodingKey {
         case xmlns
@@ -24,6 +25,7 @@ struct MRData: Codable {
         case total
         case raceTable = "RaceTable"
         case standingsTable = "StandingsTable"
+        case driverTable = "DriverTable"
     }
 }
 // MARK: - Standings Table
@@ -49,6 +51,16 @@ struct StandingsList: Codable {
         case season, round
         case driverStandings = "DriverStandings"
         case constructorStandings = "ConstructorStandings"
+    }
+}
+
+struct DriverTable: Codable {
+    let season: String
+    let drivers: [Driver]
+
+    enum CodingKeys: String, CodingKey {
+        case season
+        case drivers = "Drivers"
     }
 }
 
