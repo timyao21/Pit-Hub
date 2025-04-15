@@ -11,7 +11,7 @@ struct NewRaceFlag: View {
     
     @State private var selectedTab: Int = 0
     
-    private let tabs = ["Yellow flag", "Black flag", "Black And White flag", "Black flag with an orange disc", "Blue flag", "Red flag", "Red flag", "Green flag"]
+    private let tabs = ["Yellow flag", "Black flag", "Black And White flag", "Black flag with an orange disc", "Blue flag", "Red flag", "Green flag"]
     
 //        private let tabs = ["Black flag", "Black And White flag", "Black flag with an orange disc", "Blue flag", "Red flag", "Red flag", "Yellow flag", "Green flag"]
     
