@@ -45,7 +45,7 @@ struct AcademyView: View {
                     if curLanguage == "zh"{
                         AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{
-                        AcademyViewRowView(icon: "BlueFlag", title:"Undercut and Overcut", subtitle:"Race Strategy")
+                        AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy")
                     }
                 }
                 Divider()

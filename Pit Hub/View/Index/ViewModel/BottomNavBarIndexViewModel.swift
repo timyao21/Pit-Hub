@@ -121,6 +121,7 @@ import StoreKit
     @MainActor
     func refreshHomeGPData() async{
         await membership = storeManager.checkMember()
+        
         let today = Date()
         let currentYear = Calendar.current.component(.year, from: today)
         
@@ -268,10 +269,12 @@ import StoreKit
             
             Task {
                 fullRaceWeather = await fetchHourlyWeather(for: location, on: date, hours: 96)
+    
                 if let fpDate = race?.firstPractice?.date,
                    let fpTime = race?.firstPractice?.time{
                     let fpFullDate = getUTCTimeDate(for: fpDate, time: fpTime).roundedToHour()
                     fp1Weather = fullRaceWeather.filter { $0.date == fpFullDate }
+                    print("\(fp1Weather)")
                 }
                 
                 if let sprintQualiDate = race?.sprintQualifying?.date,
