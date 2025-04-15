@@ -237,7 +237,7 @@ struct SettingsView: View {
                             .frame(width: 30)
                         Text("Version")
                         Spacer()
-                        Text("v0.1.0")
+                        Text("v0.1.1")
                             .foregroundColor(.secondary)
                     }
                     AttributionView()

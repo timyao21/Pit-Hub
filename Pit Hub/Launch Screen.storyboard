@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,25 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
-                                <rect key="frame" x="0.0" y="832" width="393" height="0.0"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OmV-q5-b1i">
-                                <rect key="frame" x="96" y="371" width="200" height="128"/>
+                            <stackView opaque="NO" contentMode="center" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L7F-yM-1g9">
+                                <rect key="frame" x="96" y="280" width="200" height="293.33333333333326"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PitIcon" translatesAutoresizingMaskIntoConstraints="NO" id="E1u-4x-Ro5">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="128"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PitIcon" translatesAutoresizingMaskIntoConstraints="NO" id="E1u-4x-Ro5">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="173.66666666666666"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="hdp-Gu-LC4"/>
+                                            <constraint firstAttribute="width" secondItem="E1u-4x-Ro5" secondAttribute="height" multiplier="547:475" id="DZV-tc-KVD"/>
+                                            <constraint firstAttribute="width" constant="200" id="kGB-Po-1wa"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pit" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
-                                        <rect key="frame" x="105" y="0.0" width="95" height="128"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="80"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PitLane+" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                                        <rect key="frame" x="0.0" y="173.66666666666669" width="200" height="119.66666666666669"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="100"/>
                                         <color key="textColor" name="PitHubIconColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -44,16 +38,16 @@
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="OmV-q5-b1i" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="312" id="GND-1F-84A"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="OmV-q5-b1i" secondAttribute="bottom" constant="319" id="OKt-Lc-oKk"/>
-                            <constraint firstItem="OmV-q5-b1i" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="96" id="ddT-1S-6Ud"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OmV-q5-b1i" secondAttribute="trailing" constant="81" id="rHQ-3S-67v"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="L7F-yM-1g9" secondAttribute="trailing" constant="97" id="2RM-0R-drX"/>
+                            <constraint firstItem="L7F-yM-1g9" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="96" id="h6W-hK-dko"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="L7F-yM-1g9" secondAttribute="bottom" constant="210.66999999999999" id="pbo-l6-SdL"/>
+                            <constraint firstItem="L7F-yM-1g9" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="162" id="yfA-vU-6P9"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>
