@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AcademyView: View {
+    @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
     @Environment(IndexViewModel.self) var viewModel
     @Environment(\.locale) var locale
     
