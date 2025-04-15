@@ -21,37 +21,37 @@ struct HomeWeatherRow: View {
                 if !viewModel.qualifyingWeather.isEmpty {
                     HStack(alignment: .bottom, spacing: 8){
                         if let fp1Weather = viewModel.fp1Weather.first {
-                            ExtractedView(title: "FP1", weatherData: fp1Weather)
+                            WeatherCol(title: "FP1", weatherData: fp1Weather)
                             Divider()
                                 .padding(3)
                         }
                         
                         if let sprintQualiWeather = viewModel.sprintQualiWeather.first {
-                            ExtractedView(title: "Sprint Quali", weatherData: sprintQualiWeather)
+                            WeatherCol(title: "Sprint Quali", weatherData: sprintQualiWeather)
                             Divider()
                                 .padding(3)
                         }
                         
                         if let fp2Weather = viewModel.secondPracticeWeather.first {
-                            ExtractedView(title: "FP2", weatherData: fp2Weather)
+                            WeatherCol(title: "FP2", weatherData: fp2Weather)
                             Divider()
                                 .padding(3)
                         }
                         
                         if let spWeather = viewModel.sprintWeather.first {
-                            ExtractedView(title: "Sprint", weatherData: spWeather)
+                            WeatherCol(title: "Sprint", weatherData: spWeather)
                             Divider()
                                 .padding(3)
                         }
                         
                         if let fp3Weather = viewModel.thirdPracticeWeather.first {
-                            ExtractedView(title: "FP3", weatherData: fp3Weather)
+                            WeatherCol(title: "FP3", weatherData: fp3Weather)
                             Divider()
                                 .padding(3)
                         }
                         
                         if let qualifyingWeather = viewModel.qualifyingWeather.first {
-                            ExtractedView(title: "Qualifying", weatherData: qualifyingWeather)
+                            WeatherCol(title: "Qualifying", weatherData: qualifyingWeather)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -74,7 +74,7 @@ struct RaceWeatherRowView: View {
             if raceDayWeather.count == 4 {
                 HStack(alignment: .bottom, spacing: 8) {
                     ForEach(0..<4, id: \.self) { index in
-                        ExtractedView(title: index == 0 ? "Race" : "+ \(index)", weatherData: raceDayWeather[index])
+                        WeatherCol(title: index == 0 ? "Race" : "+ \(index)", weatherData: raceDayWeather[index])
                     }
                 }
             } else {
@@ -86,7 +86,7 @@ struct RaceWeatherRowView: View {
 }
 
 
-struct ExtractedView: View {
+struct WeatherCol: View {
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     let title: LocalizedStringKey
     let weatherData: HourWeather

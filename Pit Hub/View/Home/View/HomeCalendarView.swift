@@ -108,7 +108,7 @@ struct HomeCalendarView: View {
                         .font(.caption)
                         .fontWeight(.bold)
                         .frame(height: 10)
-                } else if session == "FP"{
+                } else if session == "FP1"{
                     Text(LocalizedStringKey(circuitId))
                         .foregroundColor(Color(S.pitHubIconColor))
                         .font(.caption)

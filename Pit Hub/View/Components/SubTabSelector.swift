@@ -9,37 +9,45 @@ struct SubTabSelector: View {
     var body: some View {
         Group {
             if tabTitles.count > 4 {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 16) { // add spacing between buttons
-                        ForEach(tabTitles.indices, id: \.self) { index in
-                            Button(action: {
-                                withAnimation(.easeInOut(duration: 0.3)) {
-                                    selectedTab = index
-                                }
-                            }) {
-                                VStack(spacing: 4) {
-                                    Text(NSLocalizedString(tabTitles[index], comment: "Localized title text"))
-                                        .bold()
-                                        .foregroundColor(selectedTab == index ? Color(S.pitHubIconColor) : .secondary)
-                                    
-                                    if selectedTab == index {
-                                        Rectangle()
-                                            .frame(height: 2)
-                                            .foregroundColor(Color(S.pitHubIconColor))
-                                            .matchedGeometryEffect(id: "underline", in: underlineAnimation)
-                                    } else {
-                                        Rectangle()
-                                            .frame(height: 2)
-                                            .foregroundColor(.clear)
+                ScrollViewReader { scrollProxy in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) { // add spacing between buttons
+                            ForEach(tabTitles.indices, id: \.self) { index in
+                                Button(action: {
+                                    withAnimation(.easeInOut(duration: 0.3)) {
+                                        selectedTab = index
+                                        scrollProxy.scrollTo(index, anchor: .center)
                                     }
+                                }) {
+                                    VStack(spacing: 4) {
+                                        Text(NSLocalizedString(tabTitles[index], comment: "Localized title text"))
+                                            .bold()
+                                            .foregroundColor(selectedTab == index ? Color(S.pitHubIconColor) : .secondary)
+                                        
+                                        if selectedTab == index {
+                                            Rectangle()
+                                                .frame(height: 2)
+                                                .foregroundColor(Color(S.pitHubIconColor))
+                                                .matchedGeometryEffect(id: "underline", in: underlineAnimation)
+                                        } else {
+                                            Rectangle()
+                                                .frame(height: 2)
+                                                .foregroundColor(.clear)
+                                        }
+                                    }
+                                    // Each button gets a minimum width to avoid being too compressed.
+                                    .frame(minWidth: 80)
                                 }
-                                // Each button gets a minimum width to avoid being too compressed.
-                                .frame(minWidth: 80)
+                                .buttonStyle(PlainButtonStyle())
                             }
-                            .buttonStyle(PlainButtonStyle())
+                        }
+                        .padding(.horizontal)
+                        .onChange(of: selectedTab) { oldValue, newValue in
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                scrollProxy.scrollTo(newValue, anchor: .center)
+                            }
                         }
                     }
-                    .padding(.horizontal)
                 }
             } else {
                 HStack(spacing: 0) {

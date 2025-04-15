@@ -148,7 +148,7 @@ struct RaceCalendarDate {
                                                       round: race.round,
                                                       raceName: race.circuit.circuitId,
                                                       date: fpDate,
-                                                      session: "FP"))
+                                                      session: "FP1"))
             }
             
             // Second Practice
@@ -158,7 +158,7 @@ struct RaceCalendarDate {
                                                       round: race.round,
                                                       raceName: race.circuit.circuitId,
                                                       date: spDate,
-                                                      session: "FP"))
+                                                      session: "FP2"))
             }
             
             // Third Practice

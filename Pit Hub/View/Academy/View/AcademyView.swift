@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AcademyView: View {
+    @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
     @Environment(IndexViewModel.self) var viewModel
     @Environment(\.locale) var locale
     
@@ -45,7 +46,7 @@ struct AcademyView: View {
                     if curLanguage == "zh"{
                         AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy", subtitleCN: "- Commonly Called: Swap Out")
                     }else{
-                        AcademyViewRowView(icon: "BlueFlag", title:"Undercut and Overcut", subtitle:"Race Strategy")
+                        AcademyViewRowView(icon: "undercut", title:"Undercut and Overcut", subtitle:"Race Strategy")
                     }
                 }
                 Divider()
