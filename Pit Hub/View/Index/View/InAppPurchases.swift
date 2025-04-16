@@ -64,7 +64,7 @@ struct ProductsHeaderView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 188)
-                Text("Get your Pit App Paddock Club Annual Pass")
+                Text("Get your PitLane+ Paddock Club Annual Pass")
                     .font(.title2)
                     .fontWeight(.bold)
             }

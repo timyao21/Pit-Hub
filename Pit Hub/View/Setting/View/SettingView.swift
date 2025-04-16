@@ -47,14 +47,14 @@ struct SettingsView: View {
         NavigationView {
             Form {
                 // Section for appearance settings
-                Section(header: Text("Pit App Paddock Pass")) {
+                Section(header: Text("PitLane+ Paddock Pass")) {
                     if indexViewModel.membership {
                         // Member UI
                         VStack (spacing: 8){
                             HStack {
                                 Image(systemName: "wallet.pass.fill")
                                     .frame(width: 30)
-                                Text("Pit App Paddock Club Member!")
+                                Text("PitLane+ Paddock Club Member!")
                                     .fontWeight(.semibold)
                                 Spacer()
                                 Image(systemName: "star.square")
@@ -76,7 +76,7 @@ struct SettingsView: View {
                                     Image(systemName: "wallet.pass.fill")
                                         .frame(width: 30)
                                     
-                                    Text("Join Pit App Paddock Club")
+                                    Text("Join PitLane+ Paddock Club")
                                         .fontWeight(.semibold)
                                     Spacer()
                                     Image(systemName: "chevron.up.right.2")

@@ -11,7 +11,7 @@ struct About: View {
     @Environment(\.locale) var locale
 
     private let aboutUs_en = """
-Pit App was designed and developed by [Junyu Yao (yjytim)](https://yjytim.com/), with artistic support from Caroline He.
+PitLane+ App was designed and developed by [Junyu Yao (yjytim)](https://yjytim.com/), with artistic support from Caroline He.
 
 Over the past few years, I’ve noticed that accessing F1 news in China comes with high barriers and the available sources are quite fragmented. This inspired me to create an app specifically for F1 fans in China—a tool that’s both practical and visually appealing.
 
@@ -21,7 +21,7 @@ The whole development process rekindled the excitement I felt when I first learn
 """
 
     private let aboutUs_cn = """
-Pit App 全部是由[姚俊煜（yjytim）](https://yjytim.com/)设计并开发完成的。Caroline He提供美术支持。
+PitLane+ App 全部是由[姚俊煜（yjytim）](https://yjytim.com/)设计并开发完成的。Caroline He提供美术支持。
 
 这几年来我发现在中国获取F1资讯的方式是有门槛的，且途径来源都很碎片化。这促使我萌生了开发一款专为中国F1粉丝打造的App的想法，想要给大家提供一个实用又好看的F1工具。
 

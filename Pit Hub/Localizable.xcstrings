@@ -1461,6 +1461,9 @@
         }
       }
     },
+    "Get your PitLane+ Paddock Club Annual Pass" : {
+
+    },
     "GP2 Data, GP2!" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1736,6 +1739,9 @@
           }
         }
       }
+    },
+    "Join PitLane+ Paddock Club" : {
+
     },
     "Kevin" : {
       "extractionState" : "manual",
@@ -2428,6 +2434,7 @@
       }
     },
     "Pit App Paddock Club Member!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -2438,6 +2445,7 @@
       }
     },
     "Pit App Paddock Pass" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -2458,9 +2466,6 @@
         }
       }
     },
-    "Pit Hub" : {
-      "shouldTranslate" : false
-    },
     "Pit Line" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2471,6 +2476,12 @@
           }
         }
       }
+    },
+    "PitLane+ Paddock Club Member!" : {
+
+    },
+    "PitLane+ Paddock Pass" : {
+
     },
     "Podiums" : {
       "extractionState" : "manual",
