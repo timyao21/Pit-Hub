@@ -35,7 +35,7 @@ struct StandingsView: View {
                 }
                 .tag(1)
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         }
     }
     

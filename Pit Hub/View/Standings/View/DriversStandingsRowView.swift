@@ -68,14 +68,6 @@ struct DriversStandingsRowView: View {
                     .fontWeight(.semibold)
                 }
                 
-//                HStack(spacing: 2){
-//                    Text(LocalizedStringKey(driverFirstName))
-//                    Text("·")
-//                    Text(LocalizedStringKey(driverLastName))
-//                }
-//                .font(.headline)
-//                .font(.title3)
-//                .fontWeight(.semibold)
                 if let constructor = constructor {
                     DriverConstructorTag(constructor: constructor)
                 }
