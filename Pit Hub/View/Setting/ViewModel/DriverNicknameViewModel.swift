@@ -19,6 +19,7 @@ import Foundation
         let curYear = Calendar.current.component(.year, from: Date())
         Task {
             try await drivers = driverManager.fetchDrivers(for: "\(curYear)")
+            selectedDriverId = drivers.first?.id ?? ""
         }
     }
     

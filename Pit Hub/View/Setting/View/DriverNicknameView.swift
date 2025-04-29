@@ -65,7 +65,7 @@ struct DriverNicknameView: View {
                 }
         }
         .sheet(isPresented: $isAddingPresented) {
-            VStack(alignment: .leading, spacing: 5){
+            VStack(alignment: .leading, spacing: 8){
                 HStack {
                     Text("Add a Nickname")
                         .font(.title2)
@@ -73,12 +73,11 @@ struct DriverNicknameView: View {
                     Spacer()
                     Button(action: { isAddingPresented = false }) {
                         Image(systemName: "xmark")
-                            .padding(8)
+                            .padding(5)
                             .background(Color.gray.opacity(0.2))
                             .clipShape(Circle())
                     }
                 }
-                .padding(.bottom, 15)
 
                 Text(LocalizedStringKey(error ?? ""))
                     .font(.caption)
@@ -86,7 +85,7 @@ struct DriverNicknameView: View {
                 
                 HStack{
                     Text("Select a Driver")
-                        .font(.system(size: 20))
+                        .font(.system(size: 18))
                         .foregroundColor(.secondary)
                     Spacer()
                     Picker(selection: $viewModel.selectedDriverId, label: Text("Select a Driver")) {
@@ -102,13 +101,15 @@ struct DriverNicknameView: View {
                 }
                 
                 TextField("Enter the Nickname", text: $nickname)
-                    .font(.system(size: 20))          // Increase font size.
+                    .font(.system(size: 18))          // Increase font size.
                     .padding(12)                      // Add extra padding inside the text field.
                     .frame(height: 50)                // Set a consistent height.
                     .background(
                         RoundedRectangle(cornerRadius: 8)
                             .strokeBorder(Color.gray, lineWidth: 1)
                     )
+                
+                Spacer()
                 
                 Button(action: {
                     guard !viewModel.selectedDriverId.isEmpty else {
@@ -156,9 +157,6 @@ struct DriverNicknameView: View {
                 }
                 .background(Color(S.pitHubIconColor))
                 .cornerRadius(8)
-                .padding(.vertical)
-                
-                Spacer()
             }
             .presentationDetents([.fraction(0.4)])
             .padding()

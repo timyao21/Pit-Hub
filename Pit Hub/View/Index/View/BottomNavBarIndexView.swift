@@ -18,13 +18,6 @@ struct BottomNavBarIndexView: View {
     var body: some View {
         ZStack {
             TabView (selection: $selectedTab) {
-//                NavigationStack {
-//                    RaceCalendarView(viewModel: viewModel)
-//                }
-//                .tabItem {
-//                    Label("Calendar", systemImage: "calendar")
-//                }
-//                .tag(0)
                 
                 NavigationStack {
                     HomeView(viewModel: viewModel)
