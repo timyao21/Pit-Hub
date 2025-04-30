@@ -14,13 +14,34 @@
 
   ],
   "products" : [
-
+    {
+      "displayPrice" : "29.99",
+      "familyShareable" : false,
+      "internalID" : "6743728099",
+      "localizations" : [
+        {
+          "description" : "Pit App终生会员",
+          "displayName" : "终生会员",
+          "locale" : "zh_CN"
+        },
+        {
+          "description" : "Pit App Lifetime Member",
+          "displayName" : "Lifetime Member",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "pit.Lifetime",
+      "referenceName" : "Lifetime",
+      "type" : "NonConsumable"
+    }
   ],
   "settings" : {
     "_applicationInternalID" : "6743264318",
     "_developerTeamID" : "2SUMYBGN75",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 763763045.33177805,
+    "_lastSynchronizedDate" : 766946377.36770105,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
     "_storeKitErrors" : [
       {
         "current" : null,
@@ -70,7 +91,53 @@
     ]
   },
   "subscriptionGroups" : [
+    {
+      "id" : "21650064",
+      "localizations" : [
 
+      ],
+      "name" : "Membership",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "5.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6743288946",
+          "introductoryOffer" : {
+            "internalID" : "C29C41F8",
+            "numberOfPeriods" : 1,
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1M"
+          },
+          "localizations" : [
+            {
+              "description" : "年度会员通行证",
+              "displayName" : "Pit App 围场通行证",
+              "locale" : "zh_CN"
+            },
+            {
+              "description" : "Exclusive Annual Membership Pass",
+              "displayName" : "Pit App Paddock Club Pass",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.yjytim.PitHub.YearlyPlan",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Paddock Club Annual Pass 5.99 2W0",
+          "subscriptionGroupID" : "21650064",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 4,
