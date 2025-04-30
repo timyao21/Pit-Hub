@@ -22,7 +22,7 @@ struct ConstructorStandingsManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do{
-            let constructorStandingsRoot = try decoder.decode(ConstructorStandingsRoot.self, from: data)
+            let constructorStandingsRoot = try decoder.decode(JolpicaF1Root.self, from: data)
             let constructorStandingsList = constructorStandingsRoot.mrData.standingsTable?.standingsLists?.first?.constructorStandings ?? []
             
             return constructorStandingsList

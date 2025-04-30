@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ConstructorStandingsRowView: View {
     let position: String
-    let constructor : ConstructorTeam?
+    let constructor : Constructor?
     let pointsDiff: String
     let points: String
     
@@ -65,16 +65,22 @@ struct ConstructorStandingsRowView: View {
 }
 
 struct ConstructorNationalityTag: View {
-    let constructor: ConstructorTeam
+    var constructor: Constructor
+    let constructorNationality: String
+    
+    init(constructor: Constructor) {
+        self.constructor = constructor
+        self.constructorNationality = constructor.nationality ?? " "
+    }
     
     var body: some View {
         HStack(spacing: 2) {
             // Display flag emoji
-            Text(CountryFlags.flag(for: constructor.nationality))
+            Text(CountryFlags.flag(for: constructorNationality))
                 .font(.system(size: 16))
             
             // Display nationality text
-            Text(LocalizedStringKey(constructor.nationality))
+            Text(LocalizedStringKey(constructorNationality))
                 .font(.caption)
                 .foregroundColor(.white)
                 .bold()

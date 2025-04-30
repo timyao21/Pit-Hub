@@ -22,7 +22,7 @@ struct DriverStandingsManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let driverStandingsRoot = try decoder.decode(DriverStandingsRoot.self, from: data)
+            let driverStandingsRoot = try decoder.decode(JolpicaF1Root.self, from: data)
             let driverStandings = driverStandingsRoot.mrData.standingsTable?.standingsLists?.first?.driverStandings ?? []
             
             return driverStandings
@@ -69,7 +69,7 @@ struct DriverStandingsManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do{
-            let driverResultRoot = try decoder.decode(DriversRoot.self, from: data)
+            let driverResultRoot = try decoder.decode(JolpicaF1Root.self, from: data)
             let driverResult = driverResultRoot.mrData.driverTable?.drivers ?? []
             
             print("Successfully fetched \(driverResult.count) ")
