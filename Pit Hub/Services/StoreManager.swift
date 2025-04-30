@@ -13,7 +13,7 @@ struct StoreManager {
         do {
             // If they’ve unlocked lifetime, no need to check yearly
             if try await isPurchased(Products.lifetime) {
-                print(">>> Lifetime purchased")
+                print("Lifetime purchased")
                 return true
             }
             
