@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct JolpicaF1Root: Codable {
+    let mrData: MRData
+
+    enum CodingKeys: String, CodingKey {
+        case mrData = "MRData"
+    }
+}
+
 struct MRData: Codable {
     let xmlns: String
     let series: String
@@ -28,6 +36,7 @@ struct MRData: Codable {
         case driverTable = "DriverTable"
     }
 }
+
 // MARK: - Standings Table
 struct StandingsTable: Codable {
     let season: String

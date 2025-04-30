@@ -23,9 +23,8 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let scheduleResponse = try decoder.decode(F1RaceResponse.self, from: data)
+            let scheduleResponse = try decoder.decode(JolpicaF1Root.self, from: data)
             let races = scheduleResponse.mrData.raceTable?.races ?? []
-            print("Successfully fetched \(races.count) races for \(year). ------------- ")
             return races
         } catch {
             print("Error decoding race schedule for \(year): \(error.localizedDescription)")
@@ -47,9 +46,8 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let resultsResponse = try decoder.decode(F1RaceResponse.self, from: data)
+            let resultsResponse = try decoder.decode(JolpicaF1Root.self, from: data)
             let results = resultsResponse.mrData.raceTable?.races.first?.results ?? []
-//            print("Successfully fetched \(results.count) Race results for \(year) Round \(round). ------------- ")
             return results
         } catch {
             print("Error decoding race results for \(year) Round \(round): \(error.localizedDescription)")
@@ -72,7 +70,7 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do{
-            let qualifyingResponse = try decoder.decode(F1RaceResponse.self, from: data)
+            let qualifyingResponse = try decoder.decode(JolpicaF1Root.self, from: data)
             let qualifyingResults = qualifyingResponse.mrData.raceTable?.races.first?.qualifyingResults ?? []
             return qualifyingResults
         }catch{

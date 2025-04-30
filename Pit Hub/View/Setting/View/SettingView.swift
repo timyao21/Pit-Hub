@@ -32,7 +32,6 @@ struct SettingsView: View {
     
     // Using AppStorage to persist user settings
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
-    @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .chinese
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     
     

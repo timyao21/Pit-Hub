@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct About: View {
-    @AppStorage("selectedLanguage") private var selectedLanguage: AppLanguage = .english
     @Environment(\.locale) var locale
 
     private let aboutUs_en = """
