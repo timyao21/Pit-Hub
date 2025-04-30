@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct F1RaceResponse: Codable {
-    let mrData: MRData
-    
-    enum CodingKeys: String, CodingKey {
-        case mrData = "MRData"
-    }
-}
+//struct F1RaceResponse: Codable {
+//    let mrData: MRData
+//    
+//    enum CodingKeys: String, CodingKey {
+//        case mrData = "MRData"
+//    }
+//}
 
 struct RaceTable: Codable {
     let season: String

@@ -94,7 +94,7 @@ struct GPManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do {
-            let sprintResultsResponse = try decoder.decode(F1RaceResponse.self, from: data)
+            let sprintResultsResponse = try decoder.decode(JolpicaF1Root.self, from: data)
             let sprintResults = sprintResultsResponse.mrData.raceTable?.races.first?.sprintResults ?? []
             print("Successfully fetched \(sprintResults.count) sprint results for \(year) Round \(round). ------------- ")
             return sprintResults

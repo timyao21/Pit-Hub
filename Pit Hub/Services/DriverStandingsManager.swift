@@ -45,7 +45,7 @@ struct DriverStandingsManager {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         do{
-            let driverResultRoot = try decoder.decode(F1RaceResponse.self, from: data)
+            let driverResultRoot = try decoder.decode(JolpicaF1Root.self, from: data)
             let driverResult = driverResultRoot.mrData.raceTable?.races ?? []
             
             print("Successfully fetched \(driverResult.count) drivers result for \(driverID) - \(year). ------------- ")
