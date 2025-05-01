@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct BottomNavBarIndexView: View {
-    @State private var selectedTab = 0
     
     @State private var networkMonitor = NetworkMonitor()
     @State private var viewModel = IndexViewModel()
     
     @State private var showNetworkWarning = false
+    @State private var selectedTab = 0
     
     var body: some View {
         ZStack {

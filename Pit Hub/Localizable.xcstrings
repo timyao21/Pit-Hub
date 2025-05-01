@@ -59,6 +59,7 @@
 
     },
     "%lld/%lld GP Completed" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -2956,6 +2957,7 @@
       }
     },
     "Season Progress" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {

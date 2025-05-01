@@ -62,55 +62,6 @@ struct RaceCalendarDate {
         
         return days
     }
-
-
-    
-//    private func generateDays() -> [Date?] {
-//        var days: [Date?] = []
-//        let calendar = Calendar.current
-//        let currentYear = calendar.component(.year, from: Date())
-//        
-//        for month in 1...12 {
-//            var monthDays: [Date?] = []
-//            var components = DateComponents(year: currentYear, month: month, day: 1)
-//            guard let firstDayOfMonth = calendar.date(from: components) else { continue }
-//            
-//            // Calculate the offset for the first day of the month.
-//            // Gregorian: Sunday = 1, Monday = 2, ... Saturday = 7.
-//            // For Monday-first: Monday should be at index 0.
-//            let weekday = calendar.component(.weekday, from: firstDayOfMonth)
-//            let desiredOffset = weekday == 1 ? 6 : weekday - 2
-//            
-//            // Pad the beginning of this month with nils.
-//            for _ in 0..<desiredOffset {
-//                monthDays.append(nil)
-//            }
-//            
-//            // Append each day of the month.
-//            if let range = calendar.range(of: .day, in: .month, for: firstDayOfMonth) {
-//                for day in range {
-//                    components.day = day
-//                    if let date = calendar.date(from: components) {
-//                        monthDays.append(date)
-//                    }
-//                }
-//            }
-//            
-//            // Pad the end of the month to fill the final week.
-//            let remainder = monthDays.count % 7
-//            if remainder != 0 {
-//                let padding = 7 - remainder
-//                for _ in 0..<padding {
-//                    monthDays.append(nil)
-//                }
-//            }
-//            
-//            // Append the month’s days to the main array.
-//            days.append(contentsOf: monthDays)
-//        }
-//        
-//        return days
-//    }
     
     // Helper function to convert a date and time string into a Date.
     private func dateFromComponents(date: String?, time: String?) -> Date? {
