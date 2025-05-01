@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RaceCalendarView: View {
     @Bindable var viewModel: IndexViewModel
-//    @Environment(IndexViewModel.self) var viewModel
     
     @Namespace private var animation
     private let tabTitles = ["Upcoming", "Past"]
@@ -30,12 +29,6 @@ struct RaceCalendarView: View {
                 }
             }
             .padding(.horizontal)
-            
-//            HStack {
-//                Spacer()
-//                SeasonProgressView(viewModel: viewModel)
-//            }
-//            .padding(.horizontal)
             
             // MARK: - TabView
             TabView(selection: $viewModel.raceCalendarSelectedTab) {
@@ -65,7 +58,6 @@ struct RaceCalendarView: View {
 private func raceCalendarScrollView(raceCalendar: [Races] = []) -> some View {
     ScrollView {
         if raceCalendar.isEmpty {
-            
             DataErrorView()
         } else {
             LazyVStack { // Use LazyVStack to optimize rendering

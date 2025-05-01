@@ -39,7 +39,6 @@ struct HomeView: View {
                 
                 NavigationLink {
                     RaceCalendarView(viewModel: viewModel)
-                        .toolbar(.hidden, for: .tabBar)
                 } label: {
                     VStack{
                         HStack{

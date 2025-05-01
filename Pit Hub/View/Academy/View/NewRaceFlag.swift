@@ -38,7 +38,6 @@ struct NewRaceFlag: View {
             .tabViewStyle(.page)
         }
         .navigationTitle(Text("F1 Race Flag Signals"))
-        .toolbar(.hidden, for: .tabBar)
     }
 }
 
