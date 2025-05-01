@@ -28,7 +28,7 @@ struct Results: Codable, RaceResults{
     let time: RaceTime?
     let driver: Driver
     let constructor: Constructor?
-    let fastestLap: FastestLap?  // Added fastestLap
+    let fastestLap: FastestLap?
 
     enum CodingKeys: String, CodingKey {
         case number, position, positionText, points, grid, laps, status
