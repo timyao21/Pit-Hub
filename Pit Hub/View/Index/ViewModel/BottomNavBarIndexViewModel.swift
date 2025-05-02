@@ -59,13 +59,14 @@ import StoreKit
         Task {
             await membership = storeManager.checkMember()
             await fetchAllGP() // Load data for both Homepage & Race Calendar
-//            await fetchDriverStanding() // Load standings data
-//            await fetchConstructorStanding() // Load standings data
-//            if driverStandings.isEmpty && constructorStandings.isEmpty {
-//                let currentYear = Calendar.current.component(.year, from: Date()) - 1
-//                await updateStandingViewYear(for: "\(currentYear)")
-//            }
+            loadAllGP()
         }
+    }
+    
+    @MainActor
+    func loadAllGP() {
+        let currentDate = Date()
+        let currentYear = Calendar.current.component(.year, from: currentDate)
     }
     
     // MARK: - Load all the GP info (When lunch the app)
