@@ -78,7 +78,7 @@
     "+ %@ pts" : {
       "shouldTranslate" : false
     },
-    "+ %lld" : {
+    "+ %lld h" : {
 
     },
     "🏎️ 8.88s Pit Stop! 🏁" : {

@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct StandingsView: View {
+    @State var standingsViewModel = StandingsViewModel()
+    
     @State private var selectedTab = 0
     @Namespace private var animation
-    @Bindable var viewModel: IndexViewModel
     
     private let tabTitles = ["Driver", "Constructor"]
     
@@ -20,17 +21,17 @@ struct StandingsView: View {
             
             TabView(selection: $selectedTab) {
                 VStack {
-                    driversStandingsScrollView(driverStanding: viewModel.driverStanding, for: viewModel.standingViewYear)
+                    driversStandingsScrollView(driverStanding: standingsViewModel.driverStandings, for: standingsViewModel.standingViewYear)
                         .refreshable {
-                            await viewModel.refreshStandingData()
+                            await standingsViewModel.refresh()
                         }
                 }
                 .tag(0)
                 
                 VStack{
-                    constructorsStandingsScrollView(constructorsStanding: viewModel.constructorStanding)
+                    constructorsStandingsScrollView(constructorsStanding: standingsViewModel.constructorStandings)
                         .refreshable {
-                            await viewModel.refreshStandingData()
+                            await standingsViewModel.refresh()
                         }
                 }
                 .tag(1)
@@ -48,9 +49,9 @@ struct StandingsView: View {
             Spacer()
             NavTabSelector(selectedTab: $selectedTab, tabTitles: tabTitles)
             Spacer()
-            YearDropdownSelector(selectedYear: $viewModel.standingViewYear) { newYear in
+            YearDropdownSelector(selectedYear: $standingsViewModel.standingViewYear) { newYear in
                 Task {
-                    await viewModel.updateStandingViewYear(for: newYear)
+                    await standingsViewModel.updateStandingViewYear(for: newYear)
                 }
             }
         }

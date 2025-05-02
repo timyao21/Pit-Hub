@@ -33,7 +33,7 @@ struct BottomNavBarIndexView: View {
                 .tag(0)
                 
                 NavigationStack{
-                    StandingsView(viewModel: viewModel)
+                    StandingsView()
                 }
                 .tabItem {
                     Label("Standings", systemImage: "trophy")

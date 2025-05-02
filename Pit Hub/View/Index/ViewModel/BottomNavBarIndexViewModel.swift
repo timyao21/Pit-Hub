@@ -45,11 +45,6 @@ import StoreKit
     @MainActor var raceCalendarUpcoming: [Races] = []
     var raceCalendarSelectedTab: Int = 1
     
-    // MARK: - Standings View Properties
-    @MainActor var standingViewYear = "\(Calendar.current.component(.year, from: Date()))"
-    @MainActor var driverStanding: [DriverStanding] = []
-    @MainActor var constructorStanding: [ConstructorStanding] = []
-    
     
     // MARK: - Computed Property for DateFormatter
     private var isoDateFormatter: ISO8601DateFormatter {
@@ -64,12 +59,12 @@ import StoreKit
         Task {
             await membership = storeManager.checkMember()
             await fetchAllGP() // Load data for both Homepage & Race Calendar
-            await fetchDriverStanding() // Load standings data
-            await fetchConstructorStanding() // Load standings data
-            if driverStanding.isEmpty && constructorStanding.isEmpty {
-                let currentYear = Calendar.current.component(.year, from: Date()) - 1
-                await updateStandingViewYear(for: "\(currentYear)")
-            }
+//            await fetchDriverStanding() // Load standings data
+//            await fetchConstructorStanding() // Load standings data
+//            if driverStandings.isEmpty && constructorStandings.isEmpty {
+//                let currentYear = Calendar.current.component(.year, from: Date()) - 1
+//                await updateStandingViewYear(for: "\(currentYear)")
+//            }
         }
     }
     
@@ -193,45 +188,6 @@ import StoreKit
         }
     }
     
-    // MARK: - Standings View - Able to refreshData the data
-    @MainActor
-    func updateStandingViewYear(for year: String) async {
-        standingViewYear = year
-        Task {
-            await refreshStandingData()
-        }
-    }
-    
-    @MainActor
-    func refreshStandingData() async {
-        print("Refreshing standings data for \(standingViewYear)")
-        Task{
-            await fetchDriverStanding()
-            await fetchConstructorStanding()
-        }
-    }
-    
-    // MARK: - Fetch Driver Standing
-    @MainActor
-    func fetchDriverStanding() async {
-        do {
-            let fetchedDriverStandings = try await driverStandingsManager.fetchDriverStandings(for: standingViewYear)
-            driverStanding = fetchedDriverStandings
-        } catch {
-            print("Failed to fetch driver standings: \(error.localizedDescription)")
-        }
-    }
-    
-    // MARK: - Fetch Constructor Standing
-    @MainActor
-    func fetchConstructorStanding() async {
-        do {
-            let fetchConstructorStandings = try await constructorStandingsManager.fetchConstructorStandings(for: standingViewYear)
-            constructorStanding = fetchConstructorStandings
-        } catch {
-            print("Failed to fetch driver standings: \(error.localizedDescription)")
-        }
-    }
     
     // MARK: - Load Weather Data
     
