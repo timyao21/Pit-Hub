@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StandingsView: View {
-    @State var standingsViewModel = StandingsViewModel()
+    @State private var viewModel = ViewModel()
     
     @State private var selectedTab = 0
     @Namespace private var animation
@@ -21,17 +21,17 @@ struct StandingsView: View {
             
             TabView(selection: $selectedTab) {
                 VStack {
-                    driversStandingsScrollView(driverStanding: standingsViewModel.driverStandings, for: standingsViewModel.standingViewYear)
+                    driversStandingsScrollView(driverStanding: viewModel.driverStandings, for: viewModel.standingViewYear)
                         .refreshable {
-                            await standingsViewModel.refresh()
+                            await viewModel.refresh()
                         }
                 }
                 .tag(0)
                 
                 VStack{
-                    constructorsStandingsScrollView(constructorsStanding: standingsViewModel.constructorStandings)
+                    constructorsStandingsScrollView(constructorsStanding: viewModel.constructorStandings)
                         .refreshable {
-                            await standingsViewModel.refresh()
+                            await viewModel.refresh()
                         }
                 }
                 .tag(1)
@@ -49,9 +49,9 @@ struct StandingsView: View {
             Spacer()
             NavTabSelector(selectedTab: $selectedTab, tabTitles: tabTitles)
             Spacer()
-            YearDropdownSelector(selectedYear: $standingsViewModel.standingViewYear) { newYear in
+            YearDropdownSelector(selectedYear: $viewModel.standingViewYear) { newYear in
                 Task {
-                    await standingsViewModel.updateStandingViewYear(for: newYear)
+                    await viewModel.updateStandingViewYear(for: newYear)
                 }
             }
         }
