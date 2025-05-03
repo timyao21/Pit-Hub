@@ -62,6 +62,7 @@ import StoreKit
         }
     }
     
+    
     // MARK: - Load all the GP info (When lunch the app)
     @MainActor
     func fetchAllGP() async {
