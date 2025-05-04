@@ -58,23 +58,6 @@
     "%lld %%" : {
 
     },
-    "%lld/%lld GP Completed" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld/%2$lld GP Completed"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld/%2$lld 已完成"
-          }
-        }
-      }
-    },
     "+ %@ pts" : {
       "shouldTranslate" : false
     },
@@ -151,17 +134,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "学院标题"
-          }
-        }
-      }
-    },
-    "Add" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "添加"
           }
         }
       }
@@ -2305,6 +2277,7 @@
       }
     },
     "No upcoming races" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -2988,6 +2961,9 @@
         }
       }
     },
+    "Select Driver" : {
+
+    },
     "Sergio" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3557,7 +3533,7 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "天气数据仅在比赛开始前 10 天提供"
+            "value" : "天气数据仅在正赛开始前 10 天提供"
           }
         }
       }

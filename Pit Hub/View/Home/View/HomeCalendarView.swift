@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct HomeCalendarView: View {
-    @State var viewModel: HomeCalendarViewModel
+    @State private var viewModel: ViewModel
     let daysOfWeek = Date.capitalizedFirstLetterOfWeekdays
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
     init(for races: [Races]) {
-        viewModel = HomeCalendarViewModel(for: races)
-    }
-    
-    init(for race: Races) {
-        self.init(for: [race])
+        viewModel = ViewModel(for: races)
     }
     
     var body: some View {

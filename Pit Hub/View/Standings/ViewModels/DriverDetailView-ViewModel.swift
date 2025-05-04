@@ -1,5 +1,5 @@
 //
-//  DriverDetailView.swift
+//  DriverDetailView-ViewModel.swift
 //  Pit Hub
 //
 //  Created by Junyu Yao on 2/27/25.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 extension DriverDetailView {
-    @Observable class DriverDetailViewModel{
+    @Observable class ViewModel{
         private let driverManager = DriverStandingsManager()
         
         @MainActor var driverRaceResult: [Races] = []

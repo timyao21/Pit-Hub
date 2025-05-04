@@ -1,5 +1,5 @@
 //
-//  StandingsViewModel.swift
+//  StandingsView-ViewModel.swift
 //  Pit Hub
 //
 //  Created by Junyu Yao on 5/1/25.

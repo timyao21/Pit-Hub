@@ -88,16 +88,14 @@ struct DriverNicknameView: View {
                         .font(.system(size: 18))
                         .foregroundColor(.secondary)
                     Spacer()
-                    Picker(selection: $viewModel.selectedDriverId, label: Text("Select a Driver")) {
-                        ForEach(viewModel.drivers) { driver in
-                            HStack{
-                                Text(NSLocalizedString(driver.familyName, comment: "Driver family name"))
-                            }
-                            .tag(driver.driverId)
+                    Picker("Select Driver", selection: $viewModel.selectedDriverId) {
+                        ForEach(viewModel.drivers, id: \.driverId) { driver in
+                            Text(LocalizedStringKey(driver.familyName))
+                                .tag(driver.driverId)          // attach the ID once
                         }
                     }
-                    .pickerStyle(MenuPickerStyle())
-                    .tint(Color(S.pitHubIconColor))
+                    .pickerStyle(.menu)                        // shorthand style call
+                    .tint(Color(S.pitHubIconColor))            // keep your custom brand color
                 }
                 
                 TextField("Enter the Nickname", text: $nickname)

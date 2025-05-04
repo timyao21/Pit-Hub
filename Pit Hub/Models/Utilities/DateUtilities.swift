@@ -11,7 +11,7 @@ import SwiftUICore
 
 struct DateUtilities {
     
-    static func combineDateToUtc(from dateString: String, and timeString: String) -> Date? {
+    static func combineDate(from dateString: String, and timeString: String) -> Date? {
         // Combine the date and time strings into a full ISO8601 string.
         // e.g., "2025-03-16" + "T" + "04:00:00Z" -> "2025-03-16T04:00:00Z"
         let combined = "\(dateString)T\(timeString)"
@@ -34,24 +34,6 @@ struct DateUtilities {
             }
         }
         return format
-//        // Retrieve the stored language string and convert it to an AppLanguage.
-//        let languageRaw = UserDefaults.standard.string(forKey: "selectedLanguage") ?? AppLanguage.english.rawValue
-//        guard let language = AppLanguage(rawValue: languageRaw) else {
-//            return format
-//        }
-//    
-//        if language == .chinese {
-//            switch format {
-//            case "yyyy-MM-dd":
-//                return "yyyy年MM月dd日"
-//            case "MM-dd":
-//                return "MM月dd日"
-//            default:
-//                return format
-//            }
-//        }
-//        
-//        return format
     }
     
     // Converts separate UTC date and time strings to local time zone formatted string

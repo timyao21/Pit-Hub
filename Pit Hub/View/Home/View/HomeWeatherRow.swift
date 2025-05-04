@@ -10,7 +10,17 @@ import WeatherKit
 
 struct HomeWeatherRow: View {
     
-    @Bindable var viewModel: IndexViewModel
+    // input param
+    let race: Races
+    
+    // Hold the view‑model
+    @State private var viewModel: ViewModel
+    
+    init(for race: Races){
+        self.race = race
+        _viewModel = State(wrappedValue: ViewModel(race: race))
+    }
+    
     @State private var selectedTab: Int = 0
     
     var body: some View {
@@ -32,7 +42,7 @@ struct HomeWeatherRow: View {
                                 .padding(3)
                         }
                         
-                        if let fp2Weather = viewModel.secondPracticeWeather.first {
+                        if let fp2Weather = viewModel.fp2Weather.first {
                             WeatherCol(title: "FP2", weatherData: fp2Weather)
                             Divider()
                                 .padding(3)
@@ -44,7 +54,7 @@ struct HomeWeatherRow: View {
                                 .padding(3)
                         }
                         
-                        if let fp3Weather = viewModel.thirdPracticeWeather.first {
+                        if let fp3Weather = viewModel.fp3Weather.first {
                             WeatherCol(title: "FP3", weatherData: fp3Weather)
                             Divider()
                                 .padding(3)

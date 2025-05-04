@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Bindable var viewModel: IndexViewModel
+    @Bindable var indexViewModel: IndexViewModel
     @State private var isSettingsPresented: Bool = false
     
     var body: some View {
@@ -38,7 +38,7 @@ struct HomeView: View {
                 }
                 
                 NavigationLink {
-                    RaceCalendarView(viewModel: viewModel)
+                    RaceCalendarView(viewModel: indexViewModel)
                 } label: {
                     VStack{
                         HStack{
@@ -56,13 +56,11 @@ struct HomeView: View {
                                 .foregroundColor(Color(S.pitHubIconColor))
                         }
                         .padding(.vertical)
-                        if viewModel.allUpcomingGP.isEmpty {
-                            Text("No upcoming races")
-                                .foregroundColor(.secondary)
+                        if indexViewModel.allUpcomingGP.isEmpty {
+                            HomeCalendarView(for: indexViewModel.allUpcomingGP)
                                 .frame(height: 170)
-                                .frame(maxWidth: .infinity, alignment: .center)
                         } else{
-                            HomeCalendarView(for: viewModel.allUpcomingGP)
+                            HomeCalendarView(for: indexViewModel.allUpcomingGP)
                                 .frame(height: 170)
                         }
                     }
@@ -70,9 +68,8 @@ struct HomeView: View {
                 
                 Divider()
                 
-                if let upcomingGP = viewModel.upcomingGP {
-                    RaceCalendarDetailView(for: upcomingGP, homepage: true)
-                        .padding(.horizontal, -16)
+                if let upcomingGP = indexViewModel.upcomingGP {
+                    RaceSection(for: upcomingGP)
                         .padding(.bottom, 10)
                 } else {
                     DataErrorView()
@@ -83,9 +80,9 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical)
                 
-                if (viewModel.membership == true){
-                    if (viewModel.upcomingGP != nil){
-                        HomeWeatherRow(viewModel: viewModel)
+                if (indexViewModel.membership == true){
+                    if (indexViewModel.upcomingGP != nil){
+                        HomeWeatherRow(for: indexViewModel.upcomingGP!)
                     }
                 }else{
                     UnlockView()
@@ -93,8 +90,8 @@ struct HomeView: View {
                         .shadow(radius:3,x: 3,y: 3)
                 }
                 
-                if let lat = viewModel.upcomingGP?.circuit.location.lat,
-                   let long = viewModel.upcomingGP?.circuit.location.long,
+                if let lat = indexViewModel.upcomingGP?.circuit.location.lat,
+                   let long = indexViewModel.upcomingGP?.circuit.location.long,
                    lat != "0", long != "0" {
                     PitSubtitle(for: "Circuit Location")
                         .frame(maxWidth: .infinity, alignment: .leading)

@@ -20,7 +20,7 @@ struct BottomNavBarIndexView: View {
             TabView (selection: $selectedTab) {
                 
                 NavigationStack {
-                    HomeView(viewModel: viewModel)
+                    HomeView(indexViewModel: viewModel)
                         .refreshable {
                             Task{
                                 await viewModel.refreshHomeGPData()

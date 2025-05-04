@@ -10,12 +10,12 @@ import SwiftUI
 struct DriverDetailView: View {
     let driverInfo: DriverStanding
     var year: String
-    @State var viewModel: DriverDetailViewModel
+    @State var viewModel: ViewModel
     
     init(for driver: DriverStanding, year: String) {
         self.year = year
         self.driverInfo = driver
-        viewModel = DriverDetailViewModel()
+        viewModel = ViewModel()
     }
     
     var composedName: Text {
