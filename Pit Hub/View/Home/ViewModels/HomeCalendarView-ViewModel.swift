@@ -18,13 +18,11 @@ struct RaceCalendarDate {
 extension HomeCalendarView{
     
     @Observable class ViewModel{
-        @MainActor var races: [Races]
         @MainActor var days: [Date?] = []
         @MainActor var raceCalendarDate: [RaceCalendarDate] = []
         
         @MainActor
         init(for races: [Races]) {
-            self.races = races
             self.days = generateDays()
             Task {
                 let raceTimes = await getRaceCalendarTimes(for: races)

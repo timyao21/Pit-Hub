@@ -2587,6 +2587,16 @@
         }
       }
     },
+    "Race Calendar" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "赛历"
+          }
+        }
+      }
+    },
     "Race Day Weather Forecasts" : {
       "extractionState" : "manual",
       "localizations" : {

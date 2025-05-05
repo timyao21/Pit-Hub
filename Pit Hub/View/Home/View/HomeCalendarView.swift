@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct HomeCalendarView: View {
+    
+    //viewModel
     @State private var viewModel: ViewModel
+    @State private var today: Date
+    
     let daysOfWeek = Date.capitalizedFirstLetterOfWeekdays
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     
     init(for races: [Races]) {
         viewModel = ViewModel(for: races)
+        self.today = Date()
+        print("init calendar view \(self.today)")
     }
     
     var body: some View {
@@ -52,7 +58,8 @@ struct HomeCalendarView: View {
                                     day: day,
                                     circuitId: matchingRace?.raceName ?? "-",
                                     hasRace: matchingRace != nil,
-                                    session: matchingRace?.session ?? "-"
+                                    session: matchingRace?.session ?? "-",
+                                    isToday: Calendar.current.isDate(day, inSameDayAs: today)
                                 )
                             } else {
                                 Rectangle()
@@ -90,26 +97,29 @@ struct HomeCalendarView: View {
         let circuitId: String
         let hasRace: Bool
         let session: String
+        let isToday: Bool
         private let calendar = Calendar.current
         
         var body: some View {
-            let isToday = calendar.isDate(day, inSameDayAs: Date())
             let dayComponent = calendar.component(.day, from: day)
             let monthComponent = calendar.component(.month, from: day)
             
             return VStack(spacing: 2) {
+//                 if it is the first day of the month
                 if dayComponent == 1 {
                     Text(calendar.shortMonthSymbols[monthComponent - 1])
                         .foregroundColor(.primary)
                         .font(.caption)
                         .fontWeight(.bold)
                         .frame(height: 10)
+//                    Show circuitId first day of the race weekend
                 } else if session == "FP1"{
                     Text(LocalizedStringKey(circuitId))
                         .foregroundColor(Color(S.pitHubIconColor))
                         .font(.caption)
                         .fontWeight(.bold)
                         .frame(height: 10)
+//                    Display nothing if no races
                 }else {
                     Text("")
                         .font(.caption)

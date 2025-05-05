@@ -89,7 +89,7 @@ import StoreKit
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")
         }
-            
+        
     }
     
     // MARK: - refrseh the Home page data
@@ -112,7 +112,7 @@ import StoreKit
             }
             
             upcomingGP = upcoming.first
-
+            
             
         } catch {
             print("Failed to fetch races: \(error.localizedDescription)")

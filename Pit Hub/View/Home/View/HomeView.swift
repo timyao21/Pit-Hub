@@ -42,7 +42,7 @@ struct HomeView: View {
                 } label: {
                     VStack{
                         HStack{
-                            PitSubtitle(for: "Next Race")
+                            PitSubtitle(for: "Race Calendar")
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             Image(systemName: "calendar")
                                 .resizable()
@@ -58,15 +58,19 @@ struct HomeView: View {
                         .padding(.vertical)
                         if indexViewModel.allUpcomingGP.isEmpty {
                             HomeCalendarView(for: indexViewModel.allUpcomingGP)
-                                .frame(height: 170)
+                                .frame(height: 165)
                         } else{
                             HomeCalendarView(for: indexViewModel.allUpcomingGP)
-                                .frame(height: 170)
+                                .frame(height: 165)
                         }
                     }
                 }
                 
                 Divider()
+                
+                PitSubtitle(for: "Next Race")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.vertical)
                 
                 if let upcomingGP = indexViewModel.upcomingGP {
                     RaceSection(for: upcomingGP)
