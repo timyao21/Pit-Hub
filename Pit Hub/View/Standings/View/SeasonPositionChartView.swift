@@ -33,8 +33,9 @@ struct SeasonPositionChartView: View {
                 if let data = selectedData{
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
-                            Text("Round: \(data.round)")
                             Text(LocalizedStringKey(data.circuitId ?? "Unknown Circuit"))
+                                .frame(width: 40, alignment: .leading)
+                            Text("Round: \(data.round)")
                         }
                         Text("Position: \(data.position)")
                     }

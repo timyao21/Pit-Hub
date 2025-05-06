@@ -36,7 +36,7 @@ struct InAppPurchases: View {
                     case .success(let verification):
                         guard case .verified(let transaction) = verification else { return }
                         await transaction.finish()
-                        viewModel.membership = true          // unlock features
+                        await viewModel.checkMembership()
                         dismiss()                            // close paywall
                         
                     case .pending:

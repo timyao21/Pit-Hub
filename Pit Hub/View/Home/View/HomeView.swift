@@ -59,10 +59,10 @@ struct HomeView: View {
                         .padding(.vertical)
                         if viewModel.homepageUpcomingRaces.isEmpty {
                             HomeCalendarView(for: viewModel.homepageUpcomingRaces)
-                                .frame(height: 165)
+                                .frame(height: 170)
                         } else{
                             HomeCalendarView(for: viewModel.homepageUpcomingRaces)
-                                .frame(height: 165)
+                                .frame(height: 170)
                         }
                     }
                 }

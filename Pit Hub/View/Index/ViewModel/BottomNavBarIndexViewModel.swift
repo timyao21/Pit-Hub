@@ -47,9 +47,7 @@ import StoreKit
     init() {
         Task {
             self.isLoading = true
-//            await membership = storeManager.checkMember()
             await checkMembership()
-//            await fetchAllGP() // Load data for both Homepage & Race Calendar
             self.isLoading = false
         }
     }
