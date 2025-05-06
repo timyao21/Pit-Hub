@@ -14,6 +14,9 @@ import StoreKit
     private let gpManager = GPManager()
     let storeManager = StoreManager()
     
+//    Data Loading view
+    @MainActor var isLoading: Bool = true
+    
     // MARK: - Check Membership
     @MainActor var membership: Bool = false
     @MainActor var subscriptionSheetIsPresented: Bool = false
@@ -43,8 +46,10 @@ import StoreKit
     @MainActor
     init() {
         Task {
+            self.isLoading = true
             await membership = storeManager.checkMember()
             await fetchAllGP() // Load data for both Homepage & Race Calendar
+            self.isLoading = false
         }
     }
     

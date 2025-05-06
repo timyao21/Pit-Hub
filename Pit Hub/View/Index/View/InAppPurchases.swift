@@ -11,6 +11,8 @@ import StoreKit
 struct InAppPurchases: View {
     let storeManager = StoreManager()
     
+    @Environment(IndexViewModel.self) private var viewModel
+    @Environment(\.dismiss)           private var dismiss
     @State private var showSafari = false
     @State private var selectedURL: IdentifiableURL?
 
@@ -25,6 +27,34 @@ struct InAppPurchases: View {
             }
             .storeButton(.visible, for: .redeemCode)
             .storeButton(.visible, for: .restorePurchases)
+            .onInAppPurchaseCompletion { _, outcome in
+                switch outcome {
+                    
+                // ─────────── Success path ───────────
+                case .success(let state):
+                    switch state {
+                    case .success(let verification):
+                        guard case .verified(let transaction) = verification else { return }
+                        await transaction.finish()
+                        viewModel.membership = true          // unlock features
+                        dismiss()                            // close paywall
+                        
+                    case .pending:
+                        print("Purchase pending…")           // Ask‑to‑Buy, etc.
+                        
+                    case .userCancelled:
+                        break                                // no action
+                        
+                    @unknown default:
+                        break
+                    }
+                    
+                // ─────────── Failure path ───────────
+                case .failure(let error):
+                    print("Purchase failed: \(error.localizedDescription)")
+                }
+            }
+
             
             HStack(spacing: 15) {
                 Button {

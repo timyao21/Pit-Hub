@@ -49,6 +49,11 @@ struct BottomNavBarIndexView: View {
                 .tag(2)
                 
             }
+            
+            if viewModel.isLoading {
+                LoadingOverlay()
+            }
+            
             if showNetworkWarning {
                 NetworkWarningView()
                     .padding(.horizontal)
