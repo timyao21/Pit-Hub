@@ -9,7 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @Bindable var indexViewModel: IndexViewModel
+    @Environment(IndexViewModel.self) private var indexViewModel
+    @State private var viewModel = ViewModel()
+//    @Bindable var indexViewModel: IndexViewModel
     @State private var isSettingsPresented: Bool = false
     
     var body: some View {
@@ -56,11 +58,11 @@ struct HomeView: View {
                                 .foregroundColor(Color(S.pitHubIconColor))
                         }
                         .padding(.vertical)
-                        if indexViewModel.allUpcomingGP.isEmpty {
-                            HomeCalendarView(for: indexViewModel.allUpcomingGP)
+                        if viewModel.homepageUpcomingRaces.isEmpty {
+                            HomeCalendarView(for: viewModel.homepageUpcomingRaces)
                                 .frame(height: 165)
                         } else{
-                            HomeCalendarView(for: indexViewModel.allUpcomingGP)
+                            HomeCalendarView(for: viewModel.homepageUpcomingRaces)
                                 .frame(height: 165)
                         }
                     }
@@ -72,7 +74,7 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical)
                 
-                if let upcomingGP = indexViewModel.upcomingGP {
+                if let upcomingGP = viewModel.homepageUpcomingRace {
                     RaceSection(for: upcomingGP)
                         .padding(.bottom, 10)
                 } else {
@@ -85,8 +87,8 @@ struct HomeView: View {
                     .padding(.vertical)
                 
                 if (indexViewModel.membership == true){
-                    if (indexViewModel.upcomingGP != nil){
-                        HomeWeatherRow(for: indexViewModel.upcomingGP!)
+                    if (viewModel.homepageUpcomingRace != nil){
+                        HomeWeatherRow(for: viewModel.homepageUpcomingRace!)
                     }
                 }else{
                     UnlockView()
@@ -94,8 +96,8 @@ struct HomeView: View {
                         .shadow(radius:3,x: 3,y: 3)
                 }
                 
-                if let lat = indexViewModel.upcomingGP?.circuit.location.lat,
-                   let long = indexViewModel.upcomingGP?.circuit.location.long,
+                if let lat = viewModel.homepageUpcomingRace?.circuit.location.lat,
+                   let long = viewModel.homepageUpcomingRace?.circuit.location.long,
                    lat != "0", long != "0" {
                     PitSubtitle(for: "Circuit Location")
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -104,6 +106,11 @@ struct HomeView: View {
                 }
             }
             .padding()
+        }
+        .refreshable {
+            Task{
+                await viewModel.refreshHomepage()
+            }
         }
         .navigationBarHidden(true)
         .sheet(isPresented: $isSettingsPresented) {

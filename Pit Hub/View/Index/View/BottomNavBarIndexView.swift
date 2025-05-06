@@ -20,12 +20,7 @@ struct BottomNavBarIndexView: View {
             TabView (selection: $selectedTab) {
                 
                 NavigationStack {
-                    HomeView(indexViewModel: viewModel)
-                        .refreshable {
-                            Task{
-                                await viewModel.refreshHomeGPData()
-                            }
-                        }
+                    HomeView()
                 }
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")

@@ -48,81 +48,81 @@ import StoreKit
         Task {
             self.isLoading = true
             await membership = storeManager.checkMember()
-            await fetchAllGP() // Load data for both Homepage & Race Calendar
+//            await fetchAllGP() // Load data for both Homepage & Race Calendar
             self.isLoading = false
         }
     }
     
     // MARK: - Load all the GP info (When lunch the app)
-    @MainActor
-    func fetchAllGP() async {
-        let today = Date()
-        let currentYear = Calendar.current.component(.year, from: today)
-        
-        do {
-            let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
-            allGP = allGPs
-            
-            var upcoming = [Races]()
-            var past = [Races]()
-            
-            
-            
-            // Split races into upcoming and past in one pass
-            for gp in allGPs {
-                if let gpDate = DateUtilities.combineDate(from: gp.date, and: gp.time ?? " ") {
-                    if gpDate >= today {
-                        upcoming.append(gp)
-                    } else {
-                        past.append(gp)
-                    }
-                }
-            }
-            allUpcomingGP = upcoming
-            allPastGP = past
-            upcomingGP = upcoming.first
-            
-            // Update Race Calendar Data
-            raceCalendar = allGPs
-            raceCalendarUpcoming = upcoming
-            raceCalendarPast = past
-            
-            if raceCalendarPast.isEmpty{
-                raceCalendarSelectedTab = 0
-            }
-            
-        } catch {
-            print("Failed to fetch races: \(error.localizedDescription)")
-        }
-        
-    }
+//    @MainActor
+//    func fetchAllGP() async {
+//        let today = Date()
+//        let currentYear = Calendar.current.component(.year, from: today)
+//        
+//        do {
+//            let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
+//            allGP = allGPs
+//            
+//            var upcoming = [Races]()
+//            var past = [Races]()
+//            
+//            
+//            
+//            // Split races into upcoming and past in one pass
+//            for gp in allGPs {
+//                if let gpDate = DateUtilities.combineDate(from: gp.date, and: gp.time ?? " ") {
+//                    if gpDate >= today {
+//                        upcoming.append(gp)
+//                    } else {
+//                        past.append(gp)
+//                    }
+//                }
+//            }
+//            allUpcomingGP = upcoming
+//            allPastGP = past
+//            upcomingGP = upcoming.first
+//            
+//            // Update Race Calendar Data
+//            raceCalendar = allGPs
+//            raceCalendarUpcoming = upcoming
+//            raceCalendarPast = past
+//            
+//            if raceCalendarPast.isEmpty{
+//                raceCalendarSelectedTab = 0
+//            }
+//            
+//        } catch {
+//            print("Failed to fetch races: \(error.localizedDescription)")
+//        }
+//        
+//    }
     
     // MARK: - refrseh the Home page data
-    @MainActor
-    func refreshHomeGPData() async{
-        await membership = storeManager.checkMember()
-        
-        let today = Date()
-        let currentYear = Calendar.current.component(.year, from: today)
-        
-        do {
-            let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
-            allGP = allGPs
-            
-            var upcoming = [Races]()
-            for gp in allGPs {
-                if let gpDate = DateUtilities.combineDate(from: gp.date, and: gp.time ?? " "), gpDate >= today {
-                    upcoming.append(gp)
-                }
-            }
-            
-            upcomingGP = upcoming.first
-            
-            
-        } catch {
-            print("Failed to fetch races: \(error.localizedDescription)")
-        }
-    }
+//    @MainActor
+//    func refreshHomeGPData() async{
+//        await membership = storeManager.checkMember()
+//        
+//        let today = Date()
+//        let currentYear = Calendar.current.component(.year, from: today)
+//        
+//        do {
+//            let allGPs = try await gpManager.fetchRaceSchedule(for: "\(currentYear)")
+//            allGP = allGPs
+//            
+//            var upcoming = [Races]()
+//            for gp in allGPs {
+//                if let gpDate = DateUtilities.combineDate(from: gp.date, and: gp.time ?? " "), gpDate >= today {
+//                    upcoming.append(gp)
+//                }
+//            }
+//            
+//            upcomingGP = upcoming.first
+//            
+//            
+//        } catch {
+//            print("Failed to fetch races: \(error.localizedDescription)")
+//        }
+//    }
     
     // MARK: - Race calendar view
     @MainActor
