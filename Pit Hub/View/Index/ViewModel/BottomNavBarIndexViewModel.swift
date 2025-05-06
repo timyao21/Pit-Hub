@@ -22,17 +22,17 @@ import StoreKit
     @MainActor var subscriptionSheetIsPresented: Bool = false
     
     // MARK: - Home View Properties
-    @MainActor var allGP: [Races] = []
-    @MainActor var allPastGP: [Races] = []
-    @MainActor var allUpcomingGP: [Races] = []
-    @MainActor var upcomingGP: Races?
-    
-    // MARK: - Race Calendar View Properties
-    @MainActor var raceCalendarViewYear = "\(Calendar.current.component(.year, from: Date()))"
-    @MainActor var raceCalendar: [Races] = []
-    @MainActor var raceCalendarPast: [Races] = []
-    @MainActor var raceCalendarUpcoming: [Races] = []
-    var raceCalendarSelectedTab: Int = 1
+//    @MainActor var allGP: [Races] = []
+//    @MainActor var allPastGP: [Races] = []
+//    @MainActor var allUpcomingGP: [Races] = []
+//    @MainActor var upcomingGP: Races?
+//    
+//    // MARK: - Race Calendar View Properties
+//    @MainActor var raceCalendarViewYear = "\(Calendar.current.component(.year, from: Date()))"
+//    @MainActor var raceCalendar: [Races] = []
+//    @MainActor var raceCalendarPast: [Races] = []
+//    @MainActor var raceCalendarUpcoming: [Races] = []
+//    var raceCalendarSelectedTab: Int = 1
     
     
     // MARK: - Computed Property for DateFormatter
@@ -47,10 +47,17 @@ import StoreKit
     init() {
         Task {
             self.isLoading = true
-            await membership = storeManager.checkMember()
+//            await membership = storeManager.checkMember()
+            await checkMembership()
 //            await fetchAllGP() // Load data for both Homepage & Race Calendar
             self.isLoading = false
         }
+    }
+    
+    @MainActor
+    func checkMembership() async {
+        print("Checking membership status...")
+        await membership = storeManager.checkMember()
     }
     
     // MARK: - Load all the GP info (When lunch the app)
@@ -125,51 +132,51 @@ import StoreKit
 //    }
     
     // MARK: - Race calendar view
-    @MainActor
-    func updateRaceCalendarViewYear(for year: String) {
-        raceCalendarViewYear = year
-        Task{
-            await refreshRaceCalendarData()
-        }
-    }
+//    @MainActor
+//    func updateRaceCalendarViewYear(for year: String) {
+//        raceCalendarViewYear = year
+//        Task{
+//            await refreshRaceCalendarData()
+//        }
+//    }
     
-    @MainActor
-    func refreshRaceCalendarData() async {
-        print("Refreshing Calendar Data for \(raceCalendarViewYear)...")
-        let today = Date()
-        
-        do{
-            let allGPs = try await gpManager.fetchRaceSchedule(for: raceCalendarViewYear)
-            raceCalendar = allGPs
-            
-            var upcoming = [Races]()
-            var past = [Races]()
-            
-            // Split races into upcoming and past in one pass
-            for gp in allGPs {
-                if let gpDate = DateUtilities.combineDate(from: gp.date, and: gp.time ?? " ") {
-                    if gpDate >= today {
-                        upcoming.append(gp)
-                    } else {
-                        past.append(gp)
-                    }
-                }
-            }
-            
-            raceCalendar = allGPs
-            raceCalendarUpcoming = upcoming
-            raceCalendarPast = past
-            
-            if raceCalendarPast.isEmpty{
-                raceCalendarSelectedTab = 0
-            }else{
-                raceCalendarSelectedTab = 1
-            }
-            
-        }catch {
-            print("Failed to fetch races: \(error.localizedDescription)")
-        }
-    }
+//    @MainActor
+//    func refreshRaceCalendarData() async {
+//        print("Refreshing Calendar Data for \(raceCalendarViewYear)...")
+//        let today = Date()
+//        
+//        do{
+//            let allGPs = try await gpManager.fetchRaceSchedule(for: raceCalendarViewYear)
+//            raceCalendar = allGPs
+//            
+//            var upcoming = [Races]()
+//            var past = [Races]()
+//            
+//            // Split races into upcoming and past in one pass
+//            for gp in allGPs {
+//                if let gpDate = DateUtilities.combineDate(from: gp.date, and: gp.time ?? " ") {
+//                    if gpDate >= today {
+//                        upcoming.append(gp)
+//                    } else {
+//                        past.append(gp)
+//                    }
+//                }
+//            }
+//            
+//            raceCalendar = allGPs
+//            raceCalendarUpcoming = upcoming
+//            raceCalendarPast = past
+//            
+//            if raceCalendarPast.isEmpty{
+//                raceCalendarSelectedTab = 0
+//            }else{
+//                raceCalendarSelectedTab = 1
+//            }
+//            
+//        }catch {
+//            print("Failed to fetch races: \(error.localizedDescription)")
+//        }
+//    }
     
     // MARK: - End
 }

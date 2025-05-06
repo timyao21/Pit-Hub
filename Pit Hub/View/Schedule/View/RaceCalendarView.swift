@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RaceCalendarView: View {
-    @Bindable var viewModel: IndexViewModel
-    
+    @Bindable var viewModel: HomepageViewModel
     @Namespace private var animation
     private let tabTitles = ["Upcoming", "Past"]
     
@@ -23,7 +22,7 @@ struct RaceCalendarView: View {
                 Spacer()
                 NavTabSelector(selectedTab: $viewModel.raceCalendarSelectedTab, tabTitles: tabTitles)
                 Spacer()
-                YearDropdownSelector(selectedYear: $viewModel.raceCalendarViewYear) {
+                YearDropdownSelector(selectedYear: $viewModel.raceCalendarViewSelectedYear) {
                     newYear in
                     viewModel.updateRaceCalendarViewYear(for: newYear)
                 }
@@ -33,19 +32,19 @@ struct RaceCalendarView: View {
             // MARK: - TabView
             TabView(selection: $viewModel.raceCalendarSelectedTab) {
                 VStack{
-                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarUpcoming)
+                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarUpcomingRaces)
                 }
                 .tag(0)
                 
                 VStack{
-                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarPast.reversed())
+                    raceCalendarScrollView(raceCalendar: viewModel.raceCalendarPastRaces.reversed())
                 }
                 .tag(1)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         }
         .refreshable {
-            await viewModel.refreshRaceCalendarData()
+            await viewModel.refreshRaceCalendarView()
         }
     }
 }

@@ -10,8 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @Environment(IndexViewModel.self) private var indexViewModel
-    @State private var viewModel = ViewModel()
-//    @Bindable var indexViewModel: IndexViewModel
+    @State private var viewModel = HomepageViewModel()
     @State private var isSettingsPresented: Bool = false
     
     var body: some View {
@@ -40,7 +39,7 @@ struct HomeView: View {
                 }
                 
                 NavigationLink {
-                    RaceCalendarView(viewModel: indexViewModel)
+                    RaceCalendarView(viewModel: viewModel)
                 } label: {
                     VStack{
                         HStack{
@@ -109,6 +108,7 @@ struct HomeView: View {
         }
         .refreshable {
             Task{
+                await indexViewModel.checkMembership()
                 await viewModel.refreshHomepage()
             }
         }
