@@ -67,7 +67,7 @@ struct FullResultsListView: View {
                                 number: result.number,
                                 position: result.position,
                                 positionText: result.positionText,
-                                driverFirstName: result.driver.givenName, // assuming 'Driver' has these properties
+                                driverFirstName: result.driver.givenName,
                                 driverLastName: result.driver.familyName,
                                 points: result.points,
                                 status: result.status,
@@ -124,8 +124,8 @@ struct FullResultsListView: View {
                             
                             if index < raceResults.count - 1 { // Avoid divider after the last row
                                 Divider()
-                                    .frame(height: (index == 9) ? 2 : 1) // Optional: thicker divider for index 10 and 15
-                                    .background((index == 9) ? Color(S.pitHubIconColor).opacity(0.5) : Color.clear)
+                                    .frame(height: (index == 7) ? 2 : 1) // Optional: thicker divider for index 10 and 15
+                                    .background((index == 7) ? Color(S.pitHubIconColor).opacity(0.5) : Color.clear)
                                     .padding(.horizontal)
                             }
                         }
