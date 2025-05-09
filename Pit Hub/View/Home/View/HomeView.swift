@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @AppStorage("membership") private var cachedMembership = false
     @Environment(IndexViewModel.self) private var indexViewModel
     @State private var viewModel = HomepageViewModel()
     @State private var isSettingsPresented: Bool = false
@@ -85,7 +86,7 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.vertical)
                 
-                if (indexViewModel.membership == true){
+                if (cachedMembership == true){
                     if (viewModel.homepageUpcomingRace != nil){
                         HomeWeatherRow(for: viewModel.homepageUpcomingRace!)
                     }

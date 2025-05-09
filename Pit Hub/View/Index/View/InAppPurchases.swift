@@ -13,6 +13,7 @@ struct InAppPurchases: View {
     
     @Environment(IndexViewModel.self) private var viewModel
     @Environment(\.dismiss)           private var dismiss
+    
     @State private var showSafari = false
     @State private var selectedURL: IdentifiableURL?
 

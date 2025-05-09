@@ -10,11 +10,15 @@ import SwiftData
 
 @main
 struct Pit_HubApp: App {
-    
-    let persistenceController = PersistenceController.shared
+    // MARK: - AppStorage
+
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
+//    store membership to local
+    @AppStorage("membership") private var cachedMembership = false
     
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
         WindowGroup {
             BottomNavBarIndexView()
