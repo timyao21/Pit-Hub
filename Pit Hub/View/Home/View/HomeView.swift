@@ -15,97 +15,105 @@ struct HomeView: View {
     @State private var isSettingsPresented: Bool = false
     
     var body: some View {
-        ScrollView{
-            VStack(spacing: 3){
-                HStack {
-                    Image(S.pitIcon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40)
-                    Text(S.title)
-                        .foregroundColor(Color(S.pitHubIconColor))
-                        .font(.custom(S.orbitron, size: 30))
-                        .bold()
-                    Spacer()
-                    // Gear icon button for presenting settings as a sheet
-                    Button {
-                        isSettingsPresented = true
-                    } label: {
-                        Image(systemName: "gearshape.fill")
+        ZStack{
+//            Homeview Body
+            ScrollView{
+                VStack(spacing: 3){
+                    HStack {
+                        Image(S.pitIcon)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 25, height: 25)
+                            .frame(width: 40)
+                        Text(S.title)
                             .foregroundColor(Color(S.pitHubIconColor))
-                    }
-                }
-                
-                NavigationLink {
-                    RaceCalendarView(viewModel: viewModel)
-                } label: {
-                    VStack{
-                        HStack{
-                            PitSubtitle(for: "Race Calendar")
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            Image(systemName: "calendar")
+                            .font(.custom(S.orbitron, size: 30))
+                            .bold()
+                        Spacer()
+                        // Gear icon button for presenting settings as a sheet
+                        Button {
+                            isSettingsPresented = true
+                        } label: {
+                            Image(systemName: "gearshape.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 23, height: 23)
-                                .foregroundColor(Color(S.pitHubIconColor))
-                            Image(systemName: "chevron.right")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 18, height: 18)
+                                .frame(width: 25, height: 25)
                                 .foregroundColor(Color(S.pitHubIconColor))
                         }
-                        .padding(.vertical)
-                        if viewModel.homepageUpcomingRaces.isEmpty {
-                            HomeCalendarView(for: viewModel.homepageUpcomingRaces)
-                                .frame(height: 170)
-                        } else{
-                            HomeCalendarView(for: viewModel.homepageUpcomingRaces)
-                                .frame(height: 170)
+                    }
+                    
+                    NavigationLink {
+                        RaceCalendarView(viewModel: viewModel)
+                    } label: {
+                        VStack{
+                            HStack{
+                                PitSubtitle(for: "Race Calendar")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Image(systemName: "calendar")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 23, height: 23)
+                                    .foregroundColor(Color(S.pitHubIconColor))
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18, height: 18)
+                                    .foregroundColor(Color(S.pitHubIconColor))
+                            }
+                            .padding(.vertical)
+                            if viewModel.homepageUpcomingRaces.isEmpty {
+                                HomeCalendarView(for: viewModel.homepageUpcomingRaces)
+                                    .frame(height: 170)
+                            } else{
+                                HomeCalendarView(for: viewModel.homepageUpcomingRaces)
+                                    .frame(height: 170)
+                            }
                         }
                     }
-                }
-                
-                Divider()
-                
-                PitSubtitle(for: "Next Race")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical)
-                
-                if let upcomingGP = viewModel.homepageUpcomingRace {
-                    RaceSection(for: upcomingGP)
-                        .padding(.bottom, 10)
-                } else {
-                    DataErrorView()
-                        .frame(height: 300)
-                }
-                
-                PitSubtitle(for: "Race Day Weather Forecasts")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical)
-                
-                if (cachedMembership == true){
-                    if (viewModel.homepageUpcomingRace != nil){
-                        HomeWeatherRow(for: viewModel.homepageUpcomingRace!)
-                    }
-                }else{
-                    UnlockView()
-                        .cornerRadius(10)
-                        .shadow(radius:3,x: 3,y: 3)
-                }
-                
-                if let lat = viewModel.homepageUpcomingRace?.circuit.location.lat,
-                   let long = viewModel.homepageUpcomingRace?.circuit.location.long,
-                   lat != "0", long != "0" {
-                    PitSubtitle(for: "Circuit Location")
+                    
+                    Divider()
+                    
+                    PitSubtitle(for: "Next Race")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.vertical)
-                    CircuitMapView(lat: lat, long: long)
+                    
+                    if let upcomingGP = viewModel.homepageUpcomingRace {
+                        RaceSection(for: upcomingGP)
+                            .padding(.bottom, 10)
+                    } else {
+                        DataErrorView()
+                            .frame(height: 300)
+                    }
+                    
+                    PitSubtitle(for: "Race Day Weather Forecasts")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical)
+                    
+                    if (cachedMembership == true){
+                        if (viewModel.homepageUpcomingRace != nil){
+                            HomeWeatherRow(for: viewModel.homepageUpcomingRace!)
+                        }
+                    }else{
+                        UnlockView()
+                            .cornerRadius(10)
+                            .shadow(radius:3,x: 3,y: 3)
+                    }
+                    
+                    if let lat = viewModel.homepageUpcomingRace?.circuit.location.lat,
+                       let long = viewModel.homepageUpcomingRace?.circuit.location.long,
+                       lat != "0", long != "0" {
+                        PitSubtitle(for: "Circuit Location")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical)
+                        CircuitMapView(lat: lat, long: long)
+                    }
                 }
+                .padding()
             }
-            .padding()
+            
+//            loading overlay
+            if viewModel.isLoading {
+                LoadingOverlay()
+            }
         }
         .refreshable {
             Task{

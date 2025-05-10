@@ -14,6 +14,7 @@ extension DriverDetailView {
         
         @MainActor var driverRaceResult: [Races] = []
         @MainActor var driverRaceResultPositionChart: [PositionChart] = []
+        @MainActor var driverAge : String = " "
         
         // MARK: - Fetch Driver Results
         @MainActor
@@ -53,6 +54,26 @@ extension DriverDetailView {
                 }
                 return false
             }
+        }
+        
+        // MARK: - Cal Driver's age
+        func driverAge(dateOfBirth: String?) -> String {
+            guard let dob = dateOfBirth else {
+                return ""
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+
+            if let birthDate = dateFormatter.date(from: dob) {
+                let ageComponents = Calendar.current.dateComponents([.year], from: birthDate, to: Date())
+                if let age = ageComponents.year {
+                    return "\(age)"
+                }
+            }
+            
+            return ""
         }
         
         

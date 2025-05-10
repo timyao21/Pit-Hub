@@ -41,7 +41,6 @@ import SwiftUI
             UserDefaults.standard.set(false, forKey: "membership")
             print("User is not a member")
         }
-//        await membership = storeManager.checkMember()
     }
         
     // MARK: - End

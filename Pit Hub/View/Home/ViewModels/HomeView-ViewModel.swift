@@ -14,6 +14,7 @@ import StoreKit
     
     // Data Manager
     private let gpManager = GPManager()
+    @MainActor var isLoading: Bool = true
     
     // Home View Properties
     @MainActor var homepageRaces: [Races] = []
@@ -32,7 +33,10 @@ import StoreKit
     @MainActor
     init() {
         Task {
+            self.isLoading = true
             await loadAllGP()
+            try? await Task.sleep(nanoseconds: 1_000_000_000) // 1 second
+            self.isLoading = false
             print("HomeViewModel ---- init")
         }
     }

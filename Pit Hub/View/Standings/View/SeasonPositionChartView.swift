@@ -34,8 +34,7 @@ struct SeasonPositionChartView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         HStack {
                             Text(LocalizedStringKey(data.circuitId ?? "Unknown Circuit"))
-                                .frame(width: 40, alignment: .leading)
-                            Text("Round: \(data.round)")
+                            Text("(Round: \(data.round))")
                         }
                         Text("Position: \(data.position)")
                     }

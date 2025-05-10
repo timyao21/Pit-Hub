@@ -33,6 +33,16 @@
     "(" : {
 
     },
+    "(Round: %@)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "（回合： %@）"
+          }
+        }
+      }
+    },
     ")" : {
 
     },
@@ -257,9 +267,15 @@
     "Alpine F1 Team" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Alpine"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "阿尔派"
           }
         }
@@ -2644,9 +2660,15 @@
     "RB F1 Team" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "RB"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "小红牛"
           }
         }
