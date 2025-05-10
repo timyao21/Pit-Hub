@@ -31,6 +31,7 @@ struct SettingsView: View {
     @State private var viewModel = SettingViewModel()
     
     // Using AppStorage to persist user settings
+    @AppStorage("membership") private var cachedMembership = false
     @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
     
@@ -47,7 +48,7 @@ struct SettingsView: View {
             Form {
                 // Section for appearance settings
                 Section(header: Text("PitLane+ Paddock Pass")) {
-                    if indexViewModel.membership {
+                    if cachedMembership {
                         // Member UI
                         VStack (spacing: 8){
                             HStack {
