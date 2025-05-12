@@ -72,7 +72,7 @@
       "shouldTranslate" : false
     },
     "+ %lld h" : {
-
+      "shouldTranslate" : false
     },
     "🏎️ 8.88s Pit Stop! 🏁" : {
       "extractionState" : "manual",
@@ -192,7 +192,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "墨尔本"
           }
         }
@@ -275,7 +275,7 @@
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "阿尔派"
           }
         }
@@ -376,6 +376,12 @@
     "Aston Martin" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aston"
+          }
+        },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "needs_review",
@@ -1102,17 +1108,6 @@
         }
       }
     },
-    "Driver Nicknames" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "车手昵称"
-          }
-        }
-      }
-    },
     "Driver not in position! Pick your racer first!" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1489,9 +1484,15 @@
     "Haas F1 Team" : {
       "extractionState" : "manual",
       "localizations" : {
-        "zh-Hans" : {
+        "en" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "Haas"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
             "value" : "哈斯"
           }
         }
@@ -2292,17 +2293,6 @@
         }
       }
     },
-    "No upcoming races" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "近期无赛事"
-          }
-        }
-      }
-    },
     "Normal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2419,28 +2409,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "皮埃尔"
-          }
-        }
-      }
-    },
-    "Pit App Paddock Club Member!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pit App 围场会员！"
-          }
-        }
-      }
-    },
-    "Pit App Paddock Pass" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pit App 围场通行证"
           }
         }
       }
@@ -2961,17 +2929,6 @@
         }
       }
     },
-    "Season Progress" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "赛季进度"
-          }
-        }
-      }
-    },
     "Season: %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3474,7 +3431,7 @@
     "UTC: %@" : {
       "shouldTranslate" : false
     },
-    "v0.1.1" : {
+    "v0.1.2" : {
 
     },
     "Valtteri" : {

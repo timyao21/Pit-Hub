@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FullQualifyingResultListRowView: View {
     
+    let driverId: String
     let number: String
     let position: String
     let driverFirstName: String
@@ -16,10 +17,6 @@ struct FullQualifyingResultListRowView: View {
     let timeDiff: String
     let lapTime: String
     let constructor : Constructor?
-    
-//    private var constructorColor: Color {
-//        GetConstructorColor(constructorId: constructor?.constructorId ?? "")
-//    }
     
     // Computed property to check if time difference should be hidden
     private var formattedTimeDiff: String {
@@ -37,10 +34,9 @@ struct FullQualifyingResultListRowView: View {
             // Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text(LocalizedStringKey(driverLastName))
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
+//                    Drivers Name
+                    DriverLastName(id: driverId, driverLastName: driverLastName)
+
                     Text("\(number)")
                         .font(.headline)
                         .fontWeight(.semibold)

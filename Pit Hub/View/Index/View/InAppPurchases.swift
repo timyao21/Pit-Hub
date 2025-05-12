@@ -13,8 +13,9 @@ struct InAppPurchases: View {
     
     @Environment(IndexViewModel.self) private var viewModel
     @Environment(\.dismiss)           private var dismiss
+    @AppStorage("membership") private var cachedMembership = false
     
-    @State private var showSafari = false
+//    @State private var showSafari = false
     @State private var selectedURL: IdentifiableURL?
 
     let termsURL = URL(string: "https://developer.apple.com/app-store/review/guidelines/#legal")!
@@ -28,62 +29,62 @@ struct InAppPurchases: View {
             }
             .storeButton(.visible, for: .redeemCode)
             .storeButton(.visible, for: .restorePurchases)
+//            Handle outcome
             .onInAppPurchaseCompletion { _, outcome in
-                switch outcome {
-                    
-                // ─────────── Success path ───────────
-                case .success(let state):
-                    switch state {
-                    case .success(let verification):
-                        guard case .verified(let transaction) = verification else { return }
-                        await transaction.finish()
-                        await viewModel.checkMembership()
-                        dismiss()                            // close paywall
-                        
-                    case .pending:
-                        print("Purchase pending…")           // Ask‑to‑Buy, etc.
-                        
-                    case .userCancelled:
-                        break                                // no action
-                        
-                    @unknown default:
-                        break
+                guard case .success(let state) = outcome else {
+                    if case .failure(let error) = outcome {
+                        print(error)
                     }
-                    
-                // ─────────── Failure path ───────────
-                case .failure(let error):
-                    print("Purchase failed: \(error.localizedDescription)")
+                    return
                 }
+                
+                switch state {
+                case .success(let verification):
+                    guard case .verified(let transaction) = verification else { return }
+                    print(1)
+                    await MainActor.run {
+                        cachedMembership = true
+                        dismiss()
+                    }
+                    print(2)
+                    await transaction.finish()
+                    print(3)
+                    
+                case .pending:
+                    print("Purchase pending…")           // Ask‑to‑Buy, etc.
+                    
+                case .userCancelled:
+                    print("User cancelled purchase…")
+                    break                                // no action
+                    
+                @unknown default:
+                    print("Error occurred: unknown default case")
+                    break
+                    
+                }
+                
             }
 
-            
-            HStack(spacing: 15) {
-                Button {
-                    selectedURL = IdentifiableURL(url: termsURL)
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "doc.text")
-                        Text("Terms of Service")
-                    }
-                    .foregroundColor(.primary)
-                }
-
-                Button {
-                    // Set the URL and the sheet appears when selectedURL is non-nil.
-                    selectedURL = IdentifiableURL(url: policyURL)
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "lock")
-                        Text("Privacy Policy")
-                    }
-                    .foregroundColor(.primary)
-                }
-            }
+            termsAndPolicyButtons
         }
         .sheet(item: $selectedURL) { item in
             SafariView(url: item.url)
         }
     }
+    
+    @ViewBuilder
+    private var termsAndPolicyButtons: some View {
+        HStack(spacing: 15) {
+            Button { selectedURL = IdentifiableURL(url: termsURL) } label: {
+                Label("Terms of Service", systemImage: "doc.text")
+            }
+            Button { selectedURL = IdentifiableURL(url: policyURL) } label: {
+                Label("Privacy Policy", systemImage: "lock")
+            }
+        }
+        .foregroundStyle(.primary)
+    }
+    
 }
 
 struct ProductsHeaderView: View {

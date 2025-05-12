@@ -16,6 +16,7 @@ struct Pit_HubApp: App {
     @AppStorage("selectedWeatherUnit") private var selectedWeatherUnit: WeatherUnit = .celsius
 //    store membership to local
     @AppStorage("membership") private var cachedMembership = false
+    @State private var viewModel = IndexViewModel()
     
     let persistenceController = PersistenceController.shared
 
@@ -26,6 +27,7 @@ struct Pit_HubApp: App {
                     selectedTheme == .system ? nil : (selectedTheme == .light ? .light : .dark)
                 )
                 .modelContainer(for: [DriverNickname.self])
+                .environment(viewModel)
         }
     }
 }

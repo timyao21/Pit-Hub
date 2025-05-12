@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
-// MARK: - Row view
 struct FullRaceResultListRowView: View {
     
+    let driverId: String
     let number: String
     let position: String?
     let positionText: String
@@ -20,6 +21,7 @@ struct FullRaceResultListRowView: View {
     let grid: String?
     let constructor: Constructor?
 
+//    get the grid info
     private var gridValues: (gridString: String, gridInt: Int, posInt: Int)? {
         guard let grid = grid,
               let gridInt = Int(grid),
@@ -29,19 +31,18 @@ struct FullRaceResultListRowView: View {
 
     var body: some View {
         HStack (alignment: .center){
+//            position
             Text(positionText)
                 .frame(width: 40, alignment: .center)
                 .font(.title)
                 .bold()
                 .foregroundColor(PositionColor(position: position ?? "5").color)
             
-            // Driver info gets higher priority for available space.
+//            Driver info gets higher priority for available space.
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text(LocalizedStringKey(driverLastName))
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .lineLimit(1)
+//                    Drivers Name
+                    DriverLastName(id: driverId, driverLastName: driverLastName)
 
                     Text("\(number)")
                         .font(.headline)
@@ -59,6 +60,7 @@ struct FullRaceResultListRowView: View {
                     }
                 }
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             
             // Constructor tag and points now use only the space they need.
             VStack(alignment: .trailing) {
@@ -69,13 +71,13 @@ struct FullRaceResultListRowView: View {
                     .font(.body)
                     .fontWeight(.semibold)
             }
-            .frame(maxWidth: .infinity, alignment: .trailing)
+//            .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding(.horizontal)
     }
 }
 
-struct GridDiffView: View {
+private struct GridDiffView: View {
     let start: Int
     let finish: Int
 
@@ -103,5 +105,49 @@ struct GridDiffView: View {
             }
         }
         .frame(width: 40, height: 10)
+    }
+}
+
+// MARK: - Public Components
+struct DriverLastName: View {
+    
+    //    Get the nickname from SwiftData
+    @Query(sort: \DriverNickname.driverId) var driverNickname: [DriverNickname]
+    
+    let id: String
+    let driverLastName: String
+    
+    //    Display Driver's Lastname
+    private var driverLastNameDisplay: String {
+        if let nickname = driverNickname.first(where: { $0.driverId == id })?.nickname,
+           !nickname.isEmpty{
+            return nickname
+        }else{
+            return ""
+        }
+    }
+    
+    var body: some View {
+        if driverLastNameDisplay.isEmpty {
+            Text(LocalizedStringKey(driverLastName))
+                .font(.headline)
+                .fontWeight(.semibold)
+                .lineLimit(1)
+        }else{
+            HStack(alignment: .bottom){
+                Text(LocalizedStringKey(driverLastNameDisplay))
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .lineLimit(1)
+                Group{
+                    Text("(")
+                    Text(LocalizedStringKey(driverLastName))
+                    Text(")")
+                }
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .lineLimit(1)
+            }
+        }
     }
 }

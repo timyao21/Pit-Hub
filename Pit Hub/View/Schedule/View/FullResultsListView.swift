@@ -64,6 +64,7 @@ struct FullResultsListView: View {
                     if let raceResults = raceResult {
                         ForEach(Array(raceResults.enumerated()), id: \.element.number) {index, result in
                             FullRaceResultListRowView(
+                                driverId: result.driver.driverId,
                                 number: result.number,
                                 position: result.position,
                                 positionText: result.positionText,
@@ -98,7 +99,16 @@ struct FullResultsListView: View {
                                 "-" // No difference for the first driver
                             }
                             
-                            FullQualifyingResultListRowView(number: result.number, position: result.position, driverFirstName: result.driver.givenName, driverLastName: result.driver.familyName, timeDiff: lapTimeDifference, lapTime: lapTime, constructor: result.constructor)
+                            FullQualifyingResultListRowView(
+                                driverId: result.driver.driverId,
+                                number: result.number,
+                                position: result.position,
+                                driverFirstName: result.driver.givenName,
+                                driverLastName: result.driver.familyName,
+                                timeDiff: lapTimeDifference,
+                                lapTime: lapTime,
+                                constructor: result.constructor
+                            )
                             
                             if index < raceResults.count - 1 { // Avoid divider after the last row
                                 Divider()
@@ -111,6 +121,7 @@ struct FullResultsListView: View {
                     }else if let raceResults = sprintResult{
                         ForEach(Array(raceResults.enumerated()), id: \.element.number) {index, result in
                             FullRaceResultListRowView(
+                                driverId: result.driver.driverId,
                                 number: result.number,
                                 position: result.position,
                                 positionText: result.positionText,

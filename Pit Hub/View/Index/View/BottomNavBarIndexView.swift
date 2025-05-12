@@ -10,15 +10,20 @@ import SwiftUI
 struct BottomNavBarIndexView: View {
     
     @State private var networkMonitor = NetworkMonitor()
-    @State private var viewModel = IndexViewModel()
+//    @State private var viewModel = IndexViewModel()
+    @Environment(IndexViewModel.self) private var indexViewModel
     
     @State private var showNetworkWarning = false
     @State private var selectedTab = 0
     
     var body: some View {
+        @Bindable var viewModel = indexViewModel
+        
+        // index ZStack
         ZStack {
             TabView (selection: $selectedTab) {
                 
+//                Homepage
                 NavigationStack {
                     HomeView()
                 }
@@ -27,6 +32,7 @@ struct BottomNavBarIndexView: View {
                 }
                 .tag(0)
                 
+//                Standings View
                 NavigationStack{
                     StandingsView()
                 }
@@ -35,6 +41,7 @@ struct BottomNavBarIndexView: View {
                 }
                 .tag(1)
                 
+//                AcademyView
                 NavigationStack{
                     AcademyView()
                 }
@@ -45,10 +52,12 @@ struct BottomNavBarIndexView: View {
                 
             }
             
+//            Overlay the loading
             if viewModel.isLoading {
                 LoadingOverlay()
             }
             
+//            Overlay the network problem
             if showNetworkWarning {
                 NetworkWarningView()
                     .padding(.horizontal)
@@ -56,11 +65,12 @@ struct BottomNavBarIndexView: View {
                     .animation(.easeInOut, value: showNetworkWarning)
             }
         }
+//        Subscription 
         .sheet(isPresented: $viewModel.subscriptionSheetIsPresented) {
             InAppPurchases()
                 .presentationDetents([.medium])
         }
-        .environment(viewModel)
+//        .environment(viewModel)
         .onChange(of: networkMonitor.isActive) { oldValue, newValue in
             DispatchQueue.main.async {
                 if !newValue {
