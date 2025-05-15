@@ -88,4 +88,5 @@ struct BottomNavBarIndexView: View {
 
 #Preview {
     BottomNavBarIndexView()
+        .environment(IndexViewModel())
 }

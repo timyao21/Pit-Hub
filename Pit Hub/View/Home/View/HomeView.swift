@@ -19,47 +19,15 @@ struct HomeView: View {
 //            Homeview Body
             ScrollView{
                 VStack(spacing: 3){
-                    HStack {
-                        Image(S.pitIcon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40)
-                        Text(S.title)
-                            .foregroundColor(Color(S.pitHubIconColor))
-                            .font(.custom(S.orbitron, size: 30))
-                            .bold()
-                        Spacer()
-                        // Gear icon button for presenting settings as a sheet
-                        Button {
-                            isSettingsPresented = true
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color(S.pitHubIconColor))
-                        }
-                    }
+                    
+                    headerView
                     
                     NavigationLink {
                         RaceCalendarView(viewModel: viewModel)
                     } label: {
                         VStack{
-                            HStack{
-                                PitSubtitle(for: "Race Calendar")
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Image(systemName: "calendar")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 23, height: 23)
-                                    .foregroundColor(Color(S.pitHubIconColor))
-                                Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 18, height: 18)
-                                    .foregroundColor(Color(S.pitHubIconColor))
-                            }
-                            .padding(.vertical)
+                            sectionHeader(title: "Race Calendar", icon: "calendar", arrow: true)
+                            
                             if viewModel.homepageUpcomingRaces.isEmpty {
                                 HomeCalendarView(for: viewModel.homepageUpcomingRaces)
                                     .frame(height: 168)
@@ -72,9 +40,11 @@ struct HomeView: View {
                     
                     Divider()
                     
-                    PitSubtitle(for: "Next Race")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical)
+//                    PitSubtitle(for: "Next Race")
+//                        .frame(maxWidth: .infinity, alignment: .leading)
+//                        .padding(.vertical)
+                    
+                    sectionHeader(title: "Next Race", icon: "flag.pattern.checkered.2.crossed", arrow: false)
                     
                     if let upcomingGP = viewModel.homepageUpcomingRace {
                         RaceSection(for: upcomingGP)
@@ -126,4 +96,54 @@ struct HomeView: View {
             SettingsView()
         }
     }
+    
+    // MARK: - Header View
+    
+    private func sectionHeader(title: LocalizedStringResource, icon: String, arrow: Bool) -> some View {
+        HStack{
+            PitSubtitle(for: title)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Image(systemName: icon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 23, height: 23)
+                .foregroundColor(Color(S.pitHubIconColor))
+            if arrow {
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 18, height: 18)
+                    .foregroundColor(Color(S.pitHubIconColor))
+            }
+        }
+        .padding(.vertical)
+    }
+    
+    private var headerView: some View {
+        HStack {
+            Image(S.pitIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40)
+            Text(S.title)
+                .foregroundColor(Color(S.pitHubIconColor))
+                .font(.custom(S.orbitron, size: 30))
+                .bold()
+            Spacer()
+            // Gear icon button for presenting settings as a sheet
+            Button {
+                isSettingsPresented = true
+            } label: {
+                Image(systemName: "gearshape.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(Color(S.pitHubIconColor))
+            }
+        }
+    }
+    
+    
+    
+    // MARK: - End of the view
 }
