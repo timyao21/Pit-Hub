@@ -16,47 +16,16 @@ struct HomeView: View {
     
     var body: some View {
         ZStack{
-//            Homeview Body
+            //            Homeview Body
             ScrollView{
                 VStack(spacing: 3){
                     
                     headerView
-                    
-                    NavigationLink {
-                        RaceCalendarView(viewModel: viewModel)
-                    } label: {
-                        VStack{
-                            sectionHeader(title: "Race Calendar", icon: "calendar", arrow: true)
-                            
-                            if viewModel.homepageUpcomingRaces.isEmpty {
-                                HomeCalendarView(for: viewModel.homepageUpcomingRaces)
-                                    .frame(height: 168)
-                            } else{
-                                HomeCalendarView(for: viewModel.homepageUpcomingRaces)
-                                    .frame(height: 168)
-                            }
-                        }
-                    }
-                    
+                    calendarView
                     Divider()
+                    nextRaceView
                     
-//                    PitSubtitle(for: "Next Race")
-//                        .frame(maxWidth: .infinity, alignment: .leading)
-//                        .padding(.vertical)
-                    
-                    sectionHeader(title: "Next Race", icon: "flag.pattern.checkered.2.crossed", arrow: false)
-                    
-                    if let upcomingGP = viewModel.homepageUpcomingRace {
-                        RaceSection(for: upcomingGP)
-                            .padding(.bottom, 10)
-                    } else {
-                        DataErrorView()
-                            .frame(height: 300)
-                    }
-                    
-                    PitSubtitle(for: "Race Day Weather Forecasts")
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.vertical)
+                    sectionHeader(title: "Race Day Weather Forecasts", icon: "cloud", arrow: false)
                     
                     if (cachedMembership == true){
                         if (viewModel.homepageUpcomingRace != nil){
@@ -80,7 +49,7 @@ struct HomeView: View {
                 .padding()
             }
             
-//            loading overlay
+            //            loading overlay
             if viewModel.isLoading {
                 LoadingOverlay()
             }
@@ -143,6 +112,36 @@ struct HomeView: View {
         }
     }
     
+    private var calendarView: some View {
+        NavigationLink {
+            RaceCalendarView(viewModel: viewModel)
+        } label: {
+            VStack{
+                sectionHeader(title: "Race Calendar", icon: "calendar", arrow: true)
+                
+                if viewModel.homepageUpcomingRaces.isEmpty {
+                    HomeCalendarView(for: viewModel.homepageUpcomingRaces)
+                        .frame(height: 168)
+                } else{
+                    HomeCalendarView(for: viewModel.homepageUpcomingRaces)
+                        .frame(height: 168)
+                }
+            }
+        }
+    }
+    
+    private var nextRaceView: some View {
+        Group{
+            sectionHeader(title: "Next Race", icon: "flag.pattern.checkered.2.crossed", arrow: false)
+            if let upcomingGP = viewModel.homepageUpcomingRace {
+                RaceSection(for: upcomingGP)
+                    .padding(.bottom, 10)
+            } else {
+                DataErrorView()
+                    .frame(height: 300)
+            }
+        }
+    }
     
     
     // MARK: - End of the view
