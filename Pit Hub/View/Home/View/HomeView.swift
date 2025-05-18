@@ -19,19 +19,17 @@ struct HomeView: View {
             //            Homeview Body
             ScrollView{
                 VStack(spacing: 3){
-                    
                     headerView
                     calendarView
                     Divider()
                     nextRaceView
                     nextRaceWeatherView
                     nextRaceMapView
-                    
                 }
                 .padding()
             }
             
-            //            loading overlay
+//            loading overlay
             if viewModel.isLoading {
                 LoadingOverlay()
             }
@@ -57,7 +55,7 @@ struct HomeView: View {
             Image(systemName: icon)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 23, height: 23)
+                .frame(width: 20, height: 20)
                 .foregroundColor(Color(S.pitHubIconColor))
             if arrow {
                 Image(systemName: "chevron.right")

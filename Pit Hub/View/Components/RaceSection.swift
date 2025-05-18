@@ -10,8 +10,7 @@ import SwiftUI
 struct RaceSection: View {
     @Environment(\.locale) var locale
     let race: Races?
-    
-    
+    //    init the race section
     init(for race: Races?) {
         self.race = race
     }
@@ -59,36 +58,41 @@ struct RaceSection: View {
                             .foregroundColor(Color("circuitColor"))
                     }
                     
-                    // Local time zone notice
-                    Text("All times are in your local time zone")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    // Sessions list, grouped by date
+                    let groupedSessions = Dictionary(grouping: raceSessions(for: race)) { $0.date }
                     
-                    // Session list
                     VStack(spacing: 10) {
-                        // Optionally you could iterate over an array of sessions, but here we use if-lets.
-                        if let fp1 = race.firstPractice {
-                            RaceSessionList(title: "FP1", date: "\(fp1.date)", time: "\(fp1.time!)")
+                        let sortedDates = groupedSessions.keys.sorted()
+                        ForEach(Array(sortedDates.enumerated()), id: \.element) {index, date in
+                            VStack(alignment: .leading, spacing: 5) {
+                                // Date header (format as needed)
+                                HStack{
+                                    if let weekday = weekdayString(from: date) {
+                                        Text(weekday)
+                                            .font(.footnote)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    if index == 0 {
+                                        Text("All times are in your local time zone")
+                                            .font(.footnote)
+                                            .foregroundColor(.secondary)
+                                            .frame(maxWidth: .infinity, alignment: .trailing)
+                                    }
+                                }
+                                
+                                ForEach(groupedSessions[date]!, id: \.title) { session in
+                                    RaceSessionList(
+                                        title: session.title,
+                                        date: session.date,
+                                        time: session.time
+                                    )
+                                }
+                                Divider()
+                            }
                         }
-                        if let fp2 = race.secondPractice {
-                            RaceSessionList(title: "FP2", date: "\(fp2.date)", time: "\(fp2.time!)")
-                        }
-                        if let sprintQuali = race.sprintQualifying {
-                            RaceSessionList(title: "Sprint Quali", date: "\(sprintQuali.date)", time: "\(sprintQuali.time!)")
-                        }
-                        if let fp3 = race.thirdPractice {
-                            RaceSessionList(title: "FP3", date: "\(fp3.date)", time: "\(fp3.time!)")
-                        }
-                        if let sprint = race.sprint {
-                            RaceSessionList(title: "Sprint", date: "\(sprint.date)", time: "\(sprint.time!)")
-                        }
-                        if let qualifying = race.qualifying {
-                            RaceSessionList(title: "Qualifying", date: "\(qualifying.date)", time: "\(qualifying.time!)")
-                        }
-                        // "Race" session is always shown
-                        RaceSessionList(title: "Race", date: "\(race.date)", time: "\(race.time!)")
                     }
+                    
+                    
                 }
             } else {
                 // Provide a fallback view when race is nil
@@ -96,17 +100,51 @@ struct RaceSection: View {
             }
         }
     }
+    
+    // Helper to gather all available sessions into an array
+    private func raceSessions(for race: Races) -> [RaceSession] {
+        var sessions: [RaceSession] = []
+        if let fp1 = race.firstPractice { sessions.append(.init(title: "FP1", date: fp1.date, time: fp1.time ?? "")) }
+        if let fp2 = race.secondPractice { sessions.append(.init(title: "FP2", date: fp2.date, time: fp2.time ?? "")) }
+        if let sprintQuali = race.sprintQualifying { sessions.append(.init(title: "Sprint Quali", date: sprintQuali.date, time: sprintQuali.time ?? "")) }
+        if let fp3 = race.thirdPractice { sessions.append(.init(title: "FP3", date: fp3.date, time: fp3.time ?? "")) }
+        if let sprint = race.sprint { sessions.append(.init(title: "Sprint", date: sprint.date, time: sprint.time ?? "")) }
+        if let qualifying = race.qualifying { sessions.append(.init(title: "Qualifying", date: qualifying.date, time: qualifying.time ?? "")) }
+        // "Race" is always present
+        sessions.append(.init(title: "Race", date: race.date, time: race.time ?? ""))
+        return sessions
+    }
+    
+    //    get the weekdayString
+    private func weekdayString(from dateString: String, format: String = "yyyy-MM-dd") -> String? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = Locale.current
+        if let date = formatter.date(from: dateString) {
+            formatter.dateFormat = "EEEE" // Full name (e.g., "Monday")
+            return formatter.string(from: date)
+        }
+        return nil
+    }
+    
+    // Helper struct for session data
+    private struct RaceSession {
+        let title: String
+        let date: String
+        let time: String
+    }
+    
 }
 
 struct RaceSessionList: View {
     @Environment(\.locale) var locale
-    let title: LocalizedStringKey
+    let title: String
     let date: String
     let time: String
     
     var body: some View {
         HStack{
-            Text(title)
+            Text(LocalizedStringKey(title))
                 .font(.body)
                 .frame(width: 100, alignment: .leading)
             
@@ -127,15 +165,13 @@ struct RaceSessionList: View {
             if let localTime = DateUtilities.convertUTCToLocal(date: self.date, time: self.time, format: "HH:mm") {
                 Text("\(localTime)")
                     .font(.body)
-                    .frame(width: 100, alignment: .center)
+                    .frame(width: 100, alignment: .trailing)
             }else {
                 Text("UTC: \(time)")
                     .font(.body)
-                    .frame(width: 100, alignment: .center)
+                    .frame(width: 100, alignment: .trailing)
             }
         }
         .padding(3)
-        Divider()
-            .padding(.horizontal)
     }
 }
