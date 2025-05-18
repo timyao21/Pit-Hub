@@ -24,27 +24,9 @@ struct HomeView: View {
                     calendarView
                     Divider()
                     nextRaceView
+                    nextRaceWeatherView
+                    nextRaceMapView
                     
-                    sectionHeader(title: "Race Day Weather Forecasts", icon: "cloud", arrow: false)
-                    
-                    if (cachedMembership == true){
-                        if (viewModel.homepageUpcomingRace != nil){
-                            HomeWeatherRow(for: viewModel.homepageUpcomingRace!)
-                        }
-                    }else{
-                        UnlockView()
-                            .cornerRadius(10)
-                            .shadow(radius:3,x: 3,y: 3)
-                    }
-                    
-                    if let lat = viewModel.homepageUpcomingRace?.circuit.location.lat,
-                       let long = viewModel.homepageUpcomingRace?.circuit.location.long,
-                       lat != "0", long != "0" {
-                        PitSubtitle(for: "Circuit Location")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.vertical)
-                        CircuitMapView(lat: lat, long: long)
-                    }
                 }
                 .padding()
             }
@@ -120,10 +102,10 @@ struct HomeView: View {
                 sectionHeader(title: "Race Calendar", icon: "calendar", arrow: true)
                 
                 if viewModel.homepageUpcomingRaces.isEmpty {
-                    HomeCalendarView(for: viewModel.homepageUpcomingRaces)
+                    HomeCalendarView(for: viewModel.homepageRaces)
                         .frame(height: 168)
                 } else{
-                    HomeCalendarView(for: viewModel.homepageUpcomingRaces)
+                    HomeCalendarView(for: viewModel.homepageRaces)
                         .frame(height: 168)
                 }
             }
@@ -132,13 +114,45 @@ struct HomeView: View {
     
     private var nextRaceView: some View {
         Group{
-            sectionHeader(title: "Next Race", icon: "flag.pattern.checkered.2.crossed", arrow: false)
             if let upcomingGP = viewModel.homepageUpcomingRace {
-                RaceSection(for: upcomingGP)
-                    .padding(.bottom, 10)
+                NavigationLink{
+                    RaceCalendarDetailView(for: upcomingGP)
+                } label: {
+                    VStack{
+                        sectionHeader(title: "Next Race", icon: "flag.pattern.checkered", arrow: true)
+                        RaceSection(for: upcomingGP)
+                    }
+                }.foregroundColor(.primary)
             } else {
+                sectionHeader(title: "Next Race", icon: "flag.pattern.checkered", arrow: false)
                 DataErrorView()
                     .frame(height: 300)
+            }
+        }
+    }
+    
+    private var nextRaceWeatherView: some View {
+        Group{
+            sectionHeader(title: "Race Day Weather Forecasts", icon: "cloud", arrow: false)
+            if (cachedMembership == true){
+                if (viewModel.homepageUpcomingRace != nil){
+                    HomeWeatherRow(for: viewModel.homepageUpcomingRace!)
+                }
+            }else{
+                UnlockView()
+                    .cornerRadius(10)
+                    .shadow(radius:3,x: 3,y: 3)
+            }
+        }
+    }
+    
+    private var nextRaceMapView: some View {
+        Group{
+            sectionHeader(title: "Circuit Location", icon: "mappin.and.ellipse", arrow: false)
+            if let lat = viewModel.homepageUpcomingRace?.circuit.location.lat,
+               let long = viewModel.homepageUpcomingRace?.circuit.location.long,
+               lat != "0", long != "0" {
+                CircuitMapView(lat: lat, long: long)
             }
         }
     }
