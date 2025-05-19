@@ -39,8 +39,7 @@ extension StandingsView {
                 driverStandings = []
                 constructorStandings = []
                 print("🔴 fetch failed:", error)
-            }
-            
+            } 
         }
         
         // MARK: - update the year and refesh the page

@@ -14,20 +14,8 @@ struct RaceCalendarView: View {
     
     var body: some View {
         VStack{
-            HStack{
-                Image(S.pitIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40)
-                Spacer()
-                NavTabSelector(selectedTab: $viewModel.raceCalendarSelectedTab, tabTitles: tabTitles)
-                Spacer()
-                YearDropdownSelector(selectedYear: $viewModel.raceCalendarViewSelectedYear) {
-                    newYear in
-                    viewModel.updateRaceCalendarViewYear(for: newYear)
-                }
-            }
-            .padding(.horizontal)
+            header
+                .padding(.horizontal)
             
             // MARK: - TabView
             TabView(selection: $viewModel.raceCalendarSelectedTab) {
@@ -43,14 +31,35 @@ struct RaceCalendarView: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         }
+        .navigationTitle("Race Calendar")
+        .toolbar{
+            ToolbarItem(placement: .navigationBarTrailing) {
+                YearDropdownSelector(selectedYear: $viewModel.raceCalendarViewSelectedYear) {
+                    newYear in
+                    viewModel.updateRaceCalendarViewYear(for: newYear)
+                }
+            }
+        }
         .refreshable {
             await viewModel.refreshRaceCalendarView()
         }
     }
-}
-
-#Preview {
-    BottomNavBarIndexView()
+    
+    private var header: some View {
+        HStack{
+            Image(S.pitIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40)
+            Spacer()
+            NavTabSelector(selectedTab: $viewModel.raceCalendarSelectedTab, tabTitles: tabTitles)
+            Spacer()
+            YearDropdownSelector(selectedYear: $viewModel.raceCalendarViewSelectedYear) {
+                newYear in
+                viewModel.updateRaceCalendarViewYear(for: newYear)
+            }
+        }
+    }
 }
 
 @ViewBuilder
