@@ -51,7 +51,11 @@ struct DriverDetailView: View {
         .navigationTitle(driverInfo.driver.code ?? "")
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing){
-                Text(LocalizedStringResource("Comparison"))
+                NavigationLink{
+                    SeasonPositionChartView(results1: viewModel.driverRaceResultPositionChart)
+                } label: {
+                    Text(LocalizedStringResource("Comparison"))
+                }
             }
         }
     }
